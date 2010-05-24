@@ -10,8 +10,20 @@ function parse_git_branch {
     echo "("${ref#refs/heads/}") "
 }
 
+# Opt
+export PATH=$PATH:/opt/bin
+
+# Node.js
+export PATH=$PATH:/opt/node/bin
+
+# MongoDB
+export PATH=$PATH:/opt/mongodb/bin
+
 # MySQL
 export PATH=/usr/local/mysql/bin:$PATH
+
+# JRuby
+export PATH=$PATH:/opt/jruby/bin
 
 # ZenTest
 export RSPEC=true
@@ -23,6 +35,9 @@ export CLICOLOR=1
 export LSCOLORS=HxbxfxdxCxegedafahacad
 
 # Aliases
+alias wget='curl -# -O'
+
+# Rails
 alias ss='script/server'
 alias sc='script/console'
 

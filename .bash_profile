@@ -1,4 +1,4 @@
-export PATH=/usr/local/git/bin/:/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
