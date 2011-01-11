@@ -35,7 +35,8 @@ export CLICOLOR=1
 export LSCOLORS=HxbxfxdxCxegedafahacad
 
 # Aliases
-alias wget='curl -# -O'
+
+alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 
 # Rails
 alias ss='script/server'
