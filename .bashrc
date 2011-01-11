@@ -2,6 +2,7 @@
 export SVN_EDITOR='mate -w'
 
 # Git
+source /usr/local/git/contrib/completion/git-completion.bash
 export GIT_EDITOR="mate -w"
 export PATH=$PATH:/usr/local/git/bin/
 
@@ -9,6 +10,9 @@ function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo "("${ref#refs/heads/}") "
 }
+
+# Homebrew
+export PATH=$PATH:/usr/local/sbin
 
 # Opt
 export PATH=$PATH:/opt/bin
