@@ -1,3 +1,7 @@
+source ~/.profile
+
+export rvm_path='/Users/peter/.rvm'
+
 # Subversion
 export SVN_EDITOR='mate -w'
 
@@ -12,7 +16,7 @@ function parse_git_branch {
 }
 
 # Homebrew
-export PATH=$PATH:/usr/local/sbin
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
 # Opt
 export PATH=$PATH:/opt/bin
@@ -39,7 +43,10 @@ export CLICOLOR=1
 export LSCOLORS=HxbxfxdxCxegedafahacad
 
 # Aliases
-alias wget='curl -# -O'
+# alias wget='curl -# -O'
+alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
+
+alias vim='mvim -N'
 
 # Rails
 alias ss='script/server'
@@ -53,3 +60,5 @@ alias ur-metadata-cache='cd /Users/peter/Work/Athega/UR/urvalet/ur-metadata-cach
 alias ur-search-frontend='cd /Users/peter/Work/Athega/UR/urvalet/ur-search-frontend/trunk && mate .. && ss'
 alias ur-asset-manager='cd /Users/peter/Work/Athega/UR/urvalet/ur-asset-manager/trunk && mate .. && shotgun ur-asset-manager.rb'
 alias ur-schedule-frontend='sudo /opt/nginx/sbin/nginx && cd /Users/peter/Work/Athega/UR/urvalet/ur-broadcast-services/ && mate . && cd /Users/peter/Work/Athega/UR/urvalet/ur-schedule-frontend/trunk/ && mate .. && ss -p 4000'
+
+[[ -s "/Users/peter/.rvm/scripts/rvm" ]] && source "/Users/peter/.rvm/scripts/rvm"  # This loads RVM into a shell session.
