@@ -6,11 +6,16 @@ if has("gui_macvim")
   set lines=50
   set guioptions=aAce
   set complete-=i
+  set foldmethod=syntax
+  set foldlevel=99
+
+  let mapleader="ö"
+
   colorscheme jellybeans
   hi LineNr guifg=#333333 guibg=#151515
   autocmd BufWritePre *.rb :%s/\s\+$//e
 
-  " resize current buffer by +/- 5 
+  " resize current buffer by +/- 5
   nnoremap <D-left> :vertical resize -5<cr>
   nnoremap <D-down> :resize +5<cr>
   nnoremap <D-up> :resize -5<cr>
