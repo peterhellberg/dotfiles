@@ -1,9 +1,9 @@
 # Subversion
-export SVN_EDITOR='mate -w'
+export SVN_EDITOR='mvim -f'
 
 # Git
 source /usr/local/git/contrib/completion/git-completion.bash
-export GIT_EDITOR="mate -w"
+export GIT_EDITOR="mvim -f"
 export PATH=$PATH:/usr/local/git/bin/
 
 function parse_git_branch {
@@ -11,14 +11,14 @@ function parse_git_branch {
     echo "("${ref#refs/heads/}") "
 }
 
+# NPM
+export PATH=$PATH:/usr/local/share/npm/bin
+
 # Homebrew
 export PATH=$PATH:/usr/local/sbin
 
 # Opt
 export PATH=$PATH:/opt/bin
-
-# Node.js
-export PATH=$PATH:/opt/node/bin
 
 # MongoDB
 export PATH=$PATH:/opt/mongodb/bin
