@@ -15,6 +15,11 @@ if has("gui_macvim")
   hi LineNr guifg=#333333 guibg=#151515
   autocmd BufWritePre *.rb :%s/\s\+$//e
 
+  " Command+Option+Right for next
+  map <D-M-Right> :tabn<CR>
+  " Command+Option+Left for previous
+  map <D-M-Left> :tabp<CR>
+
   " resize current buffer by +/- 5
   nnoremap <D-left> :vertical resize -5<cr>
   nnoremap <D-down> :resize +5<cr>
