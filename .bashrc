@@ -41,7 +41,7 @@ export LSCOLORS=HxbxfxdxCxegedafahacad
 
 # Aliases
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
-alias vim='mvim -N'
+alias vim='mvim -v -N'
 
 # Rails
 alias ss='script/server'
