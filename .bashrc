@@ -15,6 +15,9 @@ function wiki {
  dig +short txt $1.wp.dg.cx
 }
 
+# OpenCV
+export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
+
 # NPM
 export PATH=$PATH:/usr/local/share/npm/bin
 
