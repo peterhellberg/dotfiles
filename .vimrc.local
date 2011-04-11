@@ -3,6 +3,10 @@ set complete-=i
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
 
+" Indent file
+map   <silent> <F5> mmgg=G`m^
+imap  <silent> <F5> <Esc> mmgg=G`m^
+
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
