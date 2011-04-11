@@ -15,14 +15,26 @@ function wiki {
  dig +short txt $1.wp.dg.cx
 }
 
+function blunderbuss {
+  if [ -z "$1" ]; then
+    PORT=9393
+  else
+    PORT=$1
+  fi
+
+  IP=`ifconfig | grep -m 1 broadcast | awk '{print $2}'`
+  shotgun -s thin -o $IP -p $PORT
+}
+
 # OpenCV
 export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/Cellar/opencv/2.2/lib/pkgconfig"
 
 # NPM
 export PATH=$PATH:/usr/local/share/npm/bin
 
 # Homebrew
-export PATH=$PATH:/usr/local/sbin
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
 # Opt
 export PATH=$PATH:/opt/bin
