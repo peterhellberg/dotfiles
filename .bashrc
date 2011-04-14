@@ -1,3 +1,6 @@
+# Bash
+export EDITOR='mvim -v -N'
+
 # Subversion
 export SVN_EDITOR='mvim -f'
 
@@ -24,6 +27,22 @@ function blunderbuss {
 
   IP=`ifconfig | grep -m 1 broadcast | awk '{print $2}'`
   shotgun -s thin -o $IP -p $PORT
+}
+
+function sass-watch {
+  if [ -z "$3" ]; then
+    SASS_IN='all.scss'
+    CSS_OUT='all.css'
+    SASS_WATCH_PATH='.'
+  else
+    SASS_IN=$1
+    CSS_OUT=$2
+    SASS_WATCH_PATH=$3
+  fi
+
+puncher "echo \"[\033[1;33m\$(date +%H:%M:%S)\033[1;37m] \
+\033[1;37mwrote \033[1;32m$CSS_OUT\033[1;37m\" && \
+sass --scss $SASS_IN $CSS_OUT" $SASS_WATCH_PATH
 }
 
 # OpenCV
