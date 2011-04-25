@@ -73,8 +73,11 @@ export AUTOFEATURE=true
 export CLICOLOR=1
 export LSCOLORS=HxbxfxdxCxegedafahacad
 
-# Aliases
+# JavaScript
+export NODE_PATH='/usr/local/lib/node'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
+
+# Aliases
 alias vim='mvim -v -N'
 
 # Rails
