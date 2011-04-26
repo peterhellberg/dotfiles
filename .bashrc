@@ -73,23 +73,29 @@ export AUTOFEATURE=true
 export CLICOLOR=1
 export LSCOLORS=HxbxfxdxCxegedafahacad
 
+shopt -s checkwinsize
+
 # Aliases
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias vim='mvim -v -N'
-
-# Rails
-alias ss='script/server'
-alias sc='script/console'
-
-# UR
-# alias assets='ssh -o TCPKeepAlive=no -o ServerAliveInterval=15 root@assets.ur.se'
-# alias urvalet='cd /Users/peter/Work/Athega/UR/urvalet'
-# alias ur-thumbnail-generator='cd /Users/peter/Work/Athega/UR/urvalet/ur-thumbnail-generator && mate .'
-# alias ur-metadata-cache='cd /Users/peter/Work/Athega/UR/urvalet/ur-metadata-cache/trunk && mate .. && ss -p 3001'
-# alias ur-search-frontend='cd /Users/peter/Work/Athega/UR/urvalet/ur-search-frontend/trunk && mate .. && ss'
-# alias ur-asset-manager='cd /Users/peter/Work/Athega/UR/urvalet/ur-asset-manager/trunk && mate .. && shotgun ur-asset-manager.rb'
-# alias ur-schedule-frontend='sudo /opt/nginx/sbin/nginx && cd /Users/peter/Work/Athega/UR/urvalet/ur-broadcast-services/ && mate . && cd /Users/peter/Work/Athega/UR/urvalet/ur-schedule-frontend/trunk/ && mate .. && ss -p 4000'
-
 alias mongod18='mongod run --config /usr/local/Cellar/mongodb/1.8.0-x86_64/mongod.conf'
+
+# Bonnier
+alias s='rake spec'
+
+# Git related
+alias g='git'
+alias gst='git status'
+alias gl='git pull'
+alias gup='git fetch && git rebase'
+alias gp='git push'
+alias gd='git diff | mate'
+alias gdv='git diff -w "$@" | vim -R -'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gcount='git shortlog -sn'
+alias gcp='git cherry-pick'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
