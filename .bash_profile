@@ -3,14 +3,16 @@ bind '"\C-f": "fg %-\n"'
 
 export PATH=/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-LIGHT_GRAY="\[\033[0;37m\]"
-WHITE="\[\033[1;37m\]"
+RED=$(tput setaf 1)
+YELLOW=$(tput bold ; tput setaf 3)
+GREEN=$(tput setaf 2)
+BLUE=$(tput setaf 4)
+LIGHT_GRAY=$(tput setaf 7)
+WHITE=$(tput bold ; tput setaf 7)
+RESET_COLOR=$(tput sgr0)
 
 source ~/.bashrc
+shopt -s checkwinsize
 
-export PS1="$WHITE\w $YELLOW\$(parse_git_branch)$GREEN\$$LIGHT_GRAY "
-export SUDO_PS1="$WHITE\w $YELLOW\$(parse_git_branch)$RED#$LIGHT_GRAY "
-
+PS1='\[$WHITE\]\w \[$YELLOW\]$(parse_git_branch)\[$GREEN\]\$\[$RESET_COLOR\] '
+export SUDO_PS1="\[$WHITE\]\w \[$YELLOW\]\$(parse_git_branch)\[\e[0;31m\]#\[$RESET_COLOR\] "
