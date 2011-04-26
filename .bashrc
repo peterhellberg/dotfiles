@@ -73,10 +73,11 @@ export AUTOFEATURE=true
 export CLICOLOR=1
 export LSCOLORS=HxbxfxdxCxegedafahacad
 
-shopt -s checkwinsize
+# JavaScript
+export NODE_PATH='/usr/local/lib/node'
+alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 
 # Aliases
-alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias vim='mvim -v -N'
 alias mongod18='mongod run --config /usr/local/Cellar/mongodb/1.8.0-x86_64/mongod.conf'
 
