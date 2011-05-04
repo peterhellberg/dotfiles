@@ -2,6 +2,7 @@ colorscheme ir_black
 set complete-=i
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
+au BufNewFile * set noeol
 
 " Indent file
 map   <silent> <F5> mmgg=G`m^
