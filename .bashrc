@@ -1,12 +1,12 @@
 # Bash
-export EDITOR='mvim -v -N'
+export EDITOR='mvim -v -N -f --nomru -c "au VimLeave * !open -a Terminal"'
 
 # Subversion
 export SVN_EDITOR='mvim -f'
 
 # Git
 source /usr/local/git/contrib/completion/git-completion.bash
-export GIT_EDITOR='mvim -f -c "au VimLeave * !open -a Terminal"'
+export GIT_EDITOR='mvim -v -N -f -c "au VimLeave * !open -a Terminal"'
 export PATH=$PATH:/usr/local/git/bin/
 
 function parse_git_branch {
@@ -78,7 +78,9 @@ export NODE_PATH='/usr/local/lib/node'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 
 # Aliases
-alias vim='mvim -v -N'
+alias vim='mvim -n -v -N'
+alias mvim='mvim -n -N'
+
 alias mongod18='mongod run --config /usr/local/Cellar/mongodb/1.8.0-x86_64/mongod.conf'
 
 # Bonnier
