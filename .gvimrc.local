@@ -1,4 +1,5 @@
 if has("gui_macvim")
+  set hidden
   set enc=utf-8
   set fuoptions=maxvert,maxhorz
   set guifont=Monaco:h13
