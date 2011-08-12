@@ -81,7 +81,7 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N'
 
-alias mongod18='mongod run --config /usr/local/Cellar/mongodb/1.8.0-x86_64/mongod.conf'
+alias mongod='mongod run --config /usr/local/Cellar/mongodb/1.8.2-x86_64/mongod.conf'
 
 # Bonnier
 alias s='rake spec'
