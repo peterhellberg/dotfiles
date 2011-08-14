@@ -80,8 +80,8 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 # Aliases
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N'
-
 alias mongod='mongod run --config /usr/local/Cellar/mongodb/1.8.2-x86_64/mongod.conf'
+alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.17.1/config/elasticsearch.yml'
 
 # Bonnier
 alias s='rake spec'
