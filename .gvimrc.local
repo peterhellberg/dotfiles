@@ -10,6 +10,7 @@ if has("gui_macvim")
   set complete-=i
   set foldmethod=manual
   set foldlevel=99
+  set nobalooneval
 
   let mapleader="ö"
 
