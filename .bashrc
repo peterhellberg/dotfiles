@@ -45,6 +45,20 @@ puncher "echo \"[\033[1;33m\$(date +%H:%M:%S)\033[1;37m] \
 sass --scss $SASS_IN $CSS_OUT" $SASS_WATCH_PATH
 }
 
+function entitlements_generic_tester {
+  if [ -z "$1" ]; then
+    SESSION_TOKEN='51123fd0647bfb103ad6bc8c67e6ffa10d8aa8cf'
+  else
+    SESSION_TOKEN=$1
+  fi
+
+  echo ""
+  curl -s --insecure --user-agent \
+    "Videnskab+D 1.41 (iPad; iPhone OS 3.2.2; da_DK; illvid-dk; 1.42; f0d2ad5a7d471c67a8bf2fbb4f71b7b07154f5ed)" \
+    "http://api.magplus.dev/v3/brands/generic-tester/entitlements?session_token=$SESSION_TOKEN" | json -i
+  echo ""
+}
+
 # OpenCV
 export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/Cellar/opencv/2.2/lib/pkgconfig"
