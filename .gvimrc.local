@@ -14,6 +14,11 @@ if has("gui_macvim")
 
   let mapleader="ö"
 
+  " Close the NERDTree on startup (The Air has a tiny screen!)
+  NERDTreeClose
+  " Enter fullscreen :)
+  au GUIEnter * set fullscreen
+
   colorscheme jellybeans
   hi LineNr guifg=#333333 guibg=#151515
   autocmd BufWritePre *.rb :%s/\s\+$//e
