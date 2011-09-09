@@ -15,7 +15,9 @@ if has("gui_macvim")
   let mapleader="ö"
 
   " Close the NERDTree on startup (The Air has a tiny screen!)
-  NERDTreeClose
+   NERDTreeClose
+  " Reposition the window
+  au GUIEnter * winpos 0 1
   " Enter fullscreen :)
   au GUIEnter * set fullscreen
 
@@ -33,6 +35,9 @@ if has("gui_macvim")
   map <D-M-Right> :tabn<CR>
   " Command+Option+Left for previous
   map <D-M-Left> :tabp<CR>
+
+  " Tab to NERDTree
+  noremap <tab> <c-w><c-w>
 
   " resize current buffer by +/- 5
   nnoremap <D-left> :vertical resize -5<cr>
