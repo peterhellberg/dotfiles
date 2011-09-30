@@ -5,7 +5,9 @@ export EDITOR='mvim -v -N -f --nomru -c "au VimLeave * !open -a Terminal"'
 export SVN_EDITOR='mvim -f'
 
 # Perl
-source ~/.perl5/perlbrew/etc/bashrc
+export PERLBREW_ROOT=~/.perl5/perlbrew
+export PERLBREW_HOME=~/.perlbrew
+source ${PERLBREW_ROOT}/etc/bashrc
 
 # Git
 source /usr/local/git/contrib/completion/git-completion.bash
