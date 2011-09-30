@@ -11,8 +11,10 @@ if has("gui_macvim")
   set foldmethod=manual
   set foldlevel=99
   set noballooneval
+  set expandtab
 
-  let mapleader="ö"
+  let mapleader=","
+  let g:mapleader = ","
 
   " Close the NERDTree on startup (The Air has a tiny screen!)
    NERDTreeClose
