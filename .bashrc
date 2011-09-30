@@ -4,6 +4,9 @@ export EDITOR='mvim -v -N -f --nomru -c "au VimLeave * !open -a Terminal"'
 # Subversion
 export SVN_EDITOR='mvim -f'
 
+# Perl
+source ~/.perl5/perlbrew/etc/bashrc
+
 # Git
 source /usr/local/git/contrib/completion/git-completion.bash
 export GIT_EDITOR='mvim -v -N -f -c "au VimLeave * !open -a Terminal"'
@@ -40,9 +43,7 @@ function sass-watch {
     SASS_WATCH_PATH=$3
   fi
 
-puncher "echo \"[\033[1;33m\$(date +%H:%M:%S)\033[1;37m] \
-\033[1;37mwrote \033[1;32m$CSS_OUT\033[1;37m\" && \
-sass --scss $SASS_IN $CSS_OUT" $SASS_WATCH_PATH
+kicker -s -e "sass --scss --style compressed $SASS_IN $CSS_OUT" $SASS_WATCH_PATH
 }
 
 function entitlements_generic_tester {
@@ -94,7 +95,7 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 # Aliases
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
-alias mongod='mongod run --config /usr/local/Cellar/mongodb/1.8.3-x86_64/mongod.conf'
+alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.0-x86_64/mongod.conf'
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.17.1/config/elasticsearch.yml'
 alias :q='logout'
 
