@@ -103,6 +103,7 @@ alias :q='logout'
 
 # Bonnier
 alias s='rake spec'
+alias rake='rake -rpry'
 
 # Git related
 alias g='git'
