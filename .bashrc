@@ -48,20 +48,6 @@ function sass-watch {
 kicker -s -e "sass --scss --style compressed $SASS_IN $CSS_OUT" $SASS_WATCH_PATH
 }
 
-function entitlements_generic_tester {
-  if [ -z "$1" ]; then
-    SESSION_TOKEN='51123fd0647bfb103ad6bc8c67e6ffa10d8aa8cf'
-  else
-    SESSION_TOKEN=$1
-  fi
-
-  echo ""
-  curl -s --insecure --user-agent \
-    "Videnskab+D 1.41 (iPad; iPhone OS 3.2.2; da_DK; illvid-dk; 1.42; f0d2ad5a7d471c67a8bf2fbb4f71b7b07154f5ed)" \
-    "http://api.magplus.dev/v3/brands/generic-tester/entitlements?session_token=$SESSION_TOKEN" | json -i
-  echo ""
-}
-
 # OpenCV
 export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/Cellar/opencv/2.2/lib/pkgconfig"
@@ -99,6 +85,7 @@ alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
 alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.0-x86_64/mongod.conf'
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.17.1/config/elasticsearch.yml'
+alias redis-server='redis-server /usr/local/etc/redis.conf'
 alias :q='logout'
 
 # Bonnier
