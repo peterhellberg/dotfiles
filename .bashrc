@@ -64,6 +64,9 @@ export PATH=$PATH:/opt/bin
 # MySQL
 export PATH=/usr/local/mysql/bin:$PATH
 
+# Ruby
+export GUARD_NOTIFY=false
+
 # JRuby
 export PATH=$PATH:/opt/jruby/bin
 
