@@ -1,5 +1,6 @@
 colorscheme ir_black
 set complete-=i
+let mapleader=","
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
 au BufNewFile * set noeol
