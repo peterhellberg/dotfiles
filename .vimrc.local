@@ -2,12 +2,12 @@ colorscheme ir_black
 set complete-=i
 let mapleader=","
 
-autocmd BufWritePre *.rb :%s/\s\+$//e
-au BufNewFile * set noeol
+"autocmd BufWritePre *.rb :%s/\s\+$//e
+"au BufNewFile * set noeol
 
 " Indent file
-map   <silent> <F5> mmgg=G`m^
-imap  <silent> <F5> <Esc> mmgg=G`m^
+"map   <silent> <F5> mmgg=G`m^
+"imap  <silent> <F5> <Esc> mmgg=G`m^
 
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
