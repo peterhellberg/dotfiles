@@ -4,6 +4,10 @@ export EDITOR='mvim -v -N -f --nomru -c "au VimLeave * !open -a Terminal"'
 # Subversion
 export SVN_EDITOR='mvim -f'
 
+# Setting for the new UTF-8 terminal support in Lion
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Perl
 export PERLBREW_ROOT=~/.perl5/perlbrew
 export PERLBREW_HOME=~/.perlbrew
