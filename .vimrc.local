@@ -14,7 +14,11 @@ cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 
-nnoremap <silent> <Leader>t :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+map <leader>pp :setlocal paste!<cr>
 
+let g:CommandTMaxHeight = 15
+set wildignore+=*.o,*.obj,.git,*.pyc
+
+nnoremap <silent> <Leader>t :CommandT<cr>
+nnoremap <silent> <Leader>b :CommandTBuffer<cr>
 nnoremap <leader><leader> <C-^>
