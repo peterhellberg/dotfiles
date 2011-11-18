@@ -49,4 +49,20 @@ if has("gui_macvim")
   " jump to the next row on long lines
   nnoremap j gj
   nnoremap k gk
+
+  " Switch between buffers
+  noremap <leader>n :bn<CR>
+  noremap <leader>p :bp<CR>
+
+  " Close buffer
+  nmap <leader>d :bprevious<CR>:bdelete #<CR>
+
+  " Switch between last two buffers
+  nnoremap <leader><leader> <C-^>
+
+  " Map ESC
+  imap jj <ESC>
+
+  " Clear the search buffer when hitting return
+  " :nnoremap <CR> :nohlsearch<CR>
 end
