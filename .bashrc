@@ -52,10 +52,6 @@ function sass-watch {
 kicker -s -e "sass --scss --style compressed $SASS_IN $CSS_OUT" $SASS_WATCH_PATH
 }
 
-# OpenCV
-export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
-export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/Cellar/opencv/2.2/lib/pkgconfig"
-
 # NPM
 export PATH=$PATH:/usr/local/share/npm/bin
 
@@ -73,6 +69,9 @@ export GUARD_NOTIFY=false
 
 # JRuby
 export PATH=$PATH:/opt/jruby/bin
+
+# Python
+export PATH="/usr/local/share/python:${PATH}"
 
 # ZenTest
 export RSPEC=true
