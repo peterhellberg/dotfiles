@@ -1,5 +1,5 @@
 if has("gui_macvim")
-  set wrap
+  set nowrap
   set enc=utf-8
   set fuoptions=maxvert,maxhorz
   set guifont=Monaco:h13
@@ -11,20 +11,23 @@ if has("gui_macvim")
   set foldlevel=99
   set noballooneval
   set expandtab
+  set textwidth=0 wrapmargin=0
 
   let mapleader=","
   let g:mapleader = ","
 
   " Close the NERDTree on startup (The Air has a tiny screen!)
    NERDTreeClose
-  " Reposition the window
-  au GUIEnter * winpos 0 1
-  " Enter fullscreen :)
-  au GUIEnter * set fullscreen
 
   colorscheme jellybeans
+
   hi LineNr guifg=#333333 guibg=#151515
+
   autocmd BufWritePre *.rb :%s/\s\+$//e
+  autocmd BufWritePre *.haml :%s/\s\+$//e
+  autocmd BufWritePre *.html :%s/\s\+$//e
+  autocmd BufWritePre *.scss :%s/\s\+$//e
+  autocmd BufWritePre *.coffee :%s/\s\+$//e
 
   au BufNewFile * set noeol
 
@@ -65,4 +68,12 @@ if has("gui_macvim")
 
   " Clear the search buffer when hitting return
   " :nnoremap <CR> :nohlsearch<CR>
+  highlight OverLength guibg=#373737
+  match OverLength /\%81v.\+/
+
+  " Disable indenting with F8
+  nnoremap <F8> :setl noai nocin nosi inde=<CR>
+
+  " Reload the vim config
+  nmap <F3> :so ~/.gvimrc.local<CR>
 end

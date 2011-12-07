@@ -1,13 +1,15 @@
-colorscheme ir_black
 set complete-=i
 let mapleader=","
 
-"autocmd BufWritePre *.rb :%s/\s\+$//e
-"au BufNewFile * set noeol
+colorscheme jellybeans
 
-" Indent file
-"map   <silent> <F5> mmgg=G`m^
-"imap  <silent> <F5> <Esc> mmgg=G`m^
+autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd BufWritePre *.haml :%s/\s\+$//e
+autocmd BufWritePre *.html :%s/\s\+$//e
+autocmd BufWritePre *.scss :%s/\s\+$//e
+autocmd BufWritePre *.coffee :%s/\s\+$//e
+
+au BufNewFile * set noeol
 
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
@@ -21,4 +23,24 @@ set wildignore+=*.o,*.obj,.git,*.pyc
 
 nnoremap <silent> <Leader>t :CommandT<cr>
 nnoremap <silent> <Leader>b :CommandTBuffer<cr>
+
+" Tab between buffers
+noremap <tab> <c-w><c-w>
+
+if bufwinnr(1)
+  nmap - <C-W><<C-W><
+  nmap . <C-W>><C-W>>
+  nmap ö <C-W>-<C-W>-
+  nmap ä <C-W>+<C-W>+
+  nmap <F3> :so ~/.vimrc.local<cr>
+endif
+
+" jump to the next row on long lines
+nnoremap j gj
+nnoremap k gk
+
+" Switch between last two buffers
 nnoremap <leader><leader> <C-^>
+
+" Map ESC
+imap jj <ESC>
