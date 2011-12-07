@@ -93,6 +93,8 @@ alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.0-x86_64/mongod.
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.17.1/config/elasticsearch.yml'
 alias redis-server='redis-server /usr/local/etc/redis.conf'
 alias :q='logout'
+alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
+alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
 
 # Bonnier
 alias s='rake spec'
