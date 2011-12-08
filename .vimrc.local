@@ -51,8 +51,6 @@ nnoremap <leader><leader> <C-^>
 " Map ESC
 imap jj <ESC>
 
-set wildignore+=*.o,*.obj,.git,*.pyc
-
 " CommandT config
 nnoremap <silent> t :CommandT<cr>
 nnoremap <silent> <Leader>b :CommandTBuffer<cr>
@@ -61,4 +59,6 @@ let g:CommandTMaxFiles=2000
 let g:CommandTMaxHeight=20
 let g:CommandTMaxDepth=1
 let g:CommandTMatchWindowAtTop=1
-let g:CommandTCancelMap=['<C-c>', '<Esc>']
+let g:CommandTCancelMap=['<C-c>', '§']
+
+set wildignore+=*.o,*.obj,.git,*.pyc
