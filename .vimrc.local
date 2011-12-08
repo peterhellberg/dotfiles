@@ -10,7 +10,7 @@ let mapleader=","
 colorscheme jellybeans
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
- autocmd BufWritePre *.haml :%s/\s\+$//e
+autocmd BufWritePre *.haml :%s/\s\+$//e
 autocmd BufWritePre *.html :%s/\s\+$//e
 autocmd BufWritePre *.scss :%s/\s\+$//e
 autocmd BufWritePre *.coffee :%s/\s\+$//e
