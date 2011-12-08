@@ -10,7 +10,7 @@ let mapleader=","
 colorscheme jellybeans
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
-autocmd BufWritePre *.haml :%s/\s\+$//e
+ autocmd BufWritePre *.haml :%s/\s\+$//e
 autocmd BufWritePre *.html :%s/\s\+$//e
 autocmd BufWritePre *.scss :%s/\s\+$//e
 autocmd BufWritePre *.coffee :%s/\s\+$//e
@@ -62,3 +62,9 @@ let g:CommandTMatchWindowAtTop=1
 let g:CommandTCancelMap=['<C-c>', '§']
 
 set wildignore+=*.o,*.obj,.git,*.pyc
+
+" Highlighting for Gdiff (vimdiff)
+hi DiffAdd term=reverse ctermbg=black
+hi DiffChange term=reverse ctermbg=green ctermfg=black
+hi DiffText term=reverse ctermbg=gray ctermfg=black
+hi DiffDelete term=reverse ctermbg=red ctermfg=black

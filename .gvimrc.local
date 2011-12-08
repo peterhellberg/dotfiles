@@ -66,10 +66,15 @@ if has("gui_macvim")
   " Map ESC
   imap jj <ESC>
 
-  " Clear the search buffer when hitting return
-  " :nnoremap <CR> :nohlsearch<CR>
+  " Highlight long lines
   highlight OverLength guibg=#373737
   match OverLength /\%81v.\+/
+
+  " Highlighting for Gdiff (vimdiff)
+  hi DiffAdd guibg=#C2DF44 guifg=#000000
+  hi DiffText guibg=#81C8F5 guifg=#000000
+  hi DiffChange guibg=#363636 guifg=#555555
+  hi DiffDelete guibg=#C7412C
 
   " Disable indenting with F8
   nnoremap <F8> :setl noai nocin nosi inde=<CR>
