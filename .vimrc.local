@@ -18,12 +18,6 @@ cnoremap <M-f> <S-Right>
 
 map <leader>pp :setlocal paste!<cr>
 
-let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc
-
-nnoremap <silent> <Leader>t :CommandT<cr>
-nnoremap <silent> <Leader>b :CommandTBuffer<cr>
-
 " Tab between buffers
 noremap <tab> <c-w><c-w>
 
@@ -50,3 +44,15 @@ nnoremap <leader><leader> <C-^>
 
 " Map ESC
 imap jj <ESC>
+
+set wildignore+=*.o,*.obj,.git,*.pyc
+
+" CommandT config
+nnoremap <silent> t :CommandT<cr>
+nnoremap <silent> <Leader>b :CommandTBuffer<cr>
+
+let g:CommandTMaxFiles=2000
+let g:CommandTMaxHeight=20
+let g:CommandTMaxDepth=1
+let g:CommandTMatchWindowAtTop=1
+let g:CommandTCancelMap=['<C-c>', '<Esc>']
