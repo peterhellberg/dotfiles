@@ -1,3 +1,9 @@
+set nowrap
+set enc=utf-8
+set foldmethod=manual
+set foldlevel=99
+set expandtab
+set textwidth=0 wrapmargin=0
 set complete-=i
 let mapleader=","
 
