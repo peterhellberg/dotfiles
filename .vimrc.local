@@ -1,3 +1,5 @@
+set t_Co=256
+set magic
 set nowrap
 set enc=utf-8
 set foldmethod=manual
@@ -57,14 +59,27 @@ nnoremap <silent> <Leader>b :CommandTBuffer<cr>
 
 let g:CommandTMaxFiles=2000
 let g:CommandTMaxHeight=20
-let g:CommandTMaxDepth=1
-let g:CommandTMatchWindowAtTop=1
-let g:CommandTCancelMap=['<C-c>', '§']
+let g:CommandTMaxDepth=5
 
-set wildignore+=*.o,*.obj,.git,*.pyc
+set ttimeoutlen=50
+
+if &term =~ "screen-256color" || &term =~ "xterm.*"
+  let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
+  let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
+  let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
+endif
+
+set wildignore+=*.o,*.obj,.git,*.pyc,*.gem
 
 " Highlighting for Gdiff (vimdiff)
 hi DiffAdd term=reverse ctermbg=black
 hi DiffChange term=reverse ctermbg=green ctermfg=black
 hi DiffText term=reverse ctermbg=gray ctermfg=black
 hi DiffDelete term=reverse ctermbg=red ctermfg=black
+
+" TMux
+set mouse=a
+set ttymouse=xterm
+
+" reduce vi compatibility for more usefult stuff
+set nocp
