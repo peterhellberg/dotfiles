@@ -1,8 +1,5 @@
 # Bash
-export EDITOR='mvim -v -N -f --nomru -c "au VimLeave * !open -a Terminal"'
-
-# Subversion
-export SVN_EDITOR='mvim -f'
+export EDITOR='mvim -v -N'
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
@@ -17,6 +14,23 @@ source ${PERLBREW_ROOT}/etc/bashrc
 source /usr/local/git/contrib/completion/git-completion.bash
 export GIT_EDITOR='mvim -v -N -f -c "au VimLeave * !open -a Terminal"'
 export PATH=$PATH:/usr/local/git/bin/
+
+# Functions
+
+# Control the fan speed of the Macbook Air
+# NOTE: Don’t complain if you melt your computer.
+function set_fan_speed {
+  if [ -z "$1" ]; then min_speed=2000; else min_speed=$1; fi
+  if [ -z "$2" ]; then max_speed=6500; else max_speed=$2; fi
+
+  smc=/Applications/smcFanControl.app/Contents/Resources/smc
+
+  min_hex=$(python -c "print hex("$min_speed" << 2)[2:]")
+  max_hex=$(python -c "print hex("$max_speed" << 2)[2:]")
+
+  ${smc} -k F0Mn -w ${min_hex}
+  ${smc} -k F0Mx -w ${max_hex}
+}
 
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
@@ -89,7 +103,7 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 # Aliases
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
-alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.0-x86_64/mongod.conf'
+alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.1-x86_64/mongod.conf'
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.17.1/config/elasticsearch.yml'
 alias redis-server='redis-server /usr/local/etc/redis.conf'
 alias :q='logout'
@@ -114,5 +128,7 @@ alias gb='git branch'
 alias gba='git branch -a'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
+
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
