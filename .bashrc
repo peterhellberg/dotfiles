@@ -111,7 +111,6 @@ alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
 
 # Bonnier
-alias s='rake spec'
 alias rake='rake -rpry'
 
 # Git related
