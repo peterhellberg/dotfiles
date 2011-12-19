@@ -103,12 +103,14 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 # Aliases
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
-alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.1-x86_64/mongod.conf'
+alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.2-x86_64/mongod.conf'
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.17.1/config/elasticsearch.yml'
 alias redis-server='redis-server /usr/local/etc/redis.conf'
 alias :q='logout'
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
+alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
+alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
 
 # Bonnier
 alias rake='rake -rpry'
