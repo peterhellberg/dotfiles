@@ -1,6 +1,7 @@
 set t_Co=256
 set magic
 set nowrap
+set modelines=0
 set enc=utf-8
 set foldmethod=manual
 set foldlevel=99

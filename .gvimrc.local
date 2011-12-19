@@ -10,6 +10,7 @@ if has("gui_macvim")
   set foldmethod=manual
   set foldlevel=99
   set noballooneval
+  set modelines=0
   set expandtab
   set textwidth=0 wrapmargin=0
 
