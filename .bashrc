@@ -107,14 +107,12 @@ alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.2-x86_64/mongod.
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.18.5/config/elasticsearch.yml'
 alias default-redis-server='redis-server /usr/local/etc/redis.conf'
 alias ur-redis-server='redis-server /Users/peter/Work/Athega/UR/ur-redis/ur-redis.conf'
+alias ur-redis-cli='redis-cli -s /tmp/ur-redis.sock'
 alias :q='logout'
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
 alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
 alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
-
-# Bonnier
-alias rake='rake -rpry'
 
 # Git related
 alias g='git'
