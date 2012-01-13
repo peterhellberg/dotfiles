@@ -10,6 +10,7 @@ set textwidth=0 wrapmargin=0
 set complete-=i
 let mapleader=","
 
+
 colorscheme jellybeans
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
@@ -41,7 +42,7 @@ if bufwinnr(1)
   nmap ä <C-W>+<C-W>+
   nmap < :vsplit 
   nmap > :split 
-  nmap <F3> :so ~/.vimrc.local<cr>
+  nmap <F3> :so ~/.vimrc.after<cr>
 endif
 
 " jump to the next row on long lines
@@ -54,22 +55,20 @@ nnoremap <leader><leader> <C-^>
 " Map ESC
 imap jj <ESC>
 
-" CommandT config
-nnoremap <silent> t :CommandT<cr>
-nnoremap <silent> <Leader>b :CommandTBuffer<cr>
+" CtrlP config
+nnoremap <silent> t :CtrlP<cr>
 
-let g:CommandTMaxFiles=2000
-let g:CommandTMaxHeight=20
-let g:CommandTMaxDepth=5
+" CtrlP
+let g:ctrlp_working_path_mode = 0
+
+" BufferGator
+let g:buffergator_viewport_split_policy = 'B'
+let g:buffergator_split_size = 5
+
+" EasyMotion
+let g:EasyMotion_leader_key = 'å'
 
 set ttimeoutlen=50
-
-if &term =~ "screen-256color" || &term =~ "xterm.*"
-  let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
-  let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
-  let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
-endif
-
 set wildignore+=*.o,*.obj,.git,*.pyc,*.gem
 
 " Highlighting for Gdiff (vimdiff)
@@ -84,3 +83,5 @@ set ttymouse=xterm
 
 " reduce vi compatibility for more usefult stuff
 set nocp
+
+command! Vsplit vsplit

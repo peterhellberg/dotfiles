@@ -1,0 +1,6 @@
+[submodule ".janus/vim-powerline"]
+	path = .janus/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule ".janus/vim-markdown-preview"]
+	path = .janus/vim-markdown-preview
+	url = https://github.com/nelstrom/vim-markdown-preview.git

@@ -32,6 +32,9 @@ if has("gui_macvim")
 
   au BufNewFile * set noeol
 
+  " CtrlP
+  let g:ctrlp_working_path_mode = 0
+
   " Indent file
   map   <silent> <F5> mmgg=G`m^
   imap  <silent> <F5> <Esc> mmgg=G`m^
@@ -54,10 +57,6 @@ if has("gui_macvim")
   nnoremap j gj
   nnoremap k gk
 
-  " Switch between buffers
-  noremap <leader>n :bn<CR>
-  noremap <leader>p :bp<CR>
-
   " Close buffer
   nmap <leader>d :bprevious<CR>:bdelete #<CR>
 
@@ -74,7 +73,7 @@ if has("gui_macvim")
   nnoremap <F8> :setl noai nocin nosi inde=<CR>
 
   " Reload the vim config
-  nmap <F3> :so ~/.gvimrc.local<CR>
+  nmap <F3> :so ~/.gvimrc.after<CR>
 
   " Fugitive config settings
   nmap 1 :Gstatus<CR>

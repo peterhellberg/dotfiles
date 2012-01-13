@@ -1,0 +1,6 @@
+"call janus#disable_plugin('snipmate')
+call janus#disable_plugin('tagbar')
+call janus#disable_plugin('narrowregion')
+call janus#disable_plugin('easymotion')
+
+let mapleader=","
