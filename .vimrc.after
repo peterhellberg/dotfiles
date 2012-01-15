@@ -8,10 +8,11 @@ set foldlevel=99
 set expandtab
 set textwidth=0 wrapmargin=0
 set complete-=i
+set noeb vb t_vb=
 let mapleader=","
 
-
 colorscheme jellybeans
+
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
 autocmd BufWritePre *.haml :%s/\s\+$//e
@@ -42,7 +43,7 @@ if bufwinnr(1)
   nmap ä <C-W>+<C-W>+
   nmap < :vsplit 
   nmap > :split 
-  nmap <F3> :so ~/.vimrc.after<cr>
+  nmap <F12> :so ~/.vimrc.after<cr>
 endif
 
 " jump to the next row on long lines
@@ -55,21 +56,19 @@ nnoremap <leader><leader> <C-^>
 " Map ESC
 imap jj <ESC>
 
-" CtrlP config
-nnoremap <silent> t :CtrlP<cr>
-
 " CtrlP
+nnoremap <silent> t :CtrlP<cr>
 let g:ctrlp_working_path_mode = 0
 
 " BufferGator
 let g:buffergator_viewport_split_policy = 'B'
 let g:buffergator_split_size = 5
-
-" EasyMotion
-let g:EasyMotion_leader_key = 'å'
+let g:ctrlp_max_files = 2500
+let g:ctrlp_max_depth = 10
 
 set ttimeoutlen=50
 set wildignore+=*.o,*.obj,.git,*.pyc,*.gem
+set wildignore+=*/.git/*
 
 " Highlighting for Gdiff (vimdiff)
 hi DiffAdd term=reverse ctermbg=black

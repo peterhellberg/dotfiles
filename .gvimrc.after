@@ -32,6 +32,9 @@ if has("gui_macvim")
 
   au BufNewFile * set noeol
 
+  " Disable beeps and flashes
+  au GUIEnter * set vb t_vb=
+
   " CtrlP
   let g:ctrlp_working_path_mode = 0
 
@@ -43,6 +46,9 @@ if has("gui_macvim")
   map <D-M-Right> :tabn<CR>
   " Command+Option+Left for previous
   map <D-M-Left> :tabp<CR>
+
+  " Open file under cursor in new vertical split
+  map <silent> <F4> :vertical wincmd f<CR>
 
   " Tab to NERDTree
   noremap <tab> <c-w><c-w>
@@ -73,11 +79,11 @@ if has("gui_macvim")
   nnoremap <F8> :setl noai nocin nosi inde=<CR>
 
   " Reload the vim config
-  nmap <F3> :so ~/.gvimrc.after<CR>
+  nmap <F12> :so ~/.gvimrc.after<CR>
 
   " Fugitive config settings
-  nmap 1 :Gstatus<CR>
-  nmap 2 :Gdiff<CR>
+  nmap <F2> :Gstatus<CR>
+  nmap <F3> :Gdiff<CR>
 
   " Highlighting for Gdiff (vimdiff)
   hi DiffAdd guibg=#C2DF44 guifg=#000000
