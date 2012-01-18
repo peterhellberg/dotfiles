@@ -9,10 +9,10 @@ set expandtab
 set textwidth=0 wrapmargin=0
 set complete-=i
 set noeb vb t_vb=
+
 let mapleader=","
 
 colorscheme jellybeans
-
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
 autocmd BufWritePre *.haml :%s/\s\+$//e
@@ -68,7 +68,6 @@ let g:ctrlp_max_depth = 10
 
 set ttimeoutlen=50
 set wildignore+=*.o,*.obj,.git,*.pyc,*.gem
-set wildignore+=*/.git/*
 
 " Highlighting for Gdiff (vimdiff)
 hi DiffAdd term=reverse ctermbg=black
@@ -84,3 +83,10 @@ set ttymouse=xterm
 set nocp
 
 command! Vsplit vsplit
+
+" NERDTree
+let NERDTreeHighlightCursorline=1
+
+" Powerline
+let g:Powerline_symbols = 'fancy'
+
