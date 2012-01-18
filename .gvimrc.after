@@ -13,12 +13,18 @@ if has("gui_macvim")
   set modelines=0
   set expandtab
   set textwidth=0 wrapmargin=0
+  set laststatus=2
+  set t_Co=256
+  set nocompatible
 
   let mapleader=","
   let g:mapleader = ","
 
   " Close the NERDTree on startup (The Air has a tiny screen!)
    NERDTreeClose
+
+  " Powerline
+  let g:Powerline_symbols = 'fancy'
 
   colorscheme jellybeans
 
