@@ -37,8 +37,8 @@ noremap <tab> <c-w><c-w>
 "  - openin new splits
 "  - reloading the vim config
 if bufwinnr(1)
-  nmap z <C-W><<C-W><
-  nmap x <C-W>><C-W>>
+  nmap Ä <C-W><<C-W><
+  nmap Ö <C-W>><C-W>>
   nmap ö <C-W>-<C-W>-
   nmap ä <C-W>+<C-W>+
   nmap < :vsplit 
