@@ -72,17 +72,11 @@ export PATH=$PATH:/usr/local/share/npm/bin
 # Homebrew
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
-# Opt
-export PATH=$PATH:/opt/bin
-
 # MySQL
 export PATH=/usr/local/mysql/bin:$PATH
 
 # Ruby
 export GUARD_NOTIFY=false
-
-# JRuby
-export PATH=$PATH:/opt/jruby/bin
 
 # Python
 export PATH="/usr/local/share/python:${PATH}"
