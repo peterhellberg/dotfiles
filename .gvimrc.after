@@ -1,52 +1,22 @@
 if has("gui_macvim")
-  set nowrap
-  set enc=utf-8
   set fuoptions=maxvert,maxhorz
   set guifont=Monaco:h13
+  set guioptions=aAce
   set columns=179
   set lines=50
-  set guioptions=aAce
-  set complete-=i
-  set foldmethod=manual
-  set foldlevel=99
   set noballooneval
-  set modelines=0
-  set expandtab
-  set textwidth=0 wrapmargin=0
   set laststatus=2
-  set t_Co=256
-  set nocompatible
-
-  let mapleader=","
   let g:mapleader = ","
 
-  " Close the NERDTree on startup (The Air has a tiny screen!)
-   NERDTreeClose
-
-  " Powerline
-  let g:Powerline_symbols = 'fancy'
-
-  colorscheme jellybeans
-
   hi LineNr guifg=#333333 guibg=#151515
-
-  autocmd BufWritePre *.rb :%s/\s\+$//e
-  autocmd BufWritePre *.haml :%s/\s\+$//e
-  autocmd BufWritePre *.html :%s/\s\+$//e
-  autocmd BufWritePre *.scss :%s/\s\+$//e
-  autocmd BufWritePre *.coffee :%s/\s\+$//e
-
-  au BufNewFile * set noeol
 
   " Disable beeps and flashes
   au GUIEnter * set vb t_vb=
 
-  " CtrlP
-  let g:ctrlp_working_path_mode = 0
-
   " Indent file
   map   <silent> <F5> mmgg=G`m^
   imap  <silent> <F5> <Esc> mmgg=G`m^
+
 
   " Command+Option+Right for next
   map <D-M-Right> :tabn<CR>
@@ -56,36 +26,21 @@ if has("gui_macvim")
   " Open file under cursor in new vertical split
   map <silent> <F4> :vertical wincmd f<CR>
 
-  " Tab to NERDTree
-  noremap <tab> <c-w><c-w>
-
   " resize current buffer by +/- 5
   nnoremap <D-left> :vertical resize -5<cr>
   nnoremap <D-down> :resize +5<cr>
   nnoremap <D-up> :resize -5<cr>
   nnoremap <D-right> :vertical resize +5<cr>
 
-  " jump to the next row on long lines
-  nnoremap j gj
-  nnoremap k gk
-
   " Close buffer
   nmap <leader>d :bprevious<CR>:bdelete #<CR>
 
-  " Switch between last two buffers
-  nnoremap <leader><leader> <C-^>
-
-  " Map ESC
-  imap jj <ESC>
   " Highlight long lines
   highlight OverLength guibg=#373737
   match OverLength /\%81v.\+/
 
   " Disable indenting with F8
   nnoremap <F8> :setl noai nocin nosi inde=<CR>
-
-  " Reload the vim config
-  nmap <F12> :so ~/.gvimrc.after<CR>
 
   " Fugitive config settings
   nmap <F2> :Gstatus<CR>
