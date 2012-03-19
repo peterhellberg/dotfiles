@@ -18,6 +18,7 @@ set complete-=i
 colorscheme jellybeans
 let mapleader=","
 
+
 autocmd BufWritePre *.rb :%s/\s\+$//e
 autocmd BufWritePre *.haml :%s/\s\+$//e
 autocmd BufWritePre *.html :%s/\s\+$//e
@@ -53,6 +54,21 @@ nnoremap k gk
 " Switch between last two buffers
 nnoremap <leader><leader> <C-^>
 
+" Make Vsplit act like vsplit
+cabbrev Vsplit vsplit
+
+" Open new windows
+nmap <leader>sw<left>  :topleft  vnew<CR>
+nmap <leader>sw<right> :botright vnew<CR>
+nmap <leader>sw<up>    :topleft  new<CR>
+nmap <leader>sw<down>  :botright new<CR>
+
+" Open new buffers
+nmap <leader>s<left>   :leftabove  vnew<CR>
+nmap <leader>s<right>  :rightbelow vnew<CR>
+nmap <leader>s<up>     :leftabove  new<CR>
+nmap <leader>s<down>   :rightbelow new<CR>
+
 " Map ESC
 imap jj <ESC>
 
@@ -63,8 +79,8 @@ let g:ctrlp_working_path_mode = 0
 " BufferGator
 let g:buffergator_viewport_split_policy = 'B'
 let g:buffergator_split_size = 5
-let g:ctrlp_max_files = 2500
-let g:ctrlp_max_depth = 10
+let g:ctrlp_max_files = 400
+let g:ctrlp_max_depth = 4
 
 set wildignore+=*.o,*.obj,.git,*.pyc,*.gem
 
@@ -78,7 +94,7 @@ hi DiffDelete term=reverse ctermbg=red ctermfg=black
 set mouse=a
 set ttymouse=xterm
 
-command! Vsplit vsplit
+" command! Vsplit vsplit
 
 " NERDTree
 let NERDTreeHighlightCursorline=1
