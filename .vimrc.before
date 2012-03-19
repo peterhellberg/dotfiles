@@ -3,5 +3,4 @@ call janus#disable_plugin('tagbar')
 call janus#disable_plugin('narrowregion')
 call janus#disable_plugin('easymotion')
 
-set ttyfast
 let mapleader=","
