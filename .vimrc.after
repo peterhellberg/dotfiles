@@ -1,6 +1,6 @@
 " reduce vi compatibility for more usefult stuff
 set nocompatible
-
+set nohlsearch
 set ttyfast
 set t_Co=256
 set synmaxcol=250
@@ -53,6 +53,10 @@ nnoremap k gk
 
 " Switch between last two buffers
 nnoremap <leader><leader> <C-^>
+
+" Jump to match AND visually select
+" all the text in between
+noremap % v%
 
 " Make Vsplit act like vsplit
 cabbrev Vsplit vsplit
