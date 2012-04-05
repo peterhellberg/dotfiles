@@ -78,6 +78,9 @@ export PATH=/usr/local/mysql/bin:$PATH
 # Ruby
 export GUARD_NOTIFY=false
 
+# Rubinius
+export RBXOPT=-X19
+
 # Python
 export PATH="/usr/local/share/python:${PATH}"
 
@@ -98,6 +101,7 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
 alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.2-x86_64/mongod.conf'
+alias solr_ss=' solr /usr/local/Cellar/solr/3.5.0/libexec/ss/solr/'
 alias solr_example=' solr /usr/local/Cellar/solr/3.5.0/libexec/example/solr/'
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.19.1/config/elasticsearch.yml'
 alias default-redis-server='redis-server /usr/local/etc/redis.conf'
