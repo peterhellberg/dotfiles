@@ -4,3 +4,6 @@
 [submodule ".janus/vim-markdown-preview"]
 	path = .janus/vim-markdown-preview
 	url = https://github.com/nelstrom/vim-markdown-preview.git
+[submodule ".janus/vim-slim"]
+	path = .janus/vim-slim
+	url = https://github.com/bbommarito/vim-slim.git
