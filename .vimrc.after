@@ -78,7 +78,8 @@ imap jj <ESC>
 
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_by_filename = 1
 
 " BufferGator
 let g:buffergator_viewport_split_policy = 'B'
