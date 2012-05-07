@@ -108,11 +108,13 @@ alias default-redis-server='redis-server /usr/local/etc/redis.conf'
 alias ur-redis-server='redis-server /Users/peter/Work/Athega/UR/ur-redis/ur-redis.conf'
 alias ur-redis-cli='redis-cli -s /tmp/ur-redis.sock'
 alias :q='logout'
+alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
 alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
 alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
 alias ss-frontend='cd ~/Work/Athega/UR/GitHub/ss-frontend'
+alias announcer-schedule='cd ~/Work/Athega/UR/GitHub/announcer-schedule'
 
 alias gource_custom='gource --hide mouse,filenames,bloom,progress -s 2 -i 0 --auto-skip-seconds 0.1 --logo /Users/peter/athega_logo.png --logo-offset "20x20" --camera-mode overview -900x600 --font-colour FF6600 --multi-sampling --font-size 24'
 
