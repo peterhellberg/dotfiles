@@ -74,6 +74,12 @@ nmap <leader>s<right>  :rightbelow vnew<CR>
 nmap <leader>s<up>     :leftabove  new<CR>
 nmap <leader>s<down>   :rightbelow new<CR>
 
+" Mappings for sausage fingers
+vmap u y
+command Q q
+command W w
+command WQ wq
+
 " Map ESC
 imap jj <ESC>
 
