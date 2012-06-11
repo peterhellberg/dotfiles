@@ -115,6 +115,7 @@ alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
 alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
 alias ss-frontend='cd ~/Work/Athega/UR/GitHub/ss-frontend'
 alias announcer-schedule='cd ~/Work/Athega/UR/GitHub/announcer-schedule'
+alias vision-web-interface='cd ~/Work/Athega/UR/GitHub/vision-web-interface'
 
 alias gource_custom='gource --hide mouse,filenames,bloom,progress -s 2 -i 0 --auto-skip-seconds 0.1 --logo /Users/peter/athega_logo.png --logo-offset "20x20" --camera-mode overview -900x600 --font-colour FF6600 --multi-sampling --font-size 24'
 
