@@ -32,6 +32,7 @@ cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 
 map <leader>pp :setlocal paste!<cr>
+map <leader>. :w<CR>
 
 " Tab between buffers
 noremap <tab> <c-w><c-w>
