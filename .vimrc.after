@@ -26,6 +26,8 @@ autocmd BufWritePre *.lisp :%s/\s\+$//e
 
 au BufNewFile * set noeol
 
+au BufNewFile,BufRead *.yajl set filetype=ruby
+
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
