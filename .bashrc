@@ -77,6 +77,11 @@ export PATH=/usr/local/mysql/bin:$PATH
 
 # Ruby
 export GUARD_NOTIFY=false
+export RUBY_HEAP_MIN_SLOTS=800000       #(10000)
+export RUBY_HEAP_FREE_MIN=100000        # (4096)
+export RUBY_HEAP_SLOTS_INCREMENT=300000 # (10000)
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1  # (1.8)
+export RUBY_GC_MALLOC_LIMIT=16000000    # (8000000)
 
 # Rubinius
 export RBXOPT=-X19
@@ -113,9 +118,14 @@ alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
 alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
 alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
+alias forks='cd ~/Work/Code7/GitHub/forks'
 alias ss-frontend='cd ~/Work/Athega/UR/GitHub/ss-frontend'
 alias announcer-schedule='cd ~/Work/Athega/UR/GitHub/announcer-schedule'
 alias vision-web-interface='cd ~/Work/Athega/UR/GitHub/vision-web-interface'
+alias ur-search-api='cd ~/Work/Athega/UR/GitHub/ur-search-api'
+alias google-analytics-harvester='cd ~/Work/Athega/UR/GitHub/google-analytics-harvester'
+alias analytics='cd ~/Work/Athega/UR/GitHub/ur-analytics-dashboard'
+alias rake_with_verbose_tests="rake TESTOPTS='-v'"
 
 alias gource_custom='gource --hide mouse,filenames,bloom,progress -s 2 -i 0 --auto-skip-seconds 0.1 --logo /Users/peter/athega_logo.png --logo-offset "20x20" --camera-mode overview -900x600 --font-colour FF6600 --multi-sampling --font-size 24'
 
