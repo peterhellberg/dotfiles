@@ -7,3 +7,6 @@
 [submodule ".janus/vim-slim"]
 	path = .janus/vim-slim
 	url = https://github.com/bbommarito/vim-slim.git
+[submodule ".janus/vim-arduino"]
+	path = .janus/vim-arduino
+	url = https://github.com/tclem/vim-arduino.git
