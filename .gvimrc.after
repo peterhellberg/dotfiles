@@ -1,4 +1,6 @@
 if has("gui_macvim")
+  colorscheme jellybeans
+
   set fuoptions=maxvert,maxhorz
   set guifont=Monaco:h13
   set guioptions=aAce
