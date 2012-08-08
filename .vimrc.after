@@ -1,7 +1,6 @@
 set nocompatible
 set nohlsearch
 set ttyfast
-set t_Co=256
 set synmaxcol=250
 set magic
 set nowrap
@@ -19,7 +18,13 @@ set noswapfile
 set nowritebackup
 set nobackup
 
-colorscheme jellybeans
+if &term =~ "xterm-color" || &term =~ "xterm-256color"
+  colorscheme jellybeans
+  set t_Co=256
+else
+  colorscheme ir_black
+endif
+
 let mapleader=","
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
@@ -28,6 +33,9 @@ autocmd BufWritePre *.html :%s/\s\+$//e
 autocmd BufWritePre *.scss :%s/\s\+$//e
 autocmd BufWritePre *.coffee :%s/\s\+$//e
 autocmd BufWritePre *.lisp :%s/\s\+$//e
+
+autocmd BufWritePre *.ino :%s/\s\+$//e
+au! BufRead,BufNewFile *.ino setfiletype arduino
 
 au BufNewFile * set noeol
 
