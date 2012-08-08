@@ -6,12 +6,14 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # Perl
-export PERLBREW_ROOT=~/.perl5/perlbrew
-export PERLBREW_HOME=~/.perlbrew
-source ${PERLBREW_ROOT}/etc/bashrc
+if [ -d "/Users/peter/.perl5/" ]; then
+  export PERLBREW_ROOT=~/.perl5/perlbrew
+  export PERLBREW_HOME=~/.perlbrew
+  source ${PERLBREW_ROOT}/etc/bashrc
+fi
 
 # Git
-source /usr/local/git/contrib/completion/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-completion.bash
 export GIT_EDITOR='mvim -v -N -f -c "au VimLeave * !open -a Terminal"'
 export PATH=$PATH:/usr/local/git/bin
 
