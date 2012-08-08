@@ -8,11 +8,16 @@ set nowrap
 set modelines=0
 set enc=utf-8
 set foldlevel=99
+set foldmethod=syntax
 set expandtab
 set textwidth=0 wrapmargin=0
 set complete-=i
 set noeb vb t_vb=
 set complete-=i
+
+set noswapfile
+set nowritebackup
+set nobackup
 
 colorscheme jellybeans
 let mapleader=","
