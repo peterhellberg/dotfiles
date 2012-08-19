@@ -10,3 +10,6 @@
 [submodule ".janus/vim-arduino"]
 	path = .janus/vim-arduino
 	url = https://github.com/tclem/vim-arduino.git
+[submodule ".janus/BusyBee"]
+	path = .janus/BusyBee
+	url = git://github.com/vim-scripts/BusyBee.git
