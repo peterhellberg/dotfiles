@@ -1,3 +1,5 @@
+ulimit -n 1024
+
 # Bash
 export EDITOR='mvim -v -N'
 
@@ -107,7 +109,7 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 # Aliases
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
-alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.0.2-x86_64/mongod.conf'
+alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.2.0-x86_64/mongod.conf'
 alias solr_ss=' solr /usr/local/Cellar/solr/3.5.0/libexec/ss/solr/'
 alias solr_example=' solr /usr/local/Cellar/solr/3.5.0/libexec/example/solr/'
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.19.1/config/elasticsearch.yml'
@@ -129,15 +131,13 @@ alias google-analytics-harvester='cd ~/Work/Athega/UR/GitHub/google-analytics-ha
 alias analytics='cd ~/Work/Athega/UR/GitHub/ur-analytics-dashboard'
 alias rake_with_verbose_tests="rake TESTOPTS='-v'"
 
-alias gource_custom='gource --hide mouse,filenames,bloom,progress -s 2 -i 0 --auto-skip-seconds 0.1 --logo /Users/peter/athega_logo.png --logo-offset "20x20" --camera-mode overview -900x600 --font-colour FF6600 --multi-sampling --font-size 24'
-
 # Git related
 alias g='git'
 alias gst='git status'
 alias gl='git pull'
 alias gup='git fetch && git rebase'
 alias gp='git push'
-alias gd='git diff | mate'
+alias gd='git diff'
 alias gdv='git diff -w "$@" | vim -R -'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
@@ -145,6 +145,7 @@ alias gb='git branch'
 alias gba='git branch -a'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
+alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
