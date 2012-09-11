@@ -13,6 +13,7 @@ set textwidth=0 wrapmargin=0
 set complete-=i
 set noeb vb t_vb=
 set complete-=i
+set clipboard=unnamed
 
 set noswapfile
 set nowritebackup
