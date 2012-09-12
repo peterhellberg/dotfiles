@@ -130,6 +130,8 @@ alias ur-search-api='cd ~/Work/Athega/UR/GitHub/ur-search-api'
 alias google-analytics-harvester='cd ~/Work/Athega/UR/GitHub/google-analytics-harvester'
 alias analytics='cd ~/Work/Athega/UR/GitHub/ur-analytics-dashboard'
 alias rake_with_verbose_tests="rake TESTOPTS='-v'"
+alias irb='pry || irb'
+
 
 # Git related
 alias g='git'
