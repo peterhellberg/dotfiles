@@ -116,6 +116,8 @@ alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elast
 alias default-redis-server='redis-server /usr/local/etc/redis.conf'
 alias ur-redis-server='redis-server /Users/peter/Work/Athega/UR/ur-redis/ur-redis.conf'
 alias ur-redis-cli='redis-cli -s /tmp/ur-redis.sock'
+alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias :q='logout'
 alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
