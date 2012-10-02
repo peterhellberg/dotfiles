@@ -72,13 +72,6 @@ map <silent> å <C-]>
 " Switch between last two buffers
 nnoremap <leader><leader> <C-^>
 
-" Jump to match AND visually select
-" all the text in between
-noremap % v%
-
-" Make Vsplit act like vsplit
-cabbrev Vsplit vsplit
-
 " Open new windows
 nmap <leader>sw<left>  :topleft  vnew<CR>
 nmap <leader>sw<right> :botright vnew<CR>
@@ -90,6 +83,10 @@ nmap <leader>s<left>   :leftabove  vnew<CR>
 nmap <leader>s<right>  :rightbelow vnew<CR>
 nmap <leader>s<up>     :leftabove  new<CR>
 nmap <leader>s<down>   :rightbelow new<CR>
+
+" Run specs
+set makeprg=vimrake
+nmap <leader>r :make<CR>
 
 " Mappings for sausage fingers
 vmap u y
