@@ -130,6 +130,8 @@ let NERDTreeIgnore = ['tmp', '.yardoc', 'tags', 'resources', 'pkg']
 let g:Powerline_symbols = 'fancy'
 
 " vim-ruby-xmpfilter
+nmap <buffer> § <Plug>(xmpfilter-mark)<Plug>(xmpfilter-run)
+
 nmap <buffer> <F5> <Plug>(xmpfilter-run)
 xmap <buffer> <F5> <Plug>(xmpfilter-run)
 imap <buffer> <F5> <Plug>(xmpfilter-run)
