@@ -121,6 +121,7 @@ alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias :q='logout'
 alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
+alias hashids.rb='cd ~/Work/Code7/GitHub/hashids.rb/'
 alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
 alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
 alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
@@ -133,7 +134,6 @@ alias google-analytics-harvester='cd ~/Work/Athega/UR/GitHub/google-analytics-ha
 alias analytics='cd ~/Work/Athega/UR/GitHub/ur-analytics-dashboard'
 alias rake_with_verbose_tests="rake TESTOPTS='-v'"
 alias irb='pry || irb'
-
 
 # Git related
 alias g='git'
