@@ -124,7 +124,16 @@ set ttymouse=xterm
 
 " NERDTree
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'tags', 'resources']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'tags', 'resources', 'pkg']
 
 " Powerline
 let g:Powerline_symbols = 'fancy'
+
+" vim-ruby-xmpfilter
+nmap <buffer> <F5> <Plug>(xmpfilter-run)
+xmap <buffer> <F5> <Plug>(xmpfilter-run)
+imap <buffer> <F5> <Plug>(xmpfilter-run)
+
+nmap <buffer> <F4> <Plug>(xmpfilter-mark)
+xmap <buffer> <F4> <Plug>(xmpfilter-mark)
+imap <buffer> <F4> <Plug>(xmpfilter-mark)

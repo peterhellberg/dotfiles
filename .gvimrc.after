@@ -53,4 +53,13 @@ if has("gui_macvim")
   hi DiffText guibg=#81C8F5 guifg=#000000
   hi DiffChange guibg=#363636 guifg=#555555
   hi DiffDelete guibg=#C7412C
+  
+  " vim-ruby-xmpfilter
+  nmap <buffer> <M-r> <Plug>(xmpfilter-run)
+  xmap <buffer> <M-r> <Plug>(xmpfilter-run)
+  imap <buffer> <M-r> <Plug>(xmpfilter-run)
+
+  nmap <buffer> <M-m> <Plug>(xmpfilter-mark)
+  xmap <buffer> <M-m> <Plug>(xmpfilter-mark)
+  imap <buffer> <M-m> <Plug>(xmpfilter-mark)
 end
