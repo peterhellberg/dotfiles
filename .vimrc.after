@@ -29,6 +29,7 @@ endif
 let mapleader=","
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd BufWritePre *.haml :%s/\s\+$//e
 autocmd BufWritePre *.html :%s/\s\+$//e
 autocmd BufWritePre *.scss :%s/\s\+$//e
@@ -131,6 +132,7 @@ let g:Powerline_symbols = 'fancy'
 
 " vim-ruby-xmpfilter
 nmap <buffer> § <Plug>(xmpfilter-mark)<Plug>(xmpfilter-run)
+xmap <buffer> § <Plug>(xmpfilter-mark)<Plug>(xmpfilter-run)
 
 nmap <buffer> <F5> <Plug>(xmpfilter-run)
 xmap <buffer> <F5> <Plug>(xmpfilter-run)
