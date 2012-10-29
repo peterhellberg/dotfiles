@@ -7,3 +7,6 @@ call janus#disable_plugin('vroom')
 call janus#disable_plugin('buffergator')
 
 let mapleader=","
+
+" Go programming
+set rtp+=/usr/local/Cellar/go/1.0.3/misc/vim
