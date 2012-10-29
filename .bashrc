@@ -7,6 +7,9 @@ export EDITOR='mvim -v -N'
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Go
+export GOROOT=/usr/local/Cellar/go/1.0.3
+
 # Perl
 if [ -d "/Users/peter/.perl5/" ]; then
   export PERLBREW_ROOT=~/.perl5/perlbrew
@@ -156,3 +159,6 @@ alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
