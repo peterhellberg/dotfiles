@@ -18,6 +18,8 @@ set clipboard=unnamed
 set noswapfile
 set nowritebackup
 set nobackup
+set nocursorline
+set nocursorcolumn
 
 if &term =~ "xterm-color" || &term =~ "xterm-256color"
   colorscheme jellybeans
@@ -25,9 +27,6 @@ if &term =~ "xterm-color" || &term =~ "xterm-256color"
 else
   colorscheme ir_black
 endif
-
-set cursorline
-set cursorcolumn
 
 let mapleader=","
 

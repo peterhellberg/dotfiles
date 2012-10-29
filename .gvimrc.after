@@ -10,6 +10,8 @@ if has("gui_macvim")
   set laststatus=2
   let g:mapleader = ","
 
+  set cursorline
+
   hi Cursor guifg=black
   hi LineNr guifg=#333333 guibg=#151515
 
@@ -54,7 +56,6 @@ if has("gui_macvim")
   hi DiffChange guibg=#363636 guifg=#555555
   hi DiffDelete guibg=#C7412C
 
-
   " CSV
   let g:csv_hiGroup  = "SignColumn"
 
@@ -63,11 +64,4 @@ if has("gui_macvim")
 
   hi CSVColumnHeaderEven term=bold guifg=#81C8F5
   hi CSVColumnEven term=bold guifg=#81C8F5
-
-  "hi CSVColumnEven term=bold ctermbg=4 guifg=lightgreen
-  "hi CSVColumnOdd  term=bold ctermbg=5 guifg=lightblue
-  "hi CSVColumnHeaderEven guifg=black guibg=lightgray
-  "hi CSVColumnHeaderOdd guifg=lightgray guibg=black
-
-  "let g:csv_no_conceal = 1
 end
