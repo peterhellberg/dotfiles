@@ -10,6 +10,7 @@ if has("gui_macvim")
   set laststatus=2
   let g:mapleader = ","
 
+  hi Cursor guifg=black
   hi LineNr guifg=#333333 guibg=#151515
 
   " Disable beeps and flashes
@@ -18,7 +19,6 @@ if has("gui_macvim")
   " Indent file
   map   <silent> <F5> mmgg=G`m^
   imap  <silent> <F5> <Esc> mmgg=G`m^
-
 
   " Command+Option+Right for next
   map <D-M-Right> :tabn<CR>
@@ -53,4 +53,21 @@ if has("gui_macvim")
   hi DiffText guibg=#81C8F5 guifg=#000000
   hi DiffChange guibg=#363636 guifg=#555555
   hi DiffDelete guibg=#C7412C
+
+
+  " CSV
+  let g:csv_hiGroup  = "SignColumn"
+
+  hi CSVColumnHeaderOdd term=bold guifg=#C2DF44
+  hi CSVColumnOdd term=bold guifg=#C2DF44
+
+  hi CSVColumnHeaderEven term=bold guifg=#81C8F5
+  hi CSVColumnEven term=bold guifg=#81C8F5
+
+  "hi CSVColumnEven term=bold ctermbg=4 guifg=lightgreen
+  "hi CSVColumnOdd  term=bold ctermbg=5 guifg=lightblue
+  "hi CSVColumnHeaderEven guifg=black guibg=lightgray
+  "hi CSVColumnHeaderOdd guifg=lightgray guibg=black
+
+  "let g:csv_no_conceal = 1
 end

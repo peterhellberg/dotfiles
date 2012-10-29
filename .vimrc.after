@@ -26,6 +26,9 @@ else
   colorscheme ir_black
 endif
 
+set cursorline
+set cursorcolumn
+
 let mapleader=","
 
 autocmd BufWritePre *.rb :%s/\s\+$//e
@@ -121,8 +124,6 @@ hi DiffDelete term=reverse ctermbg=red ctermfg=black
 set mouse=a
 set ttymouse=xterm
 
-" command! Vsplit vsplit
-
 " NERDTree
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', '.yardoc', 'tags', 'resources', 'pkg']
@@ -141,3 +142,14 @@ imap <buffer> <F5> <Plug>(xmpfilter-run)
 nmap <buffer> <F4> <Plug>(xmpfilter-mark)
 xmap <buffer> <F4> <Plug>(xmpfilter-mark)
 imap <buffer> <F4> <Plug>(xmpfilter-mark)
+
+" CSV
+let g:csv_nl = 1
+let g:csv_highlight_column = 'y'
+
+hi CSVColumnHeaderOdd ctermfg=0
+hi CSVColumnOdd ctermfg=4
+
+hi CSVColumnHeaderEven ctermfg=0
+hi CSVColumnEven ctermfg=2
+
