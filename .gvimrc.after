@@ -12,7 +12,7 @@ if has("gui_macvim")
 
   set cursorline
 
-  hi Cursor guifg=black
+  hi Cursor guifg=#363636 guibg=#DFDFDF
   hi LineNr guifg=#333333 guibg=#151515
 
   " Disable beeps and flashes
