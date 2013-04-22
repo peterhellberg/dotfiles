@@ -6,16 +6,14 @@ export EDITOR='mvim -v -N'
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export LC_LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Go
 export GOROOT=/usr/local/Cellar/go/1.0.3
+export GOPATH=$GOPATH:/Users/peter/Go/
 
-# Perl
-if [ -d "/Users/peter/.perl5/" ]; then
-  export PERLBREW_ROOT=~/.perl5/perlbrew
-  export PERLBREW_HOME=~/.perlbrew
-  source ${PERLBREW_ROOT}/etc/bashrc
-fi
+export PATH=$PATH:${GOPATH//://bin:}/bin
 
 # Git
 source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -88,7 +86,7 @@ export RUBY_HEAP_MIN_SLOTS=800000       #(10000)
 export RUBY_HEAP_FREE_MIN=100000        # (4096)
 export RUBY_HEAP_SLOTS_INCREMENT=300000 # (10000)
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1  # (1.8)
-export RUBY_GC_MALLOC_LIMIT=16000000    # (8000000)
+export RUBY_GC_MALLOC_LIMIT=36000000    # (8000000)
 
 # Rubinius
 export RBXOPT=-X19
@@ -106,37 +104,50 @@ export CLICOLOR=1
 export LSCOLORS=HxbxfxdxCxegedafahacad
 
 # JavaScript
-export NODE_PATH='/usr/local/lib/node'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 
 # Aliases
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
 alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.2.0-x86_64/mongod.conf'
-alias solr_ss=' solr /usr/local/Cellar/solr/3.5.0/libexec/ss/solr/'
-alias solr_example=' solr /usr/local/Cellar/solr/3.5.0/libexec/example/solr/'
-alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.19.1/config/elasticsearch.yml'
+alias solr_ss='/usr/local/Cellar/solr/3.6.0/bin/solr /usr/local/Cellar/solr/3.5.0/libexec/ss/solr/'
+alias solr_example='/usr/local/Cellar/solr/3.6.0/bin/solr /usr/local/Cellar/solr/3.5.0/libexec/example/solr/'
+alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.20.6/config/elasticsearch.yml'
 alias default-redis-server='redis-server /usr/local/etc/redis.conf'
-alias ur-redis-server='redis-server /Users/peter/Work/Athega/UR/ur-redis/ur-redis.conf'
-alias ur-redis-cli='redis-cli -s /tmp/ur-redis.sock'
 alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias :q='logout'
 alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
+alias rake_with_verbose_tests="rake TESTOPTS='-v'"
+alias irb='pry || irb'
+alias ls='ls -F'
+alias pbqr='pbpaste | qrencode -o /tmp/qr.png -s 10 && qlmanage -p /tmp/qr.png &> /dev/null'
+
+## Athega
+alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
+
+## Code7
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias hashids.rb='cd ~/Work/Code7/GitHub/hashids.rb/'
-alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
 alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
 alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
 alias forks='cd ~/Work/Code7/GitHub/forks'
+
+## TV4
+alias tv4-redis-server='redis-server /Users/peter/Work/Athega/TV4/tv4-redis/tv4-redis.conf'
+alias tv4-redis-cli='redis-cli -s /tmp/tv4-redis.sock'
+alias tv4='cd ~/Work/Athega/TV4/GitHub/www.tv4.se/'
+alias tv4play='cd ~/Work/Athega/TV4/GitHub/tv4play/'
+
+## UR
+alias ur-redis-server='redis-server /Users/peter/Work/Athega/UR/ur-redis/ur-redis.conf'
+alias ur-redis-cli='redis-cli -s /tmp/ur-redis.sock'
 alias ss-frontend='cd ~/Work/Athega/UR/GitHub/ss-frontend'
 alias announcer-schedule='cd ~/Work/Athega/UR/GitHub/announcer-schedule'
 alias vision-web-interface='cd ~/Work/Athega/UR/GitHub/vision-web-interface'
 alias ur-search-api='cd ~/Work/Athega/UR/GitHub/ur-search-api'
 alias google-analytics-harvester='cd ~/Work/Athega/UR/GitHub/google-analytics-harvester'
 alias analytics='cd ~/Work/Athega/UR/GitHub/ur-analytics-dashboard'
-alias rake_with_verbose_tests="rake TESTOPTS='-v'"
-alias irb='pry || irb'
 
 # Git related
 alias g='git'
@@ -153,10 +164,6 @@ alias gba='git branch -a'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
-
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
