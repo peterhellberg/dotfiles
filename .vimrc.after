@@ -18,7 +18,7 @@ set clipboard=unnamed
 set noswapfile
 set nowritebackup
 set nobackup
-set nocursorline
+set cursorline
 set nocursorcolumn
 
 if &term =~ "xterm-color" || &term =~ "xterm-256color"
@@ -37,6 +37,7 @@ autocmd BufWritePre *.html :%s/\s\+$//e
 autocmd BufWritePre *.scss :%s/\s\+$//e
 autocmd BufWritePre *.coffee :%s/\s\+$//e
 autocmd BufWritePre *.lisp :%s/\s\+$//e
+autocmd BufWritePre *.slim :%s/\s\+$//e
 
 autocmd BufWritePre *.ino :%s/\s\+$//e
 au! BufRead,BufNewFile *.ino setfiletype arduino
@@ -44,6 +45,7 @@ au! BufRead,BufNewFile *.ino setfiletype arduino
 au BufNewFile * set noeol
 
 au BufNewFile,BufRead *.yajl set filetype=ruby
+au BufRead,BufNewFile *.go set filetype=go
 
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
@@ -130,6 +132,9 @@ let NERDTreeIgnore = ['tmp', '.yardoc', 'tags', 'resources', 'pkg']
 " Powerline
 let g:Powerline_symbols = 'fancy'
 
+" Syntastic
+let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.0.0-p0/bin/ruby'
+
 " vim-ruby-xmpfilter
 nmap <buffer> § <Plug>(xmpfilter-mark)<Plug>(xmpfilter-run)
 xmap <buffer> § <Plug>(xmpfilter-mark)<Plug>(xmpfilter-run)
@@ -152,3 +157,11 @@ hi CSVColumnOdd ctermfg=4
 hi CSVColumnHeaderEven ctermfg=0
 hi CSVColumnEven ctermfg=2
 
+" Bubble single lines
+" http://vimcasts.org/episodes/bubbling-text/  
+nmap <C-Up> ddkP  
+nmap <C-Down> ddp  
+
+" Bubble multiple lines  
+vmap <C-Up> xkP`[V`]  
+vmap <C-Down> xp`[V`]  
