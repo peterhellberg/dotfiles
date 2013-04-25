@@ -140,14 +140,14 @@ alias tv4='cd ~/Work/Athega/TV4/GitHub/www.tv4.se/'
 alias tv4play='cd ~/Work/Athega/TV4/GitHub/tv4play/'
 
 ## UR
-alias ur-redis-server='redis-server /Users/peter/Work/Athega/UR/ur-redis/ur-redis.conf'
-alias ur-redis-cli='redis-cli -s /tmp/ur-redis.sock'
-alias ss-frontend='cd ~/Work/Athega/UR/GitHub/ss-frontend'
-alias announcer-schedule='cd ~/Work/Athega/UR/GitHub/announcer-schedule'
-alias vision-web-interface='cd ~/Work/Athega/UR/GitHub/vision-web-interface'
-alias ur-search-api='cd ~/Work/Athega/UR/GitHub/ur-search-api'
-alias google-analytics-harvester='cd ~/Work/Athega/UR/GitHub/google-analytics-harvester'
-alias analytics='cd ~/Work/Athega/UR/GitHub/ur-analytics-dashboard'
+# alias ur-redis-server='redis-server /Users/peter/Work/Athega/UR/ur-redis/ur-redis.conf'
+# alias ur-redis-cli='redis-cli -s /tmp/ur-redis.sock'
+# alias ss-frontend='cd ~/Work/Athega/UR/GitHub/ss-frontend'
+# alias announcer-schedule='cd ~/Work/Athega/UR/GitHub/announcer-schedule'
+# alias vision-web-interface='cd ~/Work/Athega/UR/GitHub/vision-web-interface'
+# alias ur-search-api='cd ~/Work/Athega/UR/GitHub/ur-search-api'
+# alias google-analytics-harvester='cd ~/Work/Athega/UR/GitHub/google-analytics-harvester'
+# alias analytics='cd ~/Work/Athega/UR/GitHub/ur-analytics-dashboard'
 
 # Git related
 alias g='git'
