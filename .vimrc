@@ -13,11 +13,16 @@ Bundle 'nanotech/jellybeans.vim'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'slim-template/vim-slim'
 
 filetype plugin indent on
 
@@ -26,64 +31,25 @@ filetype plugin indent on
 let mapleader=","
 
 color jellybeans
+
 set cursorline
 set expandtab
 set modelines=0
-set shiftround
+set shiftwidth=2
 set clipboard=unnamed
 set synmaxcol=128
 set ttyscroll=10
-set noswapfile
+set encoding=utf-8
+set tabstop=2
+set nowrap
+set number
+set expandtab
 set nowritebackup
+set noswapfile
 set nobackup
-set number            " Show line numbers
-syntax enable         " Turn on syntax highlighting allowing local overrides
-set encoding=utf-8    " Set default encoding to UTF-8
-
-""
-"" Whitespace
-""
-
-set nowrap                        " don't wrap lines
-set tabstop=2                     " a tab is two spaces
-set shiftwidth=2                  " an autoindent (with <<) is two spaces
-set expandtab                     " use spaces, not tabs
-set list                          " Show invisible characters
-set backspace=indent,eol,start    " backspace through everything in insert mode
-
-" List chars
-set listchars=""                  " Reset the listchars
-set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
-set listchars+=trail:.            " show trailing spaces as dots
-set listchars+=extends:>          " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
-set listchars+=precedes:<         " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
-                                  "
-""
-"" Searching
-""
-
-set hlsearch    " highlight matches
-set incsearch   " incremental searching
-set ignorecase  " searches are case insensitive...
-set smartcase   " ... unless they contain at least one capital letter
-
-""
-"" Wild settings
-""
-
-" Disable output and VCS files
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-
-" Disable archive files
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-
-" Ignore bundler and sass cache
-set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-
-" Disable temp and backup files
-set wildignore+=*.swp,*~,._*
+set hlsearch
+set ignorecase
+set smartcase
 
 " Automatic formatting
 autocmd BufWritePre *.rb :%s/\s\+$//e
@@ -93,18 +59,18 @@ autocmd BufWritePre *.html :%s/\s\+$//e
 autocmd BufWritePre *.scss :%s/\s\+$//e
 autocmd BufWritePre *.slim :%s/\s\+$//e
 
-     
 au BufNewFile * set noeol
 au BufRead,BufNewFile *.go set filetype=go
 
-" Map the arrow keys to be based on display lines, not physical lines
-map <Down> gj
-map <Up> gk
+" No show command
+autocmd VimEnter * set nosc
 
 " Quick ESC
 imap jj <ESC>
 
 " Jump to the next row on long lines
+map <Down> gj
+map <Up>   gk
 nnoremap j gj
 nnoremap k gk
 
@@ -151,3 +117,6 @@ let g:ctrlp_max_depth = 5
 
 " Go programming
 set rtp+=/usr/local/Cellar/go/1.0.3/misc/vim
+
+" Quit with :Q
+command -nargs=0 Quit :qa!
