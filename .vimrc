@@ -91,10 +91,10 @@ nnoremap <leader><leader> <C-^>
 
 " Resize buffers
 if bufwinnr(1)
-  nmap Ä <C-W><<C-W><
-  nmap Ö <C-W>><C-W>>
-  nmap ö <C-W>-<C-W>-
-  nmap ä <C-W>+<C-W>+
+  nmap ä <C-W><<C-W><
+  nmap ö <C-W>><C-W>>
+  nmap Ö <C-W>-<C-W>-
+  nmap Ä <C-W>+<C-W>+
 endif
 
 " Plugins """""""""""""""""""""""""""""
@@ -102,7 +102,9 @@ endif
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'tags', 'resources', 'pkg']
+let NERDTreeIgnore = [
+ 'tmp', '.yardoc', 'tags', 'resources', 'pkg'
+]
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
