@@ -1,4 +1,3 @@
-" Vundle setup """"""""""""""""""""""""
 set nocompatible
 filetype off
 
@@ -25,8 +24,6 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'slim-template/vim-slim'
 
 filetype plugin indent on
-
-" My own config """""""""""""""""""""""
 
 let mapleader=","
 
@@ -96,8 +93,6 @@ if bufwinnr(1)
   nmap Ö <C-W>-<C-W>-
   nmap Ä <C-W>+<C-W>+
 endif
-
-" Plugins """""""""""""""""""""""""""""
 
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
