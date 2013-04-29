@@ -7,21 +7,37 @@ call vundle#rc()
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-" My Bundles
+" Plugin bundles
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-eunuch'
+Bundle 'majutsushi/tagbar'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
+Bundle 'ervandew/supertab'
 Bundle 'rking/ag.vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'terryma/vim-multiple-cursors'
+
+" Language bundles
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-markdown'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'slim-template/vim-slim'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'sunaku/vim-ruby-minitest'
+Bundle 'pangloss/vim-javascript'
 
 filetype plugin indent on
 
@@ -35,7 +51,7 @@ set modelines=0
 set shiftwidth=2
 set clipboard=unnamed
 set synmaxcol=128
-set ttyscroll=10
+set ttyscroll=3
 set encoding=utf-8
 set tabstop=2
 set nowrap
@@ -47,17 +63,19 @@ set nobackup
 set hlsearch
 set ignorecase
 set smartcase
+set lazyredraw
+
+set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
+set completefunc=syntaxcomplete#Complete
 
 " Automatic formatting
 autocmd BufWritePre *.rb :%s/\s\+$//e
-autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd BufWritePre *.haml :%s/\s\+$//e
 autocmd BufWritePre *.html :%s/\s\+$//e
 autocmd BufWritePre *.scss :%s/\s\+$//e
 autocmd BufWritePre *.slim :%s/\s\+$//e
 
 au BufNewFile * set noeol
-au BufRead,BufNewFile *.go set filetype=go
 
 " No show command
 autocmd VimEnter * set nosc
@@ -103,6 +121,9 @@ let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg']
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.0.0-p0/bin/ruby'
 
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"
+
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
 let g:ctrlp_working_path_mode = 2
@@ -113,5 +134,16 @@ let g:ctrlp_max_depth = 5
 " Go programming
 set rtp+=/usr/local/Cellar/go/1.0.3/misc/vim
 
+au BufRead,BufNewFile *.go set filetype=go
+
+autocmd BufWritePre *.go :%s/\s\+$//e
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+" Sass
+au BufRead,BufNewFile *.scss set filetype=sass
+
 " Quit with :Q
 command -nargs=0 Quit :qa!
+
+" Toggle tagbar
+nmap § :TagbarToggle<CR>
