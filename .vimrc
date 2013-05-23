@@ -16,6 +16,7 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
@@ -26,6 +27,11 @@ Bundle 'rking/ag.vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'terryma/vim-multiple-cursors'
+
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/vim-snippets"
+Bundle "garbas/vim-snipmate"
 
 " Language bundles
 Bundle 'vim-ruby/vim-ruby'
@@ -50,7 +56,7 @@ set expandtab
 set modelines=0
 set shiftwidth=2
 set clipboard=unnamed
-set synmaxcol=128
+set synmaxcol=200
 set ttyscroll=3
 set encoding=utf-8
 set tabstop=2
@@ -60,7 +66,8 @@ set expandtab
 set nowritebackup
 set noswapfile
 set nobackup
-set hlsearch
+set nohlsearch
+set incsearch
 set ignorecase
 set smartcase
 set lazyredraw
@@ -106,10 +113,10 @@ nnoremap <leader><leader> <C-^>
 
 " Resize buffers
 if bufwinnr(1)
-  nmap ä <C-W><<C-W><
-  nmap ö <C-W>><C-W>>
-  nmap Ö <C-W>-<C-W>-
-  nmap Ä <C-W>+<C-W>+
+  nmap ö <C-W><<C-W><
+  nmap ä <C-W>><C-W>>
+  nmap Ä <C-W>-<C-W>-
+  nmap Ö <C-W>+<C-W>+
 endif
 
 " NERDTree
