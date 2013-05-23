@@ -121,6 +121,7 @@ alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
 alias rake_with_verbose_tests="rake TESTOPTS='-v'"
 alias irb='pry || irb'
 alias ls='ls -F'
+alias be='bundle exec'
 alias pbqr='pbpaste | qrencode -o /tmp/qr.png -s 10 && qlmanage -p /tmp/qr.png &> /dev/null'
 
 ## Athega
@@ -132,12 +133,16 @@ alias hashids.rb='cd ~/Work/Code7/GitHub/hashids.rb/'
 alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
 alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
 alias forks='cd ~/Work/Code7/GitHub/forks'
+alias arduino-experiments='cd ~/Work/Code7/Experiments/arduino'
 
 ## TV4
 alias tv4-redis-server='redis-server /Users/peter/Work/Athega/TV4/tv4-redis/tv4-redis.conf'
 alias tv4-redis-cli='redis-cli -s /tmp/tv4-redis.sock'
 alias tv4='cd ~/Work/Athega/TV4/GitHub/www.tv4.se/'
 alias tv4play='cd ~/Work/Athega/TV4/GitHub/tv4play/'
+
+alias aman='cd ~/Work/Athega/TV4/GitHub/aman/'
+alias solr_aman='/usr/local/Cellar/solr/4.2.0/bin/solr /Users/peter/Work/Athega/TV4/aman/solr'
 
 ## UR
 # alias ur-redis-server='redis-server /Users/peter/Work/Athega/UR/ur-redis/ur-redis.conf'
