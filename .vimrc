@@ -23,7 +23,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ervandew/supertab'
-Bundle 'rking/ag.vim'
+Bundle 'mileszs/ack.vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'terryma/vim-multiple-cursors'
@@ -56,7 +56,7 @@ set expandtab
 set modelines=0
 set shiftwidth=2
 set clipboard=unnamed
-set synmaxcol=200
+set synmaxcol=256
 set ttyscroll=3
 set encoding=utf-8
 set tabstop=2
@@ -136,7 +136,7 @@ nnoremap <silent> t :CtrlP<cr>
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 600
-let g:ctrlp_max_depth = 5
+let g:ctrlp_max_depth = 6
 
 " Go programming
 set rtp+=/usr/local/Cellar/go/1.0.3/misc/vim
