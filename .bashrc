@@ -10,9 +10,7 @@ export LC_LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.0.3
 export GOPATH=$GOPATH:/Users/peter/Go/
-
 export PATH=$PATH:${GOPATH//://bin:}/bin
 
 # Git
@@ -123,6 +121,7 @@ alias irb='pry || irb'
 alias ls='ls -F'
 alias be='bundle exec'
 alias pbqr='pbpaste | qrencode -o /tmp/qr.png -s 10 && qlmanage -p /tmp/qr.png &> /dev/null'
+alias go-pi='GOARCH=arm GOARM=5 GOOS=linux go'
 
 ## Athega
 alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
