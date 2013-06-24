@@ -56,7 +56,7 @@ set expandtab
 set modelines=0
 set shiftwidth=2
 set clipboard=unnamed
-set synmaxcol=256
+set synmaxcol=512
 set ttyscroll=3
 set encoding=utf-8
 set tabstop=2
@@ -139,7 +139,7 @@ let g:ctrlp_max_files = 600
 let g:ctrlp_max_depth = 6
 
 " Go programming
-set rtp+=/usr/local/Cellar/go/1.0.3/misc/vim
+set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim
 
 au BufRead,BufNewFile *.go set filetype=go
 
