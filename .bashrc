@@ -89,9 +89,6 @@ export RUBY_GC_MALLOC_LIMIT=36000000    # (8000000)
 # Rubinius
 export RBXOPT=-X19
 
-# Python
-export PATH="/usr/local/share/python:${PATH}"
-
 # ZenTest
 export RSPEC=true
 export AUTOTEST=true
