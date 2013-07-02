@@ -15,7 +15,7 @@ export PATH=$PATH:${GOPATH//://bin:}/bin
 
 # Git
 source /usr/local/etc/bash_completion.d/git-completion.bash
-export GIT_EDITOR='mvim -v -N -f -c "au VimLeave * !open -a Terminal"'
+export GIT_EDITOR='vim'
 export PATH=$PATH:/usr/local/git/bin
 
 # Functions
