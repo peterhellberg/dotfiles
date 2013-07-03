@@ -71,6 +71,8 @@ set incsearch
 set ignorecase
 set smartcase
 set lazyredraw
+set splitright
+set scrolloff=5
 
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set completefunc=syntaxcomplete#Complete
@@ -86,6 +88,9 @@ au BufNewFile * set noeol
 
 " No show command
 autocmd VimEnter * set nosc
+
+" Use space for :
+noremap <space> :
 
 " Quick ESC
 imap jj <ESC>
