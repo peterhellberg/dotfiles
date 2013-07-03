@@ -104,7 +104,7 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 # Aliases
 alias vim='mvim -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
-alias mongod='mongod run --config /usr/local/Cellar/mongodb/2.2.0-x86_64/mongod.conf'
+alias mongod='mongod run --config /usr/local/etc/mongod.conf'
 alias solr_ss='/usr/local/Cellar/solr/3.6.0/bin/solr /usr/local/Cellar/solr/3.5.0/libexec/ss/solr/'
 alias solr_example='/usr/local/Cellar/solr/3.6.0/bin/solr /usr/local/Cellar/solr/3.5.0/libexec/example/solr/'
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.20.6/config/elasticsearch.yml'
