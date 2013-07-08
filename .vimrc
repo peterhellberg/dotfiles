@@ -73,7 +73,7 @@ set smartcase
 set lazyredraw
 set splitright
 set scrolloff=5
-
+set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set completefunc=syntaxcomplete#Complete
 
