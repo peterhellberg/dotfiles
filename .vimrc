@@ -8,42 +8,42 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Plugin bundles
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rake'
+Bundle 'bling/vim-airline'
+Bundle 'ervandew/supertab'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+Bundle 'kana/vim-textobj-user'
+Bundle 'kien/ctrlp.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'mileszs/ack.vim'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tomtom/tlib_vim'
+Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive'
-Bundle 'majutsushi/tagbar'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ervandew/supertab'
-Bundle 'mileszs/ack.vim'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'terryma/vim-multiple-cursors'
-
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/vim-snippets"
-Bundle "garbas/vim-snipmate"
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-surround'
 
 " Language bundles
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-markdown'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'slim-template/vim-slim'
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'sunaku/vim-ruby-minitest'
+Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
+Bundle 'slim-template/vim-slim'
+Bundle 'sunaku/vim-ruby-minitest'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
+
+" Color scheme
+Bundle 'nanotech/jellybeans.vim'
 
 filetype plugin indent on
 
@@ -124,6 +124,14 @@ if bufwinnr(1)
   nmap Ö <C-W>+<C-W>+
 endif
 
+" Airline + Bufferline
+let g:airline_theme     = 'badwolf'
+let g:airline_left_sep  = ''
+let g:airline_right_sep = ''
+
+let g:bufferline_echo=0
+set statusline=%{bufferline#generate_string()}
+
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
@@ -131,7 +139,7 @@ let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg']
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'passive' }
-let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.0.0-p0/bin/ruby'
+let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.0.0-p247/bin/ruby'
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
@@ -156,6 +164,3 @@ au BufRead,BufNewFile *.scss set filetype=sass
 
 " Quit with :Q
 command -nargs=0 Quit :qa!
-
-" Toggle tagbar
-nmap § :TagbarToggle<CR>
