@@ -8,7 +8,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Plugin bundles
-Bundle 'bling/vim-airline'
 Bundle 'ervandew/supertab'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
@@ -29,6 +28,7 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
+Bundle 'Lokaltog/vim-powerline'
 
 " Language bundles
 Bundle 'cakebaker/scss-syntax.vim'
@@ -123,14 +123,6 @@ if bufwinnr(1)
   nmap Ä <C-W>-<C-W>-
   nmap Ö <C-W>+<C-W>+
 endif
-
-" Airline + Bufferline
-let g:airline_theme     = 'badwolf'
-let g:airline_left_sep  = ''
-let g:airline_right_sep = ''
-
-let g:bufferline_echo=0
-set statusline=%{bufferline#generate_string()}
 
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
