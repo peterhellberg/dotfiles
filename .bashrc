@@ -103,6 +103,7 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 
 # Aliases
 alias vim='mvim -n -v -N'
+alias vim7.4a='mvim-new -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
 alias solr_ss='/usr/local/Cellar/solr/3.6.0/bin/solr /usr/local/Cellar/solr/3.5.0/libexec/ss/solr/'
