@@ -17,7 +17,6 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'mileszs/ack.vim'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-bundler'
@@ -128,10 +127,6 @@ endif
 nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg']
-
-" Syntastic
-let g:syntastic_mode_map = { 'mode': 'passive' }
-let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.0.0-p247/bin/ruby'
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
