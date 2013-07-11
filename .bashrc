@@ -20,6 +20,13 @@ export PATH=$PATH:/usr/local/git/bin
 
 # Functions
 
+# Serve the current directory over HTTP
+function serve {
+  port="${1:-9000}"
+  ruby -r webrick -e "s = WEBrick::HTTPServer.new(:Port => $port,
+   :DocumentRoot => Dir.pwd); trap('INT') { s.shutdown }; s.start"
+}
+
 # Control the fan speed of the Macbook Air
 # NOTE: Don’t complain if you melt your computer.
 function set_fan_speed {
