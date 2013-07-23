@@ -9,6 +9,7 @@
   excludesfile = /Users/peter/.gitignore
 [alias]
   l = log --graph --pretty=format:'%C(yellow)%h %Cgreen%ae%Creset (%ar): %s'
+  churn = !git --no-pager log --name-only --oneline | grep -v ' ' | sort | uniq -c | sort -nr | head
 [branch]
   autosetuprebase = always
 [color]
