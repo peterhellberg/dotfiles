@@ -47,20 +47,6 @@ function parse_git_branch {
     echo "("${ref#refs/heads/}") "
 }
 
-function sass-watch {
-  if [ -z "$3" ]; then
-    SASS_IN='all.scss'
-    CSS_OUT='all.css'
-    SASS_WATCH_PATH='.'
-  else
-    SASS_IN=$1
-    CSS_OUT=$2
-    SASS_WATCH_PATH=$3
-  fi
-
-kicker -s -e "sass --scss --style compressed $SASS_IN $CSS_OUT" $SASS_WATCH_PATH
-}
-
 # NPM
 export PATH=$PATH:/usr/local/share/npm/bin
 
