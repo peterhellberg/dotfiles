@@ -47,21 +47,6 @@ function parse_git_branch {
     echo "("${ref#refs/heads/}") "
 }
 
-function wiki {
- dig +short txt $1.wp.dg.cx
-}
-
-function blunderbuss {
-  if [ -z "$1" ]; then
-    PORT=9393
-  else
-    PORT=$1
-  fi
-
-  IP=`ifconfig | grep -m 1 broadcast | awk '{print $2}'`
-  shotgun -s thin -o $IP -p $PORT
-}
-
 function sass-watch {
   if [ -z "$3" ]; then
     SASS_IN='all.scss'
@@ -96,85 +81,12 @@ export RUBY_GC_MALLOC_LIMIT=36000000    # (8000000)
 # Rubinius
 export RBXOPT=-X19
 
-# ZenTest
-export RSPEC=true
-export AUTOTEST=true
-export AUTOFEATURE=true
-
 # Colors!
 export CLICOLOR=1
 export LSCOLORS=HxbxfxdxCxegedafahacad
 
-# JavaScript
-alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
-
-# Aliases
-alias vim='mvim -n -v -N'
-alias vim7.4a='mvim-new -n -v -N'
-alias mvim='mvim -n -N -c "set noballooneval"'
-alias mongod='mongod run --config /usr/local/etc/mongod.conf'
-alias solr_ss='/usr/local/Cellar/solr/3.6.0/bin/solr /usr/local/Cellar/solr/3.5.0/libexec/ss/solr/'
-alias solr_example='/usr/local/Cellar/solr/3.6.0/bin/solr /usr/local/Cellar/solr/3.5.0/libexec/example/solr/'
-alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.20.6/config/elasticsearch.yml'
-alias default-redis-server='redis-server /usr/local/etc/redis.conf'
-alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-alias :q='logout'
-alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
-alias rake_with_verbose_tests="rake TESTOPTS='-v'"
-alias irb='pry || irb'
-alias ls='ls -F'
-alias be='bundle exec'
-alias pbqr='pbpaste | qrencode -o /tmp/qr.png -s 10 && qlmanage -p /tmp/qr.png &> /dev/null'
-alias go-pi='GOARCH=arm GOARM=5 GOOS=linux go'
-
-## Athega
-alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
-
-## Code7
-alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
-alias hashids.rb='cd ~/Work/Code7/GitHub/hashids.rb/'
-alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
-alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
-alias forks='cd ~/Work/Code7/GitHub/forks'
-alias arduino-experiments='cd ~/Work/Code7/Experiments/arduino'
-
-## TV4
-alias tv4-redis-server='redis-server /Users/peter/Work/Athega/TV4/tv4-redis/tv4-redis.conf'
-alias tv4-redis-cli='redis-cli -s /tmp/tv4-redis.sock'
-alias tv4='cd ~/Work/Athega/TV4/GitHub/www.tv4.se/'
-alias tv4play='cd ~/Work/Athega/TV4/GitHub/tv4play/'
-
-alias aman='cd ~/Work/Athega/TV4/GitHub/aman/'
-alias solr_aman='/usr/local/Cellar/solr/4.2.0/bin/solr /Users/peter/Work/Athega/TV4/aman/solr'
-
-## UR
-# alias ur-redis-server='redis-server /Users/peter/Work/Athega/UR/ur-redis/ur-redis.conf'
-# alias ur-redis-cli='redis-cli -s /tmp/ur-redis.sock'
-# alias ss-frontend='cd ~/Work/Athega/UR/GitHub/ss-frontend'
-# alias announcer-schedule='cd ~/Work/Athega/UR/GitHub/announcer-schedule'
-# alias vision-web-interface='cd ~/Work/Athega/UR/GitHub/vision-web-interface'
-# alias ur-search-api='cd ~/Work/Athega/UR/GitHub/ur-search-api'
-# alias google-analytics-harvester='cd ~/Work/Athega/UR/GitHub/google-analytics-harvester'
-# alias analytics='cd ~/Work/Athega/UR/GitHub/ur-analytics-dashboard'
-
-# Git related
-alias g='git'
-alias gst='git status'
-alias gl='git pull'
-alias gup='git fetch && git rebase'
-alias gp='git push'
-alias gd='git diff'
-alias gdv='git diff -w "$@" | vim -R -'
-alias gc='git commit -v'
-alias gca='git commit -v -a'
-alias gb='git branch'
-alias gba='git branch -a'
-alias gcount='git shortlog -sn'
-alias gcp='git cherry-pick'
-alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# Load aliases
+[[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

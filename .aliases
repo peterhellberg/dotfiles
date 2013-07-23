@@ -1,0 +1,57 @@
+# Aliases
+alias vim='mvim -n -v -N'
+alias vim7.4a='mvim-new -n -v -N'
+alias mvim='mvim -n -N -c "set noballooneval"'
+alias :q='logout'
+alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
+alias rake_with_verbose_tests="rake TESTOPTS='-v'"
+alias irb='pry || irb'
+alias ls='ls -F'
+alias be='bundle exec'
+alias pbqr='pbpaste | qrencode -o /tmp/qr.png -s 10 && qlmanage -p /tmp/qr.png &> /dev/null'
+alias go-pi='GOARCH=arm GOARM=5 GOOS=linux go'
+alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
+
+# Service aliases
+alias mongod='mongod run --config /usr/local/etc/mongod.conf'
+alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.20.6/config/elasticsearch.yml'
+alias default-redis-server='redis-server /usr/local/etc/redis.conf'
+alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
+# Git related aliases
+alias g='git'
+alias gst='git status'
+alias gl='git pull'
+alias gup='git fetch && git rebase'
+alias gp='git push'
+alias gd='git diff'
+alias gdv='git diff -w "$@" | vim -R -'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gcount='git shortlog -sn'
+alias gcp='git cherry-pick'
+alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
+
+# Client aliases
+
+## Athega
+alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
+
+## Code7
+alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
+alias hashids.rb='cd ~/Work/Code7/GitHub/hashids.rb/'
+alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
+alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
+alias forks='cd ~/Work/Code7/GitHub/forks'
+alias arduino-experiments='cd ~/Work/Code7/Experiments/arduino'
+
+## TV4
+alias tv4-redis-server='redis-server /Users/peter/Work/Athega/TV4/tv4-redis/tv4-redis.conf'
+alias tv4-redis-cli='redis-cli -s /tmp/tv4-redis.sock'
+alias tv4='cd ~/Work/Athega/TV4/GitHub/www.tv4.se/'
+alias tv4play='cd ~/Work/Athega/TV4/GitHub/tv4play/'
+alias aman='cd ~/Work/Athega/TV4/GitHub/aman/'
+alias solr_aman='/usr/local/Cellar/solr/4.2.0/bin/solr /Users/peter/Work/Athega/TV4/aman/solr'
