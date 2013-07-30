@@ -67,6 +67,7 @@ set nowritebackup
 set noswapfile
 set nobackup
 set nohlsearch
+set noundofile
 set incsearch
 set ignorecase
 set smartcase
