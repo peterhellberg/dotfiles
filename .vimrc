@@ -41,6 +41,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'leafo/moonscript-vim'
 
 " Color scheme
 Bundle 'nanotech/jellybeans.vim'
@@ -150,6 +151,3 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " Sass
 au BufRead,BufNewFile *.scss set filetype=sass
-
-" Quit with :Q
-command -nargs=0 Quit :qa!
