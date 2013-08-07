@@ -4,6 +4,7 @@ if has("gui_macvim")
   set guioptions=aAce
   set fuoptions=maxvert,maxhorz
   set noballooneval
+  set noeb vb t_vb=
 
   " resize current buffer by +/- 5
   nnoremap <M-Right> :vertical resize +5<CR>
