@@ -77,7 +77,7 @@ set splitright
 set scrolloff=5
 set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
-set completefunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 
 " Automatic formatting
 autocmd BufWritePre *.rb :%s/\s\+$//e
