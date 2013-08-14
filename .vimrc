@@ -23,6 +23,7 @@ Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-sensible'
@@ -39,7 +40,6 @@ Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'leafo/moonscript-vim'
 
@@ -57,7 +57,7 @@ set expandtab
 set modelines=0
 set shiftwidth=2
 set clipboard=unnamed
-set synmaxcol=512
+set synmaxcol=256
 set ttyscroll=3
 set encoding=utf-8
 set tabstop=2
@@ -74,10 +74,12 @@ set ignorecase
 set smartcase
 set lazyredraw
 set splitright
-set scrolloff=5
+set scrolloff=4
 set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set omnifunc=syntaxcomplete#Complete
+
+autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " Automatic formatting
 autocmd BufWritePre *.rb :%s/\s\+$//e
