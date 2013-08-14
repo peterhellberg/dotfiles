@@ -138,13 +138,19 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
+
 let g:ctrlp_working_path_mode = 2
-let g:ctrlp_by_filename = 1
-let g:ctrlp_max_files = 600
+let g:ctrlp_by_filename = 0
+let g:ctrlp_max_files = 1000
 let g:ctrlp_max_depth = 6
+let g:ctrlp_user_command = {
+  \ 'types': { 1: ['.git/', 'cd %s && git ls-files'] },
+  \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+  \ }
 
 " Ack
 nmap <leader>a :Ack! 
+set shellpipe=>
 
 " Go programming
 set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim
