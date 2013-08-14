@@ -143,6 +143,9 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 600
 let g:ctrlp_max_depth = 6
 
+" Ack
+nmap <leader>a :Ack! 
+
 " Go programming
 set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim
 
