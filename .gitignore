@@ -10,3 +10,6 @@ Thumbs.db
 
 # Vim
 *.un~
+
+# Node.js
+node_modules
