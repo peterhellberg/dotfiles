@@ -162,7 +162,7 @@ nmap <leader>a :Ack!
 set shellpipe=>
 
 " Go programming
-set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim
+set rtp+=/usr/local/Cellar/go/1.1.2/misc/vim
 
 au BufRead,BufNewFile *.go set filetype=go
 
