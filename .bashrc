@@ -10,8 +10,8 @@ export LC_LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Go
-export GOPATH=$GOPATH:/Users/peter/Go/
-export PATH=$PATH:${GOPATH//://bin:}/bin
+export GOPATH=$HOME/Go
+export PATH=$PATH:$GOPATH/bin
 
 # Git
 source /usr/local/etc/bash_completion.d/git-completion.bash
