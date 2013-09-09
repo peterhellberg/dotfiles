@@ -30,6 +30,7 @@ Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
+Bundle 'godlygeek/tabular'
 
 " Language bundles
 Bundle 'cakebaker/scss-syntax.vim'
