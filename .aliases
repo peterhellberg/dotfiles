@@ -1,10 +1,10 @@
 # Aliases
 alias vim='mvim -n -v -N'
-alias vim7.4a='mvim-new -n -v -N'
 alias mvim='mvim -n -N -c "set noballooneval"'
 alias :q='logout'
 alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
 alias rake_with_verbose_tests="rake TESTOPTS='-v'"
+alias require='pry -r'
 alias irb='pry || irb'
 alias ls='ls -F'
 alias be='bundle exec'
