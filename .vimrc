@@ -53,6 +53,7 @@ let mapleader=","
 
 color jellybeans
 
+set hidden
 set cursorline
 set expandtab
 set modelines=0
@@ -73,6 +74,7 @@ set smartcase
 set lazyredraw
 set splitright
 set scrolloff=4
+set sidescroll=1
 set sidescrolloff=1
 set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
@@ -89,16 +91,13 @@ set virtualedit=block
 
 " Disable cursor line in insert mode
 au InsertEnter * set nocursorline
-au InsertLeave * set cursorline
+au InsertLeave * set cursorline nopaste
 
 autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " Automatic formatting
-autocmd BufWritePre *.rb :%s/\s\+$//e
-autocmd BufWritePre *.haml :%s/\s\+$//e
-autocmd BufWritePre *.html :%s/\s\+$//e
-autocmd BufWritePre *.scss :%s/\s\+$//e
-autocmd BufWritePre *.slim :%s/\s\+$//e
+autocmd BufWritePre {*.rb,*.js,*.coffee} :%s/\s\+$//e
+autocmd BufWritePre {*.scss,*.haml,*.slim,*.html} :%s/\s\+$//e
 
 au BufNewFile * set noeol
 
@@ -132,6 +131,10 @@ noremap <S-tab> <c-w>W
 
 " Switch between last two buffers
 nnoremap <leader><leader> <C-^>
+
+" Go to home and end using capitalized directions
+noremap H ^
+noremap L $
 
 " Resize buffers
 if bufwinnr(1)
