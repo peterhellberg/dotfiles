@@ -57,10 +57,10 @@ set cursorline
 set expandtab
 set modelines=0
 set shiftwidth=2
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 set synmaxcol=256
 set ttyscroll=3
-set encoding=utf-8
+set encoding=utf-8 termencoding=utf-8
 set tabstop=2
 set nowrap
 set number
@@ -68,17 +68,25 @@ set expandtab
 set nowritebackup
 set noswapfile
 set nobackup
-set nohlsearch
-set noundofile
-set incsearch
 set ignorecase
 set smartcase
 set lazyredraw
 set splitright
 set scrolloff=4
+set sidescrolloff=1
 set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set omnifunc=syntaxcomplete#Complete
+
+" Vim annoyances
+" http://blog.sanctum.geek.nz/vim-annoyances/
+nnoremap J mzJ`z
+set shortmess+=I
+set virtualedit=block
+
+" Disable cursor line in insert mode
+au InsertEnter * set nocursorline
+au InsertLeave * set cursorline
 
 autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
@@ -128,6 +136,12 @@ if bufwinnr(1)
   nmap ä <C-W>><C-W>>
   nmap Ä <C-W>-<C-W>-
   nmap Ö <C-W>+<C-W>+
+endif
+
+" Warn when painting outside the borders
+if exists('+colorcolumn')
+  set textwidth=80
+  let &colorcolumn=join(range(81,512),",")
 endif
 
 " NERDTree
