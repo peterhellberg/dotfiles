@@ -58,11 +58,11 @@ export PATH=/usr/local/mysql/bin:$PATH
 
 # Ruby
 export GUARD_NOTIFY=false
-export RUBY_HEAP_MIN_SLOTS=800000       #(10000)
-export RUBY_HEAP_FREE_MIN=100000        # (4096)
+export RUBY_HEAP_MIN_SLOTS=1800000      # (10000)
+export RUBY_HEAP_FREE_MIN=20000         # (4096)
 export RUBY_HEAP_SLOTS_INCREMENT=300000 # (10000)
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1  # (1.8)
-export RUBY_GC_MALLOC_LIMIT=36000000    # (8000000)
+export RUBY_GC_MALLOC_LIMIT=85000000    # (8000000)
 
 # Rubinius
 export RBXOPT=-X19
