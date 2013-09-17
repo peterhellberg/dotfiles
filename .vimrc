@@ -80,6 +80,9 @@ set omnifunc=syntaxcomplete#Complete
 
 " Vim annoyances
 " http://blog.sanctum.geek.nz/vim-annoyances/
+nnoremap U <C-r>
+nnoremap Q <nop>
+nnoremap K <nop>
 nnoremap J mzJ`z
 set shortmess+=I
 set virtualedit=block
