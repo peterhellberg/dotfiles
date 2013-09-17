@@ -116,7 +116,8 @@ nmap <leader>s<up>     :leftabove  new<cr>
 nmap <leader>s<down>   :rightbelow new<cr>
 
 " Tab between buffers
-noremap <tab> <c-w><c-w>
+noremap <tab> <c-w>w
+noremap <S-tab> <c-w>W
 
 " Switch between last two buffers
 nnoremap <leader><leader> <C-^>
