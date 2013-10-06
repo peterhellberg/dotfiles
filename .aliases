@@ -11,6 +11,7 @@ alias be='bundle exec'
 alias pbqr='pbpaste | qrencode -o /tmp/qr.png -s 10 && qlmanage -p /tmp/qr.png &> /dev/null'
 alias go-pi='GOARCH=arm GOARM=5 GOOS=linux go'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
+alias curl='curl -s'
 
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
@@ -50,6 +51,7 @@ alias forks='cd ~/Work/Code7/GitHub/forks'
 alias arduino-experiments='cd ~/Work/Code7/Experiments/arduino'
 
 ## TV4
+alias solr_aman='/usr/local/Cellar/solr/4.2.0/bin/solr /Users/peter/Work/Athega/TV4/aman/solr'
 alias tv4-redis-server='redis-server /Users/peter/Work/Athega/TV4/tv4-redis/tv4-redis.conf'
 alias tv4-redis-cli='redis-cli -s /tmp/tv4-redis.sock'
 alias tv4='cd ~/Work/Athega/TV4/GitHub/www.tv4.se/'
@@ -57,4 +59,6 @@ alias tv4play='cd ~/Work/Athega/TV4/GitHub/tv4play/'
 alias aman='cd ~/Work/Athega/TV4/GitHub/aman/'
 alias api4='cd ~/Work/Athega/TV4/GitHub/api4/'
 alias tvdata='cd ~/Work/Athega/TV4/GitHub/api4-tvdata/'
-alias solr_aman='/usr/local/Cellar/solr/4.2.0/bin/solr /Users/peter/Work/Athega/TV4/aman/solr'
+alias qa='cd ~/Work/Athega/TV4/GitHub/quiz-api/'
+alias qf='cd ~/Work/Athega/TV4/GitHub/quiz-frontend/'
+alias qm='cd ~/Work/Athega/TV4/GitHub/quiz-manager/'
