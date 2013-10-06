@@ -144,18 +144,12 @@ if bufwinnr(1)
   nmap Ö <C-W>+<C-W>+
 endif
 
-" Warn when painting outside the borders
-if exists('+colorcolumn')
-  set textwidth=80
-  let &colorcolumn=join(range(81,512),",")
-endif
-
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
