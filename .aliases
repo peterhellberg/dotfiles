@@ -12,6 +12,8 @@ alias pbqr='pbpaste | qrencode -o /tmp/qr.png -s 10 && qlmanage -p /tmp/qr.png &
 alias go-pi='GOARCH=arm GOARM=5 GOOS=linux go'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias curl='curl -s'
+alias nimrod='/usr/local/Cellar/nimrod/0.9.2/libexec/bin/nimrod compile --verbosity:0'
+alias plot-data='curl --data-binary @- plot-data.herokuapp.com'
 
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
