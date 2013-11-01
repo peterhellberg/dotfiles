@@ -1,4 +1,4 @@
-ulimit -n 1024
+ulimit -n 2048
 
 # Bash
 export EDITOR='mvim -v -N'
@@ -70,6 +70,8 @@ export RBXOPT=-X19
 # Colors!
 export CLICOLOR=1
 export LSCOLORS=HxbxfxdxCxegedafahacad
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;35;40'
 
 # Load aliases
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
