@@ -7,15 +7,19 @@ call vundle#rc()
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-" Plugin bundles
-Bundle 'ervandew/supertab'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
+" Plugin dependencies
 Bundle 'kana/vim-textobj-user'
-Bundle 'kien/ctrlp.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'mileszs/ack.vim'
+
+" Plugins with dependencies
+Bundle 'garbas/vim-snipmate'
 Bundle 'nelstrom/vim-textobj-rubyblock'
+
+" Plugin bundles
+Bundle 'honza/vim-snippets'
+Bundle 'ervandew/supertab'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tomtom/tlib_vim'
@@ -28,9 +32,10 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 Bundle 'godlygeek/tabular'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'benmills/vim-golang-alternate'
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 
 " Language bundles
 Bundle 'cakebaker/scss-syntax.vim'
@@ -43,6 +48,8 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'leafo/moonscript-vim'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'groenewege/vim-less'
 
 " Color scheme
 Bundle 'nanotech/jellybeans.vim'
@@ -55,7 +62,6 @@ color jellybeans
 
 set hidden
 set cursorline
-set expandtab
 set modelines=0
 set shiftwidth=2
 set clipboard=unnamed,unnamedplus
@@ -93,11 +99,15 @@ set virtualedit=block
 au InsertEnter * set nocursorline
 au InsertLeave * set cursorline nopaste
 
+" Change the cursor in insert mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " Automatic formatting
 autocmd BufWritePre {*.rb,*.js,*.coffee} :%s/\s\+$//e
-autocmd BufWritePre {*.scss,*.haml,*.slim,*.html} :%s/\s\+$//e
+autocmd BufWritePre {*.scss,*.haml,*.slim,*.html,*.builder} :%s/\s\+$//e
 
 au BufNewFile * set noeol
 
@@ -144,6 +154,12 @@ if bufwinnr(1)
   nmap Ö <C-W>+<C-W>+
 endif
 
+" Warn when painting outside the borders
+"if exists('+colorcolumn')
+"  set textwidth=80
+"  let &colorcolumn=join(range(81,512),",")
+"endif
+
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
 
@@ -178,12 +194,15 @@ nmap <leader>a :Ack!
 set shellpipe=>
 
 " Go programming
-set rtp+=/usr/local/Cellar/go/1.1.2/misc/vim
+set rtp+=/usr/local/Cellar/go/1.2/libexec/misc/vim
 
-au BufRead,BufNewFile *.go set filetype=go
-
+au BufRead,BufNewFile *.go set filetype=go list noexpandtab syntax=go
+au BufWritePre *.go silent Fmt
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " Sass
 au BufRead,BufNewFile *.scss set filetype=sass
+
+" Slim
+au BufRead,BufNewFile *.slim set filetype=slim
