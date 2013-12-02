@@ -18,7 +18,7 @@ alias plot-data='curl --data-binary @- plot-data.herokuapp.com'
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml'
-alias default-redis-server='redis-server /usr/local/etc/redis.conf'
+alias default-redis-server='cd && redis-server /usr/local/etc/redis.conf'
 alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
@@ -64,3 +64,4 @@ alias tvdata='cd ~/Work/Athega/TV4/GitHub/api4-tvdata/'
 alias qa='cd ~/Work/Athega/TV4/GitHub/quiz-api/'
 alias qf='cd ~/Work/Athega/TV4/GitHub/quiz-frontend/'
 alias qm='cd ~/Work/Athega/TV4/GitHub/quiz-manager/'
+alias fuji='cd ~/Work/Athega/TV4/GitHub/fuji/'
