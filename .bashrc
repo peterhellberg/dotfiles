@@ -20,6 +20,11 @@ export PATH=$PATH:/usr/local/git/bin
 
 # Functions
 
+# Ruby docs
+function ref {
+  open http://www.omniref.com/?q="$*"
+}
+
 # Serve the current directory over HTTP
 function serve {
   port="${1:-9000}"
