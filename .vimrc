@@ -196,7 +196,7 @@ set shellpipe=>
 " Go programming
 set rtp+=/usr/local/Cellar/go/1.2/libexec/misc/vim
 
-au BufRead,BufNewFile *.go set filetype=go list noexpandtab syntax=go
+au BufRead,BufNewFile *.go set filetype=go nolist noexpandtab syntax=go
 au BufWritePre *.go silent Fmt
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
