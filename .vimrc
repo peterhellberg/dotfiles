@@ -32,9 +32,9 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
-Bundle 'godlygeek/tabular'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'benmills/vim-golang-alternate'
+"Bundle 'godlygeek/tabular'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 
 " Language bundles
@@ -47,8 +47,6 @@ Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'leafo/moonscript-vim'
-Bundle 'digitaltoad/vim-jade'
 Bundle 'groenewege/vim-less'
 
 " Color scheme
@@ -106,8 +104,16 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " Automatic formatting
-autocmd BufWritePre {*.rb,*.js,*.coffee} :%s/\s\+$//e
-autocmd BufWritePre {*.scss,*.haml,*.slim,*.html,*.builder} :%s/\s\+$//e
+function! <SID>StripTrailingSpace()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd BufWritePre *.rb,*.js,*.coffee :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.scss,*.haml,*.slim,*.html,*.builder :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.txt,*.md,*.markdown :call <SID>StripTrailingSpace()
 
 au BufNewFile * set noeol
 
@@ -154,12 +160,6 @@ if bufwinnr(1)
   nmap Ö <C-W>+<C-W>+
 endif
 
-" Warn when painting outside the borders
-"if exists('+colorcolumn')
-"  set textwidth=80
-"  let &colorcolumn=join(range(81,512),",")
-"endif
-
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
 
@@ -199,6 +199,7 @@ set rtp+=/usr/local/Cellar/go/1.2/libexec/misc/vim
 au BufRead,BufNewFile *.go set filetype=go nolist noexpandtab syntax=go
 au BufWritePre *.go silent Fmt
 autocmd BufWritePre *.go :%s/\s\+$//e
+autocmd FileType go compiler go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " Sass
