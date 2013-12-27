@@ -1,5 +1,6 @@
 # Aliases
 alias vim='mvim -n -v -N'
+alias v='mvim -n -v -N .'
 alias mvim='mvim -n -N -c "set noballooneval"'
 alias :q='logout'
 alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
