@@ -63,7 +63,7 @@ export PATH=/usr/local/mysql/bin:$PATH
 
 # Ruby
 export GUARD_NOTIFY=false
-export RUBY_HEAP_MIN_SLOTS=1800000      # (10000)
+export RUBY_GC_HEAP_INIT_SLOTS=1800000  # (10000)
 export RUBY_HEAP_FREE_MIN=20000         # (4096)
 export RUBY_HEAP_SLOTS_INCREMENT=300000 # (10000)
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1  # (1.8)
