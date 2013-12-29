@@ -34,6 +34,7 @@ Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'benmills/vim-golang-alternate'
+Bundle 'airblade/vim-gitgutter'
 "Bundle 'godlygeek/tabular'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 
