@@ -34,6 +34,7 @@ Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'benmills/vim-golang-alternate'
+Bundle 'dgryski/vim-godef'
 Bundle 'airblade/vim-gitgutter'
 "Bundle 'godlygeek/tabular'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
@@ -84,6 +85,11 @@ set sidescrolloff=1
 set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set omnifunc=syntaxcomplete#Complete
+set autoread
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
 
 " Vim annoyances
 " http://blog.sanctum.geek.nz/vim-annoyances/
@@ -158,6 +164,10 @@ noremap <S-tab> <c-w>W
 " Switch between last two buffers
 nnoremap <leader><leader> <C-^>
 
+" Switch to alternative file
+nnoremap <leader>m :AV<cr>
+nnoremap <leader>mm :A<cr>
+
 " Go to home and end using capitalized directions
 noremap H ^
 noremap L $
@@ -204,7 +214,8 @@ nmap <leader>a :Ack!
 set shellpipe=>
 
 " Go programming
-set rtp+=/usr/local/Cellar/go/1.2/libexec/misc/vim
+set rtp+=/usr/local/Cellar/go/1.2.1/libexec/misc/vim
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 au BufRead,BufNewFile *.go set filetype=go nolist noexpandtab syntax=go
 au BufWritePre *.go silent Fmt
@@ -212,8 +223,15 @@ autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
+let g:godef_split=0
+let g:godef_same_file_in_same_window=1
+
 " Sass
 au BufRead,BufNewFile *.scss set filetype=sass
 
 " Slim
 au BufRead,BufNewFile *.slim set filetype=slim
+
+" Disable terminal restor and clear screen when leaving vim
+"set t_ti= t_te=
+"au VimLeave * :!clear
