@@ -232,6 +232,6 @@ au BufRead,BufNewFile *.scss set filetype=sass
 " Slim
 au BufRead,BufNewFile *.slim set filetype=slim
 
-" Disable terminal restor and clear screen when leaving vim
-"set t_ti= t_te=
-"au VimLeave * :!clear
+" Disable terminal restore and clear screen when leaving vim
+set t_ti= t_te=
+au VimLeave * :!clear
