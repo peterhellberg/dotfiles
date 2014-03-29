@@ -50,6 +50,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'groenewege/vim-less'
+Bundle 'yosssi/vim-gold'
 
 " Color scheme
 Bundle 'nanotech/jellybeans.vim'
