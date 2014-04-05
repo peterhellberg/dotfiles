@@ -226,6 +226,7 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 let g:godef_split=0
 let g:godef_same_file_in_same_window=1
+let g:gofmt_command='goimports'
 
 " Sass
 au BufRead,BufNewFile *.scss set filetype=sass
