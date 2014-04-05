@@ -29,6 +29,11 @@ function ref {
   open http://www.omniref.com/?q="$*"
 }
 
+# Go docs
+function search-godoc {
+  curl -s -H 'Accept: text/plain' http://godoc.org/?q="$*"
+}
+
 # Serve the current directory over HTTP
 function serve {
   port="${1:-9000}"
