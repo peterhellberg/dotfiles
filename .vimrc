@@ -87,6 +87,7 @@ set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set omnifunc=syntaxcomplete#Complete
 set autoread
+set cryptmethod=blowfish
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
