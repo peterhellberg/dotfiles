@@ -23,6 +23,9 @@ source /usr/local/etc/bash_completion.d/git-completion.bash
 export GIT_EDITOR='vim'
 export PATH=$PATH:/usr/local/git/bin
 
+# Postgres
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+
 if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='--color=auto'
   eval `dircolors ~/.dircolors`
