@@ -21,7 +21,6 @@ Bundle 'ervandew/supertab'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-endwise'
@@ -32,12 +31,10 @@ Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'itchyny/lightline.vim'
 Bundle 'benmills/vim-golang-alternate'
 Bundle 'dgryski/vim-godef'
 Bundle 'airblade/vim-gitgutter'
-"Bundle 'godlygeek/tabular'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
 
 " Language bundles
 Bundle 'cakebaker/scss-syntax.vim'
@@ -49,8 +46,6 @@ Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'groenewege/vim-less'
-Bundle 'yosssi/vim-gold'
 
 " Color scheme
 Bundle 'nanotech/jellybeans.vim'
@@ -187,7 +182,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
