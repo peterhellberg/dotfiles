@@ -32,6 +32,10 @@ if [ "$TERM" != "dumb" ]; then
 fi
 # Functions
 
+vimfzz() {
+  vim $(fzz ack --nocolor --noheading {{}} | awk -F":" '{print $1}' | uniq)
+}
+
 # Ruby docs
 function ref {
   open http://www.omniref.com/?q="$*"
@@ -95,3 +99,6 @@ export GREP_COLOR='1;35;40'
 export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# added by travis gem
+[ -f /Users/peter/.travis/travis.sh ] && source /Users/peter/.travis/travis.sh
