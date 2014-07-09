@@ -71,6 +71,6 @@ alias qm='cd ~/Work/Athega/TV4/GitHub/quiz-manager/'
 alias fuji='cd ~/Work/Athega/TV4/GitHub/fuji/'
 alias f='cd ~/Work/Athega/TV4/GitHub/fuji/'
 alias h='cd ~/Work/Athega/TV4/GitHub/harvester/'
-alias s='cd ~/Work/Athega/TV4/GitHub/sommarkrysset-manager/'
+alias sm='cd ~/Work/Athega/TV4/GitHub/sommarkrysset-manager/'
 alias sf='cd ~/Work/Athega/TV4/GitHub/sommarkrysset-frontend/'
 
