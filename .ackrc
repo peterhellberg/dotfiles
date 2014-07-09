@@ -10,6 +10,7 @@
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=doc
+--ignore-dir=_workspace
 --ignore-dir=coverage
 --ignore-dir=_site
 --sort-files
