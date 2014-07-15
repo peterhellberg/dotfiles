@@ -1,54 +1,58 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Plugin dependencies
-Bundle 'kana/vim-textobj-user'
-Bundle 'MarcWeber/vim-addon-mw-utils'
+Plugin 'kana/vim-textobj-user'
+Plugin 'MarcWeber/vim-addon-mw-utils'
 
 " Plugins with dependencies
-Bundle 'garbas/vim-snipmate'
-Bundle 'nelstrom/vim-textobj-rubyblock'
+Plugin 'garbas/vim-snipmate'
+Plugin 'nelstrom/vim-textobj-rubyblock'
 
 " Plugin bundles
-Bundle 'honza/vim-snippets'
-Bundle 'ervandew/supertab'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tomtom/tlib_vim'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-surround'
-Bundle 'itchyny/lightline.vim'
-Bundle 'benmills/vim-golang-alternate'
-Bundle 'dgryski/vim-godef'
-Bundle 'airblade/vim-gitgutter'
+Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'itchyny/lightline.vim'
+Plugin 'benmills/vim-golang-alternate'
+Plugin 'dgryski/vim-godef'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'airblade/vim-gitgutter'
 
 " Language bundles
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'pangloss/vim-javascript'
-Bundle 'slim-template/vim-slim'
-Bundle 'sunaku/vim-ruby-minitest'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Plugin 'slim-template/vim-slim'
+Plugin 'sunaku/vim-ruby-minitest'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
+Plugin 'vim-ruby/vim-ruby'
 
 " Color scheme
-Bundle 'nanotech/jellybeans.vim'
+Plugin 'nanotech/jellybeans.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()
 
 filetype plugin indent on
 
@@ -186,6 +190,7 @@ let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace'
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabClosePreviewOnPopupClose = 1
 
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
@@ -215,7 +220,7 @@ set rtp+=/usr/local/Cellar/go/1.3/libexec/misc/vim
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 au BufRead,BufNewFile *.go set filetype=go nolist noexpandtab syntax=go
-au BufWritePre *.go silent Fmt
+" au BufWritePre *.go silent Fmt
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
