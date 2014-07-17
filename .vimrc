@@ -32,10 +32,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'itchyny/lightline.vim'
-Plugin 'benmills/vim-golang-alternate'
-Plugin 'dgryski/vim-godef'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'airblade/vim-gitgutter'
+Plugin 'benmills/vim-golang-alternate'
+Plugin 'fatih/vim-go'
 
 " Language bundles
 Plugin 'cakebaker/scss-syntax.vim'
@@ -87,6 +86,9 @@ set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set omnifunc=syntaxcomplete#Complete
 set autoread
 set cryptmethod=blowfish
+
+" Disable preview window
+set completeopt-=preview
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -190,7 +192,6 @@ let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace'
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabClosePreviewOnPopupClose = 1
 
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
@@ -220,14 +221,8 @@ set rtp+=/usr/local/Cellar/go/1.3/libexec/misc/vim
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 au BufRead,BufNewFile *.go set filetype=go nolist noexpandtab syntax=go
-" au BufWritePre *.go silent Fmt
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
-
-let g:godef_split=0
-let g:godef_same_file_in_same_window=1
-let g:gofmt_command='goimports'
 
 " Sass
 au BufRead,BufNewFile *.scss set filetype=sass
