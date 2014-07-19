@@ -225,9 +225,11 @@ au BufRead,BufNewFile *.go set filetype=go nolist noexpandtab syntax=go
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
 
+let g:go_disable_autoinstall = 1
 let g:go_gocode_bin="/Users/peter/Go/bin/gocode"
 let g:go_goimports_bin="/Users/peter/Go/bin/goimports"
 let g:go_godef_bin="/Users/peter/Go/bin/godef"
+let g:go_oracle_bin="/Users/peter/Go/bin/oracle"
 let g:go_golint_bin="/Users/peter/Go/bin/golint"
 
 " Sass
