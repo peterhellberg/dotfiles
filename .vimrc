@@ -35,6 +35,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'benmills/vim-golang-alternate'
 Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
 
 " Language bundles
 Plugin 'cakebaker/scss-syntax.vim'
@@ -223,6 +224,11 @@ set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 au BufRead,BufNewFile *.go set filetype=go nolist noexpandtab syntax=go
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
+
+let g:go_gocode_bin="/Users/peter/Go/bin/gocode"
+let g:go_goimports_bin="/Users/peter/Go/bin/goimports"
+let g:go_godef_bin="/Users/peter/Go/bin/godef"
+let g:go_golint_bin="/Users/peter/Go/bin/golint"
 
 " Sass
 au BufRead,BufNewFile *.scss set filetype=sass
