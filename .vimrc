@@ -221,7 +221,7 @@ set shellpipe=>
 set rtp+=/usr/local/Cellar/go/1.3/libexec/misc/vim
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
-au BufRead,BufNewFile *.go set filetype=go nolist noexpandtab syntax=go
+au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
 
