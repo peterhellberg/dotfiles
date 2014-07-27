@@ -14,7 +14,6 @@ alias go-pi='GOARCH=arm GOARM=5 GOOS=linux go'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias curl='curl -s'
 alias curl-with-time='curl -w "connect: %{time_connect} start_transfer: %{time_starttransfer} total: %{time_total}\n"'
-alias nimrod='/usr/local/Cellar/nimrod/0.9.2/libexec/bin/nimrod compile --verbosity:0'
 alias plot-data='curl --data-binary @- plot-data.herokuapp.com'
 
 # Service aliases
@@ -53,7 +52,7 @@ alias hashids.rb='cd ~/Work/Code7/GitHub/hashids.rb/'
 alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
 alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
 alias forks='cd ~/Work/Code7/GitHub/forks'
-alias arduino-experiments='cd ~/Work/Code7/Experiments/arduino'
+alias experiments='cd ~/Work/Code7/Experiments/'
 
 ## TV4
 alias solr_aman='/usr/local/Cellar/solr/4.2.0/bin/solr /Users/peter/Work/Athega/TV4/aman/solr'
@@ -71,4 +70,3 @@ alias f='cd ~/Work/Athega/TV4/GitHub/fuji/'
 alias h='cd ~/Work/Athega/TV4/GitHub/harvester/'
 alias sm='cd ~/Work/Athega/TV4/GitHub/sommarkrysset-manager/'
 alias sf='cd ~/Work/Athega/TV4/GitHub/sommarkrysset-frontend/'
-
