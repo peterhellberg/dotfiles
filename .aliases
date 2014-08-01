@@ -3,7 +3,6 @@ alias vim='mvim -n -v -N'
 alias v='mvim -n -v -N .'
 alias mvim='mvim -n -N -c "set noballooneval"'
 alias :q='logout'
-alias tags='ctags -R --exclude=.git --exclude=log --exclude=*.min.js *'
 alias rake_with_verbose_tests="rake TESTOPTS='-v'"
 alias require='cd ~ && pry -r'
 alias irb='pry || irb'
@@ -55,7 +54,6 @@ alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 
 ## TV4
-alias solr_aman='/usr/local/Cellar/solr/4.2.0/bin/solr /Users/peter/Work/Athega/TV4/aman/solr'
 alias tv4-redis-server='redis-server /Users/peter/Work/Athega/TV4/tv4-redis/tv4-redis.conf'
 alias tv4-redis-cli='redis-cli -s /tmp/tv4-redis.sock'
 alias tv4='cd ~/Work/Athega/TV4/GitHub/www.tv4.se/'
