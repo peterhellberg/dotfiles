@@ -40,16 +40,8 @@ alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
-# Client aliases
-
-## Athega
-alias jullunch='cd ~/Work/Athega/GitHub/jullunch/'
-
 ## Code7
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
-alias hashids.rb='cd ~/Work/Code7/GitHub/hashids.rb/'
-alias shrug.se='cd ~/Work/Code7/GitHub/c7/shrug.se'
-alias brug.se='cd ~/Work/Code7/GitHub/c7/brug.se'
 alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 
