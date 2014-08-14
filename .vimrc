@@ -189,7 +189,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
@@ -209,8 +209,8 @@ let g:ctrlp_max_files = 1000
 let g:ctrlp_max_depth = 6
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_user_command = {
-  \ 'types': { 1: ['.git/', 'cd %s && git ls-files'] },
-  \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+  \ 'types': { 1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others | grep -v _workspace | grep -v private_gems'] },
+  \ 'fallback': 'ack -f %s --ignore-dir=.git | head -' . g:ctrlp_max_files
   \ }
 
 " Ack
@@ -218,7 +218,7 @@ nmap <leader>a :Ack!
 set shellpipe=>
 
 " Go programming
-set rtp+=/usr/local/Cellar/go/1.3/libexec/misc/vim
+set rtp+=/usr/local/Cellar/go/1.3.1/libexec/misc/vim
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
