@@ -44,6 +44,7 @@ alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
+alias k='cd ~/Work/Code7/GitHub/karta/'
 
 ## TV4
 alias tv4-redis-server='redis-server /Users/peter/Work/Athega/TV4/tv4-redis/tv4-redis.conf'
