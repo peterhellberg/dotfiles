@@ -10,6 +10,12 @@ if defined? Pry
   Pry.config.editor = "vim"
 end
 
+def realtime(&block)
+  require 'benchmark'
+
+  Benchmark.realtime(&block)
+end
+
 def redis_url(url)
   require 'redis'
   require 'uri'
