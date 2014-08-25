@@ -39,6 +39,10 @@ alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
+# Go to current project
+alias p='cd `cat $HOME/.current_project`'
+alias p.='echo `pwd` > $HOME/.current_project'
+
 ## Code7
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias forks='cd ~/Work/Code7/GitHub/forks'
