@@ -47,6 +47,7 @@ Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'peterhoeg/vim-qml'
 
 " Color scheme
 Plugin 'nanotech/jellybeans.vim'
@@ -62,7 +63,7 @@ color jellybeans
 
 set hidden
 set cursorline
-set modelines=0
+set modelines=3
 set shiftwidth=2
 set clipboard=unnamed,unnamedplus
 set synmaxcol=256
