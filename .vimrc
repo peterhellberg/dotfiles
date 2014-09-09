@@ -35,7 +35,6 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'benmills/vim-golang-alternate'
 Plugin 'fatih/vim-go'
-Plugin 'majutsushi/tagbar'
 
 " Language bundles
 Plugin 'cakebaker/scss-syntax.vim'
