@@ -13,6 +13,7 @@
 --ignore-dir=_workspace
 --ignore-dir=coverage
 --ignore-dir=_site
+--ignore-dir=.bundle
 --sort-files
 --smart-case
 --color
