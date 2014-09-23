@@ -11,7 +11,7 @@ export LANG=en_US.UTF-8
 
 # OCI8 :/
 NLS_LANG=American_America.UTF8 export NLS_LANG
-DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2 export DYLD_LIBRARY_PATH
+# DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2 export DYLD_LIBRARY_PATH
 ORACLE_HOME=/opt/oracle/instantclient_11_2 export ORACLE_HOME
 
 # Go
