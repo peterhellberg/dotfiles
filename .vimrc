@@ -232,6 +232,7 @@ let g:go_goimports_bin="/Users/peter/Go/bin/goimports"
 let g:go_godef_bin="/Users/peter/Go/bin/godef"
 let g:go_oracle_bin="/Users/peter/Go/bin/oracle"
 let g:go_golint_bin="/Users/peter/Go/bin/golint"
+let g:go_fmt_command = "goimports"
 
 " Sass
 au BufRead,BufNewFile *.scss set filetype=sass
