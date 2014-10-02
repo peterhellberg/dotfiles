@@ -47,6 +47,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'peterhoeg/vim-qml'
+Plugin 'elixir-lang/vim-elixir'
 
 " Color scheme
 Plugin 'nanotech/jellybeans.vim'
@@ -218,7 +219,7 @@ nmap <leader>a :Ack!
 set shellpipe=>
 
 " Go programming
-set rtp+=/usr/local/Cellar/go/1.3.2/libexec/misc/vim
+set rtp+=/usr/local/Cellar/go/1.3.3/libexec/misc/vim
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
