@@ -44,6 +44,7 @@ alias p='cd `cat $HOME/.current_project`'
 alias p.='echo `pwd` > $HOME/.current_project'
 
 ## Code7
+alias cg='cd ~/Work/Code7/GitHub'
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
