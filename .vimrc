@@ -169,10 +169,6 @@ noremap <S-tab> <c-w>W
 " Switch between last two buffers
 nnoremap <leader><leader> <C-^>
 
-" Switch to alternative file
-nnoremap <leader>m :AV<cr>
-nnoremap <leader>mm :A<cr>
-
 " Go to home and end using capitalized directions
 noremap H ^
 noremap L $
