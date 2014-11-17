@@ -51,10 +51,6 @@ if [ "$TERM" != "dumb" ]; then
 fi
 # Functions
 
-vimfzz() {
-  vim $(fzz ack --nocolor --noheading {{}} | awk -F":" '{print $1}' | uniq)
-}
-
 # Ruby docs
 function ref {
   open http://www.omniref.com/?q="$*"
@@ -91,9 +87,6 @@ export PATH=$PATH:/usr/local/share/npm/bin
 # Homebrew
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
-# MySQL
-export PATH=/usr/local/mysql/bin:$PATH
-
 # Ruby
 export GUARD_NOTIFY=false
 export RUBY_GC_HEAP_INIT_SLOTS=1800000  # (10000)
@@ -101,9 +94,6 @@ export RUBY_HEAP_FREE_MIN=20000         # (4096)
 export RUBY_HEAP_SLOTS_INCREMENT=300000 # (10000)
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1  # (1.8)
 export RUBY_GC_MALLOC_LIMIT=85000000    # (8000000)
-
-# Rubinius
-export RBXOPT=-X19
 
 # Colors!
 export CLICOLOR=1
