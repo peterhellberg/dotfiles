@@ -194,7 +194,6 @@ let g:SuperTabDefaultCompletionType = "context"
 nnoremap <silent> t :CtrlP<cr>
 nnoremap <silent><leader>t :CtrlP<cr>
 nnoremap <silent><leader>r :CtrlPMRUFiles<cr>
-nnoremap <silent><leader>b :CtrlPBuffer<cr>
 
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
