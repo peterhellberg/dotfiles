@@ -46,7 +46,6 @@ Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'peterhoeg/vim-qml'
 Plugin 'elixir-lang/vim-elixir'
 
 " Color scheme
