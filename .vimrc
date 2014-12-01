@@ -213,7 +213,6 @@ nmap <leader>a :Ack!
 set shellpipe=>
 
 " Go programming
-set rtp+=/usr/local/Cellar/go/1.3.3/libexec/misc/vim
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
