@@ -220,6 +220,12 @@ au BufEnter *.go setl nolist noexpandtab
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
 
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+
 let g:go_disable_autoinstall = 1
 let g:go_gocode_bin="/Users/peter/Go/bin/gocode"
 let g:go_goimports_bin="/Users/peter/Go/bin/goimports"
