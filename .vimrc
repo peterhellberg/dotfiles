@@ -67,6 +67,7 @@ set shiftwidth=2
 set clipboard=unnamed,unnamedplus
 set synmaxcol=256
 set ttyscroll=3
+set ttyfast
 set encoding=utf-8 termencoding=utf-8
 set tabstop=2
 set nowrap
@@ -85,7 +86,6 @@ set sidescrolloff=1
 set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set omnifunc=syntaxcomplete#Complete
-set autoread
 set cryptmethod=blowfish
 
 " Disable preview window
@@ -179,6 +179,9 @@ if bufwinnr(1)
   nmap Ä <C-W>-<C-W>-
   nmap Ö <C-W>+<C-W>+
 endif
+
+" Matchparen.vim
+let g:loaded_matchparen = 0
 
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
