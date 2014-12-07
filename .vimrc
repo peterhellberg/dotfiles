@@ -200,7 +200,7 @@ let g:ctrlp_match_window_reversed = 0
 
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_by_filename = 0
-let g:ctrlp_max_files = 1000
+let g:ctrlp_max_files = 512
 let g:ctrlp_max_depth = 6
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_user_command = {
@@ -211,6 +211,12 @@ let g:ctrlp_user_command = {
 " Ack
 nmap <leader>a :Ack! 
 set shellpipe=>
+
+" Sass
+au BufRead,BufNewFile *.scss set filetype=sass
+
+" Slim
+au BufRead,BufNewFile *.slim set filetype=slim
 
 " Go programming
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
@@ -233,13 +239,3 @@ let g:go_godef_bin="/Users/peter/Go/bin/godef"
 let g:go_oracle_bin="/Users/peter/Go/bin/oracle"
 let g:go_golint_bin="/Users/peter/Go/bin/golint"
 let g:go_fmt_command = "goimports"
-
-" Sass
-au BufRead,BufNewFile *.scss set filetype=sass
-
-" Slim
-au BufRead,BufNewFile *.slim set filetype=slim
-
-" Disable terminal restore and clear screen when leaving vim
-set t_ti= t_te=
-au VimLeave * :!clear
