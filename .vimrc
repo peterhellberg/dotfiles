@@ -180,9 +180,6 @@ if bufwinnr(1)
   nmap Ö <C-W>+<C-W>+
 endif
 
-" Matchparen.vim
-let g:loaded_matchparen = 0
-
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
 
