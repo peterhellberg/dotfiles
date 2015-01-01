@@ -7,7 +7,7 @@ My config files (aka [dotfiles](http://en.wikipedia.org/wiki/Dotfiles)), they mi
 ```
 cd $HOME
 git clone git@github.com:peterhellberg/dotfiles.git .dotfiles
-ln -s /Users/peter/.dotfiles/.??* -t .
+ln -s .dotfiles/.??* -t .
 ```
 ## .vimrc
 
