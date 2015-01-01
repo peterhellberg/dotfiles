@@ -1,7 +1,16 @@
-# .dotfiles/
+# .dotfiles
 
-My config files (aka dotfiles), might be useful for someone else.
+My config files (aka [dotfiles](http://en.wikipedia.org/wiki/Dotfiles)), they might be useful for someone else.
 
 ## Installation
 
-`git clone` to `~/.dotfiles` and then symlink them to `~/.*`
+```
+cd $HOME
+git clone git@github.com:peterhellberg/dotfiles.git .dotfiles
+ln -s /Users/peter/.dotfiles/.??* -t .
+```
+## .vimrc
+
+The Vim configuration require [Vundle](https://github.com/gmarik/Vundle.vim) to be installed.
+
+`git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
