@@ -47,6 +47,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'zah/nimrod.vim'
 
 " Color scheme
 Plugin 'nanotech/jellybeans.vim'
