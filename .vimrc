@@ -40,13 +40,11 @@ Plugin 'fatih/vim-go'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
-Plugin 'slim-template/vim-slim'
 Plugin 'sunaku/vim-ruby-minitest'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'zah/nimrod.vim'
 
 " Color scheme
