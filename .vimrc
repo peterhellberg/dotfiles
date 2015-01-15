@@ -46,6 +46,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'zah/nimrod.vim'
+Plugin 'fasterthanlime/ooc.vim'
 
 " Color scheme
 Plugin 'nanotech/jellybeans.vim'

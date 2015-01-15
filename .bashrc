@@ -25,6 +25,10 @@ NLS_LANG=American_America.UTF8 export NLS_LANG
 # DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2 export DYLD_LIBRARY_PATH
 ORACLE_HOME=/opt/oracle/instantclient_11_2 export ORACLE_HOME
 
+# ooc
+export OOC_LIBS=$HOME/Work/ooc
+export PATH=$PATH:$OOC_LIBS/sam
+
 # Go
 export GOPATH=$HOME/Go
 export PATH=$PATH:$GOPATH/bin
