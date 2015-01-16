@@ -27,7 +27,7 @@ ORACLE_HOME=/opt/oracle/instantclient_11_2 export ORACLE_HOME
 
 # ooc
 export OOC_LIBS=$HOME/Work/ooc
-export PATH=$PATH:$OOC_LIBS/sam
+export PATH=$PATH:$OOC_LIBS/sam:$OOC_LIBS/rock/bin
 
 # Go
 export GOPATH=$HOME/Go
