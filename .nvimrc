@@ -40,14 +40,13 @@ Plugin 'fatih/vim-go'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
-Plugin 'slim-template/vim-slim'
 Plugin 'sunaku/vim-ruby-minitest'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'peterhoeg/vim-qml'
-Plugin 'elixir-lang/vim-elixir'
+Plugin 'zah/nimrod.vim'
+Plugin 'fasterthanlime/ooc.vim'
 
 " Color scheme
 Plugin 'nanotech/jellybeans.vim'
@@ -68,6 +67,7 @@ set shiftwidth=2
 set clipboard=unnamed,unnamedplus
 set synmaxcol=256
 set ttyscroll=3
+set ttyfast
 set encoding=utf-8 termencoding=utf-8
 set tabstop=2
 set nowrap
@@ -86,7 +86,6 @@ set sidescrolloff=1
 set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set omnifunc=syntaxcomplete#Complete
-set autoread
 
 " Disable preview window
 set completeopt-=preview
@@ -168,10 +167,6 @@ noremap <S-tab> <c-w>W
 " Switch between last two buffers
 nnoremap <leader><leader> <C-^>
 
-" Switch to alternative file
-nnoremap <leader>m :AV<cr>
-nnoremap <leader>mm :A<cr>
-
 " Go to home and end using capitalized directions
 noremap H ^
 noremap L $
@@ -198,14 +193,13 @@ let g:SuperTabDefaultCompletionType = "context"
 nnoremap <silent> t :CtrlP<cr>
 nnoremap <silent><leader>t :CtrlP<cr>
 nnoremap <silent><leader>r :CtrlPMRUFiles<cr>
-nnoremap <silent><leader>b :CtrlPBuffer<cr>
 
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_by_filename = 0
-let g:ctrlp_max_files = 1000
+let g:ctrlp_max_files = 512
 let g:ctrlp_max_depth = 6
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_user_command = {
@@ -217,14 +211,25 @@ let g:ctrlp_user_command = {
 nmap <leader>a :Ack! 
 set shellpipe=>
 
+" Sass
+au BufRead,BufNewFile *.scss set filetype=sass
+
+" Slim
+au BufRead,BufNewFile *.slim set filetype=slim
+
 " Go programming
-set rtp+=/usr/local/Cellar/go/1.3.3/libexec/misc/vim
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
 au BufEnter *.go setl nolist noexpandtab
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
+
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 
 let g:go_disable_autoinstall = 1
 let g:go_gocode_bin="/Users/peter/Go/bin/gocode"
@@ -233,13 +238,3 @@ let g:go_godef_bin="/Users/peter/Go/bin/godef"
 let g:go_oracle_bin="/Users/peter/Go/bin/oracle"
 let g:go_golint_bin="/Users/peter/Go/bin/golint"
 let g:go_fmt_command = "goimports"
-
-" Sass
-au BufRead,BufNewFile *.scss set filetype=sass
-
-" Slim
-au BufRead,BufNewFile *.slim set filetype=slim
-
-" Disable terminal restore and clear screen when leaving vim
-set t_ti= t_te=
-au VimLeave * :!clear
