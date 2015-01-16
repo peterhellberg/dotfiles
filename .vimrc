@@ -86,7 +86,6 @@ set sidescrolloff=1
 set noshowmode
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set omnifunc=syntaxcomplete#Complete
-set cryptmethod=blowfish
 
 " Disable preview window
 set completeopt-=preview
