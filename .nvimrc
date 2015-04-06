@@ -66,7 +66,6 @@ set modelines=3
 set shiftwidth=2
 set clipboard=unnamed,unnamedplus
 set synmaxcol=256
-set ttyscroll=3
 set ttyfast
 set encoding=utf-8 termencoding=utf-8
 set tabstop=2
