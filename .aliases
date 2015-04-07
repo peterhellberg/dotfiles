@@ -1,6 +1,5 @@
 # Aliases
-alias vim='mvim -n -v -N'
-alias mvim='mvim -n -N -c "set noballooneval"'
+alias vim='nvim'
 alias :q='logout'
 alias rake_with_verbose_tests="rake TESTOPTS='-v'"
 alias require='cd ~ && pry -r'
