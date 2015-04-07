@@ -12,7 +12,7 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 # Bash
-export EDITOR='mvim -v -N'
+export EDITOR='nvim'
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
@@ -22,10 +22,10 @@ export LANG=en_US.UTF-8
 
 # NeoVIM
 export NVIM_TUI_ENABLE_TRUE_COLOR=true
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=true
 
 # OCI8 :/
 NLS_LANG=American_America.UTF8 export NLS_LANG
-# DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2 export DYLD_LIBRARY_PATH
 ORACLE_HOME=/opt/oracle/instantclient_11_2 export ORACLE_HOME
 
 # ooc
