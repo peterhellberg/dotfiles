@@ -39,7 +39,6 @@ Plugin 'fatih/vim-go'
 " Language bundles
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'pangloss/vim-javascript'
 Plugin 'sunaku/vim-ruby-minitest'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-haml'
