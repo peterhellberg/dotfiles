@@ -65,7 +65,6 @@ set modelines=3
 set shiftwidth=2
 set clipboard=unnamed,unnamedplus
 set synmaxcol=256
-set ttyscroll=3
 set ttyfast
 set encoding=utf-8 termencoding=utf-8
 set tabstop=2
@@ -230,5 +229,8 @@ au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods   = 1
 let g:go_disable_autoinstall = 1
 let g:go_fmt_command = "goimports"
