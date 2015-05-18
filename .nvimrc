@@ -149,9 +149,6 @@ map <Up>   gk
 nnoremap j gj
 nnoremap k gk
 
-" format the entire file
-nmap <leader>fef ggVG=
-
 " Open new buffers
 nmap <leader>s<left>   :leftabove  vnew<cr>
 nmap <leader>s<right>  :rightbelow vnew<cr>
