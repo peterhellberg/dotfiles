@@ -32,20 +32,26 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'itchyny/lightline.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'benmills/vim-golang-alternate'
-Plugin 'fatih/vim-go'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'sunaku/vim-ruby-minitest'
-Plugin 'tpope/vim-git'
+Plugin 'benmills/vim-golang-alternate'
+
+" Language plugins
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'fatih/vim-go'
+Plugin 'zah/nimrod.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'fasterthanlime/ooc.vim'
+Plugin 'kchmck/vim-coffee-script'
+
+" Markup plugins
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'cespare/vim-toml'
-Plugin 'zah/nimrod.vim'
-Plugin 'fasterthanlime/ooc.vim'
-Plugin 'rust-lang/rust.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+
+" Git plugins
+Plugin 'tpope/vim-git'
+Plugin 'airblade/vim-gitgutter'
 
 " Color scheme
 Plugin 'nanotech/jellybeans.vim'
