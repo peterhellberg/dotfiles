@@ -20,9 +20,3 @@ def redis_url(url)
             :port =>     uri.port,
             :password => uri.password
 end
-
-class Object
-  def own_methods
-    self.methods - Object.methods
-  end
-end
