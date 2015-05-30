@@ -9,19 +9,17 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugin dependencies
 Plugin 'kana/vim-textobj-user'
-Plugin 'MarcWeber/vim-addon-mw-utils'
 
 " Plugins with dependencies
-Plugin 'garbas/vim-snipmate'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 
 " Plugin bundles
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-eunuch'
@@ -189,6 +187,9 @@ let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace'
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
