@@ -40,6 +40,7 @@ Plugin 'zah/nimrod.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'fasterthanlime/ooc.vim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'elixir-lang/vim-elixir'
 
 " Markup plugins
 Plugin 'tpope/vim-haml'
