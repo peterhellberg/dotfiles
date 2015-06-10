@@ -184,7 +184,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
