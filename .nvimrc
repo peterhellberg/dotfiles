@@ -218,8 +218,6 @@ au BufRead,BufNewFile *.scss set filetype=sass
 au BufRead,BufNewFile *.slim set filetype=slim
 
 " Go programming
-set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
 au BufEnter *.go setl nolist noexpandtab
 autocmd BufWritePre *.go :%s/\s\+$//e
