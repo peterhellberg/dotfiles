@@ -9,22 +9,19 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugin dependencies
 Plugin 'kana/vim-textobj-user'
-Plugin 'MarcWeber/vim-addon-mw-utils'
 
 " Plugins with dependencies
-Plugin 'garbas/vim-snipmate'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 
 " Plugin bundles
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
@@ -32,20 +29,27 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'itchyny/lightline.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'benmills/vim-golang-alternate'
-Plugin 'fatih/vim-go'
-
-" Language bundles
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'sunaku/vim-ruby-minitest'
-Plugin 'tpope/vim-git'
+Plugin 'benmills/vim-golang-alternate'
+
+" Language plugins
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'fatih/vim-go'
+Plugin 'zah/nimrod.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'fasterthanlime/ooc.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'elixir-lang/vim-elixir'
+
+" Markup plugins
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'zah/nimrod.vim'
-Plugin 'fasterthanlime/ooc.vim'
+Plugin 'cespare/vim-toml'
+Plugin 'cakebaker/scss-syntax.vim'
+
+" Git plugins
+Plugin 'tpope/vim-git'
+Plugin 'airblade/vim-gitgutter'
 
 " Color scheme
 Plugin 'nanotech/jellybeans.vim'
@@ -65,8 +69,6 @@ set modelines=3
 set shiftwidth=2
 set clipboard=unnamed,unnamedplus
 set synmaxcol=256
-set ttyfast
-set encoding=utf-8 termencoding=utf-8
 set tabstop=2
 set nowrap
 set number
@@ -128,7 +130,7 @@ function! <SID>StripTrailingSpace()
     call cursor(l, c)
 endfun
 
-autocmd BufWritePre *.rb,*.js,*.coffee :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.rb,*.js,*.coffee,*.ex,*.exs :call <SID>StripTrailingSpace()
 autocmd BufWritePre *.scss,*.haml,*.slim,*.html,*.builder :call <SID>StripTrailingSpace()
 autocmd BufWritePre *.txt,*.md,*.markdown :call <SID>StripTrailingSpace()
 
@@ -148,9 +150,6 @@ map <Down> gj
 map <Up>   gk
 nnoremap j gj
 nnoremap k gk
-
-" format the entire file
-nmap <leader>fef ggVG=
 
 " Open new buffers
 nmap <leader>s<left>   :leftabove  vnew<cr>
@@ -182,10 +181,13 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
