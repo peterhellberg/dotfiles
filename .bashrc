@@ -38,7 +38,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # Git
 source /usr/local/etc/bash_completion.d/git-completion.bash
-export GIT_EDITOR='vim'
+export GIT_EDITOR='nvim'
 export PATH=$PATH:/usr/local/git/bin
 
 # Postgres
