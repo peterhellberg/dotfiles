@@ -1,4 +1,3 @@
-set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -68,6 +67,7 @@ set cursorline
 set modelines=3
 set shiftwidth=2
 set clipboard=unnamed,unnamedplus
+set mouse=c
 set synmaxcol=256
 set tabstop=2
 set nowrap
