@@ -176,6 +176,9 @@ if bufwinnr(1)
   nmap Ö <C-W>+<C-W>+
 endif
 
+" Exit terminal
+tnoremap <Leader>e <C-\><C-n>
+
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
 
