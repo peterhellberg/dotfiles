@@ -24,10 +24,6 @@ export LANG=en_US.UTF-8
 export NVIM_TUI_ENABLE_TRUE_COLOR=true
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=true
 
-# OCI8 :/
-NLS_LANG=American_America.UTF8 export NLS_LANG
-ORACLE_HOME=/opt/oracle/instantclient_11_2 export ORACLE_HOME
-
 # ooc
 export OOC_LIBS=$HOME/Work/ooc
 export PATH=$PATH:$OOC_LIBS/sam:$OOC_LIBS/rock/bin
