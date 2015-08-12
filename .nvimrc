@@ -4,7 +4,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " Plugin dependencies
 Plugin 'kana/vim-textobj-user'
@@ -39,6 +39,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'fasterthanlime/ooc.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'maxbane/vim-asm_ca65'
 
 " Markup plugins
 Plugin 'tpope/vim-haml'
@@ -219,6 +220,9 @@ au BufRead,BufNewFile *.scss set filetype=sass
 
 " Slim
 au BufRead,BufNewFile *.slim set filetype=slim
+
+" ASM ca65
+au BufRead,BufNewFile *.s set filetype=asm_ca65
 
 " Go programming
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
