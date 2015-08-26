@@ -31,6 +31,7 @@ export PATH=$PATH:$OOC_LIBS/sam:$OOC_LIBS/rock/bin
 # Go
 export GOPATH=$HOME/Go
 export PATH=$PATH:$GOPATH/bin
+export GO15VENDOREXPERIMENT=0
 
 # Git
 source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -38,7 +39,7 @@ export GIT_EDITOR='nvim'
 export PATH=$PATH:/usr/local/git/bin
 
 # Postgres
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
 # Docker
 if which docker-machine >/dev/null; then
