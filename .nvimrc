@@ -40,6 +40,7 @@ Plugin 'fasterthanlime/ooc.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'maxbane/vim-asm_ca65'
+Plugin 'rhysd/vim-crystal'
 
 " Markup plugins
 Plugin 'tpope/vim-haml'
