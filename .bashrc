@@ -43,7 +43,7 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
 # Docker
 if which docker-machine >/dev/null; then
-  eval "$(docker-machine env default)" &
+  eval "$(docker-machine env default)" & disown
   export DOCKER_TLS_VERIFY=1
 fi
 
