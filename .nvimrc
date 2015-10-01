@@ -232,10 +232,10 @@ autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
 
 au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+au FileType go nmap <leader>c <Plug>(go-callers)
+au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>d <Plug>(go-def-vertical)
 
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
