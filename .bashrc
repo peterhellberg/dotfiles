@@ -42,10 +42,12 @@ export PATH=$PATH:/usr/local/git/bin
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
 # Docker
-if which docker-machine >/dev/null; then
-  if [ $(docker-machine status default) == "Running" ]; then
-    eval "$(docker-machine env default)"
-    export DOCKER_TLS_VERIFY=1
+if [ $(id -un) == "peter" ]; then
+  if which docker-machine >/dev/null; then
+    if [ $(docker-machine status default) == "Running" ]; then
+      eval "$(docker-machine env default)"
+      export DOCKER_TLS_VERIFY=1
+    fi
   fi
 fi
 
