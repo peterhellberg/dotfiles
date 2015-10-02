@@ -41,6 +41,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'maxbane/vim-asm_ca65'
 Plugin 'rhysd/vim-crystal'
+Plugin 'lambdatoast/elm.vim'
 
 " Markup plugins
 Plugin 'tpope/vim-haml'
@@ -132,7 +133,7 @@ function! <SID>StripTrailingSpace()
     call cursor(l, c)
 endfun
 
-autocmd BufWritePre *.rb,*.js,*.coffee,*.ex,*.exs :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.rb,*.js,*.coffee,*.ex,*.exs,*.elm :call <SID>StripTrailingSpace()
 autocmd BufWritePre *.scss,*.haml,*.slim,*.html,*.builder :call <SID>StripTrailingSpace()
 autocmd BufWritePre *.txt,*.md,*.markdown :call <SID>StripTrailingSpace()
 
@@ -242,3 +243,8 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods   = 1
 let g:go_disable_autoinstall = 1
 let g:go_fmt_command = "goimports"
+
+" Elm
+au FileType elm nnoremap <leader>el :ElmEvalLine<CR>
+au FileType elm vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
+au FileType elm nnoremap <leader>em :ElmMakeCurrentFile<CR>
