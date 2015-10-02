@@ -32,6 +32,7 @@ export PATH=$PATH:$OOC_LIBS/sam:$OOC_LIBS/rock/bin
 export GOPATH=$HOME/Go
 export PATH=$PATH:$GOPATH/bin
 export GO15VENDOREXPERIMENT=0
+export GOGC=400
 
 # Git
 source /usr/local/etc/bash_completion.d/git-completion.bash
