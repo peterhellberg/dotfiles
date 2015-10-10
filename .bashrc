@@ -42,6 +42,9 @@ export PATH=$PATH:/usr/local/git/bin
 # Postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
+# Rust
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/lib/rustlib/x86_64-apple-darwin/lib/
+
 # Docker
 if [ $(id -un) == "peter" ]; then
   if which docker-machine >/dev/null; then
