@@ -133,7 +133,7 @@ function! <SID>StripTrailingSpace()
     call cursor(l, c)
 endfun
 
-autocmd BufWritePre *.rb,*.js,*.coffee,*.ex,*.exs,*.elm :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.rb,*.js,*.coffee,*.ex,*.exs,*.elm,*.rs :call <SID>StripTrailingSpace()
 autocmd BufWritePre *.scss,*.haml,*.slim,*.html,*.builder :call <SID>StripTrailingSpace()
 autocmd BufWritePre *.txt,*.md,*.markdown :call <SID>StripTrailingSpace()
 
