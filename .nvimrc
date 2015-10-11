@@ -82,6 +82,7 @@ set nobackup
 set ignorecase
 set smartcase
 set lazyredraw
+set showmatch
 set splitright
 set scrolloff=4
 set sidescroll=1
