@@ -30,6 +30,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'itchyny/lightline.vim'
 Plugin 'sunaku/vim-ruby-minitest'
 Plugin 'benmills/vim-golang-alternate'
+Plugin 'racer-rust/vim-racer'
 
 " Language plugins
 Plugin 'vim-ruby/vim-ruby'
