@@ -9,9 +9,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin dependencies
 Plugin 'kana/vim-textobj-user'
 
-" Plugins with dependencies
-Plugin 'nelstrom/vim-textobj-rubyblock'
-
 " Plugin bundles
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -19,34 +16,41 @@ Plugin 'ervandew/supertab'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'itchyny/lightline.vim'
-Plugin 'sunaku/vim-ruby-minitest'
-Plugin 'benmills/vim-golang-alternate'
-Plugin 'racer-rust/vim-racer'
 
-" Language plugins
-Plugin 'vim-ruby/vim-ruby'
+" Go plugins
+Plugin 'benmills/vim-golang-alternate'
 Plugin 'fatih/vim-go'
-Plugin 'zah/nimrod.vim'
+
+" Ruby plugins
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'sunaku/vim-ruby-minitest'
+Plugin 'vim-ruby/vim-ruby'
+
+" Rust plugins
+Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
-Plugin 'fasterthanlime/ooc.vim'
+
+" Esoteric plugins
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'fasterthanlime/ooc.vim'
 Plugin 'maxbane/vim-asm_ca65'
 Plugin 'rhysd/vim-crystal'
-Plugin 'lambdatoast/elm.vim'
+Plugin 'zah/nimrod.vim'
 
 " Markup plugins
-Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-haml'
 Plugin 'cespare/vim-toml'
 Plugin 'cakebaker/scss-syntax.vim'
 
