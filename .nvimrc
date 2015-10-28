@@ -50,7 +50,6 @@ Plugin 'zah/nimrod.vim'
 
 " Markup plugins
 Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-haml'
 Plugin 'cespare/vim-toml'
 Plugin 'cakebaker/scss-syntax.vim'
 
