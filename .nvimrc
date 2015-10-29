@@ -246,6 +246,7 @@ au FileType go nmap <Leader>d <Plug>(go-def-vertical)
 let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods   = 1
+let g:go_highlight_structs   = 1
 let g:go_disable_autoinstall = 1
 let g:go_fmt_command = "goimports"
 
