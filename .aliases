@@ -1,5 +1,6 @@
 # Aliases
 alias vim='nvim'
+alias vi='nvim'
 alias :q='logout'
 alias rake_with_verbose_tests="rake TESTOPTS='-v'"
 alias require='cd ~ && pry -r'
