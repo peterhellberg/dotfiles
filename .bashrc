@@ -65,31 +65,6 @@ if [ "$TERM" != "dumb" ]; then
 fi
 # Functions
 
-# Ruby docs
-function ref {
-  open http://www.omniref.com/?q="$*"
-}
-
-# Go docs
-function search-godoc {
-  curl -s -H 'Accept: text/plain' http://godoc.org/?q="$*"
-}
-
-# Control the fan speed of the Macbook Air
-# NOTE: Don’t complain if you melt your computer.
-function set_fan_speed {
-  if [ -z "$1" ]; then min_speed=2000; else min_speed=$1; fi
-  if [ -z "$2" ]; then max_speed=6500; else max_speed=$2; fi
-
-  smc=/Applications/smcFanControl.app/Contents/Resources/smc
-
-  min_hex=$(python -c "print hex("$min_speed" << 2)[2:]")
-  max_hex=$(python -c "print hex("$max_speed" << 2)[2:]")
-
-  ${smc} -k F0Mn -w ${min_hex}
-  ${smc} -k F0Mx -w ${max_hex}
-}
-
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo "("${ref#refs/heads/}") "
