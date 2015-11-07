@@ -42,6 +42,7 @@ Plugin 'rust-lang/rust.vim'
 " Esoteric plugins
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'elmcast/elm-vim'
 Plugin 'fasterthanlime/ooc.vim'
 Plugin 'maxbane/vim-asm_ca65'
 Plugin 'rhysd/vim-crystal'
