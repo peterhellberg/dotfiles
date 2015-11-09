@@ -199,8 +199,8 @@ let g:ctrlp_match_window_reversed = 0
 
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_by_filename = 0
-let g:ctrlp_max_files = 512
-let g:ctrlp_max_depth = 6
+let g:ctrlp_max_files = 256
+let g:ctrlp_max_depth = 4
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_user_command = {
   \ 'types': { 1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others | grep -v _workspace | grep -v private_gems'] },
