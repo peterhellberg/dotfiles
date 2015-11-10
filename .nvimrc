@@ -247,8 +247,3 @@ let g:go_highlight_methods   = 1
 let g:go_highlight_structs   = 1
 let g:go_disable_autoinstall = 1
 let g:go_fmt_command = "goimports"
-
-" Elm
-au FileType elm nnoremap <leader>el :ElmEvalLine<CR>
-au FileType elm vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
-au FileType elm nnoremap <leader>em :ElmMakeCurrentFile<CR>
