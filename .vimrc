@@ -107,8 +107,6 @@ inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
 
-nnoremap <silent> <F5> :set paste!<CR>
-
 set shortmess+=I
 set virtualedit=block
 
