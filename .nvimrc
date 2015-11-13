@@ -88,7 +88,7 @@ set smartcase
 set lazyredraw
 set showmatch
 set splitright
-set scrolloff=4
+set scrolloff=3
 set sidescroll=1
 set sidescrolloff=1
 set noshowmode
