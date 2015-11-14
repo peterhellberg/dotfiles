@@ -17,6 +17,7 @@ alias plot-data='curl --data-binary @- plot-data.herokuapp.com'
 alias chat='ssh -i ~/.ssh/ssh-chat.rsa peterhellberg@chat.shazow.net'
 alias local-ssh-chat='ssh-chat --bind 0.0.0.0:2200 -i ~/.ssh/ssh-chat.rsa --admin 8e:08:d6:e0:65:0c:c0:9c:8c:b4:18:f6:6b:41:d3:fc'
 alias ccat='ccat --color-code="String=darkgreen" --color-code="Type=brown" --color-code="Keyword=blue" --color-code="Plaintext=lightgray" --color-code="Punctuation=lightgray" --color-code="Decimal=darkred"'
+alias love='/Applications/love.app/Contents/MacOS/love'
 
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
