@@ -11,8 +11,9 @@ Plugin 'kana/vim-textobj-user'
 
 " Plugin bundles
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
+Plugin 'honza/vim-snippets'
+Plugin 'itchyny/lightline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
@@ -20,7 +21,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
-Plugin 'itchyny/lightline.vim'
 
 " Go plugins
 Plugin 'benmills/vim-golang-alternate'
@@ -28,11 +28,11 @@ Plugin 'fatih/vim-go'
 
 " Ruby plugins
 Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'sunaku/vim-ruby-minitest'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
-Plugin 'sunaku/vim-ruby-minitest'
 Plugin 'vim-ruby/vim-ruby'
 
 " Rust plugins
@@ -40,22 +40,22 @@ Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
 
 " Esoteric plugins
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'elmcast/elm-vim'
 Plugin 'fasterthanlime/ooc.vim'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'maxbane/vim-asm_ca65'
 Plugin 'rhysd/vim-crystal'
 Plugin 'zah/nimrod.vim'
 
 " Markup plugins
-Plugin 'tpope/vim-markdown'
-Plugin 'cespare/vim-toml'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'cespare/vim-toml'
+Plugin 'tpope/vim-markdown'
 
 " Git plugins
-Plugin 'tpope/vim-git'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-git'
 
 " Color scheme
 Plugin 'nanotech/jellybeans.vim'
@@ -205,7 +205,6 @@ nnoremap <silent><leader>r :CtrlPMRUFiles<cr>
 
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
-
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_by_filename = 0
 let g:ctrlp_max_files = 256
@@ -235,15 +234,15 @@ au BufEnter *.go setl nolist noexpandtab
 autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
 
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <leader>c <Plug>(go-callers)
+au FileType go nmap <Leader>d <Plug>(go-def-vertical)
 au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>d <Plug>(go-def-vertical)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <leader>c <Plug>(go-callers)
 
-let g:go_highlight_operators = 1
+let g:go_disable_autoinstall = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods   = 1
+let g:go_highlight_operators = 1
 let g:go_highlight_structs   = 1
-let g:go_disable_autoinstall = 1
 let g:go_fmt_command = "goimports"
