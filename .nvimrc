@@ -35,10 +35,6 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 Plugin 'vim-ruby/vim-ruby'
 
-" Rust plugins
-Plugin 'racer-rust/vim-racer'
-Plugin 'rust-lang/rust.vim'
-
 " Esoteric plugins
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'elmcast/elm-vim'
