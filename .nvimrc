@@ -132,11 +132,11 @@ function! <SID>StripTrailingSpace()
     call cursor(l, c)
 endfun
 
-autocmd BufWritePre *.rb,*.js,*.coffee,*.ex,*.exs,*.elm,*.rs,*.c,*.lua :call <SID>StripTrailingSpace()
-autocmd BufWritePre *.scss,*.haml,*.slim,*.html,*.builder :call <SID>StripTrailingSpace()
-autocmd BufWritePre *.txt,*.md,*.markdown :call <SID>StripTrailingSpace()
+" Strip trailing space for a list of extensions
+autocmd BufWritePre *.builder,*.c,*.coffee,*.elm,*.ex,*.exs,*.haml,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.slim,*.txt :call <SID>StripTrailingSpace()
 
-au BufNewFile * set noeol
+" Set noeol on all new files
+autocmd BufNewFile * set noeol
 
 " No show command
 autocmd VimEnter * set nosc
