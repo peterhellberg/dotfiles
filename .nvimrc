@@ -227,7 +227,6 @@ au BufRead,BufNewFile *.s set filetype=asm_ca65
 " Go programming
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
 au BufEnter *.go setl nolist noexpandtab
-autocmd BufWritePre *.go :%s/\s\+$//e
 autocmd FileType go compiler go
 
 au FileType go nmap <Leader>d <Plug>(go-def-vertical)
