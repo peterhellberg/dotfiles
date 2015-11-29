@@ -65,31 +65,31 @@ let mapleader=","
 
 color jellybeans
 
-set hidden
-set cursorline
-set modelines=3
-set shiftwidth=2
 set clipboard=unnamed,unnamedplus
-set mouse=c
-set synmaxcol=256
-set tabstop=2
-set nowrap
-set number
+set cursorline
 set expandtab
-set nowritebackup
-set noswapfile
-set nobackup
+set hidden
 set ignorecase
-set smartcase
 set lazyredraw
-set showmatch
-set splitright
+set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
+set modelines=3
+set mouse=c
+set nobackup
+set noshowmode
+set noswapfile
+set nowrap
+set nowritebackup
+set number
+set omnifunc=syntaxcomplete#Complete
 set scrolloff=3
+set shiftwidth=2
+set showmatch
 set sidescroll=1
 set sidescrolloff=1
-set noshowmode
-set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
-set omnifunc=syntaxcomplete#Complete
+set smartcase
+set splitright
+set synmaxcol=256
+set tabstop=2
 
 " Disable preview window
 set completeopt-=preview
@@ -226,8 +226,6 @@ au BufRead,BufNewFile *.s set filetype=asm_ca65
 
 " Go programming
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
-au BufEnter *.go setl nolist noexpandtab
-autocmd FileType go compiler go
 
 au FileType go nmap <Leader>d <Plug>(go-def-vertical)
 au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
