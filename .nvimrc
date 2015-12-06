@@ -196,8 +196,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
-nnoremap <silent><leader>t :CtrlP<cr>
-nnoremap <silent><leader>r :CtrlPMRUFiles<cr>
 
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
