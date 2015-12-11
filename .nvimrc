@@ -66,6 +66,7 @@ let mapleader=","
 color jellybeans
 
 set clipboard=unnamed,unnamedplus
+set completeopt-=preview
 set cursorline
 set expandtab
 set hidden
@@ -83,6 +84,7 @@ set number
 set omnifunc=syntaxcomplete#Complete
 set scrolloff=3
 set shiftwidth=2
+set shortmess+=I
 set showmatch
 set sidescroll=1
 set sidescrolloff=1
@@ -90,9 +92,7 @@ set smartcase
 set splitright
 set synmaxcol=256
 set tabstop=2
-
-" Disable preview window
-set completeopt-=preview
+set virtualedit=block
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -111,8 +111,6 @@ inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
 
-set shortmess+=I
-set virtualedit=block
 
 " Disable cursor line in insert mode
 au InsertEnter * set nocursorline
