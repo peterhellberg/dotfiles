@@ -131,7 +131,7 @@ function! <SID>StripTrailingSpace()
 endfun
 
 " Strip trailing space for a list of extensions
-autocmd BufWritePre *.builder,*.c,*.coffee,*.elm,*.ex,*.exs,*.haml,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.slim,*.txt :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.builder,*.c,*.coffee,*.elm,*.ex,*.exs,*.haml,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.txt :call <SID>StripTrailingSpace()
 
 " Set noeol on all new files
 autocmd BufNewFile * set noeol
@@ -210,12 +210,6 @@ let g:ctrlp_user_command = {
 " Ack
 nmap <leader>a :Ack! 
 set shellpipe=>
-
-" Sass
-au BufRead,BufNewFile *.scss set filetype=sass
-
-" Slim
-au BufRead,BufNewFile *.slim set filetype=slim
 
 " ASM ca65
 au BufRead,BufNewFile *.s set filetype=asm_ca65
