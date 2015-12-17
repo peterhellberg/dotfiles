@@ -25,23 +25,6 @@ alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/opt/elastics
 alias default-redis-server='cd && redis-server /usr/local/etc/redis.conf'
 alias volatile-redis-server='cd && redis-server /usr/local/etc/volatile-redis.conf'
 
-# Git related aliases
-alias g='git'
-alias gst='git status'
-alias gl='git pull'
-alias gpr='git pull --rebase'
-alias gup='git fetch && git rebase'
-alias gp='git push'
-alias gd='git diff'
-alias gdv='git diff -w "$@" | vim -R -'
-alias gc='git commit -v'
-alias gca='git commit -v -a'
-alias gb='git branch'
-alias gba='git branch -a'
-alias gcount='git shortlog -sn'
-alias gcp='git cherry-pick'
-alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
-
 # Go to current project
 alias p='cd `cat $HOME/.current_project`'
 alias p.='echo `pwd` > $HOME/.current_project'
