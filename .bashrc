@@ -42,7 +42,6 @@ if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   source `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi
 export GIT_EDITOR='nvim'
-export PATH=$PATH:/usr/local/git/bin
 
 # Postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
