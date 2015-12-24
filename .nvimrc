@@ -36,6 +36,7 @@ Plugin 'tpope/vim-rake'
 Plugin 'vim-ruby/vim-ruby'
 
 " Esoteric plugins
+Plugin 'rust-lang/rust.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'elmcast/elm-vim'
 Plugin 'fasterthanlime/ooc.vim'
