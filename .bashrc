@@ -48,7 +48,7 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
 # Rust
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/lib/rustlib/x86_64-apple-darwin/lib/
-export RUST_SRC_PATH=$HOME/Work/src/rustc-1.3.0/src
+export RUST_SRC_PATH=$HOME/Work/src/rustc-1.5.0/src
 
 # Docker
 if [ $(id -un) == "peter" ]; then
