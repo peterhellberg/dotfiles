@@ -83,7 +83,6 @@ set nowrap
 set nowritebackup
 set number
 set omnifunc=syntaxcomplete#Complete
-set scrolloff=3
 set shiftwidth=2
 set shortmess+=I
 set showmatch
