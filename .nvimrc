@@ -111,7 +111,6 @@ inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
 
-
 " Disable cursor line in insert mode
 au InsertEnter * set nocursorline
 au InsertLeave * set cursorline nopaste
