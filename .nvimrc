@@ -206,6 +206,9 @@ let g:ctrlp_user_command = {
   \ 'fallback': 'ack -f %s --ignore-dir=.git | head -' . g:ctrlp_max_files
   \ }
 
+" GitGutter
+let g:gitgutter_max_signs = 2500
+
 " Ack
 nmap <leader>a :Ack! 
 set shellpipe=>
