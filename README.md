@@ -10,8 +10,8 @@ git clone git@github.com:peterhellberg/dotfiles.git .dotfiles
 ln -s .dotfiles/.??* -t .
 unlink .git
 ```
-## .vimrc
+## .nvimrc and .vimrc
 
-The Vim configuration require [Vundle](https://github.com/gmarik/Vundle.vim) to be installed.
+The Vim configuration require [Vundle](https://github.com/VundleVim/Vundle.vim) to be installed.
 
-`git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+`git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
