@@ -46,7 +46,6 @@ Plugin 'zah/nimrod.vim'
 
 " Markup plugins
 Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'cespare/vim-toml'
 Plugin 'tpope/vim-markdown'
 
 " Git plugins
