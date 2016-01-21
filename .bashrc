@@ -68,11 +68,15 @@ if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='--color=auto'
   eval `dircolors ~/.dircolors`
 fi
-# Functions
 
+# Functions
 function parse_git_branch {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo "("${ref#refs/heads/}") "
+}
+
+function randomgif {
+  giphy random "$@" | xargs curl -s -o '/tmp/giphy.gif' && imgcat '/tmp/giphy.gif'
 }
 
 # NPM
