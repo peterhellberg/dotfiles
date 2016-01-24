@@ -45,7 +45,7 @@ fi
 export GIT_EDITOR='nvim'
 
 # Postgres
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
 # Rust
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/lib/rustlib/x86_64-apple-darwin/lib/
