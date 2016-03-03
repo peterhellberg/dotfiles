@@ -34,14 +34,18 @@ export GOPATH=$HOME/Go
 export PATH=$PATH:$GOPATH/bin
 export GO15VENDOREXPERIMENT=0
 export GOGC=400
-if [ -f `brew --prefix`/etc/bash_completion.d/go_completion.sh ]; then
-  source `brew --prefix`/etc/bash_completion.d/go_completion.sh
+
+if [ -f /usr/local/bin/brew ]; then
+  if [ -f `/usr/local/bin/brew --prefix`/etc/bash_completion.d/go_completion.sh ]; then
+    source `/usr/local/bin/brew --prefix`/etc/bash_completion.d/go_completion.sh
+  fi
+
+  if [ -f `/usr/local/bin/brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+    source `/usr/local/bin/brew --prefix`/etc/bash_completion.d/git-completion.bash
+  fi
 fi
 
 # Git
-if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-  source `brew --prefix`/etc/bash_completion.d/git-completion.bash
-fi
 export GIT_EDITOR='nvim'
 
 # Postgres
