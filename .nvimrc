@@ -23,7 +23,6 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 
 " Go plugins
-Plugin 'benmills/vim-golang-alternate'
 Plugin 'fatih/vim-go'
 
 " Ruby plugins
@@ -228,8 +227,14 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods   = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs   = 1
-let g:go_auto_type_info      = 1
 let g:go_fmt_command = "goimports"
+
+augroup go
+  autocmd!
+  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+augroup END
 
 " Rust
 let g:rustfmt_autosave = 1
