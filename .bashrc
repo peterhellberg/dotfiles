@@ -84,6 +84,10 @@ function randomgif {
   giphy random "$@" | xargs curl -s -o '/tmp/giphy.gif' && imgcat '/tmp/giphy.gif'
 }
 
+function since {
+  echo "$(git l $1..HEAD)" | tac | tail
+}
+
 # NPM
 export PATH=$PATH:/usr/local/share/npm/bin
 
