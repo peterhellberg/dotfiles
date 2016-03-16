@@ -180,7 +180,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
@@ -199,7 +199,7 @@ let g:ctrlp_max_files = 256
 let g:ctrlp_max_depth = 4
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_user_command = {
-  \ 'types': { 1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others | grep -v _workspace | grep -v private_gems'] },
+  \ 'types': { 1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others | grep -v vendor | grep -v _workspace | grep -v private_gems'] },
   \ 'fallback': 'ack -f %s --ignore-dir=.git | head -' . g:ctrlp_max_files
   \ }
 
