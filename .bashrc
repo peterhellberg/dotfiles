@@ -32,7 +32,6 @@ export PATH=$PATH:$OOC_LIBS/sam:$OOC_LIBS/rock/bin
 # Go
 export GOPATH=$HOME/Go
 export PATH=$PATH:$GOPATH/bin
-export GO15VENDOREXPERIMENT=0
 export GOGC=400
 
 if [ -f /usr/local/bin/brew ]; then
