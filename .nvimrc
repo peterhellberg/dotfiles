@@ -42,6 +42,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'maxbane/vim-asm_ca65'
 Plugin 'rhysd/vim-crystal'
 Plugin 'zah/nimrod.vim'
+Plugin 'dleonard0/pony-vim-syntax'
 
 " Markup plugins
 Plugin 'cakebaker/scss-syntax.vim'
