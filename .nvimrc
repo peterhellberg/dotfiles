@@ -66,7 +66,6 @@ color jellybeans
 
 set clipboard=unnamed,unnamedplus
 set completeopt-=preview
-set cursorline
 set expandtab
 set hidden
 set ignorecase
@@ -75,12 +74,15 @@ set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set modelines=3
 set mouse=c
 set nobackup
+set nocursorcolumn
+set nocursorline
 set noshowmode
 set noswapfile
 set nowrap
 set nowritebackup
 set number
 set omnifunc=syntaxcomplete#Complete
+set re=1
 set shiftwidth=2
 set shortmess+=I
 set showmatch
@@ -91,6 +93,8 @@ set splitright
 set synmaxcol=256
 set tabstop=2
 set virtualedit=block
+
+syntax sync minlines=256
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
