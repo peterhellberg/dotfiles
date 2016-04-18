@@ -24,7 +24,6 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 
 " Go plugins
-Plugin 'benmills/vim-golang-alternate'
 Plugin 'fatih/vim-go'
 
 " Ruby plugins
@@ -44,6 +43,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'maxbane/vim-asm_ca65'
 Plugin 'rhysd/vim-crystal'
 Plugin 'zah/nimrod.vim'
+Plugin 'dleonard0/pony-vim-syntax'
 
 " Markup plugins
 Plugin 'cakebaker/scss-syntax.vim'
@@ -65,32 +65,37 @@ let mapleader=","
 
 color jellybeans
 
-set hidden
-set cursorline
-set modelines=3
-set shiftwidth=2
 set clipboard=unnamed,unnamedplus
-set synmaxcol=256
-set tabstop=2
-set nowrap
-set number
+set completeopt-=preview
 set expandtab
-set nowritebackup
-set noswapfile
-set nobackup
+set hidden
 set ignorecase
-set smartcase
 set lazyredraw
-set splitright
-set scrolloff=4
+set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
+set modelines=3
+set mouse=c
+set nobackup
+set nocursorcolumn
+set nocursorline
+set noshowmode
+set noswapfile
+set nowrap
+set nowritebackup
+set number
+set omnifunc=syntaxcomplete#Complete
+set re=1
+set shiftwidth=2
+set shortmess+=I
+set showmatch
 set sidescroll=1
 set sidescrolloff=1
-set noshowmode
-set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
-set omnifunc=syntaxcomplete#Complete
+set smartcase
+set splitright
+set synmaxcol=256
+set tabstop=2
+set virtualedit=block
 
-" Disable preview window
-set completeopt-=preview
+syntax sync minlines=256
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -108,9 +113,6 @@ inoremap jk <Esc>
 inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
-
-set shortmess+=I
-set virtualedit=block
 
 " Disable cursor line in insert mode
 au InsertEnter * set nocursorline
@@ -130,11 +132,11 @@ function! <SID>StripTrailingSpace()
     call cursor(l, c)
 endfun
 
-autocmd BufWritePre *.rb,*.js,*.coffee,*.ex,*.exs :call <SID>StripTrailingSpace()
-autocmd BufWritePre *.scss,*.haml,*.slim,*.html,*.builder :call <SID>StripTrailingSpace()
-autocmd BufWritePre *.txt,*.md,*.markdown :call <SID>StripTrailingSpace()
+" Strip trailing space for a list of extensions
+autocmd BufWritePre *.builder,*.c,*.coffee,*.elm,*.ex,*.exs,*.haml,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.txt :call <SID>StripTrailingSpace()
 
-au BufNewFile * set noeol
+" Set noeol on all new files
+autocmd BufNewFile * set noeol
 
 " No show command
 autocmd VimEnter * set nosc
@@ -181,7 +183,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
@@ -191,48 +193,51 @@ let g:UltiSnipsExpandTrigger="<tab>"
 
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
-nnoremap <silent><leader>t :CtrlP<cr>
-nnoremap <silent><leader>r :CtrlPMRUFiles<cr>
 
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
-
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_by_filename = 0
 let g:ctrlp_max_files = 256
 let g:ctrlp_max_depth = 4
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_user_command = {
-  \ 'types': { 1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others | grep -v _workspace | grep -v private_gems'] },
+  \ 'types': { 1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others | grep -v vendor | grep -v _workspace | grep -v private_gems'] },
   \ 'fallback': 'ack -f %s --ignore-dir=.git | head -' . g:ctrlp_max_files
   \ }
+
+" GitGutter
+let g:gitgutter_max_signs = 2500
 
 " Ack
 nmap <leader>a :Ack! 
 set shellpipe=>
 
-" Sass
-au BufRead,BufNewFile *.scss set filetype=sass
-
-" Slim
-au BufRead,BufNewFile *.slim set filetype=slim
+" ASM ca65
+au BufRead,BufNewFile *.s set filetype=asm_ca65
 
 " Go programming
-set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
-au BufEnter *.go setl nolist noexpandtab
-autocmd BufWritePre *.go :%s/\s\+$//e
-autocmd FileType go compiler go
 
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>d <Plug>(go-def-vertical)
+au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <leader>c <Plug>(go-callers)
 
-let g:go_highlight_operators = 1
+let g:go_disable_autoinstall = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods   = 1
-let g:go_disable_autoinstall = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs   = 1
 let g:go_fmt_command = "goimports"
+
+augroup go
+  autocmd!
+  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+augroup END
+
+" Rust
+let g:rustfmt_autosave = 1
