@@ -55,16 +55,6 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/lib/rustlib/x86_64-apple-
 export RUST_SRC_PATH=$HOME/Work/src/rustc-1.6.0/src
 export PATH=$PATH:$HOME/.cargo/bin/
 
-# Docker
-if [ $(id -un) == "peter" ]; then
-  if which docker-machine >/dev/null; then
-    if [ $(docker-machine status default) == "Running" ]; then
-      eval "$(docker-machine env default)"
-      export DOCKER_TLS_VERIFY=1
-    fi
-  fi
-fi
-
 # Coreutils gnubin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
