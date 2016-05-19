@@ -1,6 +1,7 @@
 [user]
   name = Peter Hellberg
   email = peter@c7.se
+  signingkey = D60BC6C4
 [push]
   default = upstream
 [apply]
@@ -28,3 +29,5 @@
   untracked = cyan
 [diff]
   algorithm = patience
+[commit]
+  gpgsign = false
