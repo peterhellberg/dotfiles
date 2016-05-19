@@ -43,6 +43,7 @@ Plugin 'maxbane/vim-asm_ca65'
 Plugin 'rhysd/vim-crystal'
 Plugin 'zah/nimrod.vim'
 Plugin 'dleonard0/pony-vim-syntax'
+Plugin 'lluchs/vim-wren'
 
 " Markup plugins
 Plugin 'cakebaker/scss-syntax.vim'
@@ -90,7 +91,7 @@ set sidescroll=1
 set sidescrolloff=1
 set smartcase
 set splitright
-set synmaxcol=256
+set synmaxcol=1024
 set tabstop=2
 set virtualedit=block
 
@@ -112,6 +113,8 @@ inoremap jk <Esc>
 inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
+
+tnoremap <Leader>e <C-\><C-n>
 
 " Disable cursor line in insert mode
 au InsertEnter * set nocursorline
