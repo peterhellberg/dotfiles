@@ -65,6 +65,7 @@ let mapleader=","
 
 color jellybeans
 
+set termguicolors
 set clipboard=unnamed,unnamedplus
 set completeopt-=preview
 set expandtab
