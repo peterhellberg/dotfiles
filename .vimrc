@@ -44,6 +44,7 @@ Plugin 'maxbane/vim-asm_ca65'
 Plugin 'rhysd/vim-crystal'
 Plugin 'zah/nimrod.vim'
 Plugin 'dleonard0/pony-vim-syntax'
+Plugin 'lluchs/vim-wren'
 
 " Markup plugins
 Plugin 'cakebaker/scss-syntax.vim'
@@ -65,6 +66,7 @@ let mapleader=","
 
 color jellybeans
 
+set termguicolors
 set clipboard=unnamed,unnamedplus
 set completeopt-=preview
 set expandtab
