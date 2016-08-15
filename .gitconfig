@@ -29,5 +29,6 @@
   untracked = cyan
 [diff]
   algorithm = patience
+  compactionHeuristic = true
 [commit]
   gpgsign = false
