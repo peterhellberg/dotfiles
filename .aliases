@@ -19,7 +19,6 @@ alias require='cd ~ && pry -r'
 alias spy-clear-godep-go-test='if [ -d "Godeps" ]; then spy clear-godep-go test $(go list ./... | grep -v /vendor/); else spy clear-go test $(go list ./... | grep -v /vendor/); fi'
 alias travis-script='if [ -f ".travis.yml" ]; then yaml2json .travis.yml | jq -r ".script|select (.!=null)|.[]" | sh; else echo ".travis.yml missing"; fi'
 alias t='if [ -d "Godeps" ]; then godep go test ./...; else go test ./...; fi'
-alias vim='nvim'
 
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
