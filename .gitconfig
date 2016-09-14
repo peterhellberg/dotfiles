@@ -2,6 +2,8 @@
   name = Peter Hellberg
   email = peter@c7.se
   signingkey = D60BC6C4
+[fetch]
+  prune = true
 [push]
   default = upstream
 [apply]
