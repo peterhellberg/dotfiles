@@ -13,6 +13,7 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'SirVer/ultisnips'
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
+Plugin 'peterhellberg/snippets'
 Plugin 'itchyny/lightline.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
@@ -24,6 +25,7 @@ Plugin 'tpope/vim-surround'
 
 " Go plugins
 Plugin 'fatih/vim-go'
+Plugin 'raphael/vim-present-simple'
 
 " Ruby plugins
 Plugin 'nelstrom/vim-textobj-rubyblock'
