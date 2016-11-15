@@ -44,7 +44,7 @@ if [ -f /usr/local/bin/brew ]; then
 fi
 
 # Git
-export GIT_EDITOR='nvim'
+export GIT_EDITOR='vim'
 
 # Postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
