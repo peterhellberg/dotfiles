@@ -1,66 +1,60 @@
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Plugin dependencies
-Plugin 'kana/vim-textobj-user'
+"Plug 'kana/vim-textobj-user'
 
 " Plugin bundles
-Plugin 'SirVer/ultisnips'
-Plugin 'ervandew/supertab'
-Plugin 'honza/vim-snippets'
-Plugin 'peterhellberg/snippets'
-Plugin 'itchyny/lightline.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
+Plug 'SirVer/ultisnips'
+Plug 'ervandew/supertab'
+Plug 'honza/vim-snippets'
+Plug 'peterhellberg/snippets'
+Plug 'itchyny/lightline.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'nazo/pt.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 
 " Go plugins
-Plugin 'fatih/vim-go'
-Plugin 'raphael/vim-present-simple'
+Plug 'fatih/vim-go', { 'branch': 'vim-8.0' }
+Plug 'raphael/vim-present-simple'
 
 " Ruby plugins
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'sunaku/vim-ruby-minitest'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'vim-ruby/vim-ruby'
+"Plug 'nelstrom/vim-textobj-rubyblock'
+"Plug 'sunaku/vim-ruby-minitest'
+"Plug 'tpope/vim-bundler'
+"Plug 'tpope/vim-endwise'
+"Plug 'tpope/vim-rails'
+"Plug 'tpope/vim-rake'
+"Plug 'vim-ruby/vim-ruby'
 
 " Esoteric plugins
-Plugin 'rust-lang/rust.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'elmcast/elm-vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'maxbane/vim-asm_ca65'
-Plugin 'rhysd/vim-crystal'
-Plugin 'zah/nimrod.vim'
-Plugin 'dleonard0/pony-vim-syntax'
-Plugin 'lluchs/vim-wren'
+"Plug 'rust-lang/rust.vim'
+"Plug 'elixir-lang/vim-elixir'
+"Plug 'elmcast/elm-vim'
+"Plug 'kchmck/vim-coffee-script'
+"Plug 'maxbane/vim-asm_ca65'
+"Plug 'rhysd/vim-crystal'
+"Plug 'zah/nimrod.vim'
+"Plug 'dleonard0/pony-vim-syntax'
+"Plug 'lluchs/vim-wren'
 
 " Markup plugins
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'tpope/vim-markdown'
+"Plug 'cakebaker/scss-syntax.vim'
+Plug 'tpope/vim-markdown'
 
 " Git plugins
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-git'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-git'
 
 " Color scheme
-Plugin 'nanotech/jellybeans.vim'
+Plug 'nanotech/jellybeans.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()
+" Add plugins to &runtimepath
+call plug#end()
 
 filetype plugin indent on
 
@@ -127,8 +121,6 @@ au InsertLeave * set cursorline nopaste
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
-
 " Automatic formatting
 function! <SID>StripTrailingSpace()
     let l = line(".")
@@ -186,6 +178,8 @@ endif
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
 
+let NERDTreeDirArrowExpandable = '→'
+let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
@@ -212,7 +206,7 @@ let g:ctrlp_user_command = {
   \ }
 
 " GitGutter
-let g:gitgutter_max_signs = 2500
+let g:gitgutter_max_signs = 250
 
 " Ack
 nmap <leader>a :Ack! 
@@ -246,3 +240,41 @@ augroup END
 
 " Rust
 let g:rustfmt_autosave = 1
+
+if has("gui_running")
+  set fuoptions=maxvert,maxhorz
+  set guifont=Monaco:h16
+  set guioptions=aAce
+
+  " Disable beeps and flashes
+  au GUIEnter * set vb t_vb=
+end
+
+nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_encoding = 'utf-8'
+endif
+
+if executable('pt')
+  let g:ackprg = 'pt --nocolor'
+endif
+
+" Navigation
+" Map Ctrl+Arrows in mac OAOAOBOCODOAOBOB OA OAOB
+map! <ESC>[OA <C-Up>
+map! <ESC>[OB <C-Down>
+map! <ESC>[OD <C-Left>
+map! <ESC>[OC <C-Right>
+
+" Disable arrow keys
+"nnoremap <up>    <nop>
+"nnoremap <down>  <nop>
+"nnoremap <left>  <nop>
+"nnoremap <right> <nop>
+"inoremap <up>    <nop>
+"inoremap <down>  <nop>
+"inoremap <left>  <nop>
+"inoremap <right> <nop>
