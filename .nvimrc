@@ -1,6 +1,6 @@
 filetype off
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " Plugin dependencies
 "Plug 'kana/vim-textobj-user'
