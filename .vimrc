@@ -1,7 +1,10 @@
+filetype off
+
 call plug#begin('~/.vim/plugged')
 
-" Plugin dependencies
-"Plug 'kana/vim-textobj-user'
+" Go plugins
+Plug 'fatih/vim-go'
+Plug 'raphael/vim-present-simple'
 
 " Plugin bundles
 Plug 'SirVer/ultisnips'
@@ -18,19 +21,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
-" Go plugins
-Plug 'fatih/vim-go', { 'branch': 'vim-8.0' }
-Plug 'raphael/vim-present-simple'
-
-" Ruby plugins
-"Plug 'nelstrom/vim-textobj-rubyblock'
-"Plug 'sunaku/vim-ruby-minitest'
-"Plug 'tpope/vim-bundler'
-"Plug 'tpope/vim-endwise'
-"Plug 'tpope/vim-rails'
-"Plug 'tpope/vim-rake'
-"Plug 'vim-ruby/vim-ruby'
-
 " Esoteric plugins
 "Plug 'rust-lang/rust.vim'
 "Plug 'elixir-lang/vim-elixir'
@@ -43,7 +33,6 @@ Plug 'raphael/vim-present-simple'
 "Plug 'lluchs/vim-wren'
 
 " Markup plugins
-"Plug 'cakebaker/scss-syntax.vim'
 Plug 'tpope/vim-markdown'
 
 " Git plugins
@@ -61,6 +50,18 @@ filetype plugin indent on
 let mapleader=","
 
 color jellybeans
+
+set timeout
+set timeoutlen=2000
+
+if !has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
 
 set termguicolors
 set clipboard=unnamed,unnamedplus
@@ -212,6 +213,10 @@ let g:gitgutter_max_signs = 250
 nmap <leader>a :Ack! 
 set shellpipe=>
 
+if executable('pt')
+  let g:ackprg = 'pt --nocolor'
+endif
+
 " ASM ca65
 au BufRead,BufNewFile *.s set filetype=asm_ca65
 
@@ -241,40 +246,9 @@ augroup END
 " Rust
 let g:rustfmt_autosave = 1
 
-if has("gui_running")
-  set fuoptions=maxvert,maxhorz
-  set guifont=Monaco:h16
-  set guioptions=aAce
-
-  " Disable beeps and flashes
-  au GUIEnter * set vb t_vb=
-end
-
-nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-if executable('pt')
-  let g:unite_source_grep_command = 'pt'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
-  let g:unite_source_grep_recursive_opt = ''
-  let g:unite_source_grep_encoding = 'utf-8'
-endif
-
-if executable('pt')
-  let g:ackprg = 'pt --nocolor'
-endif
-
 " Navigation
 " Map Ctrl+Arrows in mac OAOAOBOCODOAOBOB OA OAOB
 map! <ESC>[OA <C-Up>
 map! <ESC>[OB <C-Down>
 map! <ESC>[OD <C-Left>
 map! <ESC>[OC <C-Right>
-
-" Disable arrow keys
-"nnoremap <up>    <nop>
-"nnoremap <down>  <nop>
-"nnoremap <left>  <nop>
-"nnoremap <right> <nop>
-"inoremap <up>    <nop>
-"inoremap <down>  <nop>
-"inoremap <left>  <nop>
-"inoremap <right> <nop>
