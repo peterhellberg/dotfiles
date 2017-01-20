@@ -22,7 +22,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
 " Esoteric plugins
-"Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 "Plug 'elixir-lang/vim-elixir'
 "Plug 'elmcast/elm-vim'
 "Plug 'kchmck/vim-coffee-script'
@@ -181,7 +181,6 @@ nmap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
-let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
 
