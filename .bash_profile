@@ -11,6 +11,7 @@ LIGHT_GRAY=$(tput setaf 7)
 WHITE=$(tput bold ; tput setaf 7)
 RESET_COLOR=$(tput sgr0)
 
+source ~/.profile
 source ~/.bashrc
 shopt -s checkwinsize
 
