@@ -50,8 +50,6 @@ export GIT_EDITOR='vim'
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
 # Rust
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/lib/rustlib/x86_64-apple-darwin/lib/
-export RUST_SRC_PATH=$HOME/Work/src/rustc-1.6.0/src
 export PATH=$PATH:$HOME/.cargo/bin/
 
 # Coreutils gnubin
