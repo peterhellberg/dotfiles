@@ -95,6 +95,8 @@ set tabstop=2
 set virtualedit=block
 set emoji
 
+set t_BE=
+
 syntax sync minlines=256
 
 " Reselect visual block after indent/outdent
