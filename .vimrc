@@ -20,6 +20,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'yssl/QFEnter'
 
 " Esoteric plugins
 Plug 'rust-lang/rust.vim'
