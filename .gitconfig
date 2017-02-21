@@ -14,6 +14,8 @@
   l = log --graph --pretty=format:'%C(yellow)%h %Cgreen%ae%Creset (%ar): %s'
   churn = !git --no-pager log --name-only --oneline | grep -v ' ' | sort | uniq -c | sort -nr | head
   undo-commit = reset --soft HEAD^
+  authors = shortlog -sne --no-merges -w1024,0,0
+  master-stage = log --reverse --pretty=format:'%C(yellow)%h %Cgreen%an%Creset (%ar): %s' --abbrev-commit master..stage
 [branch]
   autosetuprebase = always
 [color]
@@ -34,3 +36,5 @@
   compactionHeuristic = true
 [commit]
   gpgsign = false
+[http "https://gopkg.in"]
+	followRedirects = true
