@@ -20,6 +20,7 @@ alias travis-script='if [ -f ".travis.yml" ]; then yaml2json .travis.yml | jq -r
 alias t='if [ -d "Godeps" ]; then godep go test ./...; else go test ./...; fi'
 alias ack='pt'
 alias bff-master-beta-diff='cd ~/Go/src/github.com/TV4/cmore-mobile-bff && git checkout master && git pull --rebase && git checkout stage && clear && git log --reverse --pretty="%h %an: %s" --abbrev-commit --no-merges master..beta'
+alias merge-stage-to-master-test-and-push='git checkout master && git pull --rebase && git merge --no-ff stage && golint -set_exit_status && go vet $(go list ./... | grep -v /vendor/) && go test $(go list ./... | grep -v /vendor/) && git push && git checkout stage'
 
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
@@ -34,6 +35,7 @@ alias p.='echo `pwd` > $HOME/.current_project'
 ## Code7
 alias cg='cd ~/Work/Code7/GitHub'
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
+alias c7go='cd ~/Go/src/github.com/c7'
 alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
