@@ -2,8 +2,9 @@ filetype off
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Plugin dependencies
-"Plug 'kana/vim-textobj-user'
+" Go plugins
+Plug 'fatih/vim-go'
+Plug 'raphael/vim-present-simple'
 
 " Plugin bundles
 Plug 'SirVer/ultisnips'
@@ -19,22 +20,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-
-" Go plugins
-Plug 'fatih/vim-go'
-Plug 'raphael/vim-present-simple'
-
-" Ruby plugins
-"Plug 'nelstrom/vim-textobj-rubyblock'
-"Plug 'sunaku/vim-ruby-minitest'
-"Plug 'tpope/vim-bundler'
-"Plug 'tpope/vim-endwise'
-"Plug 'tpope/vim-rails'
-"Plug 'tpope/vim-rake'
-"Plug 'vim-ruby/vim-ruby'
+Plug 'yssl/QFEnter'
 
 " Esoteric plugins
-"Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 "Plug 'elixir-lang/vim-elixir'
 "Plug 'elmcast/elm-vim'
 "Plug 'kchmck/vim-coffee-script'
@@ -45,7 +34,6 @@ Plug 'raphael/vim-present-simple'
 "Plug 'lluchs/vim-wren'
 
 " Markup plugins
-"Plug 'cakebaker/scss-syntax.vim'
 Plug 'tpope/vim-markdown'
 
 " Git plugins
@@ -64,13 +52,25 @@ let mapleader=","
 
 color jellybeans
 
+set timeout
+set timeoutlen=2000
+
+if !has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
 set termguicolors
 set clipboard=unnamed,unnamedplus
 set completeopt-=preview
 set expandtab
 set hidden
 set ignorecase
-"set lazyredraw
+set lazyredraw
 set list listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set modelines=3
 set mouse=c
@@ -94,6 +94,9 @@ set splitright
 set synmaxcol=1024
 set tabstop=2
 set virtualedit=block
+set emoji
+
+set t_BE=
 
 syntax sync minlines=256
 
@@ -114,8 +117,6 @@ inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
 
-tnoremap <Leader>e <C-\><C-n>
-
 " Disable cursor line in insert mode
 au InsertEnter * set nocursorline
 au InsertLeave * set cursorline nopaste
@@ -123,8 +124,6 @@ au InsertLeave * set cursorline nopaste
 " Change the cursor in insert mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-"autocmd FileType * if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " Automatic formatting
 function! <SID>StripTrailingSpace()
@@ -180,15 +179,11 @@ if bufwinnr(1)
   nmap Ö <C-W>+<C-W>+
 endif
 
-" Exit terminal
-tnoremap <Leader>e <C-\><C-n>
-
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
 
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
-let NERDTreeMapOpenInTab='\t'
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
 
@@ -220,6 +215,10 @@ let g:gitgutter_max_signs = 250
 nmap <leader>a :Ack! 
 set shellpipe=>
 
+if executable('pt')
+  let g:ackprg = 'pt --nocolor'
+endif
+
 " ASM ca65
 au BufRead,BufNewFile *.s set filetype=asm_ca65
 
@@ -248,3 +247,10 @@ augroup END
 
 " Rust
 let g:rustfmt_autosave = 1
+
+" Navigation
+" Map Ctrl+Arrows in mac OAOAOBOCODOAOBOB OA OAOB
+map! <ESC>[OA <C-Up>
+map! <ESC>[OB <C-Down>
+map! <ESC>[OD <C-Left>
+map! <ESC>[OC <C-Right>

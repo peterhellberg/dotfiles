@@ -15,7 +15,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'nazo/pt.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
@@ -24,6 +24,7 @@ Plug 'yssl/QFEnter'
 
 " Esoteric plugins
 Plug 'rust-lang/rust.vim'
+Plug 'keith/swift.vim'
 "Plug 'elixir-lang/vim-elixir'
 "Plug 'elmcast/elm-vim'
 "Plug 'kchmck/vim-coffee-script'
@@ -97,6 +98,8 @@ set virtualedit=block
 set emoji
 
 set t_BE=
+
+hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 
 syntax sync minlines=256
 
@@ -254,3 +257,4 @@ map! <ESC>[OA <C-Up>
 map! <ESC>[OB <C-Down>
 map! <ESC>[OD <C-Left>
 map! <ESC>[OC <C-Right>
+
