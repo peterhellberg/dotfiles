@@ -1,5 +1,8 @@
 ulimit -n 4096
 
+# Have ctrl-s perform i-search (search forward, complements ctrl-r)
+stty -ixon
+
 # don't put duplicate lines or lines starting with space in the history.
 # also erase all duplicates
 # See bash(1) for more options
@@ -13,7 +16,7 @@ HISTSIZE=1500
 HISTFILESIZE=3500
 
 # Bash
-export EDITOR='nvim'
+export EDITOR='vim'
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
@@ -30,6 +33,7 @@ export PATH=$PATH:$OOC_LIBS/sam:$OOC_LIBS/rock/bin
 
 # Go
 export GOPATH=$HOME/Go
+export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org:$GOPATH/src
 export PATH=$PATH:$GOPATH/bin
 export GOGC=400
 
