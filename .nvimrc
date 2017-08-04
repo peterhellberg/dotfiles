@@ -24,6 +24,7 @@ Plug 'yssl/QFEnter'
 
 " Esoteric plugins
 Plug 'rust-lang/rust.vim'
+Plug 'keith/swift.vim'
 "Plug 'elixir-lang/vim-elixir'
 "Plug 'elmcast/elm-vim'
 "Plug 'kchmck/vim-coffee-script'
@@ -42,6 +43,9 @@ Plug 'tpope/vim-git'
 
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
+Plug 'w0ng/vim-hybrid'
+Plug 'ayu-theme/ayu-vim'
+Plug 'baeuml/summerfruit256.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -97,6 +101,8 @@ set virtualedit=block
 set emoji
 
 set t_BE=
+
+hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 
 syntax sync minlines=256
 
@@ -232,10 +238,6 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <leader>c <Plug>(go-callers)
 
 let g:go_disable_autoinstall = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods   = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs   = 1
 let g:go_fmt_command = "goimports"
 
 augroup go
