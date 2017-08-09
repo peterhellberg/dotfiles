@@ -22,6 +22,9 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'yssl/QFEnter'
 
+" Configuration file format plugins
+Plug 'cespare/vim-toml'
+
 " Esoteric plugins
 Plug 'rust-lang/rust.vim'
 Plug 'keith/swift.vim'
