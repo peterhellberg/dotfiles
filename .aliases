@@ -40,6 +40,7 @@ alias c7go='cd ~/Go/src/github.com/c7'
 alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
+alias goexperiments='cd ~/Go/src/experiments'
 
 ## TV4
 alias 4='cd ~/Work/Athega/TV4/GitHub'
