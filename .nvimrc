@@ -68,7 +68,10 @@ if !has('gui_running')
     augroup END
 endif
 
-set termguicolors
+if $TERM_PROGRAM =~ "iTerm"
+  set termguicolors
+endif
+
 set clipboard=unnamed,unnamedplus
 set completeopt-=preview
 set expandtab
