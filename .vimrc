@@ -46,9 +46,10 @@ Plug 'tpope/vim-git'
 
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'ayu-theme/ayu-vim'
-Plug 'baeuml/summerfruit256.vim'
+"Plug 'w0ng/vim-hybrid'
+"Plug 'ayu-theme/ayu-vim'
+"Plug 'baeuml/summerfruit256.vim'
+"Plug 'arcticicestudio/nord-vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -71,7 +72,10 @@ if !has('gui_running')
     augroup END
 endif
 
-set termguicolors
+if $TERM_PROGRAM =~ "iTerm"
+  set termguicolors
+endif
+
 set clipboard=unnamed,unnamedplus
 set completeopt-=preview
 set expandtab
@@ -194,7 +198,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
