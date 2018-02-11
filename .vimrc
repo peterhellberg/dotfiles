@@ -46,10 +46,6 @@ Plug 'tpope/vim-git'
 
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
-"Plug 'w0ng/vim-hybrid'
-"Plug 'ayu-theme/ayu-vim'
-"Plug 'baeuml/summerfruit256.vim'
-"Plug 'arcticicestudio/nord-vim'
 
 " Add plugins to &runtimepath
 call plug#end()

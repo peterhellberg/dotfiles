@@ -43,9 +43,6 @@ Plug 'tpope/vim-git'
 
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'ayu-theme/ayu-vim'
-Plug 'baeuml/summerfruit256.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -194,7 +191,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
+let NERDTreeIgnore = ['tmp', '.yardoc', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
