@@ -1,5 +1,3 @@
-filetype off
-
 call plug#begin('~/.vim/plugged')
 
 " Go plugins
@@ -28,14 +26,7 @@ Plug 'cespare/vim-toml'
 " Esoteric plugins
 Plug 'rust-lang/rust.vim'
 Plug 'keith/swift.vim'
-"Plug 'elixir-lang/vim-elixir'
-"Plug 'elmcast/elm-vim'
-"Plug 'kchmck/vim-coffee-script'
-"Plug 'maxbane/vim-asm_ca65'
-"Plug 'rhysd/vim-crystal'
-"Plug 'zah/nimrod.vim'
-"Plug 'dleonard0/pony-vim-syntax'
-"Plug 'lluchs/vim-wren'
+Plug 'elixir-editors/vim-elixir'
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
@@ -49,8 +40,6 @@ Plug 'nanotech/jellybeans.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
-
-filetype plugin indent on
 
 let mapleader=","
 
@@ -194,7 +183,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
+let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
