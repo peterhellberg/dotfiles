@@ -248,4 +248,3 @@ map! <ESC>[OA <C-Up>
 map! <ESC>[OB <C-Down>
 map! <ESC>[OD <C-Left>
 map! <ESC>[OC <C-Right>
-
