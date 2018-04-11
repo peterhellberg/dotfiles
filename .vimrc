@@ -91,6 +91,7 @@ set synmaxcol=1024
 set tabstop=2
 set virtualedit=block
 set emoji
+set updatetime=100
 
 set t_BE=
 
@@ -208,6 +209,7 @@ let g:ctrlp_user_command = {
 
 " GitGutter
 let g:gitgutter_max_signs = 250
+let g:gitgutter_map_keys = 0
 
 " Ack
 nmap <leader>a :Ack! 
