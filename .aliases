@@ -16,12 +16,14 @@ alias local-ssh-chat='ssh-chat --bind 0.0.0.0:2200 -i ~/.ssh/ssh-chat.rsa --admi
 alias love='/Applications/love.app/Contents/MacOS/love'
 alias ls='gls --color -F'
 alias require='cd ~ && pry -r'
-alias spy-clear-go-test='spy -c black clear-go test $(go list ./... | grep -v /vendor/)'
+alias spy-clear-gotest='spy -c black clear-gotest $(go list ./... | grep -v /vendor/)'
 alias travis-script='if [ -f ".travis.yml" ]; then yaml2json .travis.yml | jq -r ".script|select (.!=null)|.[]" | sh; else echo ".travis.yml missing"; fi'
 alias t='if [ -d "Godeps" ]; then godep go test ./...; else go test ./...; fi'
 alias ack='pt'
 alias bff-master-beta-diff='cd ~/Go/src/github.com/TV4/cmore-mobile-bff && git checkout master && git pull --rebase && git checkout stage && clear && git log --reverse --pretty="%h %an: %s" --abbrev-commit --no-merges master..beta'
 alias merge-stage-to-master-test-and-push='git checkout master && git pull --rebase && git merge --no-ff stage && golint -set_exit_status && go vet $(go list ./... | grep -v /vendor/) && go test $(go list ./... | grep -v /vendor/) && git push && git checkout stage'
+alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+alias git-checkout-master-rebase-merge-stage='git checkout master && git pull --rebase && git merge stage --no-ff'
 
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
