@@ -18,18 +18,21 @@ HISTFILESIZE=3500
 # Bash
 export EDITOR='vim'
 
-# Setting for the new UTF-8 terminal support in Lion
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LC_LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
+# # Setting for the new UTF-8 terminal support in Lion
+# export LC_CTYPE=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
+# export LC_LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # NeoVIM
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=true
 
 # ooc
-export OOC_LIBS=$HOME/Work/ooc
-export PATH=$PATH:$OOC_LIBS/sam:$OOC_LIBS/rock/bin
+# export OOC_LIBS=$HOME/Work/ooc
+# export PATH=$PATH:$OOC_LIBS/sam:$OOC_LIBS/rock/bin
+
+# Dokku
+export DOKKU_HOST=dokku.c7.se
 
 # Go
 export GOPATH=$HOME/Go
@@ -70,9 +73,9 @@ function parse_git_branch {
     echo "("${ref#refs/heads/}") "
 }
 
-function randomgif {
-  giphy random "$@" | xargs curl -s -o '/tmp/giphy.gif' && imgcat '/tmp/giphy.gif'
-}
+# function randomgif {
+#   giphy random "$@" | xargs curl -s -o '/tmp/giphy.gif' && imgcat '/tmp/giphy.gif'
+# }
 
 function since {
   echo "$(git l $1..HEAD)" | tac | tail
