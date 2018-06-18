@@ -1,6 +1,4 @@
-filetype off
-
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.nvim/plugged')
 
 " Go plugins
 Plug 'fatih/vim-go'
@@ -22,17 +20,13 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'yssl/QFEnter'
 
+" Configuration file format plugins
+Plug 'cespare/vim-toml'
+
 " Esoteric plugins
 Plug 'rust-lang/rust.vim'
 Plug 'keith/swift.vim'
-"Plug 'elixir-lang/vim-elixir'
-"Plug 'elmcast/elm-vim'
-"Plug 'kchmck/vim-coffee-script'
-"Plug 'maxbane/vim-asm_ca65'
-"Plug 'rhysd/vim-crystal'
-"Plug 'zah/nimrod.vim'
-"Plug 'dleonard0/pony-vim-syntax'
-"Plug 'lluchs/vim-wren'
+Plug 'elixir-editors/vim-elixir'
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
@@ -46,8 +40,6 @@ Plug 'nanotech/jellybeans.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
-
-filetype plugin indent on
 
 let mapleader=","
 
@@ -68,6 +60,9 @@ endif
 if $TERM_PROGRAM =~ "iTerm"
   set termguicolors
 endif
+
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set clipboard=unnamed,unnamedplus
 set completeopt-=preview
@@ -99,6 +94,7 @@ set synmaxcol=1024
 set tabstop=2
 set virtualedit=block
 set emoji
+set updatetime=100
 
 set t_BE=
 
@@ -191,7 +187,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
+let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
@@ -216,6 +212,7 @@ let g:ctrlp_user_command = {
 
 " GitGutter
 let g:gitgutter_max_signs = 250
+let g:gitgutter_map_keys = 0
 
 " Ack
 nmap <leader>a :Ack! 
