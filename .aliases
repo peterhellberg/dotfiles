@@ -43,6 +43,7 @@ alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 alias ago='cd ~/Go/src/github.com/athega'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
+alias sgo='cd ~/Go/src/github.com/soundtrackyourbrand'
 alias goexperiments='cd ~/Go/src/experiments'
 
 ## TV4
