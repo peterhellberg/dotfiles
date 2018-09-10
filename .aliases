@@ -43,7 +43,6 @@ alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 alias ago='cd ~/Go/src/github.com/athega'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
-alias sgo='cd ~/Go/src/github.com/soundtrackyourbrand'
 alias goexperiments='cd ~/Go/src/experiments'
 
 ## TV4
@@ -51,3 +50,7 @@ alias 4='cd ~/Work/Athega/TV4/GitHub'
 alias 4go='cd ~/Go/src/github.com/TV4'
 alias tv4-redis-server='redis-server /Users/peter/Work/Athega/TV4/tv4-redis/tv4-redis.conf'
 alias tv4-redis-cli='redis-cli -s /tmp/tv4-redis.sock'
+
+## SYB
+alias sgo='cd ~/Go/src/github.com/soundtrackyourbrand'
+alias core="cd ~/Go/src/github.com/soundtrackyourbrand/syb-core/"
