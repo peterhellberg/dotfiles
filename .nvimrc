@@ -4,6 +4,9 @@ call plug#begin('~/.nvim/plugged')
 Plug 'fatih/vim-go'
 Plug 'raphael/vim-present-simple'
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
 " Plugin bundles
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
@@ -23,11 +26,6 @@ Plug 'yssl/QFEnter'
 " Configuration file format plugins
 Plug 'cespare/vim-toml'
 
-" Esoteric plugins
-Plug 'rust-lang/rust.vim'
-Plug 'keith/swift.vim'
-Plug 'elixir-editors/vim-elixir'
-
 " Markup plugins
 Plug 'tpope/vim-markdown'
 
@@ -40,6 +38,29 @@ Plug 'nanotech/jellybeans.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
+
+let g:python3_host_prog  = '/usr/local/bin/python3'
+let g:python3_host_skip_check = 1
+
+set rtp+=~/work/deoplete.nvim/
+set rtp+=~/work/deoplete-go/
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#pointer = 1
+let g:deoplete#sources#go#use_cache = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#sources#go#package_dot = 0
+let g:deoplete#sources#go#builtin_objects = 1
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+call deoplete#custom#option('ignore_sources', {'_': ['buffer', 'around']})
+call deoplete#custom#option('auto_complete', 1)
+call deoplete#custom#option('auto_complete_delay', 10)
+call deoplete#custom#option('async_timeout', 100)
+call deoplete#custom#option('refresh_always', 1)
+
+set completefunc=deoplete#manual_complete
 
 let mapleader=","
 
@@ -81,7 +102,7 @@ set noswapfile
 set nowrap
 set nowritebackup
 set number
-set omnifunc=syntaxcomplete#Complete
+set omnifunc=deoplete#manual_complete
 set re=1
 set shiftwidth=2
 set shortmess+=I
@@ -190,7 +211,7 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
 
 " SuperTab
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -235,6 +256,7 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <leader>c <Plug>(go-callers)
 
 let g:go_disable_autoinstall = 1
+let g:go_gocode_unimported_packages = 1
 let g:go_fmt_command = "goimports"
 
 augroup go
