@@ -1,29 +1,19 @@
 # Aliases
-alias e='exa'
 alias :q='logout'
-alias be='bundle exec'
-alias ccat='ccat --color-code="String=darkgreen" --color-code="Type=brown" --color-code="Keyword=blue" --color-code="Plaintext=lightgray" --color-code="Punctuation=lightgray" --color-code="Decimal=darkred"'
-alias chat='ssh -i ~/.ssh/ssh-chat.rsa peterhellberg@chat.shazow.net'
 alias coverage='gocov test $(go list ./... | grep -v /vendor/) | gocov report'
 alias curl='curl -s'
-alias go-pi='GOARCH=arm GOARM=5 GOOS=linux go'
 alias go-loc='cat $(tree -f -i | grep "\.go" | grep -v vendor | grep -v "_test") | wc -l'
 alias go-loc-tests='cat $(tree -f -i | grep "\.go" | grep -v vendor | grep "_test") | wc -l'
-alias goconvey='if [ -d "Godeps" ]; then GOCONVEY="goconvey -gobin=godep-go"; else GOCONVEY=goconvey; fi; $GOCONVEY'
 alias needs-formatting='goimports -l $(find . -type f -name "*.go" -not -path "./vendor/*")'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
-alias local-ssh-chat='ssh-chat --bind 0.0.0.0:2200 -i ~/.ssh/ssh-chat.rsa --admin 8e:08:d6:e0:65:0c:c0:9c:8c:b4:18:f6:6b:41:d3:fc'
-alias love='/Applications/love.app/Contents/MacOS/love'
 alias ls='gls --color -F --group-directories-first'
-alias require='cd ~ && pry -r'
 alias spy-clear-gotest='spy -c black clear-gotest $(go list ./... | grep -v /vendor/)'
 alias travis-script='if [ -f ".travis.yml" ]; then yaml2json .travis.yml | jq -r ".script|select (.!=null)|.[]" | sh; else echo ".travis.yml missing"; fi'
-alias t='if [ -d "Godeps" ]; then godep go test ./...; else go test ./...; fi'
 alias ack='pt'
-alias bff-master-beta-diff='cd ~/Go/src/github.com/TV4/cmore-mobile-bff && git checkout master && git pull --rebase && git checkout stage && clear && git log --reverse --pretty="%h %an: %s" --abbrev-commit --no-merges master..beta'
 alias merge-stage-to-master-test-and-push='git checkout master && git pull --rebase && git merge --no-ff stage && golint -set_exit_status && go vet $(go list ./... | grep -v /vendor/) && go test $(go list ./... | grep -v /vendor/) && git push && git checkout stage'
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
-alias git-checkout-master-rebase-merge-stage='git checkout master && git pull --rebase && git merge stage --no-ff'
+alias note="nvim -c 'r!date' -c 'normal i# ' -c 'normal 2o' -c 'normal O' ~/Dropbox/Documents/notes.md"
+alias n="note"
 
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
@@ -48,9 +38,13 @@ alias goexperiments='cd ~/Go/src/experiments'
 ## TV4
 alias 4='cd ~/Work/Athega/TV4/GitHub'
 alias 4go='cd ~/Go/src/github.com/TV4'
-alias tv4-redis-server='redis-server /Users/peter/Work/Athega/TV4/tv4-redis/tv4-redis.conf'
-alias tv4-redis-cli='redis-cli -s /tmp/tv4-redis.sock'
 
 ## SYB
 alias sgo='cd ~/Go/src/github.com/soundtrackyourbrand'
-alias core="cd ~/Go/src/github.com/soundtrackyourbrand/syb-core/"
+alias core='cd ~/Go/src/github.com/soundtrackyourbrand/syb-core/'
+alias billing="cd ~/Go/src/github.com/soundtrackyourbrand/syb-core/billing"
+alias sybp='syb -env="production"'
+alias sybs='syb -env="staging"'
+alias sybdocuments='cd /Users/peter/Work/Athega/SYB/Documents'
+alias sybnote="nvim -c 'r!date' -c 'normal i# ' -c 'normal 2o' -c 'normal O' ~/Work/Athega/SYB/Documents/`date +%F`-syb-notes.md"
+alias sn="sybnote"
