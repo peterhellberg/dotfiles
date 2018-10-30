@@ -18,3 +18,7 @@ gin-bin
 
 .ottoid
 .otto
+
+# Go profiling files
+*.out
+*.test
