@@ -205,11 +205,12 @@ let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_by_filename = 0
-let g:ctrlp_max_files = 256
-let g:ctrlp_max_depth = 4
+let g:ctrlp_max_files = 512
+let g:ctrlp_max_depth = 8
+let g:ctrlp_use_caching = 1
 let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_user_command = {
-  \ 'types': { 1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others | grep -v vendor | grep -v _workspace | grep -v private_gems'] },
+  \ 'types': { 1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others | grep -v vendor'] },
   \ 'fallback': 'ack -f %s --ignore-dir=.git | head -' . g:ctrlp_max_files
   \ }
 
@@ -238,6 +239,7 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <leader>c <Plug>(go-callers)
 
 let g:go_disable_autoinstall = 1
+let g:go_gocode_unimported_packages = 1
 let g:go_fmt_command = "goimports"
 
 augroup go
