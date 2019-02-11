@@ -18,11 +18,11 @@ HISTFILESIZE=3500
 # Bash
 export EDITOR='vim'
 
-# # Setting for the new UTF-8 terminal support in Lion
-# export LC_CTYPE=en_US.UTF-8
-# export LC_ALL=en_US.UTF-8
-# export LC_LANG=en_US.UTF-8
-# export LANG=en_US.UTF-8
+# Setting for the new UTF-8 terminal support in Lion
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # NeoVIM
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=true
