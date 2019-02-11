@@ -8,6 +8,9 @@ alias needs-formatting='goimports -l $(find . -type f -name "*.go" -not -path ".
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias ls='gls --color -F --group-directories-first'
 alias spy-clear-gotest='spy -c black clear-gotest $(go list ./... | grep -v /vendor/)'
+alias spy-clear-gotest-verbose='spy -c black clear-gotest-verbose $(go list ./... | grep -v /vendor/)'
+alias spy-clear-go-run-imgcat='spy --exc *.png -q clear-go-run-imgcat'
+alias spy-clear-go='spy -q clear-go'
 alias travis-script='if [ -f ".travis.yml" ]; then yaml2json .travis.yml | jq -r ".script|select (.!=null)|.[]" | sh; else echo ".travis.yml missing"; fi'
 alias ack='pt'
 alias merge-stage-to-master-test-and-push='git checkout master && git pull --rebase && git merge --no-ff stage && golint -set_exit_status && go vet $(go list ./... | grep -v /vendor/) && go test $(go list ./... | grep -v /vendor/) && git push && git checkout stage'
@@ -38,13 +41,3 @@ alias goexperiments='cd ~/Go/src/experiments'
 ## TV4
 alias 4='cd ~/Work/Athega/TV4/GitHub'
 alias 4go='cd ~/Go/src/github.com/TV4'
-
-## SYB
-alias sgo='cd ~/Go/src/github.com/soundtrackyourbrand'
-alias core='cd ~/Go/src/github.com/soundtrackyourbrand/syb-core/'
-alias billing="cd ~/Go/src/github.com/soundtrackyourbrand/syb-core/billing"
-alias sybp='syb -env="production"'
-alias sybs='syb -env="staging"'
-alias sybdocuments='cd /Users/peter/Work/Athega/SYB/Documents'
-alias sybnote="nvim -c 'r!date' -c 'normal i# ' -c 'normal 2o' -c 'normal O' ~/Work/Athega/SYB/Documents/`date +%F`-syb-notes.md"
-alias sn="sybnote"
