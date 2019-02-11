@@ -19,6 +19,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'yssl/QFEnter'
+Plug 'godlygeek/tabular'
 
 " Configuration file format plugins
 Plug 'cespare/vim-toml'
@@ -57,6 +58,11 @@ if !has('gui_running')
     augroup END
 endif
 
+command! -nargs=1 Silent
+      \   execute 'silent !' . <q-args>
+      \ | execute 'redraw!'
+
+
 set t_Co=256
 
 if $TERM_PROGRAM =~ "iTerm"
@@ -87,6 +93,7 @@ set number
 set omnifunc=syntaxcomplete#Complete
 set re=1
 set shiftwidth=2
+set shortmess=at
 set shortmess+=I
 set showmatch
 set sidescroll=1

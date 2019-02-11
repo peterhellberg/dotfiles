@@ -203,12 +203,22 @@ if bufwinnr(1)
 endif
 
 " NERDTree
-nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>n :call NERDTreeToggleInCurDir()<CR>
+
+" Open NERDTree in the directory of the current file (or /home if no file is open)
+function! NERDTreeToggleInCurDir()
+  " If NERDTree is open in the current buffer
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+    exe ":NERDTreeClose"
+  else
+    exe ":NERDTreeFind"
+  endif
+endfunction
 
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
+let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor', 'cpu.out', 'mem.out']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
@@ -256,7 +266,7 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <leader>c <Plug>(go-callers)
 
 let g:go_disable_autoinstall = 1
-let g:go_gocode_unimported_packages = 1
+"let g:go_gocode_unimported_packages = 1
 let g:go_fmt_command = "goimports"
 
 augroup go
