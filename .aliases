@@ -10,13 +10,15 @@ alias ls='gls --color -F --group-directories-first'
 alias spy-clear-gotest='spy -c black clear-gotest $(go list ./... | grep -v /vendor/)'
 alias spy-clear-gotest-verbose='spy -c black clear-gotest-verbose $(go list ./... | grep -v /vendor/)'
 alias spy-clear-go-run-imgcat='spy --exc *.png -q clear-go-run-imgcat'
-alias spy-clear-go='spy -q clear-go'
+alias spy-clear-go='spy --exc output -q clear-go'
 alias travis-script='if [ -f ".travis.yml" ]; then yaml2json .travis.yml | jq -r ".script|select (.!=null)|.[]" | sh; else echo ".travis.yml missing"; fi'
 alias ack='pt'
 alias merge-stage-to-master-test-and-push='git checkout master && git pull --rebase && git merge --no-ff stage && golint -set_exit_status && go vet $(go list ./... | grep -v /vendor/) && go test $(go list ./... | grep -v /vendor/) && git push && git checkout stage'
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 alias note="nvim -c 'r!date' -c 'normal i# ' -c 'normal 2o' -c 'normal O' ~/Dropbox/Documents/notes.md"
 alias n="note"
+alias gpg="gpg --default-recipient-self"
+alias sl="ls"
 
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
