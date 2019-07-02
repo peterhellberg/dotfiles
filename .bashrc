@@ -36,7 +36,7 @@ export DOKKU_HOST=dokku.c7.se
 
 # Go
 export GOPATH=$HOME/Go
-export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org:$GOPATH/src
+export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org:$GOPATH/src:$CDPATH
 export PATH=$PATH:$GOPATH/bin
 export GOGC=400
 
