@@ -245,9 +245,12 @@ au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <leader>c <Plug>(go-callers)
 
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 let g:go_disable_autoinstall = 1
-let g:go_gocode_unimported_packages = 1
-let g:go_fmt_command = "goimports"
+let g:go_echo_go_info = 1
+let g:go_fmt_command = 'goimports'
+let g:go_metalinter_command='golangci-lint'
 
 augroup go
   autocmd!
