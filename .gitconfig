@@ -35,7 +35,7 @@
   algorithm = patience
   compactionHeuristic = true
 [commit]
-  gpgsign = false
+  gpgsign = true
 [http "https://gopkg.in"]
 	followRedirects = true
 [filter "lfs"]
