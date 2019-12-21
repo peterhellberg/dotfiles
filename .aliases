@@ -8,7 +8,6 @@ alias needs-formatting='goimports -l $(find . -type f -name "*.go" -not -path ".
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias ls='gls --color -F --group-directories-first'
 alias spy-clear-gotest='spy -c black clear-gotest $(go list ./... | grep -v /vendor/)'
-alias spy-clear-gotest-verbose='spy -c black clear-gotest-verbose $(go list ./... | grep -v /vendor/)'
 alias spy-clear-go-run-imgcat='spy --exc *.png -q clear-go-run-imgcat'
 alias spy-clear-go='spy --exc output -q clear-go'
 alias travis-script='if [ -f ".travis.yml" ]; then yaml2json .travis.yml | jq -r ".script|select (.!=null)|.[]" | sh; else echo ".travis.yml missing"; fi'
@@ -43,3 +42,5 @@ alias goexperiments='cd ~/Go/src/experiments'
 ## TV4
 alias 4='cd ~/Work/Athega/TV4/GitHub'
 alias 4go='cd ~/Go/src/github.com/TV4'
+
+alias gs='git status'
