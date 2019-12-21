@@ -19,6 +19,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'yssl/QFEnter'
+Plug 'KorySchneider/vim-trim'
 Plug 'godlygeek/tabular'
 
 " Configuration file format plugins
@@ -35,6 +36,9 @@ Plug 'tpope/vim-markdown'
 " Git plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-git'
+
+" Frontend plugins
+Plug 'jparise/vim-graphql'
 
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
@@ -250,6 +254,7 @@ let g:go_info_mode='gopls'
 let g:go_disable_autoinstall = 1
 let g:go_echo_go_info = 1
 let g:go_fmt_command = 'goimports'
+let g:go_gorename_command = 'gopls'
 let g:go_metalinter_command='golangci-lint'
 
 augroup go
