@@ -2,9 +2,9 @@ call plug#begin('~/.vim/plugged')
 
 " Go plugins
 Plug 'fatih/vim-go'
-Plug 'raphael/vim-present-simple'
 
 " Plugin bundles
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
@@ -12,24 +12,14 @@ Plug 'peterhellberg/snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
-Plug 'nazo/pt.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'yssl/QFEnter'
-Plug 'KorySchneider/vim-trim'
-Plug 'godlygeek/tabular'
-
-" Configuration file format plugins
-Plug 'cespare/vim-toml'
 
 " Esoteric plugins
 Plug 'ziglang/zig.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'keith/swift.vim'
-Plug 'elixir-editors/vim-elixir'
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
@@ -46,6 +36,8 @@ Plug 'nanotech/jellybeans.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
+
+let g:lsc_auto_map = v:true
 
 let mapleader=","
 
@@ -227,12 +219,16 @@ let g:ctrlp_user_command = {
 let g:gitgutter_max_signs = 250
 let g:gitgutter_map_keys = 0
 
+highlight GitGutterAdd    guifg=#97a950 ctermfg=2 
+highlight GitGutterChange guifg=#f9cf75 ctermfg=3 
+highlight GitGutterDelete guifg=#d35738 ctermfg=1 
+
 " Ack
 nmap <leader>a :Ack! 
 set shellpipe=>
 
 if executable('pt')
-  let g:ackprg = 'pt --nocolor'
+  let g:ackprg = 'pt --ignore=vendor --nocolor'
 endif
 
 " ASM ca65
