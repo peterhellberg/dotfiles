@@ -26,6 +26,7 @@ Plug 'godlygeek/tabular'
 Plug 'cespare/vim-toml'
 
 " Esoteric plugins
+Plug 'ziglang/zig.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'keith/swift.vim'
 Plug 'elixir-editors/vim-elixir'
@@ -75,7 +76,7 @@ endif
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
+ 
 set encoding=utf-8
 set clipboard=unnamed,unnamedplus
 set completeopt-=preview
@@ -95,7 +96,6 @@ set nowrap
 set nowritebackup
 set number
 set omnifunc=syntaxcomplete#Complete
-set re=1
 set shiftwidth=2
 set shortmess=at
 set shortmess+=I
@@ -113,8 +113,6 @@ set updatetime=100
 set t_BE=
 
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
-
-syntax sync minlines=256
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
