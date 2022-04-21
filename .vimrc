@@ -7,7 +7,7 @@ Plug 'fatih/vim-go'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 Plug 'peterhellberg/snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -17,6 +17,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+
+" Database plugins
+Plug 'lifepillar/pgsql.vim'
 
 " Esoteric plugins
 Plug 'ziglang/zig.vim'
@@ -61,9 +64,11 @@ command! -nargs=1 Silent
 
 
 set t_Co=256
+set termguicolors
 
 if $TERM_PROGRAM =~ "iTerm"
-  set termguicolors
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -102,6 +107,13 @@ set virtualedit=block
 set emoji
 set updatetime=100
 
+" GUI
+set guioptions-=m
+set guioptions-=L
+set guioptions-=T
+set guioptions-=r
+set guifont=Office\ Code\ Pro\ D\ 18
+
 set t_BE=
 
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
@@ -128,8 +140,10 @@ au InsertEnter * set nocursorline
 au InsertLeave * set cursorline nopaste
 
 " Change the cursor in insert mode
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+if &term == 'xterm-256color' || &term == 'screen-256color'
+  let &t_SI = "\<Esc>[5 q"
+  let &t_EI = "\<Esc>[1 q"
+endif
 
 " Automatic formatting
 function! <SID>StripTrailingSpace()
@@ -140,7 +154,7 @@ function! <SID>StripTrailingSpace()
 endfun
 
 " Strip trailing space for a list of extensions
-autocmd BufWritePre *.builder,*.c,*.coffee,*.elm,*.ex,*.exs,*.haml,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.txt :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.c,*.coffee,*.elm,*.ex,*.exs,*.haml,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.txt :call <SID>StripTrailingSpace()
 
 " Set noeol on all new files
 autocmd BufNewFile * set noeol
@@ -191,13 +205,15 @@ nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', '_build', 'vendor']
+let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', 'vendor']
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " CtrlP
 nnoremap <silent> t :CtrlP<cr>
@@ -233,6 +249,9 @@ endif
 
 " ASM ca65
 au BufRead,BufNewFile *.s set filetype=asm_ca65
+
+" PostgreSQL
+let g:sql_type_default = 'pgsql'
 
 " Go programming
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
