@@ -1,24 +1,24 @@
 # Aliases
-alias :q='logout'
-alias coverage='gocov test $(go list ./... | grep -v /vendor/) | gocov report'
+alias ls='gls --color -F --group-directories-first'
 alias curl='curl -s'
-alias go-loc='cat $(tree -f -i | grep "\.go" | grep -v vendor | grep -v "_test") | wc -l'
-alias go-loc-tests='cat $(tree -f -i | grep "\.go" | grep -v vendor | grep "_test") | wc -l'
 alias needs-formatting='goimports -l $(find . -type f -name "*.go" -not -path "./vendor/*")'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
-alias ls='gls --color -F --group-directories-first'
-alias spy-clear-gotest='spy -c black clear-gotest $(go list ./... | grep -v /vendor/)'
-alias spy-clear-go-run-imgcat='spy --exc *.png -q clear-go-run-imgcat'
-alias spy-clear-go='spy --exc output -q clear-go'
-alias spy-clear-gotest-uncached='spy -c black clear-gotest -count=1 $(go list ./... | grep -v /vendor/)'
 alias travis-script='if [ -f ".travis.yml" ]; then yaml2json .travis.yml | jq -r ".script|select (.!=null)|.[]" | sh; else echo ".travis.yml missing"; fi'
-alias ack='pt'
 alias merge-stage-to-master-test-and-push='git checkout master && git pull --rebase && git merge --no-ff stage && golint -set_exit_status && go vet $(go list ./... | grep -v /vendor/) && go test $(go list ./... | grep -v /vendor/) && git push && git checkout stage'
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 alias note="nvim -c 'r!date' -c 'normal i# ' -c 'normal 2o' -c 'normal O' ~/Dropbox/Documents/notes.md"
 alias n="note"
 alias gpg="gpg --default-recipient-self"
 alias sl="ls"
+
+# Go aliases
+alias goexperiments='cd ~/Go/src/experiments'
+alias coverage='gocov test $(go list ./... | grep -v /vendor/) | gocov report'
+alias spy-clear-gotest='spy -c black clear-gotest $(go list ./...)'
+alias spy-clear-go-run-imgcat='spy --exc *.png -q clear-go-run-imgcat'
+alias spy-clear-go='spy --exc output -q clear-go'
+alias spy-clear-gotest-uncached='spy -c black clear-gotest -count=1 $(go list ./...)'
+alias spy-clear-gotest-integration='spy -c black clear-gotest -tags=integration $(go list ./...)'
 
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
@@ -30,7 +30,7 @@ alias volatile-redis-server='cd && redis-server /usr/local/etc/volatile-redis.co
 alias p='cd `cat $HOME/.current_project`'
 alias p.='echo `pwd` > $HOME/.current_project'
 
-## Code7
+## Code7 aliases
 alias cg='cd ~/Work/Code7/GitHub'
 alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
 alias c7go='cd ~/Go/src/github.com/c7'
@@ -38,10 +38,14 @@ alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 alias ago='cd ~/Go/src/github.com/athega'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
-alias goexperiments='cd ~/Go/src/experiments'
 
-## TV4
-alias 4='cd ~/Work/Athega/TV4/GitHub'
-alias 4go='cd ~/Go/src/github.com/TV4'
-
+## Git aliases
+alias grimaster="git rebase --exec 'git commit --amend --no-edit -n -S' -i master"
+alias grimain="git rebase --exec 'git commit --amend --no-edit -n -S' -i main"
 alias gs='git status'
+
+## Misc
+alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
+alias filllight="keylight -a http://filllight:9123"
+alias ack='pt --ignore="vendor"'
+alias :q='logout'
