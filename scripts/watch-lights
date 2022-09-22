@@ -1,0 +1,1 @@
+watch -n 60 -c -t lights -c && lights
