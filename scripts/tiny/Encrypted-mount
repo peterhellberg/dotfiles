@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo cryptsetup open /dev/nvme0n1 Encrypted &&
+sudo mkdir -p /media/peter/Encrypted &&
+sudo mount /dev/mapper/Encrypted /media/peter/Encrypted
