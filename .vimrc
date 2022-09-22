@@ -26,6 +26,9 @@ Plug 'ziglang/zig.vim'
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
+" Plug 'takumakei/daily-notes.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
 
 " Git plugins
 Plug 'airblade/vim-gitgutter'
@@ -209,6 +212,27 @@ let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabContextDiscoverDiscovery = ['&completefunc:<c-x><c-u>']
+" let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+
+" Coc
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -286,3 +310,11 @@ map! <ESC>[OA <C-Up>
 map! <ESC>[OB <C-Down>
 map! <ESC>[OD <C-Left>
 map! <ESC>[OC <C-Right>
+
+" Daily Notes
+" let g:daily_notes_base = "~/Documents/Notes/"
+
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1, 'auto_diary_index': 1, 'automatic_nested_syntaxes': 1, 'nested_syntaxes': {'go': 'go'}}]
+let g:vimwiki_use_calendar = 1
+let g:vimwiki_url_maxsave = 0
