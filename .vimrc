@@ -318,3 +318,10 @@ map! <ESC>[OC <C-Right>
 let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1, 'auto_diary_index': 1, 'automatic_nested_syntaxes': 1, 'nested_syntaxes': {'go': 'go'}}]
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_url_maxsave = 0
+
+" Zig
+autocmd FileType zig inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+autocmd FileType zig hi CocFloating ctermbg=Black 
+autocmd FileType zig inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
