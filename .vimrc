@@ -121,6 +121,10 @@ set guifont=Office\ Code\ Pro\ D\ 18
 set t_BE=
 
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
+hi CocFloating guibg=#202020
+hi CocMenuSel guibg=#303030
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -214,10 +218,6 @@ let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
-
-" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-" let g:SuperTabContextDiscoverDiscovery = ['&completefunc:<c-x><c-u>']
-" let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 " Coc
 function! CheckBackspace() abort
@@ -332,6 +332,18 @@ map! <ESC>[OC <C-Right>
 let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1, 'auto_diary_index': 1, 'automatic_nested_syntaxes': 1, 'nested_syntaxes': {'go': 'go'}}]
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_url_maxsave = 0
+
+function VimwikiStandup()
+  VimwikiMakeDiaryNote
+  w
+  VimwikiDiaryIndex
+  VimwikiDiaryGenerateLinks
+  w
+  VimwikiMakeDiaryNote
+  if getline(1,'$') == ['']
+    exec 'normal i'.system("standup.sh \| tr '\n' ' '")
+  endif
+endfunction
 
 " Zig
 autocmd FileType zig inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
