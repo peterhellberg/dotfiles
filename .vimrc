@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " Go plugins
 Plug 'fatih/vim-go'
+Plug 'charlespascoe/vim-go-syntax'
 
 " Plugin bundles
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
