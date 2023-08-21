@@ -33,7 +33,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
 
 " Git plugins
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter', {'branch': 'main'}
 Plug 'tpope/vim-git'
 
 " Frontend plugins
@@ -305,6 +305,7 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_disable_autoinstall = 1
 let g:go_echo_go_info = 1
+let g:go_echo_command_info = 0
 let g:go_fmt_command = 'goimports'
 let g:go_gorename_command = 'gopls'
 let g:go_metalinter_command='golangci-lint'
