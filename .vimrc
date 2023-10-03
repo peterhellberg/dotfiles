@@ -3,15 +3,13 @@ call plug#begin('~/.vim/plugged')
 " Go plugins
 Plug 'fatih/vim-go'
 Plug 'charlespascoe/vim-go-syntax'
+Plug 'joerdav/templ.vim'
 
 " Plugin bundles
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'SirVer/ultisnips'
-Plug 'ervandew/supertab'
-"Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 Plug 'peterhellberg/snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
@@ -125,8 +123,6 @@ hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 hi CocFloating guibg=#202020
 hi CocMenuSel guibg=#303030
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
@@ -221,25 +217,28 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " Coc
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
+let g:coc_snippet_next = '<tab>'
 
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " LeaderF
 let g:Lf_WindowPosition = 'popup'
@@ -303,6 +302,7 @@ au FileType go nmap <leader>c <Plug>(go-callers)
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_def_mapping_enabled = 1
 let g:go_disable_autoinstall = 1
 let g:go_echo_go_info = 1
 let g:go_echo_command_info = 0
@@ -327,13 +327,11 @@ map! <ESC>[OB <C-Down>
 map! <ESC>[OD <C-Left>
 map! <ESC>[OC <C-Right>
 
-" Daily Notes
-" let g:daily_notes_base = "~/Documents/Notes/"
-
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1, 'auto_diary_index': 1, 'automatic_nested_syntaxes': 1, 'nested_syntaxes': {'go': 'go'}}]
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_url_maxsave = 0
+let g:vimwiki_global_ext = 0
 
 function VimwikiStandup()
   VimwikiMakeDiaryNote
