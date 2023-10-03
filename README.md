@@ -19,6 +19,32 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
+
+### :CocConfig
+```json
+{
+  "coc.preferences.useQuickfixForLocations": true,
+  "coc.preferences.snippets.enable": true,
+  "coc.preferences.extensionUpdateCheck": "never",
+  "suggest.disableMenu": true,
+  "suggest.snippetIndicator": "",
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "gosnippets/UltiSnips"
+  ],
+  "languageserver": {
+       "zls" : {
+           "command": "/home/peter/Code/GitHub/zigtools/zls/zig-out/bin/zls",
+           "filetypes": ["zig"]
+       },
+       "golang": {
+           "command": "gopls",
+           "filetypes": ["go"]
+       }
+   }
+}
+```
+
 ## Software
 
 - iTerm2 from <https://iterm2.com/downloads.html>
