@@ -212,10 +212,6 @@ let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', 'vendor']
 
-" SuperTab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-
 " Coc
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#_select_confirm() :
@@ -231,14 +227,9 @@ endfunction
 let g:coc_snippet_next = '<tab>'
 
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
-
-" UltiSnips
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " LeaderF
 let g:Lf_WindowPosition = 'popup'
@@ -252,22 +243,6 @@ let g:Lf_WorkingDirectoryMode = 'a'
 let g:Lf_UseMemoryCache = 0
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PopupColorscheme = 'gruvbox_default'
-
-" CtrlP
-" nnoremap <silent> t :CtrlP<cr>
-"
-" let g:ctrlp_match_window_bottom = 0
-" let g:ctrlp_match_window_reversed = 0
-" let g:ctrlp_working_path_mode = 2
-" let g:ctrlp_by_filename = 0
-" let g:ctrlp_max_files = 512
-" let g:ctrlp_max_depth = 8
-" let g:ctrlp_use_caching = 1
-" let g:ctrlp_root_markers = ['.git']
-" let g:ctrlp_user_command = {
-"   \ 'types': { 1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others | grep -v vendor'] },
-"   \ 'fallback': 'ack -f %s --ignore-dir=.git | head -' . g:ctrlp_max_files
-"   \ }
 
 " GitGutter
 let g:gitgutter_max_signs = 250
