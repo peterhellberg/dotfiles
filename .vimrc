@@ -40,8 +40,14 @@ Plug 'jparise/vim-graphql'
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
 
+" AI!
+"Plug 'Exafunction/codeium.vim'
+
 " Add plugins to &runtimepath
 call plug#end()
+
+" AI!
+"let g:codeium_enabled = v:false
 
 let g:lsc_auto_map = v:true
 
@@ -213,10 +219,10 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'gin-bin', 'deps', 'vendor']
 
 " Coc
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <Tab>
       \ coc#pum#visible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ CheckBackspace() ? "\<TAB>" :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 
 function! CheckBackspace() abort
@@ -224,10 +230,13 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_prev = '<S-Tab>'
 
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
@@ -326,3 +335,4 @@ autocmd FileType zig hi CocFloating ctermbg=Black
 autocmd FileType zig inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
+autocmd FileType zig nmap gd <Plug>(coc-definition)
