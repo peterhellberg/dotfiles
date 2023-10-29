@@ -335,4 +335,5 @@ autocmd FileType zig hi CocFloating ctermbg=Black
 autocmd FileType zig inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
+autocmd FileType zig nmap <leader>. <Plug>(coc-rename)
 autocmd FileType zig nmap gd <Plug>(coc-definition)
