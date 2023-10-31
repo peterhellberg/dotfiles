@@ -216,7 +216,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', 'reports', 'Godeps', '_workspace', 'zig-cache', 'deps', 'vendor']
+let NERDTreeIgnore = ['tmp', 'reports', '_workspace', 'zig-cache', 'elf.disk', 'deps', 'vendor']
 
 " Coc
 inoremap <silent><expr> <Tab>
@@ -337,3 +337,5 @@ autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>
 autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
 autocmd FileType zig nmap <leader>. <Plug>(coc-rename)
 autocmd FileType zig nmap gd <Plug>(coc-definition)
+
+nmap <c-s> :w<CR>
