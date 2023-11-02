@@ -26,7 +26,6 @@ Plug 'ziglang/zig.vim'
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
-" Plug 'takumakei/daily-notes.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
 
@@ -40,14 +39,8 @@ Plug 'jparise/vim-graphql'
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
 
-" AI!
-"Plug 'Exafunction/codeium.vim'
-
 " Add plugins to &runtimepath
 call plug#end()
-
-" AI!
-"let g:codeium_enabled = v:false
 
 let g:lsc_auto_map = v:true
 
@@ -62,7 +55,7 @@ if !has('gui_running')
     set ttimeoutlen=10
     augroup FastEscape
         autocmd!
-        au InsertEnter * set timeoutlen=0
+        au InsertEnter * set timeoutlen=125
         au InsertLeave * set timeoutlen=1000
     augroup END
 endif
@@ -179,6 +172,9 @@ noremap <space> :
 " Quick ESC
 imap jj <ESC>
 
+" Save using ^s
+nmap <c-s> :w<CR>
+
 " Jump to the next row on long lines
 map <Down> gj
 map <Up>   gk
@@ -209,6 +205,9 @@ if bufwinnr(1)
   nmap Ä <C-W>-<C-W>-
   nmap Ö <C-W>+<C-W>+
 endif
+
+" Start search with å
+nmap å /
 
 " NERDTree
 nmap <leader>n :NERDTreeToggle<CR>
@@ -337,5 +336,3 @@ autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>
 autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
 autocmd FileType zig nmap <leader>. <Plug>(coc-rename)
 autocmd FileType zig nmap gd <Plug>(coc-definition)
-
-nmap <c-s> :w<CR>
