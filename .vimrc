@@ -215,7 +215,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', 'reports', '_workspace', 'zig-cache', 'elf.disk', 'deps', 'vendor']
+let NERDTreeIgnore = ['tmp', 'reports', '_workspace', 'zig-out', 'zig-cache', 'elf.disk', 'deps', 'vendor']
 
 " Coc
 inoremap <silent><expr> <Tab>
@@ -251,6 +251,10 @@ let g:Lf_WorkingDirectoryMode = 'a'
 let g:Lf_UseMemoryCache = 0
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PopupColorscheme = 'gruvbox_default'
+let g:Lf_WildIgnore = {
+        \ 'dir': ['.git', 'zig-cache'],
+        \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so', '*.wasm']
+        \}
 
 " GitGutter
 let g:gitgutter_max_signs = 250
