@@ -24,6 +24,11 @@ export LC_ALL=en_US.UTF-8
 export LC_LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+GPG_TTY=$(tty)
+export GPG_TTY
+
+export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/lib"
+
 # NeoVIM
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=true
 
@@ -33,6 +38,11 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=true
 
 # Dokku
 export DOKKU_HOST=dokku.c7.se
+
+# Köp
+export KOP_ENDPOINT="http://100.68.130.108:12432/rpc/"
+alias köp='kop'
+
 
 # Go
 export GOPATH=$HOME/Go
@@ -59,8 +69,11 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 # Rust
 export PATH=$PATH:$HOME/.cargo/bin/
 
+# Zig
+export PATH=$PATH:$HOME/.local/zig/
+
 # Coreutils gnubin
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='--color=auto'
@@ -86,6 +99,10 @@ export PATH=$PATH:/usr/local/share/npm/bin
 
 # Homebrew
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+
+# User binaries
+export PATH=$PATH:$HOME/.bin/
+export PATH=$PATH:$HOME/.local/bin/
 
 # Ruby
 export RUBY_GC_HEAP_INIT_SLOTS=1800000  # (10000)

@@ -17,3 +17,4 @@ shopt -s checkwinsize
 
 PS1='\[$WHITE\]\w \[$YELLOW\]$(parse_git_branch)\[$GREEN\]\n\[$GREEN\]\$\[$RESET_COLOR\] '
 export SUDO_PS1="\[$WHITE\]\w \[$YELLOW\]\$(parse_git_branch)\[\e[0;31m\]\n#\[$RESET_COLOR\] "
+eval "$(/opt/homebrew/bin/brew shellenv)"

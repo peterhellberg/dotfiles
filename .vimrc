@@ -121,6 +121,7 @@ set t_BE=
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 hi CocFloating guibg=#202020
 hi CocMenuSel guibg=#303030
+hi CocMenuSel ctermfg=Black ctermbg=Gray
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -286,6 +287,7 @@ au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <leader>c <Plug>(go-callers)
+au FileType go nmap <leader>. <Plug>(coc-rename)
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'

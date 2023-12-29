@@ -16,6 +16,9 @@
   undo-commit = reset --soft HEAD^
   authors = shortlog -sne --no-merges -w1024,0,0
   master-stage = log --reverse --pretty=format:'%C(yellow)%h %Cgreen%an%Creset (%ar): %s' --abbrev-commit master..stage
+  gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+  list = ! "git log main.. --reverse --pretty=format:\"%s\" | awk '{print \"- [X] \"$0 }'"
+  list-master = ! "git log master.. --reverse --pretty=format:\"%s\" | awk '{print \"- [X] \"$0 }'"
 [branch]
   autosetuprebase = always
 [color]
@@ -45,3 +48,7 @@
 	required = true
 [pull]
 	rebase = true
+[gpg]
+	program = gpg
+[init]
+	defaultBranch = main
