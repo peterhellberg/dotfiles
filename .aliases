@@ -20,6 +20,10 @@ alias spy-clear-go='spy --exc output -q clear-go'
 alias spy-clear-gotest-uncached='spy -c black clear-gotest -count=1 $(go list ./...)'
 alias spy-clear-gotest-integration='spy -c black clear-gotest -tags=integration $(go list ./...)'
 
+# Zig aliases
+alias spy-clear-zig='spy --exc zig-cache --inc "**/*.zig" -q clear-zig'
+alias zig-build-list-steps="zig build -l | grep -v install | awk '{print \"zig build \"\$1}'"
+
 # Service aliases
 alias mongod='mongod run --config /usr/local/etc/mongod.conf'
 alias elasticsearch_start='elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml'
@@ -30,9 +34,9 @@ alias volatile-redis-server='cd && redis-server /usr/local/etc/volatile-redis.co
 alias p='cd `cat $HOME/.current_project`'
 alias p.='echo `pwd` > $HOME/.current_project'
 
-## Code7 aliases
-alias cg='cd ~/Work/Code7/GitHub'
-alias c7='cd ~/Work/Code7/GitHub/c7/c7.se/'
+## Code7
+alias cg='cd ~/Code/GitHub'
+alias c7='cd ~/Code/GitHub/c7/c7.se/'
 alias c7go='cd ~/Go/src/github.com/c7'
 alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
