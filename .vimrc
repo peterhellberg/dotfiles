@@ -23,6 +23,7 @@ Plug 'lifepillar/pgsql.vim'
 
 " Esoteric plugins
 Plug 'ziglang/zig.vim'
+Plug 'tikhomirov/vim-glsl'
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
@@ -286,6 +287,7 @@ au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <leader>c <Plug>(go-callers)
+au FileType go nmap <leader>. <Plug>(coc-rename)
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
@@ -319,6 +321,8 @@ let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ex
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_url_maxsave = 0
 let g:vimwiki_global_ext = 0
+nmap <Leader>vn <Plug>VimwikiNextLink
+nmap <Leader>vp <Plug>VimwikiPrevLink
 
 function VimwikiStandup()
   VimwikiMakeDiaryNote
