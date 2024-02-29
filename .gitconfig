@@ -2,10 +2,14 @@
   name = Peter Hellberg
   email = peter@c7.se
   signingkey = D60BC6C4
+[includeIf "gitdir:~/Go/src/github.com/feverenergy/"]
+  path = ~/.gitconfig-feverenergy
 [fetch]
   prune = true
 [push]
-	default = simple
+	default = upstream
+  followTags = true
+  autoSetupRemote = true
 [apply]
   whitespace = nowarn
 [core]
@@ -19,6 +23,8 @@
   gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
   list = ! "git log main.. --reverse --pretty=format:\"%s\" | awk '{print \"- [X] \"$0 }'"
   list-master = ! "git log master.. --reverse --pretty=format:\"%s\" | awk '{print \"- [X] \"$0 }'"
+[init]
+	defaultBranch = main
 [branch]
   autosetuprebase = always
 [color]
@@ -47,8 +53,8 @@
 	process = git-lfs filter-process
 	required = true
 [pull]
-	rebase = true
+  rebase = true
+[merge]
+  ff = only
 [gpg]
 	program = gpg
-[init]
-	defaultBranch = main

@@ -42,6 +42,7 @@ alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 alias ago='cd ~/Go/src/github.com/athega'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
+alias fgo='cd ~/Go/src/github.com/feverenergy'
 
 ## Git aliases
 alias grimaster="git rebase --exec 'git commit --amend --no-edit -n -S' -i master"
@@ -49,6 +50,7 @@ alias grimain="git rebase --exec 'git commit --amend --no-edit -n -S' -i main"
 alias gs='git status'
 
 ## Misc
+alias vim='nvim'
 alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
 alias filllight="keylight -a http://filllight:9123"
 alias ack='pt --ignore="vendor"'
