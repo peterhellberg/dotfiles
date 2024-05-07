@@ -36,6 +36,10 @@ Plug 'tpope/vim-git'
 " Frontend plugins
 Plug 'jparise/vim-graphql'
 
+" TypeScript plugins
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
 
@@ -304,6 +308,10 @@ augroup go
   autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+augroup END
+
+augroup filetypedetect
+  au BufRead,BufNewFile *.gohtml setfiletype gohtmltmpl
 augroup END
 
 " Rust

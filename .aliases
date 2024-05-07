@@ -42,11 +42,16 @@ alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 alias ago='cd ~/Go/src/github.com/athega'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
+
+## Fever
 alias fgo='cd ~/Go/src/github.com/feverenergy'
+alias fwiki='cd ~/Documents/vimwiki/Athega/Kunder/Fever'
+alias plotly_plot='python3 $GOPATH/src/github.com/feverenergy/qualification/python/plot.py --theme=plotly'
 
 ## Git aliases
 alias grimaster="git rebase --exec 'git commit --amend --no-edit -n -S' -i master"
 alias grimain="git rebase --exec 'git commit --amend --no-edit -n -S' -i main"
+alias gri="git rebase --exec 'git commit --amend --no-edit -n -S' -i"
 alias gs='git status'
 
 ## Misc

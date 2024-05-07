@@ -4,6 +4,8 @@
   signingkey = D60BC6C4
 [includeIf "gitdir:~/Go/src/github.com/feverenergy/"]
   path = ~/.gitconfig-feverenergy
+[includeIf "gitdir:~/Documents/vimwiki/Athega/Kunder/Fever/"]
+  path = ~/.gitconfig-feverenergy
 [fetch]
   prune = true
 [push]
