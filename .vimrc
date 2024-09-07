@@ -1,9 +1,14 @@
 call plug#begin('~/.vim/plugged')
 
 " Go plugins
-Plug 'fatih/vim-go'
-Plug 'charlespascoe/vim-go-syntax'
-Plug 'joerdav/templ.vim'
+"Plug 'fatih/vim-go'
+
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lspconfig' 
+Plug 'ray-x/go.nvim'
+
+"Plug 'charlespascoe/vim-go-syntax'
+"Plug 'joerdav/templ.vim'
 
 " Plugin bundles
 Plug 'honza/vim-snippets'
@@ -19,11 +24,11 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
 " Database plugins
-Plug 'lifepillar/pgsql.vim'
+"Plug 'lifepillar/pgsql.vim'
 
 " Esoteric plugins
 Plug 'ziglang/zig.vim'
-Plug 'tikhomirov/vim-glsl'
+"Plug 'tikhomirov/vim-glsl'
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
@@ -33,9 +38,6 @@ Plug 'mattn/calendar-vim'
 " Git plugins
 Plug 'airblade/vim-gitgutter', {'branch': 'main'}
 Plug 'tpope/vim-git'
-
-" Frontend plugins
-Plug 'jparise/vim-graphql'
 
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
@@ -235,6 +237,7 @@ let g:coc_snippet_prev = '<S-Tab>'
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>f  <Plug>(coc-fix-current)
 inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
@@ -266,7 +269,7 @@ highlight GitGutterChange guifg=#f9cf75 ctermfg=3
 highlight GitGutterDelete guifg=#d35738 ctermfg=1 
 
 " Ack
-nmap <leader>a :Ack! 
+" nmap <leader>a :Ack! 
 set shellpipe=>
 
 if executable('pt')
@@ -301,9 +304,9 @@ let g:go_metalinter_command='golangci-lint'
 
 augroup go
   autocmd!
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  au FileType go command! -bang A GoAlt
+  au FileType go command! -bang AV GoAltV
+  au FileType go command! -bang AS GoAltS
 augroup END
 
 " Rust
@@ -344,3 +347,47 @@ autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>
 autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
 autocmd FileType zig nmap <leader>. <Plug>(coc-rename)
 autocmd FileType zig nmap gd <Plug>(coc-definition)
+
+" JS
+autocmd FileType javascript hi CocFloating ctermbg=Black 
+autocmd FileType javascript nmap <leader>. <Plug>(coc-rename)
+autocmd FileType javascript nmap gd <Plug>(coc-definition)
+
+" TS
+autocmd FileType typescript hi CocFloating ctermbg=Black 
+autocmd FileType typescript nmap <leader>. <Plug>(coc-rename)
+autocmd FileType typescript nmap gd <Plug>(coc-definition)
+
+lua <<EOF
+require 'go'.setup({
+  goimports = 'gopls', -- if set to 'gopls' will use golsp format
+  gofmt = 'gopls', -- if set to gopls will use golsp format
+  tag_transform = false,
+  test_dir = '',
+  lsp_cfg = true, -- false: use your own lspconfig
+  lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+  lsp_on_attach = true, -- use on_attach from go.nvim
+  lsp_codelens = false,
+  dap_debug = false,
+  lsp_inlay_hints = {
+    style = 'eof',
+    show_parameter_hints = false,
+  },
+})
+
+-- Run gofmt + goimports on save
+
+local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimports()
+  end,
+  group = format_sync_grp,
+})
+
+-- Alternate files
+vim.api.nvim_create_user_command('A', function (args)
+  vim.cmd('GoAlt' .. args)
+end, { desc = "Alternate" })
+EOF
