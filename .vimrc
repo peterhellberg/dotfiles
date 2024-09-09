@@ -1,14 +1,14 @@
 call plug#begin('~/.vim/plugged')
 
 " Go plugins
-"Plug 'fatih/vim-go'
-
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neovim/nvim-lspconfig' 
 Plug 'ray-x/go.nvim'
-
 "Plug 'charlespascoe/vim-go-syntax'
 "Plug 'joerdav/templ.vim'
+
+" Zig plugins
+Plug 'ziglang/zig.vim'
 
 " Plugin bundles
 Plug 'honza/vim-snippets'
@@ -27,8 +27,8 @@ Plug 'tpope/vim-surround'
 "Plug 'lifepillar/pgsql.vim'
 
 " Esoteric plugins
-Plug 'ziglang/zig.vim'
 "Plug 'tikhomirov/vim-glsl'
+Plug 'Eric-Song-Nop/vim-glslx'
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
@@ -282,36 +282,6 @@ au BufRead,BufNewFile *.s set filetype=asm_ca65
 " PostgreSQL
 let g:sql_type_default = 'pgsql'
 
-" Go programming
-au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
-
-au FileType go nmap <Leader>d <Plug>(go-def-vertical)
-au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <leader>c <Plug>(go-callers)
-au FileType go nmap <leader>. <Plug>(coc-rename)
-
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_def_mapping_enabled = 1
-let g:go_disable_autoinstall = 1
-let g:go_echo_go_info = 1
-let g:go_echo_command_info = 0
-let g:go_fmt_command = 'goimports'
-let g:go_gorename_command = 'gopls'
-let g:go_metalinter_command='golangci-lint'
-
-augroup go
-  autocmd!
-  au FileType go command! -bang A GoAlt
-  au FileType go command! -bang AV GoAltV
-  au FileType go command! -bang AS GoAltS
-augroup END
-
-" Rust
-let g:rustfmt_autosave = 1
-
 " Navigation
 " Map Ctrl+Arrows in mac OAOAOBOCODOAOBOB OA OAOB
 map! <ESC>[OA <C-Up>
@@ -339,6 +309,11 @@ function VimwikiStandup()
   endif
 endfunction
 
+" Any filetype
+autocmd FileType * nmap <leader>< <Plug>(coc-format)
+autocmd FileType * nmap <leader>. <Plug>(coc-rename)
+autocmd FileType * nmap gd <Plug>(coc-definition)
+
 " Zig
 autocmd FileType zig inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 autocmd FileType zig hi CocFloating ctermbg=Black 
@@ -357,6 +332,42 @@ autocmd FileType javascript nmap gd <Plug>(coc-definition)
 autocmd FileType typescript hi CocFloating ctermbg=Black 
 autocmd FileType typescript nmap <leader>. <Plug>(coc-rename)
 autocmd FileType typescript nmap gd <Plug>(coc-definition)
+
+" C
+autocmd FileType c hi CocFloating ctermbg=Black 
+autocmd FileType c nmap <leader>. <Plug>(coc-rename)
+autocmd FileType c nmap gd <Plug>(coc-definition)
+
+" GLSLX
+autocmd BufWritePre *.glslx :call CocAction('format')
+
+" Go programming
+au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
+
+au FileType go nmap <Leader>d <Plug>(go-def-vertical)
+au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <leader>c <Plug>(go-callers)
+au FileType go nmap <leader>. <Plug>(coc-rename)
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_def_mapping_enabled = 1
+let g:go_disable_autoinstall = 1
+let g:go_echo_go_info = 1
+let g:go_echo_command_info = 0
+let g:go_fmt_command = 'goimports'
+let g:go_gorename_command = 'gopls'
+let g:go_metalinter_command='golangci-lint'
+
+augroup go
+  autocmd!
+  au FileType go command! -bang A GoAlt
+  au FileType go command! -bang AV GoAltV
+  au FileType go command! -bang AS GoAltS
+augroup END
+
 
 lua <<EOF
 require 'go'.setup({
