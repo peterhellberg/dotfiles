@@ -314,6 +314,19 @@ autocmd FileType * nmap <leader>< <Plug>(coc-format)
 autocmd FileType * nmap <leader>. <Plug>(coc-rename)
 autocmd FileType * nmap gd <Plug>(coc-definition)
 
+function! ToggleHover()
+  if !CocAction('hasProvider', 'hover')
+    return
+  endif
+
+  if coc#float#has_float()
+    call coc#float#close_all()
+  else
+    call CocActionAsync('definitionHover')
+  endif
+endfunction
+autocmd FileType * nmap <silent> § :call ToggleHover()<CR>
+
 " Zig
 autocmd FileType zig inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 autocmd FileType zig hi CocFloating ctermbg=Black 
