@@ -67,7 +67,6 @@ command! -nargs=1 Silent
       \   execute 'silent !' . <q-args>
       \ | execute 'redraw!'
 
-
 set t_Co=256
 set termguicolors
 
@@ -380,7 +379,6 @@ augroup go
   au FileType go command! -bang AV GoAltV
   au FileType go command! -bang AS GoAltS
 augroup END
-
 
 lua <<EOF
 require 'go'.setup({
