@@ -37,8 +37,10 @@ Plug 'tpope/vim-git'
 Plug 'jparise/vim-graphql'
 
 " TypeScript plugins
-Plug 'Quramy/tsuquyomi'
-Plug 'leafgarland/typescript-vim'
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'leafgarland/typescript-vim'
+
+Plug 'imsnif/kdl.vim'
 
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
@@ -238,7 +240,7 @@ let g:coc_snippet_next = '<Tab>'
 let g:coc_snippet_prev = '<S-Tab>'
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)w
 inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
@@ -270,7 +272,7 @@ highlight GitGutterChange guifg=#f9cf75 ctermfg=3
 highlight GitGutterDelete guifg=#d35738 ctermfg=1 
 
 " Ack
-nmap <leader>a :Ack! 
+nmap <leader>p :Ack! 
 set shellpipe=>
 
 if executable('pt')
