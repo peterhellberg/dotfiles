@@ -1,9 +1,14 @@
 call plug#begin('~/.vim/plugged')
 
 " Go plugins
-Plug 'fatih/vim-go'
-Plug 'charlespascoe/vim-go-syntax'
-Plug 'joerdav/templ.vim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lspconfig' 
+Plug 'ray-x/go.nvim'
+"Plug 'charlespascoe/vim-go-syntax'
+"Plug 'joerdav/templ.vim'
+
+" Zig plugins
+Plug 'ziglang/zig.vim'
 
 " Plugin bundles
 Plug 'honza/vim-snippets'
@@ -19,10 +24,15 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
 " Database plugins
-Plug 'lifepillar/pgsql.vim'
+"Plug 'lifepillar/pgsql.vim'
 
 " Esoteric plugins
-Plug 'ziglang/zig.vim'
+"Plug 'tikhomirov/vim-glsl'
+Plug 'Eric-Song-Nop/vim-glslx'
+
+" Typesetting
+Plug 'kaarmu/typst.vim'
+Plug 'chomosuke/typst-preview.nvim', {'tag': 'v0.3.*', 'do': ':TypstPreviewUpdate'}
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
@@ -32,15 +42,6 @@ Plug 'mattn/calendar-vim'
 " Git plugins
 Plug 'airblade/vim-gitgutter', {'branch': 'main'}
 Plug 'tpope/vim-git'
-
-" Frontend plugins
-Plug 'jparise/vim-graphql'
-
-" TypeScript plugins
-" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Plug 'leafgarland/typescript-vim'
-
-Plug 'imsnif/kdl.vim'
 
 " Color scheme
 Plug 'nanotech/jellybeans.vim'
@@ -69,7 +70,6 @@ endif
 command! -nargs=1 Silent
       \   execute 'silent !' . <q-args>
       \ | execute 'redraw!'
-
 
 set t_Co=256
 set termguicolors
@@ -127,7 +127,6 @@ set t_BE=
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 hi CocFloating guibg=#202020
 hi CocMenuSel guibg=#303030
-hi CocMenuSel ctermfg=Black ctermbg=Gray
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -165,7 +164,7 @@ function! <SID>StripTrailingSpace()
 endfun
 
 " Strip trailing space for a list of extensions
-autocmd BufWritePre *.c,*.coffee,*.elm,*.ex,*.exs,*.haml,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.txt :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.c,*.coffee,*.elm,*.ex,*.exs,*.typ,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.txt :call <SID>StripTrailingSpace()
 
 " Set noeol on all new files
 autocmd BufNewFile * set noeol
@@ -240,7 +239,8 @@ let g:coc_snippet_next = '<Tab>'
 let g:coc_snippet_prev = '<S-Tab>'
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a <Plug>(coc-codeaction-selected)w
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>f  <Plug>(coc-fix-current)
 inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
@@ -272,7 +272,7 @@ highlight GitGutterChange guifg=#f9cf75 ctermfg=3
 highlight GitGutterDelete guifg=#d35738 ctermfg=1 
 
 " Ack
-nmap <leader>p :Ack! 
+" nmap <leader>a :Ack! 
 set shellpipe=>
 
 if executable('pt')
@@ -284,6 +284,78 @@ au BufRead,BufNewFile *.s set filetype=asm_ca65
 
 " PostgreSQL
 let g:sql_type_default = 'pgsql'
+
+" Navigation
+" Map Ctrl+Arrows in mac OAOAOBOCODOAOBOB OA OAOB
+map! <ESC>[OA <C-Up>
+map! <ESC>[OB <C-Down>
+map! <ESC>[OD <C-Left>
+map! <ESC>[OC <C-Right>
+
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1, 'auto_diary_index': 1, 'automatic_nested_syntaxes': 1, 'nested_syntaxes': {'go': 'go'}}]
+let g:vimwiki_use_calendar = 1
+let g:vimwiki_url_maxsave = 0
+let g:vimwiki_global_ext = 0
+nmap <Leader>vn <Plug>VimwikiNextLink
+nmap <Leader>vp <Plug>VimwikiPrevLink
+
+function VimwikiStandup()
+  VimwikiMakeDiaryNote
+  w
+  VimwikiDiaryIndex
+  VimwikiDiaryGenerateLinks
+  w
+  VimwikiMakeDiaryNote
+  if getline(1,'$') == ['']
+    exec 'normal i'.system("standup.sh \| tr '\n' ' '")
+  endif
+endfunction
+
+" Any filetype
+autocmd FileType * nmap <leader>< <Plug>(coc-format)
+autocmd FileType * nmap <leader>. <Plug>(coc-rename)
+autocmd FileType * nmap gd <Plug>(coc-definition)
+
+function! ToggleHover()
+  if !CocAction('hasProvider', 'hover')
+    return
+  endif
+
+  if coc#float#has_float()
+    call coc#float#close_all()
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
+autocmd FileType * nmap <silent> § :call ToggleHover()<CR>
+
+" Zig
+autocmd FileType zig inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+autocmd FileType zig hi CocFloating ctermbg=Black 
+autocmd FileType zig inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
+autocmd FileType zig nmap <leader>. <Plug>(coc-rename)
+autocmd FileType zig nmap gd <Plug>(coc-definition)
+
+" JS
+autocmd FileType javascript hi CocFloating ctermbg=Black 
+autocmd FileType javascript nmap <leader>. <Plug>(coc-rename)
+autocmd FileType javascript nmap gd <Plug>(coc-definition)
+
+" TS
+autocmd FileType typescript hi CocFloating ctermbg=Black 
+autocmd FileType typescript nmap <leader>. <Plug>(coc-rename)
+autocmd FileType typescript nmap gd <Plug>(coc-definition)
+
+" C
+autocmd FileType c hi CocFloating ctermbg=Black 
+autocmd FileType c nmap <leader>. <Plug>(coc-rename)
+autocmd FileType c nmap gd <Plug>(coc-definition)
+
+" GLSLX
+autocmd BufWritePre *.glslx :call CocAction('format')
 
 " Go programming
 au BufRead,BufNewFile *.go setl filetype=go nolist noexpandtab syntax=go
@@ -307,48 +379,41 @@ let g:go_metalinter_command='golangci-lint'
 
 augroup go
   autocmd!
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  au FileType go command! -bang A GoAlt
+  au FileType go command! -bang AV GoAltV
+  au FileType go command! -bang AS GoAltS
 augroup END
 
-augroup filetypedetect
-  au BufRead,BufNewFile *.gohtml setfiletype gohtmltmpl
-augroup END
+lua <<EOF
+require 'go'.setup({
+  goimports = 'gopls', -- if set to 'gopls' will use golsp format
+  gofmt = 'gopls', -- if set to gopls will use golsp format
+  tag_transform = false,
+  test_dir = '',
+  lsp_cfg = true, -- false: use your own lspconfig
+  lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+  lsp_on_attach = true, -- use on_attach from go.nvim
+  lsp_codelens = false,
+  dap_debug = false,
+  lsp_inlay_hints = {
+    style = 'eof',
+    show_parameter_hints = false,
+  },
+})
 
-" Rust
-let g:rustfmt_autosave = 1
+-- Run gofmt + goimports on save
 
-" Navigation
-" Map Ctrl+Arrows in mac OAOAOBOCODOAOBOB OA OAOB
-map! <ESC>[OA <C-Up>
-map! <ESC>[OB <C-Down>
-map! <ESC>[OD <C-Left>
-map! <ESC>[OC <C-Right>
+local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimports()
+  end,
+  group = format_sync_grp,
+})
 
-" Vimwiki
-let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1, 'auto_diary_index': 1, 'automatic_nested_syntaxes': 1, 'nested_syntaxes': {'go': 'go'}}]
-let g:vimwiki_use_calendar = 1
-let g:vimwiki_url_maxsave = 0
-let g:vimwiki_global_ext = 0
-
-function VimwikiStandup()
-  VimwikiMakeDiaryNote
-  w
-  VimwikiDiaryIndex
-  VimwikiDiaryGenerateLinks
-  w
-  VimwikiMakeDiaryNote
-  if getline(1,'$') == ['']
-    exec 'normal i'.system("standup.sh \| tr '\n' ' '")
-  endif
-endfunction
-
-" Zig
-autocmd FileType zig inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-autocmd FileType zig hi CocFloating ctermbg=Black 
-autocmd FileType zig inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
-autocmd FileType zig nmap <leader>. <Plug>(coc-rename)
-autocmd FileType zig nmap gd <Plug>(coc-definition)
+-- Alternate files
+vim.api.nvim_create_user_command('A', function (args)
+  vim.cmd('GoAlt' .. args)
+end, { desc = "Alternate" })
+EOF
