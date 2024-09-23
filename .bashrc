@@ -144,3 +144,4 @@ PS1='\[$BLUE\]max \[$WHITE\]\w \[$YELLOW\]$(parse_git_branch)\[$GREEN\]\n\[$GREE
 export SUDO_PS1="\[$BLUE\]max \[$WHITE\]\w \[$YELLOW\]\$(parse_git_branch)\[\e[0;31m\]\n#\[$RESET_COLOR\] "
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+. "$HOME/.cargo/env"
