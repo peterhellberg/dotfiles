@@ -3,7 +3,8 @@ call plug#begin('~/.vim/plugged')
 " Go plugins
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neovim/nvim-lspconfig' 
-Plug 'ray-x/go.nvim'
+Plug 'ray-x/go.nvim', { 'for': 'go' }
+
 "Plug 'charlespascoe/vim-go-syntax'
 "Plug 'joerdav/templ.vim'
 
@@ -29,6 +30,10 @@ Plug 'tpope/vim-surround'
 " Esoteric plugins
 "Plug 'tikhomirov/vim-glsl'
 Plug 'Eric-Song-Nop/vim-glslx'
+
+" Typesetting
+Plug 'kaarmu/typst.vim'
+Plug 'chomosuke/typst-preview.nvim', {'tag': 'v0.3.*', 'do': ':TypstPreviewUpdate'}
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
@@ -61,6 +66,18 @@ if !has('gui_running')
         au InsertEnter * set timeoutlen=125
         au InsertLeave * set timeoutlen=1000
     augroup END
+endif
+
+if exists("g:neovide")
+  set guifont=Office\ Code\ Pro\ D:h12
+  let g:neovide_scroll_animation_length = 0
+  let g:neovide_position_animation_length = 0
+  let g:neovide_cursor_animation_length = 0
+  let g:neovide_cursor_trail_size = 0
+  let g:neovide_cursor_antialiasing = v:true
+  let g:neovide_cursor_animate_in_insert_mode = v:false
+  let g:neovide_cursor_animate_command_line = v:false
+  let g:neovide_cursor_vfx_mode = ""
 endif
 
 command! -nargs=1 Silent
@@ -112,11 +129,11 @@ set emoji
 set updatetime=100
 
 " GUI
-set guioptions-=m
-set guioptions-=L
-set guioptions-=T
-set guioptions-=r
-set guifont=Office\ Code\ Pro\ D\ 18
+"set guioptions-=m
+"set guioptions-=L
+"set guioptions-=T
+"set guioptions-=r
+"set guifont=Office\ Code\ Pro\ D\ 18
 
 set t_BE=
 
@@ -160,7 +177,7 @@ function! <SID>StripTrailingSpace()
 endfun
 
 " Strip trailing space for a list of extensions
-autocmd BufWritePre *.c,*.coffee,*.elm,*.ex,*.exs,*.haml,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.txt :call <SID>StripTrailingSpace()
+autocmd BufWritePre *.c,*.coffee,*.elm,*.ex,*.exs,*.typ,*.html,*.js,*.lua,*.markdown,*.md,*.rb,*.rs,*.scss,*.txt :call <SID>StripTrailingSpace()
 
 " Set noeol on all new files
 autocmd BufNewFile * set noeol
@@ -321,7 +338,7 @@ function! ToggleHover()
   if coc#float#has_float()
     call coc#float#close_all()
   else
-    call CocActionAsync('definitionHover')
+    call CocActionAsync('doHover')
   endif
 endfunction
 autocmd FileType * nmap <silent> § :call ToggleHover()<CR>
@@ -381,20 +398,20 @@ augroup go
 augroup END
 
 lua <<EOF
-require 'go'.setup({
-  goimports = 'gopls', -- if set to 'gopls' will use golsp format
-  gofmt = 'gopls', -- if set to gopls will use golsp format
-  tag_transform = false,
-  test_dir = '',
-  lsp_cfg = true, -- false: use your own lspconfig
-  lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
-  lsp_on_attach = true, -- use on_attach from go.nvim
-  lsp_codelens = false,
-  dap_debug = false,
-  lsp_inlay_hints = {
-    style = 'eof',
-    show_parameter_hints = false,
-  },
+ require 'go'.setup({
+   goimports = 'gopls', -- if set to 'gopls' will use golsp format
+   gofmt = 'gopls', -- if set to gopls will use golsp format
+   tag_transform = false,
+   test_dir = '',
+   lsp_cfg = true, -- false: use your own lspconfig
+   lsp_on_attach = true, -- use on_attach from go.nvim
+   lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+   lsp_codelens = false,
+   dap_debug = false,
+   lsp_inlay_hints = {
+     style = 'eof',
+     show_parameter_hints = false,
+   },
 })
 
 -- Run gofmt + goimports on save
