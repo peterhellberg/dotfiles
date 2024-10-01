@@ -128,6 +128,9 @@ hi WinSeparator guifg=#202020
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 hi CocFloating guibg=#202020
 hi CocMenuSel guibg=#303030
+hi CocErrorHighlight guifg=#FE5753 guibg=#2E0302 gui=underline cterm=underline
+hi CocErrorFloat guifg=#FE5753 gui=italic
+hi CocErrorSign guifg=#FE5753 guibg=#2E0302
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
