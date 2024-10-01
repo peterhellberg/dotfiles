@@ -12,6 +12,7 @@ Plug 'ray-x/go.nvim', { 'for': 'go' }
 Plug 'ziglang/zig.vim'
 
 " Plugin bundles
+Plug 'vim-scripts/a.vim'
 Plug 'honza/vim-snippets'
 Plug 'peterhellberg/snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -128,15 +129,9 @@ set virtualedit=block
 set emoji
 set updatetime=100
 
-" GUI
-"set guioptions-=m
-"set guioptions-=L
-"set guioptions-=T
-"set guioptions-=r
-"set guifont=Office\ Code\ Pro\ D\ 18
-
 set t_BE=
 
+hi WinSeparator guifg=#202020
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 hi CocFloating guibg=#202020
 hi CocMenuSel guibg=#303030
@@ -280,12 +275,12 @@ let g:Lf_WildIgnore = {
 let g:gitgutter_max_signs = 250
 let g:gitgutter_map_keys = 0
 
-highlight GitGutterAdd    guifg=#97a950 ctermfg=2 
-highlight GitGutterChange guifg=#f9cf75 ctermfg=3 
-highlight GitGutterDelete guifg=#d35738 ctermfg=1 
+hi GitGutterAdd    guifg=#97a950 guibg=#2D3218 ctermfg=2
+hi GitGutterChange guifg=#FFB964 guibg=#4c371e ctermfg=3
+hi GitGutterDelete guifg=#d35738 guibg=#3f1a10 ctermfg=1
+hi! link SignColumn LineNr " Clear unchanged lines background
 
 " Ack
-" nmap <leader>a :Ack! 
 set shellpipe=>
 
 if executable('pt')
@@ -366,6 +361,9 @@ autocmd FileType typescript nmap gd <Plug>(coc-definition)
 autocmd FileType c hi CocFloating ctermbg=Black 
 autocmd FileType c nmap <leader>. <Plug>(coc-rename)
 autocmd FileType c nmap gd <Plug>(coc-definition)
+
+" autocmd BufWritePre *.c,*.h :normal gg=G``
+autocmd BufWritePre *.c,*.h :call CocAction('format')
 
 " GLSLX
 autocmd BufWritePre *.glslx :call CocAction('format')
