@@ -5,9 +5,6 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neovim/nvim-lspconfig' 
 Plug 'ray-x/go.nvim', { 'for': 'go' }
 
-"Plug 'charlespascoe/vim-go-syntax'
-"Plug 'joerdav/templ.vim'
-
 " Zig plugins
 Plug 'ziglang/zig.vim'
 
@@ -20,16 +17,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
-" Database plugins
-"Plug 'lifepillar/pgsql.vim'
-
 " Esoteric plugins
-"Plug 'tikhomirov/vim-glsl'
 Plug 'Eric-Song-Nop/vim-glslx'
 
 " Typesetting
@@ -43,6 +35,7 @@ Plug 'mattn/calendar-vim'
 
 " Git plugins
 Plug 'airblade/vim-gitgutter', {'branch': 'main'}
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 
 " Color scheme
