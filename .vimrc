@@ -3,14 +3,13 @@ call plug#begin('~/.vim/plugged')
 " Go plugins
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neovim/nvim-lspconfig' 
-Plug 'ray-x/go.nvim'
-"Plug 'charlespascoe/vim-go-syntax'
-"Plug 'joerdav/templ.vim'
+Plug 'ray-x/go.nvim', { 'for': 'go' }
 
 " Zig plugins
 Plug 'ziglang/zig.vim'
 
 " Plugin bundles
+Plug 'vim-scripts/a.vim'
 Plug 'honza/vim-snippets'
 Plug 'peterhellberg/snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -18,16 +17,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
-" Database plugins
-"Plug 'lifepillar/pgsql.vim'
-
 " Esoteric plugins
-"Plug 'tikhomirov/vim-glsl'
 Plug 'Eric-Song-Nop/vim-glslx'
 
 " Typesetting
@@ -41,6 +35,7 @@ Plug 'mattn/calendar-vim'
 
 " Git plugins
 Plug 'airblade/vim-gitgutter', {'branch': 'main'}
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 
 " Color scheme
@@ -65,6 +60,18 @@ if !has('gui_running')
         au InsertEnter * set timeoutlen=125
         au InsertLeave * set timeoutlen=1000
     augroup END
+endif
+
+if exists("g:neovide")
+  set guifont=Office\ Code\ Pro\ D:h12
+  let g:neovide_scroll_animation_length = 0
+  let g:neovide_position_animation_length = 0
+  let g:neovide_cursor_animation_length = 0
+  let g:neovide_cursor_trail_size = 0
+  let g:neovide_cursor_antialiasing = v:true
+  let g:neovide_cursor_animate_in_insert_mode = v:false
+  let g:neovide_cursor_animate_command_line = v:false
+  let g:neovide_cursor_vfx_mode = ""
 endif
 
 command! -nargs=1 Silent
@@ -115,18 +122,15 @@ set virtualedit=block
 set emoji
 set updatetime=100
 
-" GUI
-set guioptions-=m
-set guioptions-=L
-set guioptions-=T
-set guioptions-=r
-set guifont=Office\ Code\ Pro\ D\ 18
-
 set t_BE=
 
+hi WinSeparator guifg=#202020
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 hi CocFloating guibg=#202020
 hi CocMenuSel guibg=#303030
+hi CocErrorHighlight guifg=#FE5753 guibg=#2E0302 gui=underline cterm=underline
+hi CocErrorFloat guifg=#FE5753 gui=italic
+hi CocErrorSign guifg=#FE5753 guibg=#2E0302
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
@@ -267,12 +271,12 @@ let g:Lf_WildIgnore = {
 let g:gitgutter_max_signs = 250
 let g:gitgutter_map_keys = 0
 
-highlight GitGutterAdd    guifg=#97a950 ctermfg=2 
-highlight GitGutterChange guifg=#f9cf75 ctermfg=3 
-highlight GitGutterDelete guifg=#d35738 ctermfg=1 
+hi GitGutterAdd    guifg=#97a950 guibg=#2D3218 ctermfg=2
+hi GitGutterChange guifg=#FFB964 guibg=#4c371e ctermfg=3
+hi GitGutterDelete guifg=#d35738 guibg=#3f1a10 ctermfg=1
+hi! link SignColumn LineNr " Clear unchanged lines background
 
 " Ack
-" nmap <leader>a :Ack! 
 set shellpipe=>
 
 if executable('pt')
@@ -354,6 +358,9 @@ autocmd FileType c hi CocFloating ctermbg=Black
 autocmd FileType c nmap <leader>. <Plug>(coc-rename)
 autocmd FileType c nmap gd <Plug>(coc-definition)
 
+" autocmd BufWritePre *.c,*.h :normal gg=G``
+autocmd BufWritePre *.c,*.h :call CocAction('format')
+
 " GLSLX
 autocmd BufWritePre *.glslx :call CocAction('format')
 
@@ -385,20 +392,20 @@ augroup go
 augroup END
 
 lua <<EOF
-require 'go'.setup({
-  goimports = 'gopls', -- if set to 'gopls' will use golsp format
-  gofmt = 'gopls', -- if set to gopls will use golsp format
-  tag_transform = false,
-  test_dir = '',
-  lsp_cfg = true, -- false: use your own lspconfig
-  lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
-  lsp_on_attach = true, -- use on_attach from go.nvim
-  lsp_codelens = false,
-  dap_debug = false,
-  lsp_inlay_hints = {
-    style = 'eof',
-    show_parameter_hints = false,
-  },
+ require 'go'.setup({
+   goimports = 'gopls', -- if set to 'gopls' will use golsp format
+   gofmt = 'gopls', -- if set to gopls will use golsp format
+   tag_transform = false,
+   test_dir = '',
+   lsp_cfg = true, -- false: use your own lspconfig
+   lsp_on_attach = true, -- use on_attach from go.nvim
+   lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+   lsp_codelens = false,
+   dap_debug = false,
+   lsp_inlay_hints = {
+     style = 'eof',
+     show_parameter_hints = false,
+   },
 })
 
 -- Run gofmt + goimports on save
