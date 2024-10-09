@@ -62,18 +62,6 @@ if !has('gui_running')
     augroup END
 endif
 
-if exists("g:neovide")
-  set guifont=Office\ Code\ Pro\ D:h12
-  let g:neovide_scroll_animation_length = 0
-  let g:neovide_position_animation_length = 0
-  let g:neovide_cursor_animation_length = 0
-  let g:neovide_cursor_trail_size = 0
-  let g:neovide_cursor_antialiasing = v:true
-  let g:neovide_cursor_animate_in_insert_mode = v:false
-  let g:neovide_cursor_animate_command_line = v:false
-  let g:neovide_cursor_vfx_mode = ""
-endif
-
 command! -nargs=1 Silent
       \   execute 'silent !' . <q-args>
       \ | execute 'redraw!'
