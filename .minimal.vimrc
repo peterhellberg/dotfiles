@@ -14,20 +14,26 @@ hi Delimiter guifg=#799D6A
 hi Directory guifg=#DAD085
 hi Function guifg=#FAD07A
 hi Identifier guifg=#C6B6EE
+hi Include guifg=#8FBFDC
 hi Keyword guifg=#8197BE
+hi Label guifg=#8197BF
 hi LineNr guifg=#605958
+hi Macro guifg=#8FBFDC
+hi ModeMsg guifg=#FFFFFF guibg=#0087AF
 hi Normal guibg=#151515 guifg=#E8E8D3
 hi Number guifg=#CF6A4C
 hi PreProc guifg=#8FBFDC
+hi Repeat guifg=#8197BF
+hi Search guibg=#EFEFEF guifg=#404040
 hi Special guifg=#799D6A
+hi SpecialChar guifg=#C6B6EE
 hi Statement guifg=#8197BE
 hi StatusLine guifg=#303030 guibg=#9E9E9E
+hi StorageClass guifg=#C59F6F
 hi String guifg=#99AD6A
 hi Structure guifg=#8FBFDC
 hi Type guifg=#FFB964
-hi ModeMsg guifg=#FFFFFF guibg=#0087AF
 hi Visual guifg=default guibg=#303030
-hi Search guibg=#EFEFEF guifg=#404040
 
 filetype plugin indent on
 
