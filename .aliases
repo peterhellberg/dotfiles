@@ -24,6 +24,8 @@ alias spy-clear-gotest-integration='spy -c black clear-gotest -tags=integration 
 alias spy-clear-zig='spy --exc zig-cache --inc "**/*.zig" -q clear-zig'
 alias zig-build-list-steps="zig build -l | grep -v install | awk '{print \"zig build \"\$1}'"
 alias zigup='zigup --install-dir ~/.zig/'
+alias zbr='zig build run'
+
 # Go to current project
 alias p='cd `cat $HOME/.current_project`'
 alias p.='echo `pwd` > $HOME/.current_project'
@@ -38,14 +40,17 @@ alias ago='cd ~/Go/src/github.com/athega'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
 
 ## Git aliases
+alias git-push-tag="git push --atomic origin main"
 alias grimaster="git rebase --exec 'git commit --amend --no-edit -n -S' -i master"
 alias grimain="git rebase --exec 'git commit --amend --no-edit -n -S' -i main"
 alias gri="git rebase --exec 'git commit --amend --no-edit -n -S' -i"
 alias gs='git status'
 
 ## Misc
+alias vi='nvim -u NORC --cmd "colorscheme sorbet"'
 alias vim='nvim'
 alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
 alias filllight="keylight -a http://filllight:9123"
 alias ack='pt --ignore="vendor"'
 alias :q='logout'
+alias litecli='uvx litecli'

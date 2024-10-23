@@ -62,18 +62,6 @@ if !has('gui_running')
     augroup END
 endif
 
-if exists("g:neovide")
-  set guifont=Office\ Code\ Pro\ D:h12
-  let g:neovide_scroll_animation_length = 0
-  let g:neovide_position_animation_length = 0
-  let g:neovide_cursor_animation_length = 0
-  let g:neovide_cursor_trail_size = 0
-  let g:neovide_cursor_antialiasing = v:true
-  let g:neovide_cursor_animate_in_insert_mode = v:false
-  let g:neovide_cursor_animate_command_line = v:false
-  let g:neovide_cursor_vfx_mode = ""
-endif
-
 command! -nargs=1 Silent
       \   execute 'silent !' . <q-args>
       \ | execute 'redraw!'
@@ -84,6 +72,8 @@ set termguicolors
 if $TERM_PROGRAM =~ "iTerm"
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+  autocmd VimEnter * set termguicolors
 endif
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -359,7 +349,7 @@ autocmd FileType c nmap <leader>. <Plug>(coc-rename)
 autocmd FileType c nmap gd <Plug>(coc-definition)
 
 " autocmd BufWritePre *.c,*.h :normal gg=G``
-autocmd BufWritePre *.c,*.h :call CocAction('format')
+"autocmd BufWritePre *.c,*.h :call CocAction('format')
 
 " GLSLX
 autocmd BufWritePre *.glslx :call CocAction('format')

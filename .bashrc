@@ -19,7 +19,7 @@ HISTSIZE=1500
 HISTFILESIZE=3500
 
 # Bash
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
