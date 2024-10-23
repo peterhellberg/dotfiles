@@ -136,6 +136,7 @@ inoremap jk <Esc>
 inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
+nnoremap <silent> ff :up<CR>
 
 " Disable cursor line in insert mode
 au InsertEnter * set nocursorline
@@ -167,11 +168,10 @@ autocmd VimEnter * set nosc
 " Use space for :
 noremap <space> :
 
-" Quick ESC
-imap jj <ESC>
-
-" Save using ^s
-nmap <c-s> :w<CR>
+" Save using ^s and F2
+nmap <c-s> :update<CR>
+nnoremap <F2> <ESC>:w<CR>
+inoremap <F2> <ESC>:update<CR>
 
 " Jump to the next row on long lines
 map <Down> gj
