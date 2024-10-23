@@ -47,7 +47,7 @@ alias gri="git rebase --exec 'git commit --amend --no-edit -n -S' -i"
 alias gs='git status'
 
 ## Misc
-alias vi='nvim -u NORC --cmd "colorscheme sorbet"'
+alias vi='nvim -u ~/.minimal.vimrc'
 alias vim='nvim'
 alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
 alias filllight="keylight -a http://filllight:9123"
