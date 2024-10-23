@@ -22,8 +22,36 @@ return {
     top = 32,
     bottom = 0,
   },
+  inactive_pane_hsb = {
+    saturation = 1,
+    brightness = 1,
+  },
   colors = {
+    foreground = '#DDDDC5',
+    background = '#131313',
     cursor_bg = '#FFB371',
+    cursor_fg = '#000000',
+    split = '#333333',
+    ansi = {
+      '#353534',
+      '#D35737',
+      '#97A950',
+      '#F9CF75',
+      '#44677F',
+      '#C5B5EC',
+      '#88C5E8',
+      '#FEFEFE',
+    },
+    brights = {
+      '#626566',
+      '#FF2600',
+      '#C1D64F',
+      '#FFD366',
+      '#7492CF',
+      '#CDC0FF',
+      '#90D2F6',
+      '#F9F9F4',
+    },
   },
   keys = {
     {
