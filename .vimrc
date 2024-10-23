@@ -69,7 +69,7 @@ command! -nargs=1 Silent
 set t_Co=256
 set termguicolors
 
-if $TERM_PROGRAM =~ "iTerm"
+if $TERM_PROGRAM =~ "iTerm" || $TERM_PROGRAM =~ "WezTerm"
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
