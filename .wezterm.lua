@@ -3,7 +3,7 @@ local wezterm = require 'wezterm';
 return {
   automatically_reload_config = true,
   font = wezterm.font('Office Code Pro D', {
-    weight = 'Regular',
+    weight = 'Medium',
     italic = false
   }),
   font_size = 10.0,
@@ -11,8 +11,8 @@ return {
   enable_tab_bar = false,
   audible_bell = 'Disabled',
   exit_behavior = 'Close',
-  cursor_blink_rate = 800,
-  default_cursor_style = 'BlinkingBar',
+  cursor_blink_rate = 0,
+  default_cursor_style = 'SteadyBar',
   bold_brightens_ansi_colors = false,
   window_close_confirmation = 'NeverPrompt',
   window_decorations = 'RESIZE',
