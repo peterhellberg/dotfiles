@@ -69,7 +69,7 @@ command! -nargs=1 Silent
 set t_Co=256
 set termguicolors
 
-if $TERM_PROGRAM =~ "iTerm" || $TERM_PROGRAM =~ "WezTerm"
+if $TERM_PROGRAM =~ "iTerm" || $TERM_PROGRAM =~ "WezTerm" || $TERM_PROGRAM =~ ""
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
@@ -139,6 +139,14 @@ inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
 nnoremap <silent> ff :up<CR>
+tnoremap <Esc> <C-\><C-n>
+
+augroup neovim_terminal
+    autocmd!
+    autocmd TermOpen * startinsert
+    autocmd TermOpen * :set nonumber norelativenumber
+    autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
+augroup END
 
 " Disable cursor line in insert mode
 au InsertEnter * set nocursorline
