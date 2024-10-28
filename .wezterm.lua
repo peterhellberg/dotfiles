@@ -2,6 +2,7 @@ local wezterm = require 'wezterm';
 
 return {
   automatically_reload_config = true,
+  max_fps = 120,
   font = wezterm.font('Office Code Pro D', {
     weight = 'Regular',
     italic = false
