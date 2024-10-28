@@ -137,6 +137,14 @@ inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
 nnoremap <silent> ff :up<CR>
+tnoremap <Esc> <C-\><C-n>
+
+augroup neovim_terminal
+    autocmd!
+    autocmd TermOpen * startinsert
+    autocmd TermOpen * :set nonumber norelativenumber
+    autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
+augroup END
 
 " Disable cursor line in insert mode
 au InsertEnter * set nocursorline
