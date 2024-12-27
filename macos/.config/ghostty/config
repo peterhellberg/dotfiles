@@ -6,6 +6,8 @@ font-size = 16
 
 bold-is-bright = true
 
+unfocused-split-opacity = 1
+
 background = 131313
 foreground = DDDDC5
 
