@@ -48,18 +48,8 @@ export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org:$GOPATH/src:$CDPAT
 export PATH=$PATH:$GOPATH/bin
 export GOGC=400
 
-if [ -f /usr/local/bin/brew ]; then
-  if [ -f `/usr/local/bin/brew --prefix`/etc/bash_completion.d/go_completion.sh ]; then
-    source `/usr/local/bin/brew --prefix`/etc/bash_completion.d/go_completion.sh
-  fi
-
-  if [ -f `/usr/local/bin/brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-    source `/usr/local/bin/brew --prefix`/etc/bash_completion.d/git-completion.bash
-  fi
-fi
-
 # Git
-export GIT_EDITOR='vim'
+export GIT_EDITOR='nvim'
 
 # Postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
@@ -121,8 +111,9 @@ function since {
 
 # Load organization specific config
 # [[ -s "$HOME/.orgs/<name>.sh" ]] && source "$HOME/.orgs/<name>.sh"
-
 export HISTIGNORE="fg*"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if [ -t 1 ]
 then
@@ -144,8 +135,8 @@ then
   export SUDO_PS1="\[$BLUE\]max \[$WHITE\]\w \[$YELLOW\]\$(parse_git_branch)\[\e[0;31m\]\n#\[$RESET_COLOR\] "
 fi
 
+export NATS_URL=nats://tiny:4222
+
 export PATH=/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-. "$HOME/.cargo/env"
+eval "$(ssh-agent -s)" &>/dev/null
