@@ -241,8 +241,9 @@ endfunction
 let g:coc_snippet_next = '<Tab>'
 let g:coc_snippet_prev = '<S-Tab>'
 
+nmap <leader>A  <Plug>(coc-codeaction)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)w
 nmap <leader>f  <Plug>(coc-fix-current)
 inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
@@ -341,6 +342,11 @@ autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>
 autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
 autocmd FileType zig nmap <leader>. <Plug>(coc-rename)
 autocmd FileType zig nmap gd <Plug>(coc-definition)
+
+let g:zig_fmt_autosave = 1
+
+autocmd BufWritePre *.zig,*.zon call CocActionAsync('fixAll')
+autocmd BufWritePre *.zig,*.zon call CocActionAsync('organizeImport')
 
 " JS
 autocmd FileType javascript hi CocFloating ctermbg=Black 
