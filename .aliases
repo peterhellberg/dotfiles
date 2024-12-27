@@ -43,6 +43,7 @@ alias pgo='cd ~/Go/src/github.com/peterhellberg'
 alias git-push-tag="git push --atomic origin main"
 alias grimaster="git rebase --exec 'git commit --amend --no-edit -n -S' -i master"
 alias grimain="git rebase --exec 'git commit --amend --no-edit -n -S' -i main"
+alias gristage="git rebase --exec 'git commit --amend --no-edit -n -S' -i stage"
 alias gri="git rebase --exec 'git commit --amend --no-edit -n -S' -i"
 alias gs='git status'
 
@@ -51,6 +52,7 @@ alias vi='nvim -u ~/.minimal.vimrc'
 alias vim='nvim'
 alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
 alias filllight="keylight -a http://filllight:9123"
-alias ack='pt --ignore="vendor"'
+alias ack='pt --ignore="vendor" --global-gitignore'
+alias pt='pt --ignore="vendor" --global-gitignore'
 alias :q='logout'
 alias litecli='uvx litecli'
