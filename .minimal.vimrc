@@ -49,6 +49,7 @@ set noswapfile
 set nowrap
 set nowritebackup
 set number
+set shiftwidth=2
 set shortmess=at
 set shortmess+=I
 set smartcase
@@ -93,3 +94,18 @@ let &t_EI = "\<Esc>[1 q"
 let g:netrw_keepdir=0
 let g:netrw_winsize=25
 let g:netrw_banner=0
+
+augroup go
+  autocmd BufRead *.go setlocal noexpandtab
+  autocmd BufWritePre *.go call KeepEx('silent! %!goimports')
+augroup END
+
+augroup zig
+  autocmd BufWritePre *.zig call KeepEx('silent! %!zig fmt --stdin')
+augroup END
+
+function! KeepEx(arg)
+  let l:winview = winsaveview()
+  execute a:arg
+  call winrestview(l:winview)
+endfunction
