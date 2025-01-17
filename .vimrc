@@ -29,7 +29,6 @@ Plug 'kaarmu/typst.vim'
 Plug 'chomosuke/typst-preview.nvim', {'tag': 'v0.3.*', 'do': ':TypstPreviewUpdate'}
 
 " Markup plugins
-Plug 'tpope/vim-markdown'
 Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
 
@@ -238,6 +237,7 @@ endfunction
 let g:coc_snippet_next = '<Tab>'
 let g:coc_snippet_prev = '<S-Tab>'
 
+nmap <leader>A  <Plug>(coc-codeaction)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>f  <Plug>(coc-fix-current)
@@ -388,35 +388,35 @@ augroup go
 augroup END
 
 lua <<EOF
- require 'go'.setup({
-   goimports = 'gopls', -- if set to 'gopls' will use golsp format
-   gofmt = 'gopls', -- if set to gopls will use golsp format
-   tag_transform = false,
-   test_dir = '',
-   lsp_cfg = true, -- false: use your own lspconfig
-   lsp_on_attach = true, -- use on_attach from go.nvim
-   lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
-   lsp_codelens = false,
-   dap_debug = false,
-   lsp_inlay_hints = {
-     style = 'eof',
-     show_parameter_hints = false,
-   },
-})
-
--- Run gofmt + goimports on save
-
-local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-   require('go.format').goimports()
-  end,
-  group = format_sync_grp,
-})
-
--- Alternate files
-vim.api.nvim_create_user_command('A', function (args)
-  vim.cmd('GoAlt' .. args)
-end, { desc = "Alternate" })
+  require 'go'.setup({
+    goimports = 'gopls', -- if set to 'gopls' will use golsp format
+    gofmt = 'gopls', -- if set to gopls will use golsp format
+    tag_transform = false,
+    test_dir = '',
+    lsp_cfg = true, -- false: use your own lspconfig
+    lsp_on_attach = true, -- use on_attach from go.nvim
+    lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+    lsp_codelens = false,
+    dap_debug = false,
+    lsp_inlay_hints = {
+      style = 'eof',
+      show_parameter_hints = false,
+    },
+  })
+  
+  -- Run gofmt + goimports on save
+  
+  local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+     require('go.format').goimports()
+    end,
+    group = format_sync_grp,
+  })
+  
+  -- Alternate files
+  vim.api.nvim_create_user_command('A', function (args)
+    vim.cmd('GoAlt' .. args)
+  end, { desc = "Alternate" })
 EOF
