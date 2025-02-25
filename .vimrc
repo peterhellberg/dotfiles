@@ -138,6 +138,9 @@ inoremap jK <Esc>
 nnoremap <silent> ff :up<CR>
 tnoremap <Esc> <C-\><C-n>
 
+" gp selects last pasted content
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 augroup neovim_terminal
     autocmd!
     autocmd TermOpen * startinsert
@@ -220,7 +223,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', 'reports', '_workspace', 'zig-out', 'zig-cache', 'elf.disk', 'deps', 'vendor']
+let NERDTreeIgnore = ['tmp', 'reports', '_workspace', 'zig-out', 'zig-cache', 'elf.disk', 'deps', 'vendor', 'cover.cov']
 
 " Coc
 inoremap <silent><expr> <Tab>
