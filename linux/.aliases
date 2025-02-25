@@ -1,0 +1,49 @@
+# Linux aliases
+alias open='xdg-open'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+alias ls='ls --color --group-directories-first'
+
+# Directory aliases
+alias c7='cd ~/Code/GitHub/c7/c7.se/'
+alias cgp='cd ~/Code/GitHub/peterhellberg/'
+alias pgo='cd ~/Go/src/github.com/peterhellberg/'
+
+# Go aliases
+alias goexperiments='cd ~/Go/src/experiments/'
+alias coverage='gocov test $(go list ./...) | gocov report'
+alias coverage-integration='gocov test -tags=integration $(go list ./...) | gocov report'
+alias spy-clear-gotest='spy -c black clear-gotest $(go list ./...)'
+alias spy-clear-go-run-imgcat='spy --exc *.png -q clear-go-run-imgcat'
+alias spy-clear-go='spy --exc output -q clear-go'
+alias spy-clear-gotest-uncached='spy -c black clear-gotest -count=1 $(go list ./...)'
+alias spy-clear-gotest-integration='spy -c black clear-gotest -tags=integration $(go list ./...)'
+
+# Zig aliases
+alias spy-clear-zig='spy --exc zig-cache --inc "**/*.zig" -q clear-zig'
+alias zigup='zigup --install-dir /home/peter/.zig/'
+alias zbr='zig build run'
+
+# Git aliases
+alias git-push-tag="git push --atomic origin main"
+alias git-push-tag-master="git push --atomic origin master"
+alias grimaster="git rebase --exec 'git commit --amend --no-edit -n -S' -i master"
+alias grimain="git rebase --exec 'git commit --amend --no-edit -n -S' -i main"
+alias gs="git status"
+
+# Misc
+alias filllight="keylight -a http://filllight:9123"
+alias lynx='lynx -cfg=~/.dotfiles/.lynx.cfg -lss=~/.dotfiles/.lynx.lss.gruvbox'
+alias mitmweb='mitmweb --set tls_version_client_min=SSL3'
+alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
+alias st='st -f "Office Code Pro D:antialias=true:style=Medium:pixelsize=30"'
+alias ack='pt --ignore="vendor"'
+alias :q='logout'
+alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+alias köp='kop'
+alias buy='kop'
+alias vi='nvim -u ~/.minimal.vimrc'
+alias vim='nvim'
+alias tree='tree --gitignore'
+alias mousepad='mousepad 2>/dev/null'
+alias dl='imgur-assets-dl'
