@@ -78,7 +78,6 @@ nmap <leader>s<down> :rightbelow new<CR>
 nmap <leader>n :Lexplore<CR>
 nmap <leader>m :Lexplore %:p:h<CR>
 
-
 noremap <space> :
 noremap <tab> <c-w>w
 noremap <S-tab> <c-w>W
@@ -100,15 +99,5 @@ let g:netrw_banner=0
 
 augroup go
   autocmd BufRead *.go setlocal noexpandtab
-  autocmd BufWritePre *.go call KeepEx('silent! %!goimports')
+  autocmd BufWritePre *.go lua vim.lsp.buf.format({ async = false })
 augroup END
-
-augroup zig
-  autocmd BufWritePre *.zig lua vim.lsp.buf.format({ async = false })
-augroup END
-
-function! KeepEx(arg)
-  let l:winview = winsaveview()
-  execute a:arg
-  call winrestview(l:winview)
-endfunction
