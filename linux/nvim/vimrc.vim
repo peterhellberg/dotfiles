@@ -5,7 +5,7 @@ syntax on
 set termguicolors
 set background=dark
 
-colorscheme retrobox 
+colorscheme default 
 
 hi Comment guifg=#888888
 hi Conditional guifg=#8197BE
