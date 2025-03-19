@@ -4,9 +4,8 @@ return {
   automatically_reload_config = true,
   font = wezterm.font('Office Code Pro D', {
     weight = 'Medium',
-    italic = false
   }),
-  font_size = 10.0,
+  font_size = 9.3,
   color_scheme = 'Jellybeans',
   enable_tab_bar = false,
   audible_bell = 'Disabled',
