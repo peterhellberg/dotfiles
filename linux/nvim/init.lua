@@ -1,13 +1,16 @@
 local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
 
+-- git clone https://github.com/L3MON4D3/LuaSnip.git ~/.config/nvim/pack/nvim/start/LuaSnip
+local luasnip = require'luasnip'
+
 -- git clone https://github.com/hrsh7th/nvim-cmp ~/.config/nvim/pack/nvim/start/nvim-cmp
 local cmp = require'cmp'
 
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
-      vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+      luasnip.lsp_expand(args.body)
     end,
   },
   window = {
@@ -20,26 +23,36 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<Tab>'] = cmp.mapping(function(fallback) 
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif luasnip.jumpable(1) then
+        luasnip.jump(1)
+      elseif luasnip.expandable() then
+        luasnip.expand()
       else
         fallback()
       end
-  	end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback) 
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      elseif luasnip.expandable() then
+        luasnip.expand()
       else
         fallback()
       end
-  	end, { 'i', 's' }),
+    end, { 'i', 's' }),
   }),
-  sources = {
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'buffer' }
-  },
-}
+    { name = 'luasnip' },
+  }, {
+    { name = 'buffer' },
+  }),
+})
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 -- git clone https://github.com/hrsh7th/cmp-nvim-lsp ~/.config/nvim/pack/nvim/start/cmp-nvim-lsp
