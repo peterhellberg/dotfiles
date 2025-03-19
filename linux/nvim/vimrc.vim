@@ -5,8 +5,9 @@ syntax on
 set termguicolors
 set background=dark
 
-colorscheme default 
+colorscheme default
 
+hi WinSeparator guifg=#333333
 hi Comment guifg=#888888
 hi Conditional guifg=#8197BE
 hi Constant guifg=#CF6A4C
