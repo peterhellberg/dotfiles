@@ -1,24 +1,25 @@
 # .dotfiles
 
-My config files (aka [dotfiles](http://en.wikipedia.org/wiki/Dotfiles)), they might be useful for someone else.
+> [!Note]
+> My config files (aka [dotfiles](http://en.wikipedia.org/wiki/Dotfiles)), they might be useful for someone else.
 
 ## Installation
 
-```
+```console
 cd $HOME
 git clone git@github.com:peterhellberg/dotfiles.git .dotfiles
 ln -s .dotfiles/.??* -t .
 unlink .git
 ```
-## Vim
+
+## Neovim
 
 The Vim configuration require [vim-plug](https://github.com/junegunn/vim-plug) to be installed.
 
-```
+```console
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-
 
 ### :CocConfig
 ```json
@@ -60,26 +61,25 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 - gocov from <https://github.com/axw/gocov>
 - pt from <https://github.com/monochromegane/the_platinum_searcher>
 
-## clear scripts in /opt/local/bin
+## Scripts in `~/.local/bin`
 
-#### `clear-go`
+#### [clear-go](scripts/clear-go)
 ```sh
 #!/bin/sh
 
 clear && go $*
 ```
 
-#### `clear-gotest`
+#### [clear-gotest](scripts/clear-gotest)
 ```sh
 #!/bin/sh
 
 clear && gotest $*
 ```
 
-#### `clear-go-run-imgcat`
-
+#### [clear-zig](scripts/clear-zig)
 ```sh
 #!/bin/sh
 
-clear && go run . && imgcat $*
+clear && zig $*
 ```
