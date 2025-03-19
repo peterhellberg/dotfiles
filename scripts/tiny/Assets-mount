@@ -1,0 +1,4 @@
+#!/bin/bash
+
+umount /var/www/assets.c7.se
+sshfs -o allow_other,default_permissions peter@assets.c7.se:/var/www/assets.c7.se /var/www/assets.c7.se 
