@@ -1,5 +1,5 @@
 #!/bin/bash
 
-sudo cryptsetup open /dev/nvme0n1 Encrypted &&
+sudo cryptsetup open /dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_1TB_S6P7NS0T236062K_1 Encrypted &&
 sudo mkdir -p /media/peter/Encrypted &&
 sudo mount /dev/mapper/Encrypted /media/peter/Encrypted
