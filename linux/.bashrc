@@ -64,6 +64,7 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -188,9 +189,13 @@ then
   WHITE=$(tput bold ; tput setaf 7)
   RESET_COLOR=$(tput sgr0)
 
-  export PS1='\[$YELLOW\]tiny \[$WHITE\]\w \[$YELLOW\]$(parse_git_branch)\[$GREEN\]\n\[$GREEN\]\$\[$RESET_COLOR\] '
-
-  export PS1="$([[ ! -z "${UPTERM_ADMIN_SOCKET}"  ]] && echo -e '\xF0\x9F\x86\x99 ')$PS1" # Add an emoji
+  if [[ -v CONTAINER_ID ]]; then 
+    export PS1='\[$RED\]${CONTAINER_ID}\[$RESET_COLOR\] on \[$YELLOW\]tiny \[$WHITE\]\w \[$YELLOW\]$(parse_git_branch)\[$GREEN\]\n\[$GREEN\]\$\[$RESET_COLOR\] '
+  else
+    export PS1='\[$YELLOW\]tiny \[$WHITE\]\w \[$YELLOW\]$(parse_git_branch)\[$GREEN\]\n\[$GREEN\]\$\[$RESET_COLOR\] '
+  fi
+  
+  # export PS1="$([[ ! -z "${UPTERM_ADMIN_SOCKET}"  ]] && echo -e '\xF0\x9F\x86\x99 ')$PS1" # Add an emoji
 fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -199,4 +204,8 @@ export OLLAMA_HOST=prime.feist-gopher.ts.net:11434
 export NATS_URL="nats://localhost:4222"
 
 # Set keyboard rate (default: 660 25)
-xset r rate 300 30
+[ -v DISPLAY ] && xset r rate 300 30
+
+# Wasmer
+export WASMER_DIR="/home/peter/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
