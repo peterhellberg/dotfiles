@@ -24,30 +24,31 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```json
 {
   "coc.preferences.useQuickfixForLocations": true,
-  "coc.preferences.snippets.enable": true,
-  "coc.preferences.extensionUpdateCheck": "never",
-  "suggest.disableMenu": true,
+  "extensions.updateCheck": "daily",
+  "inlayHint.enable": false,
   "suggest.snippetIndicator": "",
+  "snippets.priority": 200,
   "snippets.ultisnips.directories": [
     "UltiSnips",
     "gosnippets/UltiSnips"
   ],
+  "zig.path": "/home/peter/Code/GitHub/zigtools/zls/zig-out/bin/zls",
+  "zig.enabled": true,
+  "zig.startUpMessage": false,
   "languageserver": {
-       "zls" : {
-           "command": "/home/peter/Code/GitHub/zigtools/zls/zig-out/bin/zls",
-           "filetypes": ["zig"]
-       },
-       "golang": {
-           "command": "gopls",
-           "filetypes": ["go"]
-       }
-   }
+    "tinymist": {
+      "command": "/home/peter/.local/bin/tinymist-linux-x64",
+      "filetypes": ["typst"]
+    }
+  },
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
+  "snippets.ultisnips.pythonPrompt": false
 }
 ```
 
 ## Software
 
-- iTerm2 from <https://iterm2.com/downloads.html>
+- WezTerm from <https://github.com/wezterm/wezterm>
 - Firefox Developer Edition from <https://www.mozilla.org/en-US/firefox/developer/>
 - Docker from <https://docs.docker.com/docker-for-mac>
 - Homebrew from <https://brew.sh>
