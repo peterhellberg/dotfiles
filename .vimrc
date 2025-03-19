@@ -26,7 +26,6 @@ Plug 'Eric-Song-Nop/vim-glslx'
 
 " Typesetting
 Plug 'kaarmu/typst.vim'
-Plug 'chomosuke/typst-preview.nvim', {'tag': 'v0.3.*', 'do': ':TypstPreviewUpdate'}
 
 " Markup plugins
 Plug 'vimwiki/vimwiki'
@@ -319,6 +318,7 @@ endfunction
 autocmd FileType * nmap <leader>< <Plug>(coc-format)
 autocmd FileType * nmap <leader>. <Plug>(coc-rename)
 autocmd FileType * nmap gd <Plug>(coc-definition)
+autocmd FileType * nmap gr <Plug>(coc-references)
 
 function! ToggleHover()
   if !CocAction('hasProvider', 'hover')
