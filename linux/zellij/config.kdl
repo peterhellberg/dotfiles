@@ -260,26 +260,26 @@ session_serialization false
 // For more examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
 // Once these themes are defined, one of them should to be selected in the "theme" section of this file
 //
-// themes {
-//     dracula {
-//         fg 248 248 242
-//         bg 40 42 54
-//         red 255 85 85
-//         green 80 250 123
-//         yellow 241 250 140
-//         blue 98 114 164
-//         magenta 255 121 198
-//         orange 255 184 108
-//         cyan 139 233 253
-//         black 0 0 0
-//         white 255 255 255
-//     }
-// }
+themes {
+    jellybeans {
+        fg 230 230 205
+        bg 20 20 20
+        red 211 87 55
+        green 151 169 80
+        yellow 249 207 117
+        blue 77 117 144
+        magenta 197 181 236
+        orange 255 165 102
+        cyan 136 197 232
+        black 53 53 52
+        white 254 254 254
+    }
+}
 
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "default"
+theme "jellybeans"
 
 // The name of the default layout to load on startup
 // Default: "default"
