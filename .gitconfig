@@ -6,6 +6,8 @@
   path = ~/.gitconfig-CUSTOMER
 [includeIf "gitdir:~/Code/GitHub/CUSTOMER/"]
   path = ~/.gitconfig-CUSTOMER
+[includeIf "gitdir:~/Code/GitHub/athega/"]
+  path = ~/.gitconfig-athega
 [fetch]
   prune = true
 [push]
