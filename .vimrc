@@ -26,7 +26,6 @@ Plug 'Eric-Song-Nop/vim-glslx'
 
 " Typesetting
 Plug 'kaarmu/typst.vim'
-Plug 'chomosuke/typst-preview.nvim', {'tag': 'v0.3.*', 'do': ':TypstPreviewUpdate'}
 
 " Markup plugins
 Plug 'tpope/vim-markdown'
