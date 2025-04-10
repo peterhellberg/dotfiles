@@ -140,3 +140,8 @@ export NATS_URL=nats://tiny:4222
 export PATH=/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
 eval "$(ssh-agent -s)" &>/dev/null
+
+export OLLAMA_HOST=0.0.0.0
+export WASMVISION_PROCESSORS_DIR=$HOME/.local/wasmvision/processors/
+
+source $HOME/.wash/wash.bash
