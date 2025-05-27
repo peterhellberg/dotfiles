@@ -225,28 +225,12 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore = ['tmp', 'reports', '_workspace', 'zig-out', 'zig-cache', 'elf.disk', 'deps', 'vendor', 'cover.cov']
 
 " Coc
-"inoremap <silent><expr> <Tab>
-"      \ coc#pum#visible() ? coc#_select_confirm() :
-"      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"      \ CheckBackspace() ? "\<Tab>" :
-"      \ coc#refresh()
-"
-"function! CheckBackspace() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-
-let g:coc_snippet_next = '<Tab>'
-let g:coc_snippet_prev = '<S-Tab>'
+let b:coc_suggest_disable = 1
 
 nmap <leader>A  <Plug>(coc-codeaction)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>f  <Plug>(coc-fix-current)
-inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
-inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " LeaderF
 let g:Lf_WindowPosition = 'popup'
@@ -317,7 +301,6 @@ endfunction
 " Any filetype
 autocmd FileType * nmap <leader>< <Plug>(coc-format)
 autocmd FileType * nmap <leader>. <Plug>(coc-rename)
-autocmd FileType * nmap gd <Plug>(coc-definition)
 autocmd FileType * nmap gr <Plug>(coc-references)
 
 function! ToggleHover()
@@ -334,30 +317,22 @@ endfunction
 autocmd FileType * nmap <silent> § :call ToggleHover()<CR>
 
 " Zig
-autocmd FileType zig inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 autocmd FileType zig hi CocFloating ctermbg=Black 
-autocmd FileType zig inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
 autocmd FileType zig nmap <leader>. <Plug>(coc-rename)
-autocmd FileType zig nmap gd <Plug>(coc-definition)
 
 " JS
 autocmd FileType javascript hi CocFloating ctermbg=Black 
 autocmd FileType javascript nmap <leader>. <Plug>(coc-rename)
-autocmd FileType javascript nmap gd <Plug>(coc-definition)
 
 " TS
 autocmd FileType typescript hi CocFloating ctermbg=Black 
 autocmd FileType typescript nmap <leader>. <Plug>(coc-rename)
-autocmd FileType typescript nmap gd <Plug>(coc-definition)
 
 " C
 autocmd FileType c hi CocFloating ctermbg=Black 
 autocmd FileType c nmap <leader>. <Plug>(coc-rename)
-autocmd FileType c nmap gd <Plug>(coc-definition)
 
-" autocmd BufWritePre *.c,*.h :normal gg=G``
 autocmd BufWritePre *.c,*.h :call CocAction('format')
 
 " GLSLX
@@ -396,8 +371,8 @@ lua <<EOF
     gofmt = 'gopls', -- if set to gopls will use golsp format
     tag_transform = false,
     test_dir = '',
-    lsp_cfg = true, -- false: use your own lspconfig
-    lsp_on_attach = true, -- use on_attach from go.nvim
+    lsp_cfg = false, -- false: use your own lspconfig
+    lsp_on_attach = false, -- use on_attach from go.nvim
     lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
     lsp_codelens = false,
     dap_debug = false,
@@ -406,9 +381,9 @@ lua <<EOF
       show_parameter_hints = false,
     },
   })
-  
+
   -- Run gofmt + goimports on save
-  
+
   local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
   vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*.go",
@@ -417,9 +392,11 @@ lua <<EOF
     end,
     group = format_sync_grp,
   })
-  
+
   -- Alternate files
   vim.api.nvim_create_user_command('A', function (args)
     vim.cmd('GoAlt' .. args)
   end, { desc = "Alternate" })
+
+  vim.lsp.inlay_hint.enable(false)
 EOF
