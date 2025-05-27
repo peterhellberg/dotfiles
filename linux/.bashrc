@@ -203,9 +203,15 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export OLLAMA_HOST=prime.feist-gopher.ts.net:11434
 export NATS_URL="nats://localhost:4222"
 
+export WASMVISION_MODELS_DIR="/home/peter/.config/wasmvision/models"
+export WASMVISION_PROCESSORS_DIR="/home/peter/.config/wasmvision/processors"
+
 # Set keyboard rate (default: 660 25)
 [ -v DISPLAY ] && xset r rate 300 30
 
 # Wasmer
 export WASMER_DIR="/home/peter/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+# wash completions -d $HOME/.wash bash
+source $HOME/.wash/wash.bash
