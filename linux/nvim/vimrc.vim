@@ -97,8 +97,30 @@ let &t_EI = "\<Esc>[1 q"
 let g:netrw_keepdir=0
 let g:netrw_winsize=25
 let g:netrw_banner=0
+let g:netrw_browse_split = 4
+let g:netrw_altv=1
+
+set autochdir
 
 augroup go
   autocmd BufRead *.go setlocal noexpandtab
   autocmd BufWritePre *.go lua vim.lsp.buf.format({ async = false })
 augroup END
+
+
+" LeaderF
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_ShortcutF = "<silent> t"
+let g:Lf_HideHelp = 1
+let g:Lf_ShowDevIcons = 0
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2" }
+let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+let g:Lf_WorkingDirectoryMode = 'a'
+let g:Lf_UseMemoryCache = 0
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PopupColorscheme = 'gruvbox_default'
+let g:Lf_WildIgnore = {
+        \ 'dir': ['.git', 'zig-cache'],
+        \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so', '*.wasm']
+        \}
