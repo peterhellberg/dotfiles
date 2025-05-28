@@ -105,8 +105,32 @@ set autochdir
 augroup go
   autocmd BufRead *.go setlocal noexpandtab
   autocmd BufWritePre *.go lua vim.lsp.buf.format({ async = false })
-augroup END
 
+  function! s:GoAlternate(cmd)
+    let l:filename = expand('%:t')
+    let l:filepath = expand('%:p:h')
+
+    if l:filename =~# '_test\.go$'
+      let l:target = substitute(l:filename, '_test\.go$', '.go', '')
+    elseif l:filename =~# '\.go$'
+      let l:target = substitute(l:filename, '\.go$', '_test.go', '')
+    else
+      echo "Not a Go source file."
+      return
+    endif
+
+    let l:fullpath = l:filepath . '/' . l:target
+
+    if filereadable(l:fullpath)
+      execute a:cmd . ' ' . fnameescape(l:fullpath)
+    else
+      echo "File not found: " . l:fullpath
+    endif
+  endfunction
+
+  command! A  call <SID>GoAlternate('edit')
+  command! AV call <SID>GoAlternate('vsplit')
+augroup END
 
 " LeaderF
 let g:Lf_WindowPosition = 'popup'
