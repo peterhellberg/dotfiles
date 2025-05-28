@@ -148,3 +148,6 @@ let g:Lf_WildIgnore = {
         \ 'dir': ['.git', 'zig-cache'],
         \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so', '*.wasm']
         \}
+
+lua vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+lua vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
