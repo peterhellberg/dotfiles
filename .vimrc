@@ -113,6 +113,8 @@ set updatetime=100
 
 set t_BE=
 
+"let g:coc_start_at_startup=0
+
 hi WinSeparator guifg=#202020
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 hi CocFloating guibg=#202020
