@@ -94,6 +94,7 @@ nnoremap <silent> ff :up<CR>
 
 let &t_SI = "\<Esc>[5 q"
 let &t_EI = "\<Esc>[1 q"
+
 let g:netrw_altv=1
 let g:netrw_banner=0
 let g:netrw_browse_split = 4
@@ -103,19 +104,22 @@ let g:netrw_keepdir=0
 let g:netrw_liststyle=0
 let g:netrw_usetab=1
 let g:netrw_winsize=-25
+let g:netrw_special_syntax=1
 
-hi netrwCompress term=NONE cterm=NONE gui=NONE ctermfg=10 guifg=green  ctermbg=0 guibg=black
-hi netrwData	  term=NONE cterm=NONE gui=NONE ctermfg=9 guifg=blue ctermbg=0 guibg=black
-hi netrwDoc	  term=NONE cterm=NONE gui=NONE ctermfg=220 ctermbg=27 guifg=yellow2 guibg=Blue3
-hi netrwHdr	  term=NONE cterm=NONE,italic gui=NONE guifg=SeaGreen1
-hi netrwLex	  term=NONE cterm=NONE,italic gui=NONE guifg=SeaGreen1
-hi netrwLib	  term=NONE cterm=NONE gui=NONE ctermfg=14 guifg=yellow
-hi netrwObj	  term=NONE cterm=NONE gui=NONE ctermfg=12 guifg=red
-hi netrwSymLink  term=NONE cterm=NONE gui=NONE ctermfg=220 ctermbg=27 guifg=grey60
-hi netrwTags	  term=NONE cterm=NONE gui=NONE ctermfg=12 guifg=red
-hi netrwTilde	  term=NONE cterm=NONE gui=NONE ctermfg=12 guifg=red
-hi netrwTmp	  term=NONE cterm=NONE gui=NONE ctermfg=12 guifg=red
-hi netrwYacc	  term=NONE cterm=NONE,italic gui=NONE guifg=SeaGreen1
+hi netrwCompress  guifg=#5F5FAF
+hi netrwData      guifg=#FF875F
+hi netrwDoc	      guifg=#C5B5EC
+hi netrwHdr	      guifg=#AFD787
+hi netrwLex	      guifg=#787878
+hi netrwLib	      guifg=#787878
+hi netrwObj	      guifg=#787878
+hi netrwPix	      guifg=#FFAF5F
+hi netrwSymLink   guifg=#787878
+hi netrwMakefile  guifg=#F9CF75
+hi netrwTags	    guifg=#787878
+hi netrwTilde	    guifg=#787878
+hi netrwTmp	      guifg=#787878
+hi netrwYacc	    guifg=#787878
 
 set autochdir
 
