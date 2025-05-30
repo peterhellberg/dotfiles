@@ -7,12 +7,12 @@ set background=dark
 
 colorscheme default
 
-hi WinSeparator guifg=#333333
 hi Comment guifg=#888888
 hi Conditional guifg=#8197BE
 hi Constant guifg=#CF6A4C
 hi Delimiter guifg=#799D6A
-hi Directory guifg=#DAD085
+hi Directory guifg=#FFB964
+hi ErrorMsg guifg=#605958
 hi Function guifg=#FAD07A
 hi Identifier guifg=#C6B6EE
 hi Include guifg=#8FBFDC
@@ -24,17 +24,19 @@ hi ModeMsg guifg=#FFFFFF guibg=#0087AF
 hi Normal guibg=#151515 guifg=#E8E8D3
 hi Number guifg=#CF6A4C
 hi PreProc guifg=#8FBFDC
+hi Question guifg=#E6E6CD
 hi Repeat guifg=#8197BF
 hi Search guibg=#EFEFEF guifg=#404040
 hi Special guifg=#799D6A
 hi SpecialChar guifg=#C6B6EE
 hi Statement guifg=#8197BE
-hi StatusLine guifg=#303030 guibg=#9E9E9E
+hi StatusLine guifg=#9E9E9E guibg=transparent
 hi StorageClass guifg=#C59F6F
 hi String guifg=#99AD6A
 hi Structure guifg=#8FBFDC
 hi Type guifg=#FFB964
 hi Visual guifg=default guibg=#303030
+hi WinSeparator guifg=#333333
 
 filetype plugin indent on
 
