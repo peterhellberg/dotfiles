@@ -81,3 +81,5 @@ vim.api.nvim_create_autocmd('BufWritePre',{
     vim.lsp.buf.format()
   end
 })
+
+require("luasnip.loaders.from_snipmate").lazy_load()

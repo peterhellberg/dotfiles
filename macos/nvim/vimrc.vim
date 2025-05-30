@@ -7,12 +7,12 @@ set background=dark
 
 colorscheme default
 
-hi WinSeparator guifg=#333333
 hi Comment guifg=#888888
 hi Conditional guifg=#8197BE
 hi Constant guifg=#CF6A4C
 hi Delimiter guifg=#799D6A
-hi Directory guifg=#DAD085
+hi Directory guifg=#FFB964
+hi ErrorMsg guifg=#605958
 hi Function guifg=#FAD07A
 hi Identifier guifg=#C6B6EE
 hi Include guifg=#8FBFDC
@@ -24,17 +24,19 @@ hi ModeMsg guifg=#FFFFFF guibg=#0087AF
 hi Normal guibg=#151515 guifg=#E8E8D3
 hi Number guifg=#CF6A4C
 hi PreProc guifg=#8FBFDC
+hi Question guifg=#E6E6CD
 hi Repeat guifg=#8197BF
 hi Search guibg=#EFEFEF guifg=#404040
 hi Special guifg=#799D6A
 hi SpecialChar guifg=#C6B6EE
 hi Statement guifg=#8197BE
-hi StatusLine guifg=#303030 guibg=#9E9E9E
+hi StatusLine guifg=#9E9E9E guibg=transparent
 hi StorageClass guifg=#C59F6F
 hi String guifg=#99AD6A
 hi Structure guifg=#8FBFDC
 hi Type guifg=#FFB964
 hi Visual guifg=default guibg=#303030
+hi WinSeparator guifg=#333333
 
 filetype plugin indent on
 
@@ -94,11 +96,81 @@ nnoremap <silent> ff :up<CR>
 
 let &t_SI = "\<Esc>[5 q"
 let &t_EI = "\<Esc>[1 q"
-let g:netrw_keepdir=0
-let g:netrw_winsize=25
+
+let g:netrw_altv=1
 let g:netrw_banner=0
+let g:netrw_browse_split = 4
+let g:netrw_fastbrowse=0
+let g:netrw_hide=1
+let g:netrw_keepdir=0
+let g:netrw_liststyle=0
+let g:netrw_usetab=1
+let g:netrw_winsize=-25
+let g:netrw_special_syntax=1
+
+hi netrwCompress  guifg=#5F5FAF
+hi netrwData      guifg=#FF875F
+hi netrwDoc	      guifg=#C5B5EC
+hi netrwHdr	      guifg=#AFD787
+hi netrwLex	      guifg=#787878
+hi netrwLib	      guifg=#787878
+hi netrwObj	      guifg=#787878
+hi netrwPix	      guifg=#FFAF5F
+hi netrwSymLink   guifg=#787878
+hi netrwMakefile  guifg=#F9CF75
+hi netrwTags	    guifg=#787878
+hi netrwTilde	    guifg=#787878
+hi netrwTmp	      guifg=#787878
+hi netrwYacc	    guifg=#787878
+
+set autochdir
 
 augroup go
   autocmd BufRead *.go setlocal noexpandtab
   autocmd BufWritePre *.go lua vim.lsp.buf.format({ async = false })
+
+  function! s:GoAlternate(cmd)
+    let l:filename = expand('%:t')
+    let l:filepath = expand('%:p:h')
+
+    if l:filename =~# '_test\.go$'
+      let l:target = substitute(l:filename, '_test\.go$', '.go', '')
+    elseif l:filename =~# '\.go$'
+      let l:target = substitute(l:filename, '\.go$', '_test.go', '')
+    else
+      echo "Not a Go source file."
+      return
+    endif
+
+    let l:fullpath = l:filepath . '/' . l:target
+
+    if filereadable(l:fullpath)
+      execute a:cmd . ' ' . fnameescape(l:fullpath)
+    else
+      echo "File not found: " . l:fullpath
+    endif
+  endfunction
+
+  command! A  call <SID>GoAlternate('edit')
+  command! AV call <SID>GoAlternate('vsplit')
 augroup END
+
+" LeaderF
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_ShortcutF = "<silent> t"
+let g:Lf_HideHelp = 1
+let g:Lf_ShowDevIcons = 0
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2" }
+let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+let g:Lf_WorkingDirectoryMode = 'a'
+let g:Lf_UseMemoryCache = 0
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PopupColorscheme = 'gruvbox_default'
+let g:Lf_WildIgnore = {
+        \ 'dir': ['.git', 'zig-cache'],
+        \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so', '*.wasm']
+        \}
+
+lua vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+lua vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
