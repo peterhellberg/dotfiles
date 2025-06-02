@@ -156,6 +156,20 @@ augroup go
 augroup END
 
 " LeaderF
+hi Lf_hl_popup_prompt guibg=#585858 guifg=#FFFFFF
+hi Lf_hl_popup_cursor guibg=#FFB371
+hi Lf_hl_popup_inputText guibg=#303030 guifg=#FFFFFF
+hi Lf_hl_popup_inputMode guibg=#0087AF guifg=#FFFFFF
+hi Lf_hl_popup_lineInfo guibg=#585858 guifg=#FFFFFF
+hi Lf_hl_popup_total guibg=#D0D0D0 guifg=#6D6D6D
+hi Lf_hl_cursorline guifg=#FFFFFF
+hi Lf_hl_match guifg=#0087AF
+hi Lf_hl_popup_normalMode guibg=#AFDF00 guifg=#005F00
+hi Lf_hl_popup_category guibg=#005F87 guifg=#87DFFF
+hi Lf_hl_popup_fullPathMode guibg=#0087AF guifg=#87DFFF
+hi Lf_hl_popup_nameOnlyMode guibg=#303030 guifg=#9E9E9E
+hi Lf_hl_popup_cwd guibg=#005F87 guifg=#87DFFF
+
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_ShortcutF = "<silent> t"
 let g:Lf_HideHelp = 1
