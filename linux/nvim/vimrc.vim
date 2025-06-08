@@ -60,6 +60,7 @@ set splitright
 set tabstop=2
 set timeoutlen=500
 set ttimeoutlen=5
+set updatetime=100
 set virtualedit=block
 set mouse=
 
@@ -154,6 +155,15 @@ augroup go
   command! A  call <SID>GoAlternate('edit')
   command! AV call <SID>GoAlternate('vsplit')
 augroup END
+
+" GitGutter
+let g:gitgutter_max_signs = 250
+let g:gitgutter_map_keys = 0
+
+hi GitGutterAdd    guifg=#97a950 guibg=#2D3218 ctermfg=2
+hi GitGutterChange guifg=#FFB964 guibg=#4c371e ctermfg=3
+hi GitGutterDelete guifg=#d35738 guibg=#3f1a10 ctermfg=1
+hi! link SignColumn LineNr " Clear unchanged lines background
 
 " LeaderF
 hi Lf_hl_popup_prompt guibg=#585858 guifg=#FFFFFF
