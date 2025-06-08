@@ -11,15 +11,24 @@ cmp.setup({
     end,
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered({
+      border = 'rounded',
+      winhighlight = 'Normal:Normal,FloatBorder:None,CursorLine:PmenuSel,Search:None',
+    }),
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-j>'] = cmp.mapping.select_next_item(),
+    ['<C-k>'] = cmp.mapping.select_prev_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -44,11 +53,15 @@ cmp.setup({
     end, { 'i', 's' }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp', max_item_count = 10},
     { name = 'luasnip' },
-  }, {
+    { name = 'path' },
     { name = 'buffer' },
   }),
+  formatting = {
+	  expandable_indicator = true,
+		fields = { "abbr", "kind", "menu" },
+	},
 })
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
