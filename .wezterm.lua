@@ -5,7 +5,7 @@ return {
   font = wezterm.font('Office Code Pro D', {
     weight = 'Medium',
   }),
-  font_size = 9.3,
+  font_size = 9.2,
   color_scheme = 'Jellybeans',
   enable_tab_bar = false,
   audible_bell = 'Disabled',
