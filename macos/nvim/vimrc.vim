@@ -60,6 +60,7 @@ set splitright
 set tabstop=2
 set timeoutlen=500
 set ttimeoutlen=5
+set updatetime=100
 set virtualedit=block
 set mouse=
 
@@ -155,7 +156,30 @@ augroup go
   command! AV call <SID>GoAlternate('vsplit')
 augroup END
 
+" GitGutter
+let g:gitgutter_max_signs = 250
+let g:gitgutter_map_keys = 0
+
+hi GitGutterAdd    guifg=#97a950 guibg=#2D3218 ctermfg=2
+hi GitGutterChange guifg=#FFB964 guibg=#4c371e ctermfg=3
+hi GitGutterDelete guifg=#d35738 guibg=#3f1a10 ctermfg=1
+hi! link SignColumn LineNr " Clear unchanged lines background
+
 " LeaderF
+hi Lf_hl_popup_prompt guibg=#585858 guifg=#FFFFFF
+hi Lf_hl_popup_cursor guibg=#FFB371
+hi Lf_hl_popup_inputText guibg=#303030 guifg=#FFFFFF
+hi Lf_hl_popup_inputMode guibg=#0087AF guifg=#FFFFFF
+hi Lf_hl_popup_lineInfo guibg=#585858 guifg=#FFFFFF
+hi Lf_hl_popup_total guibg=#D0D0D0 guifg=#6D6D6D
+hi Lf_hl_cursorline guifg=#FFFFFF
+hi Lf_hl_match guifg=#0087AF
+hi Lf_hl_popup_normalMode guibg=#AFDF00 guifg=#005F00
+hi Lf_hl_popup_category guibg=#005F87 guifg=#87DFFF
+hi Lf_hl_popup_fullPathMode guibg=#0087AF guifg=#87DFFF
+hi Lf_hl_popup_nameOnlyMode guibg=#303030 guifg=#9E9E9E
+hi Lf_hl_popup_cwd guibg=#005F87 guifg=#87DFFF
+
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_ShortcutF = "<silent> t"
 let g:Lf_HideHelp = 1
@@ -174,3 +198,4 @@ let g:Lf_WildIgnore = {
 
 lua vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 lua vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+lua vim.api.nvim_set_keymap("n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
