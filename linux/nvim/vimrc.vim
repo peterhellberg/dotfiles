@@ -127,6 +127,7 @@ hi netrwYacc	    guifg=#787878
 set autochdir
 
 augroup go
+  autocmd BufRead go.mod,go.sum set ft=go
   autocmd BufRead *.go setlocal noexpandtab
   autocmd BufWritePre *.go lua vim.lsp.buf.format({ async = false })
 
