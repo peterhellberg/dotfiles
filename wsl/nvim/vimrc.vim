@@ -125,7 +125,7 @@ hi netrwTmp	      guifg=#787878
 hi netrwYacc	    guifg=#787878
 
 set autochdir
-  
+
 augroup go
   autocmd BufNewFile,BufRead go.mod,go.sum set ft=go
   autocmd BufRead *.go setlocal noexpandtab
