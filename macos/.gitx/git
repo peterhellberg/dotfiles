@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+args=("$@")
+
+if [[ "$1" = "commit-tree" ]] && [[ "$(git config --get commit.gpgsign)" = "true" ]]; then
+  args=("commit-tree" "-S" "${args[@]:1}")
+fi
+
+git "${args[@]}"
