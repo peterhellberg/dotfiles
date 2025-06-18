@@ -48,9 +48,9 @@ alias gri="git rebase --exec 'git commit --amend --no-edit -n -S' -i"
 alias gs='git status'
 
 ## Misc
+alias vim='nvim -u ~/.dotfiles/macos/nvim/init.lua'
 alias vi='nvim -u ~/.dotfiles/macos/nvim/init.lua'
 alias li='nvim -u ~/.dotfiles/macos/nvim/li.lua'
-alias vim='nvim'
 alias lim='nvim -u ~/.dotfiles/macos/nvim/light.lua'
 alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
 alias filllight="keylight -a http://filllight:9123"
