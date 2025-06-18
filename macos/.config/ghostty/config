@@ -1,0 +1,32 @@
+macos-non-native-fullscreen = visible-menu
+macos-titlebar-style = tabs
+
+font-family = "Office Code Pro D Medium"
+font-family-bold = "Office Code Pro D Bold"
+font-size = 16
+
+bold-is-bright = true
+
+unfocused-split-opacity = 1
+
+background = 131313
+foreground = DDDDC5
+
+cursor-color = FFB371
+
+palette = 0=#353534
+palette = 1=#D35737
+palette = 2=#97A950
+palette = 3=#F9CF75
+palette = 4=#44677F
+palette = 5=#C5B5EC
+palette = 6=#88C5E8
+palette = 7=#FEFEFE
+palette = 8=#626566
+palette = 9=#FF2600
+palette = 10=#C1D64F
+palette = 11=#FFD366
+palette = 12=#7492CF
+palette = 13=#CDC0FF
+palette = 14=#90D2F6
+palette = 15=#F9F9F4
