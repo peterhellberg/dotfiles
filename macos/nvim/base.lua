@@ -68,14 +68,32 @@ cmp.setup({
 -- git clone https://github.com/hrsh7th/cmp-nvim-lsp ~/.config/nvim/pack/nvim/start/cmp-nvim-lsp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require'lspconfig'.gopls.setup{
-  capabilities = capabilities,
-}
+require'lspconfig'.gopls.setup{ capabilities = capabilities }
 
 -- git clone https://github.com/neovim/nvim-lspconfig ~/.config/nvim/pack/nvim/start/nvim-lspconfig
-require'lspconfig'.zls.setup{
-  capabilities = capabilities,
-}
+require'lspconfig'.zls.setup{ capabilities = capabilities }
+
+-- brew install lua-language-server
+require'lspconfig'.lua_ls.setup{ capabilities = capabilities }
+
+-- Install from https://github.com/Myriad-Dreamin/tinymist/releases
+require'lspconfig'.tinymist.setup{ capabilities = capabilities }
+
+-- go install github.com/arduino/arduino-language-server@${VERSION}
+require'lspconfig'.arduino_language_server.setup({
+    capabilities = capabilities,
+    cmd = {
+        "arduino-language-server",
+        --"-clangd",      "/opt/homebrew/bin/clangd",
+        --"-cli",         "/opt/homebrew/bin/arduino-cli",
+        "-cli-config",    "~/Library/Arduino15/arduino-cli.yaml",
+        --"-clangd",      "/opt/homebrew/bin/clangd",
+        --"-cli",         "/opt/homebrew/bin/arduino-cli",
+        --"-cli-config",  "/Users/peter/Library/Arduino15/arduino-cli.yaml",
+        --"-fqbn",  "arduino:samd:arduino_zero_native"
+    }
+})
+
 
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
@@ -90,7 +108,7 @@ vim.g.zig_fmt_autosave = 0
 -- https://github.com/ziglang/zig/wiki/FAQ
 vim.api.nvim_create_autocmd('BufWritePre',{
   pattern = {"*.zig", "*.zon"},
-  callback = function(ev)
+  callback = function()
     vim.lsp.buf.format()
   end
 })

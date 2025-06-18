@@ -5,7 +5,7 @@ local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
 
 vim.o.background = "light"
-vim.cmd.colorscheme "default"
+vim.cmd.colorscheme "lunaperche"
 vim.opt.termguicolors = true
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
 vim.b.coc_enabled = false
