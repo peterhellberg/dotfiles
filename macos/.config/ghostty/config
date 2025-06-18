@@ -1,8 +1,9 @@
 macos-non-native-fullscreen = visible-menu
 macos-titlebar-style = tabs
 
-font-family = "Office Code Pro D"
-font-size = 17
+font-family = "Office Code Pro D Medium"
+font-family-bold = "Office Code Pro D Bold"
+font-size = 16
 
 bold-is-bright = true
 
