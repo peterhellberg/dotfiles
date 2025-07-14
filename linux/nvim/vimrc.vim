@@ -11,6 +11,14 @@ hi Comment guifg=#888888
 hi Conditional guifg=#8197BE
 hi Constant guifg=#CF6A4C
 hi Delimiter guifg=#799D6A
+hi DiagnosticError guifg=#D35738
+hi DiagnosticHint guifg=#8197BE
+hi DiagnosticInfo guifg=#e8e8d3
+hi DiagnosticWarn guifg=#FFB964
+hi DiagnosticUnderlineError guisp=#D35738
+hi DiagnosticUnderlineHint guisp=#8197BE
+hi DiagnosticUnderlineInfo guisp=#e8e8d3
+hi DiagnosticUnderlineWarn guisp=#FFB964
 hi Directory guifg=#FFB964
 hi ErrorMsg guifg=#605958
 hi Function guifg=#FAD07A
@@ -129,7 +137,8 @@ set autochdir
 augroup go
   autocmd BufRead go.mod,go.sum set ft=go
   autocmd BufRead *.go setlocal noexpandtab
-  autocmd BufWritePre *.go lua vim.lsp.buf.format({ async = false })
+  autocmd BufRead *.go :silent! lua vim.lsp.util.make_range_params()
+  autocmd BufWritePre *.go :silent! lua vim.lsp.buf.format({ async = false })
 
   function! s:GoAlternate(cmd)
     let l:filename = expand('%:t')
@@ -158,6 +167,7 @@ augroup go
 augroup END
 
 " GitGutter
+let g:gitgutter_enabled = 0
 let g:gitgutter_max_signs = 250
 let g:gitgutter_map_keys = 0
 
