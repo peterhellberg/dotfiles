@@ -10,7 +10,6 @@ alias note="nvim -c 'r!date' -c 'normal i# ' -c 'normal 2o' -c 'normal O' ~/Drop
 alias n="note"
 alias gpg="gpg --default-recipient-self"
 alias sl="ls"
-alias cat="bat"
 
 # Go aliases
 alias goexperiments='cd ~/Go/src/experiments'

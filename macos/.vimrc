@@ -28,7 +28,6 @@ Plug 'Eric-Song-Nop/vim-glslx'
 Plug 'kaarmu/typst.vim'
 
 " Markup plugins
-Plug 'tpope/vim-markdown'
 Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
 
@@ -68,11 +67,9 @@ command! -nargs=1 Silent
 set t_Co=256
 set termguicolors
 
-if $TERM_PROGRAM =~ "iTerm" || $TERM_PROGRAM =~ "WezTerm" || $TERM_PROGRAM =~ ""
+if $TERM_PROGRAM =~ "iTerm"
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-  autocmd VimEnter * set termguicolors
 endif
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -113,8 +110,6 @@ set updatetime=100
 
 set t_BE=
 
-"let g:coc_start_at_startup=0
-
 hi WinSeparator guifg=#202020
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
 hi CocFloating guibg=#202020
@@ -141,6 +136,9 @@ inoremap Jk <Esc>
 inoremap jK <Esc>
 nnoremap <silent> ff :up<CR>
 tnoremap <Esc> <C-\><C-n>
+
+" gp selects last pasted content
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 augroup neovim_terminal
     autocmd!
@@ -179,11 +177,10 @@ autocmd VimEnter * set nosc
 " Use space for :
 noremap <space> :
 
-" Quick ESC
-imap jj <ESC>
-
-" Save using ^s
-nmap <c-s> :w<CR>
+" Save using ^s and F2
+nmap <c-s> :update<CR>
+nnoremap <F2> <ESC>:w<CR>
+inoremap <F2> <ESC>:update<CR>
 
 " Jump to the next row on long lines
 map <Down> gj
@@ -225,31 +222,15 @@ nmap <leader>n :NERDTreeToggle<CR>
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', 'reports', '_workspace', 'zig-out', 'zig-cache', 'elf.disk', 'deps', 'vendor']
+let NERDTreeIgnore = ['tmp', 'reports', '_workspace', 'zig-out', 'zig-cache', 'elf.disk', 'deps', 'vendor', 'cover.cov']
 
 " Coc
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<Tab>'
-let g:coc_snippet_prev = '<S-Tab>'
+let b:coc_suggest_disable = 1
 
 nmap <leader>A  <Plug>(coc-codeaction)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)w
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>f  <Plug>(coc-fix-current)
-inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
-inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " LeaderF
 let g:Lf_WindowPosition = 'popup'
@@ -320,7 +301,7 @@ endfunction
 " Any filetype
 autocmd FileType * nmap <leader>< <Plug>(coc-format)
 autocmd FileType * nmap <leader>. <Plug>(coc-rename)
-autocmd FileType * nmap gd <Plug>(coc-definition)
+autocmd FileType * nmap gr <Plug>(coc-references)
 
 function! ToggleHover()
   if !CocAction('hasProvider', 'hover')
@@ -336,36 +317,23 @@ endfunction
 autocmd FileType * nmap <silent> § :call ToggleHover()<CR>
 
 " Zig
-autocmd FileType zig inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 autocmd FileType zig hi CocFloating ctermbg=Black 
-autocmd FileType zig inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-autocmd FileType zig inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 autocmd FileType zig nmap <leader>rn <Plug>(coc-rename)
 autocmd FileType zig nmap <leader>. <Plug>(coc-rename)
-autocmd FileType zig nmap gd <Plug>(coc-definition)
-
-let g:zig_fmt_autosave = 1
-
-autocmd BufWritePre *.zig,*.zon call CocActionAsync('fixAll')
-autocmd BufWritePre *.zig,*.zon call CocActionAsync('organizeImport')
 
 " JS
 autocmd FileType javascript hi CocFloating ctermbg=Black 
 autocmd FileType javascript nmap <leader>. <Plug>(coc-rename)
-autocmd FileType javascript nmap gd <Plug>(coc-definition)
 
 " TS
 autocmd FileType typescript hi CocFloating ctermbg=Black 
 autocmd FileType typescript nmap <leader>. <Plug>(coc-rename)
-autocmd FileType typescript nmap gd <Plug>(coc-definition)
 
 " C
 autocmd FileType c hi CocFloating ctermbg=Black 
 autocmd FileType c nmap <leader>. <Plug>(coc-rename)
-autocmd FileType c nmap gd <Plug>(coc-definition)
 
-" autocmd BufWritePre *.c,*.h :normal gg=G``
-"autocmd BufWritePre *.c,*.h :call CocAction('format')
+autocmd BufWritePre *.c,*.h :call CocAction('format')
 
 " GLSLX
 autocmd BufWritePre *.glslx :call CocAction('format')
@@ -398,35 +366,37 @@ augroup go
 augroup END
 
 lua <<EOF
- require 'go'.setup({
-   goimports = 'gopls', -- if set to 'gopls' will use golsp format
-   gofmt = 'gopls', -- if set to gopls will use golsp format
-   tag_transform = false,
-   test_dir = '',
-   lsp_cfg = true, -- false: use your own lspconfig
-   lsp_on_attach = true, -- use on_attach from go.nvim
-   lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
-   lsp_codelens = false,
-   dap_debug = false,
-   lsp_inlay_hints = {
-     style = 'eof',
-     show_parameter_hints = false,
-   },
-})
+  require 'go'.setup({
+    goimports = 'gopls', -- if set to 'gopls' will use golsp format
+    gofmt = 'gopls', -- if set to gopls will use golsp format
+    tag_transform = false,
+    test_dir = '',
+    lsp_cfg = false, -- false: use your own lspconfig
+    lsp_on_attach = false, -- use on_attach from go.nvim
+    lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
+    lsp_codelens = false,
+    dap_debug = false,
+    lsp_inlay_hints = {
+      style = 'eof',
+      show_parameter_hints = false,
+    },
+  })
 
--- Run gofmt + goimports on save
+  -- Run gofmt + goimports on save
 
-local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-   require('go.format').goimports()
-  end,
-  group = format_sync_grp,
-})
+  local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+     require('go.format').goimports()
+    end,
+    group = format_sync_grp,
+  })
 
--- Alternate files
-vim.api.nvim_create_user_command('A', function (args)
-  vim.cmd('GoAlt' .. args)
-end, { desc = "Alternate" })
+  -- Alternate files
+  vim.api.nvim_create_user_command('A', function (args)
+    vim.cmd('GoAlt' .. args)
+  end, { desc = "Alternate" })
+
+  vim.lsp.inlay_hint.enable(false)
 EOF

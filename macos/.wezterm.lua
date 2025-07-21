@@ -2,25 +2,23 @@ local wezterm = require 'wezterm';
 
 return {
   automatically_reload_config = true,
-  max_fps = 120,
   font = wezterm.font('Office Code Pro D', {
-    weight = 'Regular',
-    italic = false
+    weight = 'Medium',
   }),
-  font_size = 16.0,
+  font_size = 9.2,
   color_scheme = 'Jellybeans',
   enable_tab_bar = false,
   audible_bell = 'Disabled',
   exit_behavior = 'Close',
-  cursor_blink_rate = 800,
-  default_cursor_style = 'BlinkingBar',
+  cursor_blink_rate = 0,
+  default_cursor_style = 'SteadyBar',
   bold_brightens_ansi_colors = false,
   window_close_confirmation = 'NeverPrompt',
   window_decorations = 'RESIZE',
   window_padding = {
-    left = 8,
-    right = 8,
-    top = 32,
+    left = 2,
+    right = 2,
+    top = 0,
     bottom = 0,
   },
   inactive_pane_hsb = {
@@ -86,13 +84,13 @@ return {
       action = wezterm.action.ActivatePaneDirection 'Down',
     },
     {
-      key = 'LeftArrow',
-      mods = 'SUPER',
+      key = 'PageUp',
+      mods = 'CTRL',
       action = wezterm.action.ActivateTabRelative(-1),
     },
     {
-      key = 'RightArrow',
-      mods = 'SUPER',
+      key = 'PageDown',
+      mods = 'CTRL',
       action = wezterm.action.ActivateTabRelative(1),
     },
   },
