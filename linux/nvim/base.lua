@@ -89,19 +89,15 @@ cmp.setup({
 -- git clone https://github.com/hrsh7th/cmp-nvim-lsp ~/.config/nvim/pack/nvim/start/cmp-nvim-lsp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require'lspconfig'.gopls.setup{
-  capabilities = capabilities,
-}
+require'lspconfig'.gopls.setup{ capabilities = capabilities }
 
 -- git clone https://github.com/neovim/nvim-lspconfig ~/.config/nvim/pack/nvim/start/nvim-lspconfig
-require'lspconfig'.zls.setup{
-  capabilities = capabilities,
-}
+require'lspconfig'.zls.setup{ capabilities = capabilities }
 
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "§", "<cmd>lua vim.lsp.buf.hover({border = 'solid', max_width = 80 })<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "§", "<cmd>lua vim.lsp.buf.hover({border = 'solid', max_width = 80})<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "¨", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<F3>", "<cmd>FzfLua builtin<CR>", { noremap = true, silent = true })
 
