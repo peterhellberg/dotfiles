@@ -112,6 +112,9 @@ vim.g.zig_fmt_parse_errors = 0
 -- disable format-on-save from `ziglang/zig.vim`
 vim.g.zig_fmt_autosave = 0
 
+-- Use "stack" jumpoptions instead of new default "clean"
+vim.o.jumpoptions = "stack"
+
 -- https://github.com/ziglang/zig/wiki/FAQ
 vim.api.nvim_create_autocmd('BufWritePre',{
   pattern = {"*.zig", "*.zon"},
@@ -190,3 +193,4 @@ vim.diagnostic.config({
     },
   }
 })
+
