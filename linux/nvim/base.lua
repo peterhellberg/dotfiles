@@ -203,3 +203,8 @@ vim.diagnostic.config({
   }
 })
 
+local after_config = vim.fn.expand("~/.config/nvim/after.lua")
+
+if vim.fn.filereadable(after_config) == 1 then
+    dofile(after_config)
+end
