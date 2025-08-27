@@ -5,7 +5,6 @@ alias needs-formatting='goimports -l $(find . -type f -name "*.go" -not -path ".
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc'
 alias travis-script='if [ -f ".travis.yml" ]; then yaml2json .travis.yml | jq -r ".script|select (.!=null)|.[]" | sh; else echo ".travis.yml missing"; fi'
 alias merge-stage-to-master-test-and-push='git checkout master && git pull --rebase && git merge --no-ff stage && golint -set_exit_status && go vet $(go list ./... | grep -v /vendor/) && go test $(go list ./... | grep -v /vendor/) && git push && git checkout stage'
-alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
 alias note="nvim -c 'r!date' -c 'normal i# ' -c 'normal 2o' -c 'normal O' ~/Dropbox/Documents/notes.md"
 alias n="note"
 alias gpg="gpg --default-recipient-self"
