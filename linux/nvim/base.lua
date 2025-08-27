@@ -95,7 +95,16 @@ cmp.setup({
 -- git clone https://github.com/hrsh7th/cmp-nvim-lsp ~/.config/nvim/pack/nvim/start/cmp-nvim-lsp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require'lspconfig'.gopls.setup{ capabilities = capabilities }
+require'lspconfig'.gopls.setup{ 
+  capabilities = capabilities,
+  settings = {
+	  gopls = {
+      analyses = {
+        modernize = false,
+      },
+    },
+  },
+}
 
 -- git clone https://github.com/neovim/nvim-lspconfig ~/.config/nvim/pack/nvim/start/nvim-lspconfig
 require'lspconfig'.zls.setup{ capabilities = capabilities }
