@@ -203,7 +203,7 @@ let g:Lf_UseMemoryCache = 0
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PopupColorscheme = 'gruvbox_default'
 let g:Lf_WildIgnore = {
-        \ 'dir': ['.git', 'zig-cache'],
+        \ 'dir': ['.git', 'zig-cache', 'vendor'],
         \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so', '*.wasm']
         \}
 
