@@ -215,3 +215,4 @@ export WASMER_DIR="/home/peter/.wasmer"
 
 # wash completions -d $HOME/.wash bash
 source $HOME/.wash/wash.bash
+. "/home/peter/.deno/env"
