@@ -1,3 +1,9 @@
+local local_config = vim.fn.expand("~/.config/nvim/local.lua")
+
+if vim.fn.filereadable(local_config) == 1 then
+    dofile(local_config)
+end
+
 -- git clone https://github.com/L3MON4D3/LuaSnip.git ~/.config/nvim/pack/nvim/start/LuaSnip
 local luasnip = require'luasnip'
 
