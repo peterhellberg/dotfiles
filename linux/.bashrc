@@ -154,6 +154,14 @@ function gri {
   git rebase --exec 'git commit --amend --no-edit -n -S' -i ${branch}
 }
 
+function run {
+  if [ $# -eq 0 ]; then
+    runme --project .
+  else
+    runme --project . run "$@"
+  fi
+}
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
 
