@@ -3,7 +3,7 @@ macos-titlebar-style = tabs
 
 font-family = "Office Code Pro D Medium"
 font-family-bold = "Office Code Pro D Bold"
-font-size = 16
+font-size = 18
 
 bold-is-bright = true
 

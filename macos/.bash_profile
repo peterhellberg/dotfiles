@@ -18,10 +18,13 @@ shopt -s checkwinsize
 PS1='\[$WHITE\]\w \[$YELLOW\]$(parse_git_branch)\[$GREEN\]\n\[$GREEN\]\$\[$RESET_COLOR\] '
 export SUDO_PS1="\[$WHITE\]\w \[$YELLOW\]\$(parse_git_branch)\[\e[0;31m\]\n#\[$RESET_COLOR\] "
 
+export XDG_CONFIG_HOME=~/.config
+export EZA_CONFIG_DIR=~/.config/eza
+
 alias ls='eza --icons --group-directories-first --time-style relative --no-user'
 alias ll='eza --long --header --icons --git --group-directories-first --time-style long-iso --smart-group --no-user --no-permissions --color-scale all'
 alias lr='eza --long --icons --time-style relative -s modified --no-permissions --no-user --color-scale all --git'
-alias l='eza --icons -F -s newest'
+alias l='eza --icons -s newest'
 
 complete -F _eza ls
 complete -F _eza ll

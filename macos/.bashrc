@@ -106,6 +106,14 @@ function since {
   echo "$(git l $1..HEAD)" | tac | tail
 }
 
+function run {
+  if [ $# -eq 0 ]; then
+    runme --project .
+  else
+    runme --project . run "$@"
+  fi
+}
+
 # Load aliases
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
