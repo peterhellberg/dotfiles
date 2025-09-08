@@ -109,6 +109,9 @@ require'lspconfig'.gopls.setup{
 -- git clone https://github.com/neovim/nvim-lspconfig ~/.config/nvim/pack/nvim/start/nvim-lspconfig
 require'lspconfig'.zls.setup{ capabilities = capabilities }
 
+-- sudo apt install clangd 
+require'lspconfig'.clangd.setup{ capabilities = capabilities }
+
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
