@@ -103,6 +103,9 @@ require'lspconfig'.zls.setup{ capabilities = capabilities }
 -- brew install lua-language-server
 require'lspconfig'.lua_ls.setup{ capabilities = capabilities }
 
+-- brew install llvm
+require'lspconfig'.clangd.setup{ capabilities = capabilities }
+
 -- Install from https://github.com/Myriad-Dreamin/tinymist/releases
 require'lspconfig'.tinymist.setup{ capabilities = capabilities }
 
