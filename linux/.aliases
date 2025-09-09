@@ -36,7 +36,10 @@ alias filllight="keylight -a http://filllight:9123"
 alias lynx='lynx -cfg=~/.dotfiles/.lynx.cfg -lss=~/.dotfiles/.lynx.lss.gruvbox'
 alias mitmweb='mitmweb --set tls_version_client_min=SSL3'
 alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
-alias st='st -f "Office Code Pro D:antialias=true:style=Medium:pixelsize=30"'
+alias st.36='st -f "OfficeCodeProD Nerd Font:antialias=true:style=Medium:pixelsize=36"'
+alias st.30='st -f "OfficeCodeProD Nerd Font:antialias=true:style=Medium:pixelsize=30"'
+alias st.26='st -f "OfficeCodeProD Nerd Font:antialias=true:style=Medium:pixelsize=26"'
+alias st='st -f "OfficeCodeProD Nerd Font:antialias=true:style=Medium:pixelsize=16"'
 alias ack='pt --ignore="vendor"'
 alias :q='logout'
 alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
