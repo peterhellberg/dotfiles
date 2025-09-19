@@ -162,6 +162,14 @@ function run {
   fi
 }
 
+function wiki {
+  if [ $# -eq 0 ]; then
+    nvim +":silent VimwikiIndex"
+  else
+    nvim +":silent VimwikiIndex" +":VimwikiGoto $@"
+  fi
+}
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
 
