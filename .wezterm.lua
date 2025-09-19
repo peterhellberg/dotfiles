@@ -1,11 +1,16 @@
 local wezterm = require 'wezterm';
 
+local gpus = wezterm.gui.enumerate_gpus()
+
 return {
   automatically_reload_config = true,
+  animation_fps = 1,
+  webgpu_preferred_adapter = gpus[1],
+  front_end = "WebGpu",
   font = wezterm.font('Office Code Pro D', {
     weight = 'Medium',
   }),
-  font_size = 9.2,
+  font_size = 9.8,
   color_scheme = 'Jellybeans',
   enable_tab_bar = false,
   audible_bell = 'Disabled',
@@ -16,10 +21,10 @@ return {
   window_close_confirmation = 'NeverPrompt',
   window_decorations = 'RESIZE',
   window_padding = {
-    left = 2,
-    right = 2,
-    top = 0,
-    bottom = 0,
+    left = 6,
+    right = 6,
+    top = 4,
+    bottom = 4,
   },
   inactive_pane_hsb = {
     saturation = 1,
