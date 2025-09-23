@@ -125,6 +125,10 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
+if [ -f ~/.local/share/bash-completion/completions/arduino.bash ]; then
+ . ~/.local/share/bash-completion/completions/arduino.bash
+fi
+
 # Code
 export CODE=$HOME/Code
 export GITHUB=$CODE/GitHub
