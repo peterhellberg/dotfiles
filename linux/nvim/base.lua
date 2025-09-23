@@ -95,7 +95,9 @@ cmp.setup({
 -- git clone https://github.com/hrsh7th/cmp-nvim-lsp ~/.config/nvim/pack/nvim/start/cmp-nvim-lsp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require'lspconfig'.gopls.setup{ 
+vim.lsp.config('gopls', { 
+  cmd = { "gopls" }, 
+  filetypes = { "go" }, 
   capabilities = capabilities,
   settings = {
 	  gopls = {
@@ -104,13 +106,33 @@ require'lspconfig'.gopls.setup{
       },
     },
   },
-}
+})
+vim.lsp.enable('gopls')
 
 -- git clone https://github.com/neovim/nvim-lspconfig ~/.config/nvim/pack/nvim/start/nvim-lspconfig
-require'lspconfig'.zls.setup{ capabilities = capabilities }
+vim.lsp.config('zls', { 
+  cmd = { "zls" }, 
+  filetypes = { "zig" }, 
+  capabilities = capabilities 
+})
+vim.lsp.enable('zls')
 
 -- sudo apt install clangd 
-require'lspconfig'.clangd.setup{ capabilities = capabilities }
+vim.lsp.config('clangd', { 
+  cmd = { "clangd" }, 
+  filetypes = { "c", "cpp", "h" }, 
+  capabilities = capabilities 
+})
+vim.lsp.enable('clangd')
+
+-- go install github.com/arduino/arduino-language-server@latest
+-- curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh
+vim.lsp.config('arduino_language_server', { 
+  cmd = { "arduino-language-server" }, 
+  filetypes = { "arduino" }, 
+  capabilities = capabilities 
+})
+vim.lsp.enable('arduino_language_server')
 
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
