@@ -95,6 +95,17 @@ cmp.setup({
 -- git clone https://github.com/hrsh7th/cmp-nvim-lsp ~/.config/nvim/pack/nvim/start/cmp-nvim-lsp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+vim.lsp.config('*', {
+  capabilities = {
+    textDocument = {
+      semanticTokens = {
+        multilineTokenSupport = true,
+      }
+    }
+  },
+  root_markers = { '.git' },
+})
+
 vim.lsp.config('gopls', {
   cmd = { "gopls" },
   filetypes = { "go" },
@@ -194,7 +205,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- https://github.com/ziglang/zig/wiki/FAQ
 vim.api.nvim_create_autocmd('BufWritePre',{
-  pattern = {"*.zig", "*.zon"},
+  pattern = {"*.zig", "*.zon", "*.c", "*.h", "*.ino"},
   callback = function()
     vim.lsp.buf.format()
   end
