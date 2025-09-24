@@ -85,7 +85,7 @@ cmp.setup({
       }
 
       item.menu = menu_icon[entry.source.name]
-      
+
       return item
     end,
 	},
@@ -95,9 +95,9 @@ cmp.setup({
 -- git clone https://github.com/hrsh7th/cmp-nvim-lsp ~/.config/nvim/pack/nvim/start/cmp-nvim-lsp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-vim.lsp.config('gopls', { 
-  cmd = { "gopls" }, 
-  filetypes = { "go" }, 
+vim.lsp.config('gopls', {
+  cmd = { "gopls" },
+  filetypes = { "go" },
   capabilities = capabilities,
   settings = {
 	  gopls = {
@@ -110,29 +110,55 @@ vim.lsp.config('gopls', {
 vim.lsp.enable('gopls')
 
 -- git clone https://github.com/neovim/nvim-lspconfig ~/.config/nvim/pack/nvim/start/nvim-lspconfig
-vim.lsp.config('zls', { 
-  cmd = { "zls" }, 
-  filetypes = { "zig" }, 
-  capabilities = capabilities 
+vim.lsp.config('zls', {
+  cmd = { "zls" },
+  filetypes = { "zig" },
+  capabilities = capabilities
 })
 vim.lsp.enable('zls')
 
--- sudo apt install clangd 
-vim.lsp.config('clangd', { 
-  cmd = { "clangd" }, 
-  filetypes = { "c", "cpp", "h" }, 
-  capabilities = capabilities 
+-- sudo apt install clangd
+vim.lsp.config('clangd', {
+  cmd = { "clangd" },
+  filetypes = { "c", "cpp", "h" },
+  capabilities = capabilities
 })
 vim.lsp.enable('clangd')
 
 -- go install github.com/arduino/arduino-language-server@latest
 -- curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh
-vim.lsp.config('arduino_language_server', { 
-  cmd = { "arduino-language-server" }, 
-  filetypes = { "arduino" }, 
-  capabilities = capabilities 
+vim.lsp.config('arduino_language_server', {
+  cmd = { "arduino-language-server" },
+  filetypes = { "arduino" },
+  capabilities = capabilities
 })
 vim.lsp.enable('arduino_language_server')
+
+-- https://luals.github.io/#neovim-install
+vim.lsp.config('lua_ls', {
+  on_init = function(client)
+    client.config.settings.Lua = vim.tbl_deep_extend('force',
+      client.config.settings.Lua, {
+      runtime = {
+        version = 'LuaJIT',
+        path = {
+          'lua/?.lua',
+          'lua/?/init.lua',
+        },
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME,
+        }
+      }
+    })
+  end,
+  settings = {
+    Lua = {}
+  }
+})
+vim.lsp.enable('lua_ls')
 
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
@@ -149,6 +175,23 @@ vim.g.zig_fmt_autosave = 0
 -- Use "stack" jumpoptions instead of new default "clean"
 vim.o.jumpoptions = "stack"
 
+-- Trim trailing whitespace
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('trim_whitespaces', { clear = true }),
+  desc = 'Trim trailing white spaces',
+  pattern = 'bash,c,cpp,lua,javascript,make,python,rust,perl,sql,markdown',
+  callback = function()
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      pattern = '<buffer>',
+      callback = function()
+        local curpos = vim.api.nvim_win_get_cursor(0)
+        vim.cmd([[keeppatterns %s/\s\+$//e]])
+        vim.api.nvim_win_set_cursor(0, curpos)
+      end,
+    })
+  end,
+})
+
 -- https://github.com/ziglang/zig/wiki/FAQ
 vim.api.nvim_create_autocmd('BufWritePre',{
   pattern = {"*.zig", "*.zon"},
@@ -157,56 +200,18 @@ vim.api.nvim_create_autocmd('BufWritePre',{
   end
 })
 
-local function handle_action_sync(action, buf, timeout_ms, attempts)
-  if attempts > 3 then
-    return
+vim.api.nvim_create_autocmd('BufWritePre',{
+  pattern = {"*.go"},
+  callback = function()
+    vim.lsp.buf.code_action({
+      context = {
+        diagnostics = {},
+        only = { 'source.organizeImports' }
+      },
+      apply = true
+    })
   end
-
-  if action.edit then
-    vim.lsp.util.apply_workspace_edit(action.edit, "utf-16")
-  elseif action.command then
-    vim.lsp.buf.execute_command(action.command)
-  else
-    local resolve_result = vim.lsp.buf_request_sync(buf, "codeAction/resolve", action, timeout_ms)
-    if resolve_result then
-      for _, resolved_action in pairs(resolve_result) do
-        handle_action_sync(resolved_action.result, buf, timeout_ms, attempts + 1)
-      end
-    end
-  end
-end
-
-local function handle_write_pre(kinds, buf, timeout_ms)
-  local params = vim.lsp.util.make_range_params()
-  params.context = { diagnostics = {} }
-
-  local results = vim.lsp.buf_request_sync(buf, "textDocument/codeAction", params, timeout_ms)
-  if not results then
-    return
-  end
-
-  for _, result in pairs(results) do
-    for _, action in pairs(result.result or {}) do
-      for _, kind in pairs(kinds) do
-        if action.kind == kind then
-          handle_action_sync(action, buf, timeout_ms, 0)
-        end
-      end
-    end
-  end
-end
-
-function register_code_actions(pattern, kinds, timeout_ms)
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = pattern,
-    callback = function(args)
-      handle_write_pre(kinds, args.buf, timeout_ms or 100)
-      vim.lsp.buf.format()
-    end,
-  })
-end
-
-register_code_actions({ "*.go" }, { "source.organizeImports" }, 100)
+})
 
 require("luasnip.loaders.from_snipmate").lazy_load()
 
@@ -215,7 +220,7 @@ vim.diagnostic.config({
   severity_sort = true,
   float = {
     border = 'solid',
-    source = 'always',
+    source = true,
     focusable = false,
   },
   signs = {
