@@ -167,7 +167,7 @@ augroup go
 augroup END
 
 " GitGutter
-let g:gitgutter_enabled = 0
+let g:gitgutter_enabled = 1
 let g:gitgutter_max_signs = 250
 let g:gitgutter_map_keys = 0
 
