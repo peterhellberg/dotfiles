@@ -185,6 +185,7 @@ export PATH=$PATH:$HOME/Go/bin
 
 # Zig
 export PATH=$PATH:$HOME/.local/zig
+export CC="zig cc"
 
 # NX
 export PATH=$PATH:/usr/NX/bin/
