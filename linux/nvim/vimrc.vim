@@ -13,14 +13,15 @@ hi Constant guifg=#CF6A4C
 hi Delimiter guifg=#799D6A
 hi DiagnosticError guifg=#D35738
 hi DiagnosticHint guifg=#8197BE
-hi DiagnosticInfo guifg=#e8e8d3
-hi DiagnosticWarn guifg=#FFB964
+hi DiagnosticInfo guifg=#E8E8D3
 hi DiagnosticUnderlineError guisp=#D35738
 hi DiagnosticUnderlineHint guisp=#8197BE
 hi DiagnosticUnderlineInfo guisp=#e8e8d3
 hi DiagnosticUnderlineWarn guisp=#FFB964
+hi DiagnosticWarn guifg=#FFB964
 hi Directory guifg=#FFB964
 hi ErrorMsg guifg=#605958
+hi FloatBorder guifg=#555555
 hi Function guifg=#FAD07A
 hi Identifier guifg=#C6B6EE
 hi Include guifg=#8FBFDC
@@ -30,6 +31,7 @@ hi LineNr guifg=#605958
 hi Macro guifg=#8FBFDC
 hi ModeMsg guifg=#FFFFFF guibg=#0087AF
 hi Normal guibg=#151515 guifg=#E8E8D3
+hi NormalFloat guibg=#151515
 hi Number guifg=#CF6A4C
 hi PreProc guifg=#8FBFDC
 hi Question guifg=#E6E6CD
