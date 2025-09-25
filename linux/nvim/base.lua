@@ -136,15 +136,6 @@ vim.lsp.config('clangd', {
 })
 vim.lsp.enable('clangd')
 
--- go install github.com/arduino/arduino-language-server@latest
--- curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh
-vim.lsp.config('arduino_language_server', {
-  cmd = { "arduino-language-server" },
-  filetypes = { "arduino" },
-  capabilities = capabilities
-})
-vim.lsp.enable('arduino_language_server')
-
 -- https://luals.github.io/#neovim-install
 vim.lsp.config('lua_ls', {
   on_init = function(client)
