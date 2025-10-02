@@ -1,18 +1,27 @@
-macos-non-native-fullscreen = visible-menu
 macos-titlebar-style = tabs
+macos-non-native-fullscreen = visible-menu
+quit-after-last-window-closed = true
+resize-overlay = never
 
-font-family = "Office Code Pro D Medium"
-font-family-bold = "Office Code Pro D Bold"
-font-size = 18
+fullscreen
 
-bold-is-bright = true
+window-theme = dark
+window-decoration = auto
+window-padding-x = 6
+window-padding-y = 6
+
+font-family = "OfficeCodeProD Nerd Font"
+font-style = "Medium"
+font-size = 14
+font-thicken = false 
 
 unfocused-split-opacity = 1
+split-divider-color = #222222
 
-background = 131313
-foreground = DDDDC5
+background = #131313
+foreground = #DDDDC5
 
-cursor-color = FFB371
+cursor-color = #FFB371
 
 palette = 0=#353534
 palette = 1=#D35737
@@ -30,3 +39,21 @@ palette = 12=#7492CF
 palette = 13=#CDC0FF
 palette = 14=#90D2F6
 palette = 15=#F9F9F4
+
+# Keybinds
+
+## Move between splits
+keybind = alt+arrow_down=goto_split:down
+keybind = alt+arrow_left=goto_split:left
+keybind = alt+arrow_right=goto_split:right
+keybind = alt+arrow_up=goto_split:up
+
+## Resize splits
+keybind = alt+shift+arrow_down=resize_split:down,10
+keybind = alt+shift+arrow_left=resize_split:left,10
+keybind = alt+shift+arrow_right=resize_split:right,10
+keybind = alt+shift+arrow_up=resize_split:up,10
+
+## Disable cmd+t, and have global:ctrl+t toggle visibility
+keybind = cmd+t=ignore
+keybind = global:ctrl+t=toggle_visibility
