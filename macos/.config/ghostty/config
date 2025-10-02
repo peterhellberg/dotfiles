@@ -1,27 +1,32 @@
+fullscreen
+
 macos-titlebar-style = tabs
 macos-non-native-fullscreen = visible-menu
 quit-after-last-window-closed = true
+unfocused-split-opacity = 1
 resize-overlay = never
 
-fullscreen
+# Window
 
 window-theme = dark
 window-decoration = auto
 window-padding-x = 6
 window-padding-y = 6
 
+# Font
+
 font-family = "OfficeCodeProD Nerd Font"
 font-style = "Medium"
 font-size = 14
 font-thicken = false 
 
-unfocused-split-opacity = 1
-split-divider-color = #222222
+# Colors
 
 background = #131313
 foreground = #DDDDC5
 
 cursor-color = #FFB371
+split-divider-color = #222222
 
 palette = 0=#353534
 palette = 1=#D35737
