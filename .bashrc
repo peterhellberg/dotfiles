@@ -49,7 +49,7 @@ export PATH=$PATH:$GOPATH/bin
 export GOGC=400
 
 # Git
-export GIT_EDITOR='nvim'
+export GIT_EDITOR='nvim -u ~/.dotfiles/macos/nvim/init.lua'
 
 # Postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
