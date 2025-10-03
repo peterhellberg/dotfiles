@@ -66,12 +66,6 @@ export GREP_COLOR='1;35;40'
 # Activate Python3 venv
 # [[ -s "$HOME/.venv/bin/activate" ]] && source ~/.venv/bin/activate
 
-# Functions
-# function parse_git_branch {
-#   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-#     echo "("${ref#refs/heads/}") "
-# }
-
 function since {
   echo "$(git l $1..HEAD)" | tac | tail
 }
