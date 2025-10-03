@@ -99,7 +99,7 @@ if [ -t 1 ]; then
   WHITE='\[\033[0;37m\]'
   RESET_COLOR='\[\033[0m\]'
     
-  EXIT='$(ec=$?;((ec))&&echo "'"${RED}"'[$ec]'"${RESET_COLOR}"' ")'
+  EXIT='$(ec=$?; ((ec)) && printf "\033[0;31m[%d]\033[0m " "$ec")'
 
   shopt -s checkwinsize
 
@@ -108,11 +108,13 @@ if [ -t 1 ]; then
 
   if [ -f /opt/homebrew/etc/bash_completion.d/git-prompt.sh ]; then
     source /opt/homebrew/etc/bash_completion.d/git-prompt.sh
-   
+  
+    PS1='$(ec=$?; ((ec)) && printf "\[\033[0;31m\][%d]\[\033[0m\] " "$ec")'
+
     if [ "$EUID" -eq 0 ]; then
-      PS1="${EXIT}${YELLOW}max ${WHITE}\w ${YELLOW}\$(__git_ps1 '(%s)')\n${RED}\\\$${RESET_COLOR} "
+      PS1+="${YELLOW}max ${WHITE}\w ${YELLOW}\$(__git_ps1 '(%s)')\n${RED}\\\$${RESET_COLOR} "
     else    
-      PS1="${EXIT}${BLUE}max ${WHITE}\w ${YELLOW}\$(__git_ps1 '(%s)')\n${GREEN}\\\$${RESET_COLOR} "
+      PS1+="${BLUE}max ${WHITE}\w ${YELLOW}\$(__git_ps1 '(%s)')\n${GREEN}\\\$${RESET_COLOR} "
     fi
 
     export PS1
