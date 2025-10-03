@@ -104,6 +104,7 @@ nnoremap J mzJ`z
 nnoremap Y y$
 nnoremap <leader><leader> <C-^>
 nnoremap <silent> ff :up<CR>
+nnoremap <C-p> <C-i>
 
 let &t_SI = "\<Esc>[5 q"
 let &t_EI = "\<Esc>[1 q"
