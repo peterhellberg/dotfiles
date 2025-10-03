@@ -12,7 +12,7 @@ vim.lsp.config('*', {
 vim.lsp.enable({
   'gopls',
   'zls',
-  --'clangd',
+  'clangd',
 })
 
 vim.diagnostic.config({
