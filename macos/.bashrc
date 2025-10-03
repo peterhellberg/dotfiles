@@ -95,30 +95,33 @@ export HISTIGNORE="fg*"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-if [ -t 1 ]
-then
+if [ -t 1 ]; then
   bind '"\C-f": "fg %-\n"'
 
-  RED=$(tput setaf 1)
-  YELLOW=$(tput bold ; tput setaf 3)
-  GREEN=$(tput setaf 2)
-  BLUE=$(tput setaf 4)
-  LIGHT_GRAY=$(tput setaf 7)
-  WHITE=$(tput bold ; tput setaf 7)
-  RESET_COLOR=$(tput sgr0)
+  RED='\[\033[0;31m\]'
+  GREEN='\[\033[0;32m\]'
+  YELLOW='\[\033[0;33m\]'
+  BLUE='\[\033[0;34m\]'
+  WHITE='\[\033[0;37m\]'
+  RESET_COLOR='\[\033[0m\]'
+    
+  EXIT='$(ec=$?;((ec))&&echo "'"${RED}"'[$ec]'"${RESET_COLOR}"' ")'
 
   shopt -s checkwinsize
 
-  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && 
+    . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
   if [ -f /opt/homebrew/etc/bash_completion.d/git-prompt.sh ]; then
     source /opt/homebrew/etc/bash_completion.d/git-prompt.sh
-    
+   
     if [ "$EUID" -eq 0 ]; then
-      export PS1='\[$RED\]max \[$WHITE\]\w \[$YELLOW\]$(__git_ps1 "(%s)")\[$GREEN\]\n\$\[$RESET_COLOR\] '
+      PS1="${EXIT}${YELLOW}max ${WHITE}\w ${YELLOW}\$(__git_ps1 '(%s)')\n${RED}\\\$${RESET_COLOR} "
     else    
-      export PS1='\[$BLUE\]max \[$WHITE\]\w \[$YELLOW\]$(__git_ps1 "(%s)")\[$GREEN\]\n\$\[$RESET_COLOR\] '
+      PS1="${EXIT}${BLUE}max ${WHITE}\w ${YELLOW}\$(__git_ps1 '(%s)')\n${GREEN}\\\$${RESET_COLOR} "
     fi
+
+    export PS1
   fi
 fi
 
