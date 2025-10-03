@@ -1,6 +1,6 @@
 fullscreen
 
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 macos-non-native-fullscreen = visible-menu
 quit-after-last-window-closed = true
 unfocused-split-opacity = 1
