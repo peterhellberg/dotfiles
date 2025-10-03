@@ -1,4 +1,0 @@
-#!/bin/bash
-
-sudo umount /media/peter/Encrypted &&
-sudo cryptsetup close Encrypted
