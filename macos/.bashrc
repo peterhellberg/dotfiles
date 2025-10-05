@@ -138,3 +138,8 @@ export NATS_URL=nats://tiny:4222
 # Köp
 export KOP_ENDPOINT="http://tiny:12432/rpc/"
 alias köp='kop'
+
+# ASDF
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+. <(asdf completion bash)
