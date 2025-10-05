@@ -1,13 +1,23 @@
 local alternates = {
-  ["%.go$"]          = function(name) return name:gsub("%.go$", "_test.go") end,
-  ["_test%.go$"]     = function(name) return name:gsub("_test%.go$", ".go") end,
-  ["%.c$"]           = function(name) return name:gsub("%.c$", ".h") end,
-  ["%.h$"]           = function(name) return name:gsub("%.h$", ".c") end,
-  ["build.zig$"]     = function(name) return name:gsub("%.zig$", ".zig.zon") end,
-  ["build.zig.zon$"] = function(name) return name:gsub("%.zig.zon$", ".zig") end,
+  ["%.go$"]           = function(name) return name:gsub("%.go$", "_test.go") end,
+  ["_test%.go$"]      = function(name) return name:gsub("_test%.go$", ".go") end,
+  ["%.c$"]            = function(name) return name:gsub("%.c$", ".h") end,
+  ["%.h$"]            = function(name) return name:gsub("%.h$", ".c") end,
+  ["build.zig$"]      = function(name) return "build.zig.zon" end,
+  ["build.zig.zon$"]  = function(name) return "build.zig" end,
+  ["fragment.glslx$"] = function(name) return "vertex.glslx" end,
+  ["vertex.glslx$"]   = function(name) return "fragment.glslx" end,
 }
 
-local patterns = { "*.go", "*.c", "*.h", "build.zig*" }
+local patterns = {
+  "*.go",
+  "*.c",
+  "*.h",
+  "build.zig",
+  "build.zig.zon",
+  "fragment.glslx",
+  "vertex.glslx",
+}
 
 local function alternate_file(split_cmd, bang)
   local bufname = vim.api.nvim_buf_get_name(0)
