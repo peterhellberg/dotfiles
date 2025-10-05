@@ -85,6 +85,9 @@ function run {
 # [[ -s "$HOME/.orgs/<name>.sh" ]] && source "$HOME/.orgs/<name>.sh"
 ####################################################################
 
+# Treat NBSP as space
+bind '"\302\240":" "'
+
 export HISTIGNORE="fg*"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
