@@ -2,6 +2,7 @@ vim.lsp.enable({
   'gopls',
   'zls',
   'clangd',
+  'tinymist',
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
