@@ -7,12 +7,7 @@ local alternates = {
   ["build.zig.zon$"] = function(name) return name:gsub("%.zig.zon$", ".zig") end,
 }
 
-local patterns = {
-  "build.zig*",
-  "*.go",
-  "*.c",
-  "*.h",
-}
+local patterns = { "*.go", "*.c", "*.h", "build.zig*" }
 
 local function alternate_file(split_cmd, bang)
   local bufname = vim.api.nvim_buf_get_name(0)
@@ -26,13 +21,11 @@ local function alternate_file(split_cmd, bang)
   end
 
   if not alt then
-    print("No alternate defined for this file")
-    return
+    return vim.notify("No alternate defined for this file", vim.log.levels.WARN)
   end
 
   if vim.fn.filereadable(alt) == 0 and not bang then
-    print("Alternate file not found: " .. alt)
-    return
+    return vim.notify("Alternate file not found: " .. alt, vim.log.levels.WARN)
   end
 
   vim.cmd(split_cmd .. " " .. vim.fn.fnameescape(alt))
@@ -41,16 +34,19 @@ end
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = patterns,
   callback = function()
-    vim.api.nvim_buf_create_user_command(0, "A", function(opts)
-      alternate_file("edit", opts.bang)
-    end, {bang = true})
+    local bufnr = vim.api.nvim_get_current_buf()
 
-    vim.api.nvim_buf_create_user_command(0, "AV", function(opts)
-      alternate_file("vsplit", opts.bang)
-    end, {bang = true})
+    if vim.b[bufnr].alternate_commands then return end
+    vim.b[bufnr].alternate_commands = true
 
-    vim.api.nvim_buf_create_user_command(0, "AS", function(opts)
-      alternate_file("split", opts.bang)
-    end, {bang = true})
+    local function create_cmd(name, cmd)
+      vim.api.nvim_buf_create_user_command(bufnr, name, function(opts)
+        alternate_file(cmd, opts.bang)
+      end, { bang = true })
+    end
+
+    create_cmd("A", "edit")
+    create_cmd("AV", "vsplit")
+    create_cmd("AS", "split")
   end
 })
