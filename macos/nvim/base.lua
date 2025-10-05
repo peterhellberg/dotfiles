@@ -9,6 +9,7 @@ require("core.lsp")
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
+require("config.alternates")
 
 local after_config = vim.fn.expand("~/.config/nvim/after.lua")
 

@@ -134,38 +134,6 @@ hi netrwYacc	    guifg=#787878
 
 set autochdir
 
-augroup go
-  autocmd BufRead go.mod,go.sum set ft=go
-  autocmd BufRead *.go setlocal noexpandtab
-  autocmd BufRead *.go :silent! lua vim.lsp.util.make_range_params()
-  autocmd BufWritePre *.go :silent! lua vim.lsp.buf.format({ async = false })
-
-  function! s:GoAlternate(cmd)
-    let l:filename = expand('%:t')
-    let l:filepath = expand('%:p:h')
-
-    if l:filename =~# '_test\.go$'
-      let l:target = substitute(l:filename, '_test\.go$', '.go', '')
-    elseif l:filename =~# '\.go$'
-      let l:target = substitute(l:filename, '\.go$', '_test.go', '')
-    else
-      echo "Not a Go source file."
-      return
-    endif
-
-    let l:fullpath = l:filepath . '/' . l:target
-
-    if filereadable(l:fullpath)
-      execute a:cmd . ' ' . fnameescape(l:fullpath)
-    else
-      echo "File not found: " . l:fullpath
-    endif
-  endfunction
-
-  command! A  call <SID>GoAlternate('edit')
-  command! AV call <SID>GoAlternate('vsplit')
-augroup END
-
 " GitGutter
 let g:gitgutter_enabled = 1
 let g:gitgutter_max_signs = 250
