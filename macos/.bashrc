@@ -78,6 +78,14 @@ function run {
   fi
 }
 
+function wiki {
+  if [ $# -eq 0 ]; then
+    nvim +":silent VimwikiIndex"
+  else
+    nvim +":silent VimwikiIndex" +":VimwikiGoto $@"
+  fi
+}
+
 # Load aliases
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
