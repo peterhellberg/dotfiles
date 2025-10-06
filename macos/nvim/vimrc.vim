@@ -178,3 +178,11 @@ let g:Lf_WildIgnore = {
 lua vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
 lua vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 lua vim.api.nvim_set_keymap("n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+
+" Vimwiki
+let g:vimwiki_use_calendar = 1
+let g:vimwiki_url_maxsave = 0
+let g:vimwiki_global_ext = 0
+let g:vimwiki_list = [{'path':'~/Documents/Wiki/', 'syntax':'markdown', 'ext':'.md', 'auto_tags':1, 'auto_diary_index':1, 'automatic_nested_syntaxes':1, 'nested_syntaxes':{'go': 'go'}}]
+nmap <Leader>vn <Plug>VimwikiNextLink
+nmap <Leader>vp <Plug>VimwikiPrevLink
