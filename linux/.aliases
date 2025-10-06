@@ -20,7 +20,7 @@ alias spy-clear-gotest-uncached='spy -c black clear-gotest -count=1 $(go list ./
 alias spy-clear-gotest-integration='spy -c black clear-gotest -tags=integration $(go list ./...)'
 
 # Zig aliases
-alias spy-clear-zig='spy --exc zig-cache --inc "**/*.zig" -q clear-zig'
+alias spy-clear-zig='spy --exc .zig-cache --inc "**/*.zig" -q clear-zig'
 alias zigup='zigup --install-dir /home/peter/.zig/'
 alias zbr='zig build run'
 
