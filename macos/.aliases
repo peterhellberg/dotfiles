@@ -1,7 +1,7 @@
 # Aliases
 alias curl='curl -s'
 alias needs-formatting='goimports -l $(find . -type f -name "*.go" -not -path "./vendor/*")'
-alias note="nvim -c 'r!date' -c 'normal i# ' -c 'normal 2o' -c 'normal O' ~/Documents/Notes/notes.md"
+alias note='nvim -c "r!date +\%Y-\%m-\%d\ \%H:\%M" -c "normal i# " -c "normal 2o" -c "normal O" ~/Documents/Notes/notes.md'
 alias gpg="gpg --default-recipient-self"
 alias sl="ls"
 
@@ -32,6 +32,7 @@ alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 alias ago='cd ~/Go/src/github.com/athega'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
+alias sgo='cd ~/Go/src/github.com/stimtech'
 
 ## Git aliases
 alias git-push-tag="git push --atomic origin main"
@@ -40,6 +41,12 @@ alias grimain="git rebase --exec 'git commit --amend --no-edit -n -S' -i main"
 alias gristage="git rebase --exec 'git commit --amend --no-edit -n -S' -i stage"
 alias gri="git rebase --exec 'git commit --amend --no-edit -n -S' -i"
 alias gs='git status'
+
+## Wiki
+alias diary='nvim +":VimwikiMakeDiaryNote"'
+alias diary-tomorrow='nvim +":VimwikiMakeTomorrowDiaryNote"'
+alias diary-yesterday='nvim +":VimwikiMakeYesterdayDiaryNote"'
+alias diary-index='nvim +":silent VimwikiDiaryIndex"'
 
 ## Misc
 alias vim='nvim'
