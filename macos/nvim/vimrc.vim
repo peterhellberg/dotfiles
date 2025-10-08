@@ -45,6 +45,7 @@ hi Structure guifg=#8FBFDC
 hi Type guifg=#FFB964
 hi Visual guifg=default guibg=#303030
 hi WinSeparator guifg=#333333
+hi QuickFixLine guifg=DEFAULT guibg=#333333 gui=bold
 
 filetype plugin indent on
 
