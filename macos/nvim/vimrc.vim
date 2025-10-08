@@ -186,3 +186,8 @@ let g:vimwiki_global_ext = 0
 let g:vimwiki_list = [{'path':'~/Documents/Wiki/', 'syntax':'markdown', 'ext':'.md', 'auto_tags':1, 'auto_diary_index':1, 'automatic_nested_syntaxes':1, 'nested_syntaxes':{'go': 'go'}}]
 nmap <Leader>vn <Plug>VimwikiNextLink
 nmap <Leader>vp <Plug>VimwikiPrevLink
+
+" Ack
+if executable('pt')
+  let g:ackprg = 'pt --nocolor'
+endif
