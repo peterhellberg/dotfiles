@@ -1,3 +1,53 @@
+-- Create an autocmd group for LSP commands
+vim.api.nvim_create_augroup("LSPCommands", { clear = true })
+
+-- Table of LSP commands
+local lsp_commands = {
+  Def  = { func = vim.lsp.buf.definition, desc = "Go to definition of current symbol", capability = "definitionProvider" },
+  Impl = { func = vim.lsp.buf.implementation, desc = "Go to implementation of current symbol", capability = "implementationProvider" },
+  Ref  = { func = vim.lsp.buf.references, desc = "Show LSP references for current symbol", capability = "referencesProvider" },
+  Type = { func = vim.lsp.buf.type_definition, desc = "Go to type definition of current symbol", capability = "typeDefinitionProvider" },
+  Doc  = { func = function() vim.lsp.buf.hover({border = 'rounded'}) end, desc = "Show documentation for current symbol", capability = "hoverProvider" },
+  Fmt  = { func = function() vim.lsp.buf.format({ async = true }) end, desc = "Format current buffer using LSP", capability = "documentFormattingProvider" },
+  Ren  = { func = function(opts)
+      if opts.args ~= ""
+        then vim.lsp.buf.rename(opts.args)
+        else vim.lsp.buf.rename()
+      end
+    end,
+    desc = "Rename symbol under cursor",
+    capability = "renameProvider",
+    nargs = "?",
+  },
+}
+
+-- Autocmd triggered for Go, Zig, C files
+vim.api.nvim_create_autocmd("FileType", {
+  group = "LSPCommands",
+  pattern = "go,zig,c",
+  callback = function()
+    for name, cmd in pairs(lsp_commands) do
+      vim.api.nvim_buf_create_user_command(0, name, function(opts)
+        local clients = vim.lsp.get_clients({ bufnr = 0 })
+        local supported = false
+
+        for _, client in ipairs(clients) do
+          if client.server_capabilities[cmd.capability] then
+            supported = true
+            break
+          end
+        end
+
+        if supported then
+          cmd.func(opts)
+        else
+          vim.notify(name .. " not supported by attached LSP server", vim.log.levels.WARN)
+        end
+      end, { desc = cmd.desc, nargs = cmd.nargs })
+    end
+  end,
+})
+
 -- Trim trailing whitespace
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('trim_whitespaces', { clear = true }),
