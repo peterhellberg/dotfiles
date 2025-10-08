@@ -89,8 +89,12 @@ function wiki {
 # Load aliases
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
-# Load organization specific config
-# [[ -s "$HOME/.orgs/<name>.sh" ]] && source "$HOME/.orgs/<name>.sh"
+# Load organization specific configs
+shopt -s nullglob
+for f in "$HOME"/.orgs/*.sh; do
+  [ -r "$f" ] && source "$f"
+done
+shopt -u nullglob
 ####################################################################
 
 # Treat NBSP as space
