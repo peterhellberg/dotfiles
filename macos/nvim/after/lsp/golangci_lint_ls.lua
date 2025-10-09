@@ -1,4 +1,3 @@
 return {
-  filetypes = { 'c', 'h' },
   capabilities = require("core.lsp.capabilities"),
 }

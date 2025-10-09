@@ -1,5 +1,7 @@
 vim.lsp.enable({
+  'buf_ls',
   'gopls',
+  'golangci_lint_ls',
   'zls',
   'clangd',
   'tinymist',
