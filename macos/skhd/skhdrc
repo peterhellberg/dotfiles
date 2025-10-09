@@ -6,3 +6,9 @@ ctrl-t : open -na "Ghostty.app"
 
 ## Open Firefox with ^F
 ctrl-f : open -na "Firefox Developer Edition.app" --args "-new-tab" "about:newtab"
+
+## Calculate and set the appropriate circadian lighting values
+ctrl-f11: /Users/peter/Go/bin/lights -c
+
+## Toggle the lights
+ctrl-f12: /Users/peter/Go/bin/lights
