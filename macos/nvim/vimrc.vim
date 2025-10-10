@@ -135,6 +135,12 @@ hi netrwYacc	    guifg=#787878
 
 set autochdir
 
+" NERDTree
+let NERDTreeDirArrowExpandable = '→'
+let NERDTreeDirArrowCollapsible = '↓'
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore = ['tmp', 'reports', '_workspace', '.zig-cache', 'deps', 'vendor']
+
 " GitGutter
 let g:gitgutter_enabled = 1
 let g:gitgutter_max_signs = 250
