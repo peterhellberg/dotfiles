@@ -1,3 +1,5 @@
+require("functions.format_go_buffer")
+
 -- Create an autocmd group for LSP commands
 vim.api.nvim_create_augroup("LSPCommands", { clear = true })
 
@@ -9,6 +11,7 @@ local lsp_commands = {
   Type = { func = vim.lsp.buf.type_definition, desc = "Go to type definition of current symbol", capability = "typeDefinitionProvider" },
   Doc  = { func = function() vim.lsp.buf.hover({border = 'rounded'}) end, desc = "Show documentation for current symbol", capability = "hoverProvider" },
   Fmt  = { func = function() vim.lsp.buf.format({ async = true }) end, desc = "Format current buffer using LSP", capability = "documentFormattingProvider" },
+  Org  = { func = function() format_go_buffer(0) end, desc = "Organize imports in the current buffer", capability = "codeActionProvider", },
   Ren  = { func = function(opts)
       if opts.args ~= ""
         then vim.lsp.buf.rename(opts.args)
@@ -77,27 +80,6 @@ vim.api.nvim_create_autocmd('BufWritePre',{
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function(args)
-    local bufnr = args.buf
-
-    pcall(vim.lsp.buf.format, {
-      bufnr = bufnr,
-      async = false,
-    })
-
-    local params = vim.lsp.util.make_range_params()
-
-    params.context = {
-      only = { "source.organizeImports" }
-    }
-
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 1000)
-
-    for _, res in pairs(result or {}) do
-      for _, action in pairs(res.result or {}) do
-        if action.edit then
-          vim.lsp.util.apply_workspace_edit(action.edit, "utf-8")
-        end
-      end
-    end
+    format_go_buffer(args.buf)
   end,
 })
