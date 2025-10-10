@@ -88,7 +88,7 @@ nmap <leader>s<left> :leftabove vnew<CR>
 nmap <leader>s<right> :rightbelow vnew<CR>
 nmap <leader>s<up> :leftabove new<CR>
 nmap <leader>s<down> :rightbelow new<CR>
-nmap <leader>n :Lexplore<CR>
+nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>m :Lexplore %:p:h<CR>
 
 noremap <space> :
