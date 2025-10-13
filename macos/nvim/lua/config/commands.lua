@@ -1,4 +1,4 @@
-require("config.commands.GoCoverage")
+require("commands.GoCoverage")
 
 -- Pt
 vim.api.nvim_create_user_command('Pt', function(opts)

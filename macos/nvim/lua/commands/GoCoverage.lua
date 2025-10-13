@@ -3,7 +3,7 @@ local M = {}
 local build_tags = ""
 local coverage_visible = {}       -- per-buffer highlights
 local coverage_generated = {}     -- per-buffer generated file tracking
-local coverage_file_for_buf = {}  -- track exact coverage file per buffer
+local coverage_file_for_buf = {}  -- track coverage file per buffer
 local ns = vim.api.nvim_create_namespace("GoCoverage")
 
 -- Setup highlight groups
@@ -12,20 +12,17 @@ local function setup_highlights()
   vim.api.nvim_set_hl(0, "GoCoverageUncovered", { fg="#f8f8f2", bg="#cf6a4c" })
 end
 
--- Compute coverage file path in the buffer's package directory
+-- Coverage file is fixed in /tmp
 local function get_coverage_file(buf)
-  local bufname = vim.api.nvim_buf_get_name(buf)
-  local dir = vim.fn.fnamemodify(bufname, ":h")
-  return dir .. "/coverage.out"
+  return "/tmp/coverage.out"
 end
 
--- Generate coverage file for a buffer (only for this package)
+-- Generate coverage for a buffer
 local function generate_coverage(buf, cb)
   local buf_dir = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":h")
   local coverage_file = get_coverage_file(buf)
   coverage_file_for_buf[buf] = coverage_file
 
-  -- Run tests for this package only, write coverage to exact path
   local cmd = string.format(
       "go test -coverprofile=%s -tags=%s %s",
       coverage_file,
@@ -46,7 +43,7 @@ local function generate_coverage(buf, cb)
   })
 end
 
--- Compare buffer path to coverage path (simple filename match)
+-- Simple filename match
 local function path_matches(buf_path, cov_path)
   local buf_base = vim.fn.fnamemodify(buf_path, ":t")
   local cov_base = vim.fn.fnamemodify(cov_path, ":t")
@@ -68,7 +65,6 @@ local function apply_coverage(buf)
   vim.api.nvim_buf_clear_namespace(buf, ns, 0, -1)
 
   local highlighted = false
-
   for line in f:lines() do
     if not line:match("^mode:") then
       local cov_path, startl, endl, count = line:match("([^:]+):(%d+)%.%d+,(%d+)%.%d+ %d+ (%d+)")
@@ -87,38 +83,21 @@ local function apply_coverage(buf)
   end
 
   f:close()
-
   if highlighted then
     coverage_visible[buf] = true
   end
-
   return highlighted
 end
 
--- Clear coverage highlights for a buffer
+-- Clear coverage highlights (does NOT delete the file)
 local function clear_coverage(buf)
   vim.api.nvim_buf_clear_namespace(buf, ns, 0, -1)
   coverage_visible[buf] = false
-
-  local coverage_file = coverage_file_for_buf[buf]
-  if coverage_file and vim.fn.filereadable(coverage_file) == 1 then
-    os.remove(coverage_file)
-  end
-
-  coverage_generated[buf] = nil
-  coverage_file_for_buf[buf] = nil
 end
 
--- Toggle coverage for a single buffer
-function M.toggle(buf)
+-- Toggle coverage highlights
+local function toggle_coverage(buf)
   buf = buf or vim.api.nvim_get_current_buf()
-  local bufname = vim.api.nvim_buf_get_name(buf)
-
-  -- Skip test files
-  if bufname:match("_test%.go$") then
-    vim.notify("GoCoverage cannot be run on _test.go files", vim.log.levels.WARN)
-    return
-  end
 
   if coverage_visible[buf] then
     clear_coverage(buf)
@@ -126,30 +105,70 @@ function M.toggle(buf)
     return
   end
 
-  generate_coverage(buf, function(success)
-    if success then
-      local highlighted = apply_coverage(buf)
-      if highlighted then
-        coverage_generated[buf] = true
-        vim.notify("Coverage applied for buffer", vim.log.levels.INFO)
-      else
-        -- No coverage lines, remove empty coverage file immediately
-        local coverage_file = coverage_file_for_buf[buf]
-        if coverage_file and vim.fn.filereadable(coverage_file) == 1 then
-          os.remove(coverage_file)
+  if coverage_generated[buf] then
+    local highlighted = apply_coverage(buf)
+    if highlighted then
+      vim.notify("Coverage applied for buffer", vim.log.levels.INFO)
+    end
+  else
+    generate_coverage(buf, function(success)
+      if success then
+        local highlighted = apply_coverage(buf)
+        if highlighted then
+          coverage_generated[buf] = true
+          vim.notify("Coverage applied for buffer", vim.log.levels.INFO)
         end
       end
-    end
-  end)
+    end)
+  end
 end
 
--- Register buffer-local command for Go files
+-- Register buffer-local commands for Go buffers
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "go",
   callback = function()
     local buf = vim.api.nvim_get_current_buf()
-    vim.api.nvim_buf_create_user_command(buf, "GoCoverage", function() M.toggle(buf) end,
-      { desc = "Toggle Go test coverage for this buffer" })
+
+    -- Generate/apply coverage
+    vim.api.nvim_buf_create_user_command(buf, "GoCoverage", function()
+      local bufname = vim.api.nvim_buf_get_name(buf)
+      if bufname:match("_test%.go$") then
+        vim.notify("GoCoverage cannot be run on _test.go files", vim.log.levels.WARN)
+        return
+      end
+      generate_coverage(buf, function(success)
+        if success then
+          local highlighted = apply_coverage(buf)
+          if highlighted then
+            coverage_generated[buf] = true
+            vim.notify("Coverage applied for buffer", vim.log.levels.INFO)
+          end
+        end
+      end)
+    end, { desc = "Generate and apply Go coverage for this buffer" })
+
+    -- Toggle coverage highlights
+    vim.api.nvim_buf_create_user_command(buf, "GoCoverageToggle", function()
+      toggle_coverage(buf)
+    end, { desc = "Toggle Go coverage highlights for this buffer" })
+
+    -- Clear coverage highlights
+    vim.api.nvim_buf_create_user_command(buf, "GoCoverageClear", function()
+      clear_coverage(buf)
+      vim.notify("Coverage cleared for buffer", vim.log.levels.INFO)
+    end, { desc = "Clear Go coverage highlights for this buffer" })
+  end,
+})
+
+-- Automatically clear highlights when a buffer is no longer visible in any window
+vim.api.nvim_create_autocmd({ "WinClosed", "BufEnter" }, {
+  pattern = "*.go",
+  callback = function()
+    for buf, visible in pairs(coverage_visible) do
+      if visible and vim.fn.bufwinnr(buf) == -1 then
+        clear_coverage(buf)
+      end
+    end
   end,
 })
 
