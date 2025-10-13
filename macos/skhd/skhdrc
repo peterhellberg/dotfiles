@@ -12,3 +12,7 @@ ctrl-f11: /Users/peter/Go/bin/lights -c
 
 ## Toggle the lights
 ctrl-f12: /Users/peter/Go/bin/lights
+
+## Move window between displays
+cmd+shift-left: open -g "rectangle://execute-action?name=previous-display"
+cmd+shift-right: open -g "rectangle://execute-action?name=next-display"
