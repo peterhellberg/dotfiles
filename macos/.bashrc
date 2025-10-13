@@ -97,9 +97,6 @@ done
 shopt -u nullglob
 ####################################################################
 
-# Treat NBSP as space
-bind '"\302\240":" "'
-
 export HISTIGNORE="fg*"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
