@@ -182,9 +182,6 @@ let g:Lf_WildIgnore = {
         \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so', '*.wasm']
         \}
 
-lua vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
-lua vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-
 " Vimwiki
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_url_maxsave = 0
