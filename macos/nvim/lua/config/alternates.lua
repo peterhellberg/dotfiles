@@ -1,5 +1,5 @@
 local alternates = {
-  ["%_test.go$"]      = function(name) return name:gsub("%_test.go$", ".go") end,
+  ["_test%.go$"]      = function(name) return name:gsub("_test%.go$", ".go") end,
   ["%.go$"]           = function(name) return name:gsub("%.go$", "_test.go") end,
   ["%.c$"]            = function(name) return name:gsub("%.c$", ".h") end,
   ["%.h$"]            = function(name) return name:gsub("%.h$", ".c") end,
