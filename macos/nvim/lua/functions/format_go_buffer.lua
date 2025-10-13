@@ -1,28 +1,56 @@
 -- Reusable function to format Go buffer
 function format_go_buffer(bufnr)
-  bufnr = bufnr or 0 -- default to current buffer
-
-  -- Find golangci-lint config in the project root
+  bufnr = bufnr or 0
   local root = vim.fs.find({ ".golangci.yaml", ".golangci.yml" }, {
     upward = true,
     path = vim.fn.getcwd(),
   })[1]
 
   if root then
-    -- golangci-lint config exists → use golangci-lint fmt
     local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
     local text = table.concat(lines, "\n")
 
-    local cmd = { "golangci-lint", "fmt", "--stdin" }
-    local new_lines = vim.fn.systemlist(cmd, text)
+    local output = {}
+    local errors = {}
 
-    if vim.v.shell_error ~= 0 then
-      vim.notify("golangci-lint fmt failed:\n" .. table.concat(new_lines, "\n"), vim.log.levels.WARN)
+    local job_id = vim.fn.jobstart({ "golangci-lint", "fmt", "--stdin" }, {
+      stdin = "pipe",
+      stdout_buffered = true,
+      stderr_buffered = true,
+      on_stdout = function(_, data)
+        if data then
+          vim.list_extend(output, data)
+        end
+      end,
+      on_stderr = function(_, data)
+        if data then
+          vim.list_extend(errors, data)
+        end
+      end,
+    })
+
+    if job_id <= 0 then
+      vim.notify("Failed to start golangci-lint fmt", vim.log.levels.ERROR)
       return
     end
 
-    -- Replace buffer lines (undo-safe)
-    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
+    vim.fn.chansend(job_id, text)
+    vim.fn.chanclose(job_id, "stdin")
+
+    -- Wait up to 2s and capture exit code
+    local status = vim.fn.jobwait({ job_id }, 2000)[1]
+
+    -- Only treat as error if nonzero exit
+    if status ~= 0 then
+      local msg = #errors > 0 and table.concat(errors, "\n") or "unknown error"
+      vim.notify("golangci-lint fmt failed:\n" .. msg, vim.log.levels.WARN)
+      return
+    end
+
+    -- If exit code == 0, safely replace buffer
+    if #output > 0 then
+      vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
+    end
   else
     local orig_notify = vim.notify
 
@@ -50,4 +78,3 @@ function format_go_buffer(bufnr)
     vim.notify = orig_notify
   end
 end
-
