@@ -12,6 +12,7 @@ return {
         unusedparams = true,
         unusedvariable = false,
       },
+      buildFlags = {"-tags=integration,webtest,local"},
       linksInHover = false,
       completeUnimported = true,
       staticcheck = false,
