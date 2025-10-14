@@ -1,4 +1,5 @@
 require("commands.GoCoverage")
+require("commands.ListToggle")
 
 -- Pt
 vim.api.nvim_create_user_command('Pt', function(opts)

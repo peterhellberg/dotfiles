@@ -6,3 +6,14 @@ vim.g.zig_fmt_autosave = 0
 
 -- Use "stack" jumpoptions instead of new default "clean"
 vim.o.jumpoptions = "stack"
+
+-- Set your listchars
+vim.opt.listchars = {
+    tab = "→\\ ",
+    space = "·",
+    nbsp = "␣",
+    trail = "•",
+    eol = "¶",
+    precedes = "«",
+    extends = "»"
+}
