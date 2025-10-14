@@ -1,3 +1,3 @@
 return {
-  capabilities = require("core.lsp.capabilities"),
+  capabilities = require("lsp.capabilities"),
 }
