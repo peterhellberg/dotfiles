@@ -1,5 +1,3 @@
-require("functions.format_go_buffer")
-
 -- Create an autocmd group for LSP commands
 vim.api.nvim_create_augroup("LSPCommands", { clear = true })
 
@@ -77,9 +75,34 @@ vim.api.nvim_create_autocmd('BufWritePre',{
 })
 
 -- Format and organize imports for Go
+require("functions.format_go_buffer")
+
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function(args)
     format_go_buffer(args.buf)
   end,
+})
+
+-- Toggle between alternate files
+require("functions.alternate_file")
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = patterns,
+  callback = function()
+    local bufnr = vim.api.nvim_get_current_buf()
+
+    if vim.b[bufnr].alternate_commands then return end
+    vim.b[bufnr].alternate_commands = true
+
+    local function create_cmd(name, cmd)
+      vim.api.nvim_buf_create_user_command(bufnr, name, function(opts)
+        alternate_file(cmd, opts.bang)
+      end, { bang = true })
+    end
+
+    create_cmd("A", "edit")
+    create_cmd("AV", "vsplit")
+    create_cmd("AS", "split")
+  end
 })

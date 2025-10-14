@@ -41,22 +41,3 @@ local function alternate_file(split_cmd, bang)
   vim.cmd(split_cmd .. " " .. vim.fn.fnameescape(alt))
 end
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = patterns,
-  callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-
-    if vim.b[bufnr].alternate_commands then return end
-    vim.b[bufnr].alternate_commands = true
-
-    local function create_cmd(name, cmd)
-      vim.api.nvim_buf_create_user_command(bufnr, name, function(opts)
-        alternate_file(cmd, opts.bang)
-      end, { bang = true })
-    end
-
-    create_cmd("A", "edit")
-    create_cmd("AV", "vsplit")
-    create_cmd("AS", "split")
-  end
-})
