@@ -194,5 +194,5 @@ nmap <Leader>vp <Plug>VimwikiPrevLink
 
 " Ack
 if executable('pt')
-  let g:ackprg = 'pt --nocolor'
+  let g:ackprg = 'pt --nocolor --nogroup --column'
 endif
