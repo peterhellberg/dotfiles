@@ -106,3 +106,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
     create_cmd("AS", "split")
   end
 })
+
+vim.api.nvim_create_autocmd({"FileType", "BufEnter"}, {
+  callback = function(args)
+    local bufnr = args.buf
+
+    vim.fn.clearmatches()
+
+    if vim.bo[bufnr].filetype == "go" then
+      vim.api.nvim_set_hl(0, "OverLength", { bg="#cf6a4c", sp="#944b37", underline=true })
+      vim.fn.matchadd("OverLength", "\\%>120v.*")
+    end
+  end,
+})
