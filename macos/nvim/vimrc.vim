@@ -59,6 +59,7 @@ set hlsearch
 set incsearch
 set nobackup
 set nomodeline
+set noshowmode
 set noswapfile
 set nowrap
 set nowritebackup
