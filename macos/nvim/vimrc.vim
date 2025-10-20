@@ -142,7 +142,7 @@ set autochdir
 let NERDTreeDirArrowExpandable = '→'
 let NERDTreeDirArrowCollapsible = '↓'
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', 'reports', '_workspace', '.zig-cache', 'deps', 'vendor']
+let NERDTreeIgnore = ['tmp', 'reports', '_workspace', '.zig-cache', 'zig-out', 'deps', 'vendor']
 
 " GitGutter
 let g:gitgutter_enabled = 1
