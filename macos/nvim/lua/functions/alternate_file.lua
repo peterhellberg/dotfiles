@@ -19,7 +19,7 @@ local patterns = {
   "vertex.glslx",
 }
 
-local function alternate_file(split_cmd, bang)
+function alternate_file(split_cmd, bang)
   local bufname = vim.api.nvim_buf_get_name(0)
   local alt
 
@@ -40,4 +40,3 @@ local function alternate_file(split_cmd, bang)
 
   vim.cmd(split_cmd .. " " .. vim.fn.fnameescape(alt))
 end
-
