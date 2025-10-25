@@ -1,4 +1,4 @@
--- Reusable function to format Go buffer
+-- Reusable function to format Go buffer with non-blocking quickfix
 function format_go_buffer(bufnr)
   bufnr = bufnr or 0
   local root = vim.fs.find({ ".golangci.yaml", ".golangci.yml" }, {
@@ -11,6 +11,30 @@ function format_go_buffer(bufnr)
       table.remove(lines)
     end
     return lines
+  end
+
+  local function populate_quickfix(errors)
+    local qf_list = {}
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+
+    for _, line in ipairs(errors) do
+      local lnum, col, msg = line:match("^<standard input>:(%d+):(%d+): (.+)$")
+      if lnum then
+        table.insert(qf_list, {
+          filename = fname,
+          lnum = tonumber(lnum),
+          col = tonumber(col),
+          text = msg,
+        })
+      end
+    end
+
+    if #qf_list > 0 then
+      vim.fn.setqflist({}, " ", { title = "goimports errors", items = qf_list })
+      vim.schedule(function()
+        vim.cmd("copen")
+      end)
+    end
   end
 
   if root then
@@ -32,7 +56,9 @@ function format_go_buffer(bufnr)
     })
 
     if job_goimports <= 0 then
-      vim.notify("Failed to start goimports", vim.log.levels.ERROR)
+      vim.schedule(function()
+        vim.notify("Failed to start goimports", vim.log.levels.ERROR)
+      end)
       return
     end
 
@@ -42,13 +68,16 @@ function format_go_buffer(bufnr)
     local status = vim.fn.jobwait({ job_goimports }, 2000)[1]
 
     if status ~= 0 then
-      local msg = #errors > 0 and table.concat(errors, "\n") or "unknown error"
-      vim.notify("goimports failed:\n" .. msg, vim.log.levels.WARN)
+      -- Populate quickfix and open it
+      populate_quickfix(errors)
+      -- Optional non-blocking notification
+      vim.schedule(function()
+        vim.notify("goimports failed, see quickfix list", vim.log.levels.WARN)
+      end)
       return
     end
 
     local output_fmt = {}
-
     errors = {}
 
     local job_fmt = vim.fn.jobstart({ "golangci-lint", "fmt", "--stdin" }, {
@@ -64,8 +93,9 @@ function format_go_buffer(bufnr)
     })
 
     if job_fmt <= 0 then
-      vim.notify("Failed to start golangci-lint fmt", vim.log.levels.ERROR)
-
+      vim.schedule(function()
+        vim.notify("Failed to start golangci-lint fmt", vim.log.levels.ERROR)
+      end)
       return
     end
 
@@ -75,10 +105,9 @@ function format_go_buffer(bufnr)
     status = vim.fn.jobwait({ job_fmt }, 2000)[1]
 
     if status ~= 0 then
-      local msg = #errors > 0 and table.concat(errors, "\n") or "unknown error"
-
-      vim.notify("golangci-lint fmt failed:\n" .. msg, vim.log.levels.WARN)
-
+      vim.schedule(function()
+        vim.notify("golangci-lint fmt failed", vim.log.levels.WARN)
+      end)
       return
     end
 
@@ -86,19 +115,17 @@ function format_go_buffer(bufnr)
       vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, clean_output(output_fmt))
     end
   else
+    -- fallback: use LSP organizeImports
     local orig_notify = vim.notify
-
     vim.notify = function(msg, ...)
       if msg:match("position_encoding param is required") then return end
       orig_notify(msg, ...)
     end
 
     local params = vim.lsp.util.make_range_params()
-
     params.context = { only = { "source.organizeImports" } }
 
     local results = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 1000)
-
     if results then
       for _, res in pairs(results) do
         for _, r in pairs(res.result or {}) do
