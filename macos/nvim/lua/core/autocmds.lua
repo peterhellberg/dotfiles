@@ -115,7 +115,7 @@ vim.api.nvim_create_autocmd({"FileType", "BufEnter"}, {
 
     if vim.bo[bufnr].filetype == "go" then
       vim.api.nvim_set_hl(0, "OverLength", { fg="#ff8566", bg="#944b37", sp="#944b37", underline=true })
-      vim.fn.matchadd("OverLength", "\\%>120v.*")
+      vim.fn.matchadd("OverLength", "\\%>121v.*")
     end
   end,
 })
