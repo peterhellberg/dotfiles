@@ -146,7 +146,7 @@ let NERDTreeIgnore = ['tmp', 'reports', '_workspace', '.zig-cache', 'zig-out', '
 
 " GitGutter
 let g:gitgutter_enabled = 1
-let g:gitgutter_max_signs = 250
+let g:gitgutter_max_signs = 2500
 let g:gitgutter_map_keys = 0
 
 hi GitGutterAdd    guifg=#97a950 guibg=#2D3218 ctermfg=2
