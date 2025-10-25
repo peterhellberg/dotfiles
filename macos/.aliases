@@ -8,7 +8,7 @@ alias sl="ls"
 # Go aliases
 alias goexperiments='cd ~/Go/src/experiments'
 alias coverage='gocov test $(go list ./... | grep -v /vendor/) | gocov report'
-alias spy-clear-gotest='spy --exc *.log --exc *.csv --exc *.svg -c black clear-gotest $(go list ./...)'
+alias spy-clear-gotest='spy --inc "**/*.go" -c black clear-gotest $(go list ./...)'
 alias spy-clear-go-run-imgcat='spy --exc *.png -q clear-go-run-imgcat'
 alias spy-clear-go='spy --exc output -q clear-go'
 alias spy-clear-gotest-uncached='spy -c black clear-gotest -count=1 $(go list ./...)'
