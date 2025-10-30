@@ -19,6 +19,9 @@ HISTFILESIZE=3500
 # Bash
 export EDITOR='nvim'
 
+# Tig
+export TIG_EDITOR='nvim +{line}'
+
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
