@@ -14,3 +14,5 @@ complete -F _eza ls
 complete -F _eza ll
 complete -F _eza lr
 complete -F _eza l
+
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
