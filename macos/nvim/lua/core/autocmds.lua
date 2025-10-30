@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('trim_whitespaces', { clear = true }),
   desc = 'Trim trailing white spaces',
-  pattern = 'bash,c,cpp,lua,javascript,make,python,rust,perl,sql,markdown',
+  pattern = 'bash,c,cpp,lua,javascript,make,python,rust,perl,sql',
   callback = function()
     vim.api.nvim_create_autocmd('BufWritePre', {
       pattern = '<buffer>',
