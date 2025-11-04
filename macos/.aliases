@@ -13,6 +13,7 @@ alias spy-clear-go-run-imgcat='spy --exc *.png -q clear-go-run-imgcat'
 alias spy-clear-go='spy --exc output -q clear-go'
 alias spy-clear-gotest-uncached='spy -c black clear-gotest -count=1 $(go list ./...)'
 alias spy-clear-gotest-integration='spy -c black clear-gotest -tags=integration $(go list ./...)'
+alias spy-clear-make='spy -q clear-make'
 
 # Zig aliases
 alias spy-clear-zig='spy --exc .zig-cache --inc "**/*.zig" -q clear-zig'
