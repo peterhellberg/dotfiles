@@ -24,3 +24,5 @@ vim.opt.listchars = {
     precedes = "«",
     extends = "»"
 }
+
+vim.opt.updatetime = 60
