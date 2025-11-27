@@ -33,6 +33,7 @@ alias forks='cd ~/Work/Code7/GitHub/forks'
 alias experiments='cd ~/Work/Code7/Experiments/'
 alias ago='cd ~/Go/src/github.com/athega'
 alias pgo='cd ~/Go/src/github.com/peterhellberg'
+alias pc='cd ~/Code/GitHub/peterhellberg'
 
 ## Git aliases
 alias git-push-tag="git push --atomic origin main"
