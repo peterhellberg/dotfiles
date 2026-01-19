@@ -52,6 +52,7 @@ alias diary-index='nvim +":silent VimwikiDiaryIndex"'
 ## Misc
 alias vim='nvim'
 alias vi='nvim'
+alias v='nvim -u $HOME/.dotfiles/linux/nvim/one.lua'
 alias li='nvim -u ~/.dotfiles/macos/nvim/light.lua'
 alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
 alias filllight="keylight -a http://filllight:9123"
