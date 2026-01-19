@@ -73,11 +73,13 @@ function since {
   echo "$(git l $1..HEAD)" | tac | tail
 }
 
+alias runme='runme --filename README.md'
+
 function run {
   if [ $# -eq 0 ]; then
-    runme --project .
+    runme --filename README.md --project .
   else
-    runme --project . run "$@"
+    runme --filename README.md --project . run "$@"
   fi
 }
 
