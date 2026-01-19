@@ -34,7 +34,6 @@ if vim.fn.bufwinnr(1) > 0 then
 end
 
 -- Manually configure ZLS for Zig files
-
 local zls_cmd = { "zls" }
 local zls_settings = {}
 
