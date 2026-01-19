@@ -22,10 +22,10 @@ local lsp_commands = {
   },
 }
 
--- Autocmd triggered for Go, Zig, C files
+-- Autocmd triggered for Go, Zig, C, Proto files
 vim.api.nvim_create_autocmd("FileType", {
   group = "LSPCommands",
-  pattern = "go,zig,c",
+  pattern = "go,zig,c,proto",
   callback = function()
     for name, cmd in pairs(lsp_commands) do
       vim.api.nvim_buf_create_user_command(0, name, function(opts)
@@ -68,7 +68,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- https://github.com/ziglang/zig/wiki/FAQ
 vim.api.nvim_create_autocmd('BufWritePre',{
-  pattern = {"*.zig", "*.zon", "*.c", "*.h"},
+  pattern = {"*.zig", "*.zon", "*.c", "*.h", "*.proto"},
   callback = function()
     vim.lsp.buf.format()
   end
