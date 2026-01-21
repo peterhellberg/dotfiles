@@ -7,6 +7,10 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.number = true
 
+vim.opt.clipboard = "unnamedplus"
+vim.opt.completeopt = "noinsert,menuone,noselect"
+vim.opt.smarttab = true
+
 -- Use comma as the mapleader
 vim.g.mapleader = ","
 
@@ -62,3 +66,30 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "zig",
   callback = start_zls,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+  end,
+})
+
+-- TAB completion
+
+local term = function(key)
+  return vim.api.nvim_replace_termcodes(key, true, false, true)
+end
+
+local function pum_map(when_visible, fallback)
+  return function()
+    if vim.fn.pumvisible() == 1 then
+      return term(when_visible)
+    else
+      return term(fallback)
+    end
+  end
+end
+
+vim.keymap.set("i", "<Tab>", pum_map("<C-n>", "<C-x><C-o>"), { expr = true })
+vim.keymap.set("i", "<S-Tab>", pum_map("<C-p>", "<S-Tab>"), { expr = true })
+vim.keymap.set("i", "<CR>", pum_map("<C-y>", "<CR>"), { expr = true })
+vim.keymap.set("i", "<Esc>", pum_map("<C-e>", "<Esc>"), { expr = true })
