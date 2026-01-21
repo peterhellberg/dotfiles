@@ -26,6 +26,7 @@ hi FloatBorder guifg=#99ad6b guibg=NONE
 hi Function guifg=#FAD07A
 hi Identifier guifg=#DDDDC5
 hi Include guifg=#8FBFDC
+hi IncSearch guibg=default guifg=#fce094 gui=inverse
 hi Keyword guifg=#8197BE
 hi Label guifg=#8197BF
 hi LineNr guifg=#605958
@@ -38,7 +39,7 @@ hi Operator guifg=#DDDDC5
 hi PreProc guifg=#8FBFDC
 hi Question guifg=#E6E6CD
 hi Repeat guifg=#8197BF
-hi Search guibg=#EFEFEF guifg=#404040
+hi Search guibg=default guifg=default gui=underdotted 
 hi Special guifg=#799D6A
 hi SpecialChar guifg=#C6B6EE
 hi Statement guifg=#8197BE
@@ -50,6 +51,30 @@ hi Type guifg=#FFB964
 hi Visual guifg=default guibg=#303030
 hi WinSeparator guifg=#333333
 hi QuickFixLine guifg=DEFAULT guibg=#333333 gui=bold
+
+" Markdown
+hi markdownH1 guifg=#fad17a
+hi markdownH2 guifg=#ffb372
+hi markdownH3 guifg=#cf6a4c
+hi markdownH4 guifg=#cf6a4c
+hi markdownH5 guifg=#cf6a4c
+
+hi markdownH1Delimiter guifg=#fad17a
+hi markdownH2Delimiter guifg=#ffb372
+hi markdownH3Delimiter guifg=#cf6a4c
+hi markdownH4Delimiter guifg=#cf6a4c
+hi markdownH5Delimiter guifg=#cf6a4c
+
+hi markdownCode guifg=#8fbfdc
+hi markdownCodeBlock guifg=#8fbfdc
+hi markdownCodeDelimiter guifg=#4d636f
+
+hi VimwikiHeaderChar guifg=#fad17a
+hi link VimwikiHeader1 markdownH1
+hi link VimwikiHeader2 markdownH2
+hi link VimwikiHeader3 markdownH3
+hi link VimwikiHeader4 markdownH4
+hi link VimwikiHeader5 markdownH5
 
 filetype plugin indent on
 
