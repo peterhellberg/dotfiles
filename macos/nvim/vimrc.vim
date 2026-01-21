@@ -69,6 +69,9 @@ hi markdownCode guifg=#8fbfdc
 hi markdownCodeBlock guifg=#8fbfdc
 hi markdownCodeDelimiter guifg=#4d636f
 
+hi markdownAutomaticLink guifg=#c6b7ee
+hi markdownUrlDelimiter guifg=#988db6
+
 hi VimwikiHeaderChar guifg=#fad17a
 hi link VimwikiHeader1 markdownH1
 hi link VimwikiHeader2 markdownH2
