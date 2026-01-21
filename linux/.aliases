@@ -6,6 +6,7 @@ alias ls='ls --color --group-directories-first'
 
 # Directory aliases
 alias c7='cd ~/Code/GitHub/c7/c7.se/'
+alias pc='cd ~/Code/GitHub/peterhellberg/'
 alias cgp='cd ~/Code/GitHub/peterhellberg/'
 alias pgo='cd ~/Go/src/github.com/peterhellberg/'
 
