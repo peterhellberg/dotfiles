@@ -55,22 +55,22 @@ hi QuickFixLine guifg=DEFAULT guibg=#333333 gui=bold
 " Markdown
 hi markdownH1 guifg=#fad17a
 hi markdownH2 guifg=#ffb372
-hi markdownH3 guifg=#cf6a4c
-hi markdownH4 guifg=#cf6a4c
-hi markdownH5 guifg=#cf6a4c
+hi markdownH3 guifg=#ffb372
+hi markdownH4 guifg=#ffb372
+hi markdownH5 guifg=#ffb372
 
 hi markdownH1Delimiter guifg=#fad17a
 hi markdownH2Delimiter guifg=#ffb372
-hi markdownH3Delimiter guifg=#cf6a4c
-hi markdownH4Delimiter guifg=#cf6a4c
-hi markdownH5Delimiter guifg=#cf6a4c
+hi markdownH3Delimiter guifg=#ffb372
+hi markdownH4Delimiter guifg=#ffb372
+hi markdownH5Delimiter guifg=#ffb372
 
 hi markdownCode guifg=#8fbfdc
 hi markdownCodeBlock guifg=#8fbfdc
 hi markdownCodeDelimiter guifg=#4d636f
 
-hi markdownAutomaticLink guifg=#c6b7ee
-hi markdownUrlDelimiter guifg=#988db6
+hi markdownAutomaticLink guifg=#cf6a4c
+hi markdownUrlDelimiter guifg=#874937
 
 hi VimwikiHeaderChar guifg=#fad17a
 hi link VimwikiHeader1 markdownH1
@@ -78,6 +78,14 @@ hi link VimwikiHeader2 markdownH2
 hi link VimwikiHeader3 markdownH3
 hi link VimwikiHeader4 markdownH4
 hi link VimwikiHeader5 markdownH5
+
+" HTML
+hi link htmlEndTag Function
+
+" YAML
+hi yamlBlockMappingKey guifg=#8197be
+hi yamlBlockMappingDelimiter guifg=#4d636f
+hi yamlPlainScalar guifg=#8fa364
 
 filetype plugin indent on
 
