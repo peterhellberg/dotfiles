@@ -79,6 +79,8 @@ hi link VimwikiHeader3 markdownH3
 hi link VimwikiHeader4 markdownH4
 hi link VimwikiHeader5 markdownH5
 
+hi VimwikiListTodo guifg=#8197be
+
 " HTML
 hi link htmlEndTag Function
 
