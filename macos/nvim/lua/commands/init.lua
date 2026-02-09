@@ -23,5 +23,9 @@ end, { nargs = '*' })
 
 -- Wiki
 vim.api.nvim_create_user_command('Wiki', function(opts)
-  vim.cmd('VimwikiGoto ' .. table.concat(opts.fargs, ' '))
+  if vim.fn.exists(':VimwikiGoto') == 2 then
+    vim.cmd('VimwikiGoto ' .. table.concat(opts.fargs, ' '))
+  else
+    vim.notify('Not in wiki!')
+  end
 end, { nargs = '*' })
