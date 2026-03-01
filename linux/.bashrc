@@ -29,6 +29,7 @@ shopt -s checkwinsize
 
 # Bash
 export EDITOR='nvim -u ~/.minimal.vimrc'
+export GPG_TTY=$(tty)
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
