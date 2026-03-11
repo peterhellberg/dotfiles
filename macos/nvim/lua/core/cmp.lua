@@ -31,6 +31,10 @@ cmp.setup({
       border = 'rounded',
       winhighlight = 'Normal:Normal,FloatBorder:None,CursorLine:PmenuSel,Search:None',
     }),
+    documentation = cmp.config.window.bordered({
+      border = 'rounded',
+      winhighlight = 'Normal:Normal,FloatBorder:None,CursorLine:PmenuSel,Search:None',
+    }),
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-n>'] = cmp.mapping.select_next_item(),
