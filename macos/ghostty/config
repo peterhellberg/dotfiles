@@ -1,10 +1,12 @@
-fullscreen
+fullscreen = false
 
 macos-titlebar-style = hidden
-macos-non-native-fullscreen = visible-menu
+macos-non-native-fullscreen = padded-notch
 quit-after-last-window-closed = true
 unfocused-split-opacity = 1
 resize-overlay = never
+scrollbar = never
+mouse-scroll-multiplier = 0.2
 
 # Window
 
