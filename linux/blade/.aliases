@@ -29,6 +29,12 @@ alias git-push-tag-master="git push --atomic origin master"
 alias grimain="git rebase --exec 'git commit --amend --no-edit -n -S' -i main"
 alias gs="git status"
 
+## Wiki
+alias diary='nvim +":VimwikiMakeDiaryNote"'
+alias diary-tomorrow='nvim +":VimwikiMakeTomorrowDiaryNote"'
+alias diary-yesterday='nvim +":VimwikiMakeYesterdayDiaryNote"'
+alias diary-index='nvim +":silent VimwikiDiaryIndex"'
+
 # Misc
 alias :q='logout'
 alias v='nvim -u $HOME/.dotfiles/linux/nvim/one.lua'
