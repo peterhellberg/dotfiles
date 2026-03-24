@@ -8,16 +8,16 @@ vim.opt.expandtab = true
 vim.opt.number = true
 
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = "noinsert,menuone,noselect"
+vim.opt.completeopt = "menuone,noinsert"
 vim.opt.smarttab = true
+
+vim.opt.complete:append("k")
 
 -- Use comma as the mapleader
 vim.g.mapleader = ","
 
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
-
-keymap('i', 'jj', '<ESC>', opts)
 
 keymap("n", "<Leader>n", "<cmd>Lexplore %:p:h<CR>")
 keymap('n', '<Leader>s<Left>', ':leftabove vnew<CR>', opts)
@@ -38,6 +38,16 @@ if vim.fn.bufwinnr(1) > 0 then
 end
 
 -- Manually configure ZLS for Zig files
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    if vim.bo.filetype ~= "zig" then
+      vim.api.nvim_buf_set_option(0, "omnifunc", "")  -- disable default omnifunc
+    end
+  end,
+})
+
 local zls_cmd = { "zls" }
 local zls_settings = {}
 
@@ -49,6 +59,7 @@ local function on_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "¨", ":lua vim.lsp.diagnostic.open_float()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", ":lua vim.lsp.buf.format()<CR>", opts)
 end
 
 local function start_zls()
@@ -59,6 +70,21 @@ local function start_zls()
     settings = zls_settings,
     on_attach = on_attach,
     filetypes = { "zig" },
+  })
+  vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  -- Format-on-save for this buffer only
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    buffer = bufnr,           -- buffer-local
+    callback = function()
+      local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+      for _, client in pairs(clients) do
+        if client.name == "zls" and client.server_capabilities.documentFormattingProvider then
+          vim.lsp.buf.format({ bufnr = bufnr })
+          break
+        end
+      end
+    end,
   })
 end
 
@@ -84,15 +110,25 @@ local function pum_map(when_visible, fallback)
     if vim.fn.pumvisible() == 1 then
       return term(when_visible)
     else
-      return term(fallback)
+      return fallback
     end
   end
 end
 
-vim.keymap.set("i", "<Tab>", pum_map("<C-n>", "<C-x><C-o>"), { expr = true })
+vim.keymap.set("i", "<Tab>", pum_map("<C-n>", "<Tab>"), { expr = true })
 vim.keymap.set("i", "<S-Tab>", pum_map("<C-p>", "<S-Tab>"), { expr = true })
 vim.keymap.set("i", "<CR>", pum_map("<C-y>", "<CR>"), { expr = true })
 vim.keymap.set("i", "<Esc>", pum_map("<C-e>", "<Esc>"), { expr = true })
+vim.keymap.set("i", "j", pum_map("<C-n>", "j"), { expr = true })
+vim.keymap.set("i", "k", pum_map("<C-p>", "k"), { expr = true })
+
+vim.keymap.set("i", "<C-Space>", function()
+  if vim.bo.omnifunc ~= "" and vim.bo.omnifunc ~= nil then
+    return term("<C-x><C-o>")
+  else
+    return term("<C-x><C-n>")
+  end
+end, { expr = true })
 
 -- Highlighting
 
