@@ -6,7 +6,7 @@ quit-after-last-window-closed = true
 unfocused-split-opacity = 1
 resize-overlay = never
 scrollbar = never
-mouse-scroll-multiplier = 0.2
+mouse-scroll-multiplier = 1.0
 
 # Window
 
