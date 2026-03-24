@@ -244,6 +244,7 @@ let g:vimwiki_list = [{
   \   'sh': 'sh',
   \   'sql': 'sql',
   \   'yaml': 'yaml',
+  \   'xml': 'xml', 
   \   'zig': 'zig' 
   \ }}]
 nmap <Leader>vn <Plug>VimwikiNextLink
