@@ -6,7 +6,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.number = true
-
+vim.opt.showmode = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = "menuone,noinsert"
 vim.opt.smarttab = true
@@ -160,12 +160,16 @@ hi(0, "ModeMsg", { fg = "#FFFFFF", bg = "#0087AF" })
 hi(0, "Normal", { fg = "#E8E8D3", bg = "#151515" })
 hi(0, "NormalFloat", { bg = "#151515" })
 hi(0, "Number", { fg = "#CF6A4C" })
+hi(0, "Pmenu", { fg = "#E8E8D3", bg = "#1a1a1a" })
+hi(0, "PmenuSbar", { bg = "#222222" })
+hi(0, "PmenuSel", { fg = "#E8E8D3", bg = "#2a2a2a", bold = true })
+hi(0, "PmenuThumb", { bg = "#605958" })
 hi(0, "PreProc", { fg = "#8FBFDC" })
 hi(0, "Question", { fg = "#E6E6CD" })
 hi(0, "Repeat", { fg = "#8197BF" })
 hi(0, "Search", { fg = "#404040", bg = "#EFEFEF" })
-hi(0, "Special", { fg = "#799D6A" })
 hi(0, "SpecialChar", { fg = "#C6B6EE" })
+hi(0, "Special", { fg = "#799D6A" })
 hi(0, "Statement", { fg = "#8197BE" })
 hi(0, "StatusLine", { fg = "#9E9E9E", bg = "none" })
 hi(0, "StorageClass", { fg = "#C59F6F" })
