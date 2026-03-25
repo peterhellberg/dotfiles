@@ -1,9 +1,10 @@
 vim.lsp.enable({
   'buf_ls',
-  'gopls',
-  'zls',
   'clangd',
+  'gopls',
+  'lua_ls',
   'tinymist',
+  'zls',
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
