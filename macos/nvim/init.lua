@@ -17,7 +17,31 @@ vim.pack.add {
   'https://github.com/mileszs/ack.vim',
 }
 
-require('oil').setup()
+require('nvim-treesitter').setup()
+
+local oil = require("oil")
+
+oil.setup({
+  use_default_keymaps = false,
+  keymaps = {
+    ["h"] = "actions.parent",
+    ["l"] = "actions.select",
+    ["<CR>"] = "actions.select",
+    ["s"] = { "actions.select", opts = { vertical = true } },
+    ["t"] = { "actions.select", opts = { tab = true } },
+    ["q"] = "actions.close",
+    ["g?"] = "actions.show_help",
+    ["g."] = "actions.toggle_hidden",
+  },
+  float = {
+    border = "rounded",
+    max_width = 0.4,
+    max_height = 0.8,
+    win_options = {
+      winblend = 0
+    },
+  },
+})
 
 require("functions")
 require("commands")
