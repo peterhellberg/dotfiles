@@ -44,7 +44,7 @@ alias gri="git rebase --exec 'git commit --amend --no-edit -n -S' -i"
 alias gs='git status'
 
 ## Wiki
-alias d='nvim +":VimwikiMakeDiaryNote"'
+alias d='v +":VimwikiMakeDiaryNote"'
 alias diary='nvim +":VimwikiMakeDiaryNote"'
 alias diary-tomorrow='nvim +":VimwikiMakeTomorrowDiaryNote"'
 alias diary-yesterday='nvim +":VimwikiMakeYesterdayDiaryNote"'
