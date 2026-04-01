@@ -119,7 +119,7 @@ export PATH=/usr/local/go/bin:$PATH
 export PATH=/home/peter/.local/bin:$PATH
 
 # Git
-export GIT_EDITOR='nvim -u $HOME/.dotfiles/linux/nvim/init.lua'
+export GIT_EDITOR='nvim -u $HOME/.dotfiles/linux/nvim/one.lua'
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
