@@ -15,11 +15,11 @@ hi Delimiter guifg=#DDDDC5
 hi DiagnosticError guifg=#D35738
 hi DiagnosticHint guifg=#c6b7ee
 hi DiagnosticInfo guifg=#96b0de
-hi DiagnosticWarn guifg=#FFB964
 hi DiagnosticUnderlineError guisp=#D35738
 hi DiagnosticUnderlineHint guisp=#c6b7ee
 hi DiagnosticUnderlineInfo guisp=#96b0de
 hi DiagnosticUnderlineWarn guisp=#FFB964
+hi DiagnosticWarn guifg=#FFB964
 hi Directory guifg=#FFB964
 hi ErrorMsg guifg=#605958
 hi FloatBorder guifg=#99ad6b guibg=NONE
@@ -38,6 +38,7 @@ hi Number guifg=#CF6A4C
 hi Operator guifg=#DDDDC5
 hi PreProc guifg=#8FBFDC
 hi Question guifg=#E6E6CD
+hi QuickFixLine guifg=DEFAULT guibg=#333333 gui=bold
 hi Repeat guifg=#8197BF
 hi Search guibg=default guifg=default gui=underdotted 
 hi Special guifg=#799D6A
@@ -50,7 +51,6 @@ hi Structure guifg=#8FBFDC
 hi Type guifg=#FFB964
 hi Visual guifg=default guibg=#303030
 hi WinSeparator guifg=#333333
-hi QuickFixLine guifg=DEFAULT guibg=#333333 gui=bold
 
 " Markdown
 hi markdownH1 guifg=#fad17a
@@ -117,8 +117,6 @@ set virtualedit=block
 set mouse=
 
 autocmd VimEnter * set nosc
-
-imap jj <ESC>
 
 if bufwinnr(1)
 	nmap ö <C-W><<C-W><
