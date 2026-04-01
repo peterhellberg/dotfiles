@@ -20,13 +20,13 @@
       "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
       "src": "https://github.com/saadparwaiz1/cmp_luasnip"
     },
-    "lightline.vim": {
-      "rev": "e358557e1a9f9fc860416c8eb2e34c0404078155",
-      "src": "https://github.com/itchyny/lightline.vim"
+    "lualine.nvim": {
+      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
-    "mini.files": {
-      "rev": "b4796e09eb103f9f2d1e00aa2dab3753b879b17b",
-      "src": "https://github.com/nvim-mini/mini.files"
+    "mfd.nvim": {
+      "rev": "eb886e46c4aaf444f817466404c2cdef7b297d33",
+      "src": "https://github.com/kungfusheep/mfd.nvim"
     },
     "nerdtree": {
       "rev": "690d061b591525890f1471c6675bcb5bdc8cdff9",

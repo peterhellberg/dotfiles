@@ -44,13 +44,15 @@ hi Search guibg=default guifg=default gui=underdotted
 hi Special guifg=#799D6A
 hi SpecialChar guifg=#C6B6EE
 hi Statement guifg=#8197BE
-hi StatusLine guifg=#9E9E9E guibg=transparent
+hi StatusLine guibg=none guifg=#161616
+hi StatusLineNC guibg=none guifg=#161616
 hi StorageClass guifg=#C59F6F
 hi String guifg=#99AD6A
 hi Structure guifg=#8FBFDC
 hi Type guifg=#FFB964
 hi Visual guifg=default guibg=#303030
 hi WinSeparator guifg=#333333
+
 
 " Markdown
 hi markdownH1 guifg=#fad17a
@@ -105,8 +107,11 @@ set encoding=utf-8
 set expandtab
 set hlsearch
 set incsearch
+set laststatus=3
+set mouse=
 set nobackup
 set nomodeline
+set noruler
 set noshowmode
 set noswapfile
 set nowrap
@@ -122,7 +127,6 @@ set timeoutlen=500
 set ttimeoutlen=5
 set updatetime=100
 set virtualedit=block
-set mouse=
 
 autocmd VimEnter * set nosc
 
