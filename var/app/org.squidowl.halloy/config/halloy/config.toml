@@ -1,0 +1,61 @@
+# Halloy config.
+#
+# For a complete list of available options,
+# please visit https://halloy.chat/configuration.html
+
+scale_factor = 2.0
+theme = "pop"
+
+[font]
+family = "Office Code Pro D"
+size = 10
+
+[sidebar]
+server_icon =9
+
+[actions.sidebar]
+buffer = "replace-pane"
+
+[actions.buffer]
+click_channel_name = "replace-pane"
+click_highlight = "replace-pane"
+click_username = "replace-pane"
+local = "replace-pane"
+message_channel = "replace-pane"
+message_user = "replace-pane"
+
+[pane.scrollbar]
+width = 2
+scroller_width = 2
+
+[pane.gap]
+outer = 4
+inner = 2
+
+[buffer.nickname]
+color = "unique"
+
+[buffer.text_input]
+auto_format = "all"
+
+[buffer.text_input.nickname]
+enabled = false
+
+[buffer.channel.nicklist]
+alignment = "left"
+
+[buffer.server_messages.condense]
+dimmed = 0.9
+icon = "dot"
+
+[buffer.server_messages.default]
+dimmed = 0.9
+
+[servers.liberachat]
+server = "irc.libera.chat"
+use_tls = true
+port = 6697
+realname = "Peter Hellberg"
+nickname = "peterhellberg"
+nick_password_file = ".passwd/libera.pwd"
+channels = ["#MMMM", "#halloy"]
