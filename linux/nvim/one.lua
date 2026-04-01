@@ -41,6 +41,10 @@ oil.setup({
 vim.o.background = "dark"
 vim.cmd([[colorscheme default]])
 
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.undofile = false
+vim.opt.swapfile = false
 vim.opt.wrap = false
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
