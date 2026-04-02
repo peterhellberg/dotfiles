@@ -18,31 +18,15 @@ vim.pack.add {
   'https://github.com/kungfusheep/mfd.nvim',
 }
 
+require("functions")
+require("commands")
+require("core")
+require("lsp")
+
+local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
+vim.cmd.source(vimrc)
+
 require('nvim-treesitter').setup()
-
-local sections = {
-  lualine_a = {
-    {'mode', fmt = function(str) return str:sub(1,1) end },
-  },
-  lualine_b = {},
-  lualine_c = {'filename'},
-  lualine_x = {},
-  lualine_y = {'branch'},
-  lualine_z = {'location'}
-}
-
-require('lualine').setup {
-  options = {
-    theme = 'auto',
-    section_separators = '',
-    component_separators = '',
-    disabled_filetypes = {
-      statusline = {'nerdtree'},
-    },
-  },
-  sections = sections,
-  inactive_sections = sections,
-}
 
 local oil = require("oil")
 
@@ -67,10 +51,40 @@ oil.setup({
   },
 })
 
-require("functions")
-require("commands")
-require("core")
-require("lsp")
 
-local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
-vim.cmd.source(vimrc)
+local sections = {
+  lualine_a = {
+    {'mode', fmt = function(str) return str:sub(1,1) end },
+  },
+  lualine_b = {'filename'},
+  lualine_c = {},
+  lualine_x = {},
+  lualine_y = {'filetype', 'branch', 'location'},
+  lualine_z = {},
+}
+
+require('lualine').setup {
+  options = {
+    theme = 'auto',
+    section_separators = '',
+    component_separators = '',
+    disabled_filetypes = {
+      statusline = {'markdown'},
+    },
+  },
+  sections = sections,
+  inactive_sections = sections,
+  theme = require('lualine.themes.auto'),
+}
+
+-- function to clear lualine_c background for all modes
+local function clear_lualine_c_bg()
+  local modes = { "normal", "insert", "visual", "replace", "command", "inactive" }
+  for _, mode in ipairs(modes) do
+    vim.cmd(string.format("hi lualine_c_%s guibg=NONE", mode))
+  end
+end
+
+vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter"}, {
+  callback = clear_lualine_c_bg
+})
