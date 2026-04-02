@@ -18,16 +18,16 @@ vim.pack.add {
 }
 
 require('nvim-treesitter').setup()
- 
+
 local sections = {
   lualine_a = {
     {'mode', fmt = function(str) return str:sub(1,1) end },
   },
-  lualine_b = {},
-  lualine_c = {'filename'},
+  lualine_b = {'filename'},
+  lualine_c = {},
   lualine_x = {},
-  lualine_y = {'branch'},
-  lualine_z = {'location'}
+  lualine_y = {'filetype', 'branch', 'location'},
+  lualine_z = {},
 }
 
 require('lualine').setup {
@@ -41,7 +41,20 @@ require('lualine').setup {
   },
   sections = sections,
   inactive_sections = sections,
+  theme = require('lualine.themes.auto'),
 }
+
+-- function to clear lualine_c background for all modes
+local function clear_lualine_c_bg()
+  local modes = { "normal", "insert", "visual", "replace", "command", "inactive" }
+  for _, mode in ipairs(modes) do
+    vim.cmd(string.format("hi lualine_c_%s guibg=NONE", mode))
+  end
+end
+
+vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter"}, {
+  callback = clear_lualine_c_bg
+})
 
 local oil = require("oil")
 
