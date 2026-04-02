@@ -8,7 +8,7 @@ set background=dark
 colorscheme default
 
 hi @variable guifg=#DDDDC5
-hi Comment guifg=#666666
+hi Comment guifg=#605958 gui=italic
 hi Conditional guifg=#8197BE
 hi Constant guifg=#CF6A4C
 hi Delimiter guifg=#DDDDC5
@@ -40,7 +40,7 @@ hi PreProc guifg=#8FBFDC
 hi Question guifg=#E6E6CD
 hi QuickFixLine guifg=DEFAULT guibg=#333333 gui=bold
 hi Repeat guifg=#8197BF
-hi Search guibg=default guifg=default gui=underdotted 
+hi Search guibg=default guifg=default gui=inverse 
 hi Special guifg=#799D6A
 hi SpecialChar guifg=#C6B6EE
 hi Statement guifg=#8197BE
