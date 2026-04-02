@@ -30,6 +30,7 @@ alias grimain="git rebase --exec 'git commit --amend --no-edit -n -S' -i main"
 alias gs="git status"
 
 ## Wiki
+alias d='v +":VimwikiMakeDiaryNote"'
 alias diary='nvim +":VimwikiMakeDiaryNote"'
 alias diary-tomorrow='nvim +":VimwikiMakeTomorrowDiaryNote"'
 alias diary-yesterday='nvim +":VimwikiMakeYesterdayDiaryNote"'
