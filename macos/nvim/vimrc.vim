@@ -10,7 +10,7 @@ colorscheme default
 hi @variable guifg=#DDDDC5
 hi Comment guifg=#605958 gui=italic
 hi Conditional guifg=#8197BE
-hi Constant guifg=#CF6A4C
+hi Constant guifg=#C6B6EE
 hi Delimiter guifg=#DDDDC5
 hi DiagnosticError guifg=#D35738
 hi DiagnosticHint guifg=#c6b7ee
@@ -32,16 +32,18 @@ hi Label guifg=#8197BF
 hi LineNr guifg=#605958
 hi Macro guifg=#8FBFDC
 hi ModeMsg guifg=#FFFFFF guibg=#0087AF
+hi MoreMsg guifg=#DDDDC5
 hi Normal guibg=#151515 guifg=#E8E8D3
 hi NormalFloat guibg=#151515
 hi Number guifg=#CF6A4C
 hi Operator guifg=#DDDDC5
+hi Operator guifg=#FFB964
 hi PreProc guifg=#8FBFDC
 hi Question guifg=#E6E6CD
 hi QuickFixLine guifg=DEFAULT guibg=#333333 gui=bold
 hi Repeat guifg=#8197BF
 hi Search guibg=default guifg=default gui=inverse 
-hi Special guifg=#799D6A
+hi Special guifg=#C6B6EE
 hi SpecialChar guifg=#C6B6EE
 hi Statement guifg=#8197BE
 hi StatusLine guibg=none guifg=#161616
@@ -52,7 +54,6 @@ hi Structure guifg=#8FBFDC
 hi Type guifg=#FFB964
 hi Visual guifg=default guibg=#303030
 hi WinSeparator guifg=#333333
-
 
 " Markdown
 hi markdownH1 guifg=#fad17a
