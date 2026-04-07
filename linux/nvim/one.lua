@@ -1,4 +1,5 @@
 vim.pack.add {
+  'https://github.com/nvim-treesitter/nvim-treesitter',
   'https://github.com/L3MON4D3/LuaSnip',
   'https://github.com/hrsh7th/nvim-cmp',
   'https://github.com/saadparwaiz1/cmp_luasnip',
@@ -15,6 +16,8 @@ vim.pack.add {
   'https://github.com/kungfusheep/mfd.nvim',
   'https://github.com/mileszs/ack.vim',
 }
+
+require('vim._core.ui2').enable({})
 
 local sections = {
   lualine_a = {
@@ -370,6 +373,13 @@ vim.g.Lf_WildIgnore = {
   dir = { ".git", "zig-cache" },
   file = { "*.sw?", "~$*", "*.bak", "*.exe", "*.o", "*.so", "*.wasm" },
 }
+
+vim.lsp.enable({
+  'gopls',
+  'lua_ls',
+  'tinymist',
+  'zls',
+})
 
 -- CMP
 local luasnip = require'luasnip'
