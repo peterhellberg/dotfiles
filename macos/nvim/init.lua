@@ -1,5 +1,4 @@
 vim.pack.add {
-  'https://github.com/nvim-treesitter/nvim-treesitter',
   'https://github.com/L3MON4D3/LuaSnip',
   'https://github.com/hrsh7th/nvim-cmp',
   'https://github.com/saadparwaiz1/cmp_luasnip',
@@ -25,8 +24,6 @@ require("lsp")
 
 local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
-
-require('nvim-treesitter').setup()
 
 local oil = require("oil")
 

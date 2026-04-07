@@ -1,11 +1,11 @@
 {
   "plugins": {
     "LeaderF": {
-      "rev": "b479977088d5ceedf5495da594d60bd14c3a88ce",
+      "rev": "b096f56f24443111bd1cf428655d3999389536cd",
       "src": "https://github.com/Yggdroot/LeaderF"
     },
     "LuaSnip": {
-      "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
+      "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "ack.vim": {
@@ -21,11 +21,11 @@
       "src": "https://github.com/saadparwaiz1/cmp_luasnip"
     },
     "lualine.nvim": {
-      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
+      "rev": "8811f3f3f4dc09d740c67e9ce399e7a541e2e5b2",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mfd.nvim": {
-      "rev": "eb886e46c4aaf444f817466404c2cdef7b297d33",
+      "rev": "5d6067159e1b1116a12f34827a353572dbf3bdb9",
       "src": "https://github.com/kungfusheep/mfd.nvim"
     },
     "nerdtree": {
@@ -37,12 +37,8 @@
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-lspconfig": {
-      "rev": "8e2084bf5e40c79c1f42210a6ef96a0a4793a763",
+      "rev": "bedca8b426b2fee0ccac596d167d71bbe971253f",
       "src": "https://github.com/neovim/nvim-lspconfig"
-    },
-    "nvim-treesitter": {
-      "rev": "7caec274fd19c12b55902a5b795100d21531391f",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
@@ -53,7 +49,7 @@
       "src": "https://github.com/tpope/vim-fugitive"
     },
     "vim-gitgutter": {
-      "rev": "55b368d4c68541775b4b253d3c98d3145b695c24",
+      "rev": "21c977e8597c468c7dc76001389b0b430d46a4b0",
       "src": "https://github.com/airblade/vim-gitgutter"
     },
     "vim-snippets": {
