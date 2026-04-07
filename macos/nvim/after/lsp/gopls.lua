@@ -1,6 +1,6 @@
 return {
   on_init = function(client)
-    client.notify("workspace/didChangeConfiguration", {
+    client:notify("workspace/didChangeConfiguration", {
       settings = client.config.settings,
     })
   end,
