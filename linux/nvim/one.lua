@@ -1,5 +1,4 @@
 vim.pack.add {
-  'https://github.com/nvim-treesitter/nvim-treesitter',
   'https://github.com/L3MON4D3/LuaSnip',
   'https://github.com/hrsh7th/nvim-cmp',
   'https://github.com/saadparwaiz1/cmp_luasnip',
@@ -16,8 +15,6 @@ vim.pack.add {
   'https://github.com/kungfusheep/mfd.nvim',
   'https://github.com/mileszs/ack.vim',
 }
-
-require('nvim-treesitter').setup()
 
 local sections = {
   lualine_a = {
@@ -248,9 +245,11 @@ hi(0, "Label", { fg = "#8197BF" })
 hi(0, "LineNr", { fg = "#605958" })
 hi(0, "Macro", { fg = "#8FBFDC" })
 hi(0, "ModeMsg", { fg = "#FFFFFF", bg = "#0087AF" })
+hi(0, "MoreMsg", { fg = "#605958" })
 hi(0, "Normal", { fg = "#E8E8D3", bg = "#151515" })
 hi(0, "NormalFloat", { bg = "#151515" })
 hi(0, "Number", { fg = "#CF6A4C" })
+hi(0, "OkMsg", { fg = "#99AD6A" })
 hi(0, "Pmenu", { fg = "#E8E8D3", bg = "#1a1a1a" })
 hi(0, "PmenuSbar", { bg = "#222222" })
 hi(0, "PmenuSel", { fg = "#E8E8D3", bg = "#2a2a2a", bold = true })
@@ -258,7 +257,7 @@ hi(0, "PmenuThumb", { bg = "#605958" })
 hi(0, "PreProc", { fg = "#8FBFDC" })
 hi(0, "Question", { fg = "#E6E6CD" })
 hi(0, "Repeat", { fg = "#8197BF" })
-hi(0, "Search", { fg = "#404040", bg = "#EFEFEF" })
+hi(0, "Search", { standout = true, reverse = true })
 hi(0, "SignColumn", { link = "LineNr" })
 hi(0, "Special", { fg = "#799D6A" })
 hi(0, "SpecialChar", { fg = "#C6B6EE" })
