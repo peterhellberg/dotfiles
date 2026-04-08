@@ -298,6 +298,8 @@ hi(0, "VimwikiHeader4", { link = "markdownH4" })
 hi(0, "VimwikiHeader5", { link = "markdownH5" })
 hi(0, "VimwikiHeaderChar", { fg = "#fad17a" })
 hi(0, "VimwikiListTodo", { fg = "#8197be" })
+hi(0, "VimwikiLink", { link = "markdownAutomaticLink" })
+hi(0, "VimwikiPre", { link = "Repeat" })
 
 -- Vimwiki
 vim.g.vimwiki_use_calendar = 1
