@@ -10,7 +10,7 @@ colorscheme default
 hi @variable guifg=#DDDDC5
 hi Comment guifg=#605958 gui=italic
 hi Conditional guifg=#8197BE
-hi Constant guifg=#C6B6EE
+hi Constant guifg=#CF6A4C
 hi Delimiter guifg=#DDDDC5
 hi DiagnosticError guifg=#D35738
 hi DiagnosticHint guifg=#c6b7ee
@@ -89,6 +89,7 @@ hi link @markup.heading.2.markdown markdownH2
 hi link @markup.heading.3.markdown markdownH3
 hi link @markup.heading.4.markdown markdownH4
 hi link @markup.heading.5.markdown markdownH5
+hi link @markup.quote.markdown Normal 
 
 hi link @nospell.markdown_inline VimwikiHeaderChar 
 
