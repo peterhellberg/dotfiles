@@ -17,8 +17,6 @@ vim.pack.add {
   'https://github.com/mileszs/ack.vim',
 }
 
-require('vim._core.ui2').enable({})
-
 local sections = {
   lualine_a = {
     {'mode', fmt = function(str) return str:sub(1,1) end },
@@ -78,6 +76,19 @@ oil.setup({
     },
   },
 })
+
+require('vim._core.ui2').enable({})
+
+vim.o.smoothscroll = true
+vim.o.pumblend = 10
+vim.o.winblend = 10
+vim.o.cmdheight = 0
+vim.o.laststatus = 3
+vim.o.conceallevel = 2
+vim.o.shortmess = vim.o.shortmess .. "C"
+
+vim.o.updatetime = 100
+vim.o.signcolumn = "yes"
 
 vim.o.background = "dark"
 vim.cmd([[colorscheme default]])
