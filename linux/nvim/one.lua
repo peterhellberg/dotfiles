@@ -84,7 +84,6 @@ vim.o.pumblend = 10
 vim.o.winblend = 10
 vim.o.cmdheight = 0
 vim.o.laststatus = 3
-vim.o.conceallevel = 2
 vim.o.shortmess = vim.o.shortmess .. "C"
 
 vim.o.updatetime = 100
