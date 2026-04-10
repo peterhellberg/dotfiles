@@ -49,6 +49,14 @@ oil.setup({
   },
 })
 
+require('vim._core.ui2').enable({})
+
+vim.o.smoothscroll = true
+vim.o.pumblend = 10
+vim.o.winblend = 10
+vim.o.laststatus = 3
+vim.o.shortmess = vim.o.shortmess .. "C"
+
 local sections = {
   lualine_a = {
     {'mode', fmt = function(str) return str:sub(1,1) end },

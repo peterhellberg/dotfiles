@@ -122,6 +122,7 @@ set number
 set shiftwidth=2
 set shortmess=at
 set shortmess+=I
+set signcolumn=yes
 set smartcase
 set splitright
 set tabstop=2
