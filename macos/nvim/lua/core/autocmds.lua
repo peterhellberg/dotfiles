@@ -40,7 +40,11 @@ vim.api.nvim_create_autocmd("FileType", {
         end
 
         if supported then
-          cmd.func(opts)
+          if name == "Ref" then
+            cmd.func()
+          else
+            cmd.func(opts)
+          end
         else
           vim.notify(name .. " not supported by attached LSP server", vim.log.levels.WARN)
         end
