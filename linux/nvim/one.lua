@@ -382,7 +382,7 @@ vim.g.Lf_StlColorscheme = "powerline"
 vim.g.Lf_PopupColorscheme = "gruvbox_default"
 
 vim.g.Lf_WildIgnore = {
-  dir = { ".git", "zig-cache" },
+  dir = { ".git", ".zig-cache" },
   file = { "*.sw?", "~$*", "*.bak", "*.exe", "*.o", "*.so", "*.wasm" },
 }
 
