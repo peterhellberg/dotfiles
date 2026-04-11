@@ -11,7 +11,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     vim.schedule(function()
-      vim.notify("✔️ " .. client.name, vim.log.levels.INFO)
+      vim.notify("✔️ " .. (
+        client and client.name or "unknown"
+      ), vim.log.levels.INFO)
     end)
   end
 })
