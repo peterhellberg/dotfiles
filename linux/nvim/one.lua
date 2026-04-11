@@ -14,7 +14,6 @@ vim.pack.add {
   'https://github.com/Yggdroot/LeaderF',
   'https://github.com/honza/vim-snippets',
   'https://github.com/kungfusheep/mfd.nvim',
-  'https://github.com/mileszs/ack.vim',
 }
 
 local sections = {
