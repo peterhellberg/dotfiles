@@ -22,7 +22,7 @@ hi DiagnosticUnderlineWarn guisp=#FFB964
 hi DiagnosticWarn guifg=#FFB964
 hi Directory guifg=#FFB964
 hi ErrorMsg guifg=#605958
-hi FloatBorder guifg=#99ad6b guibg=NONE
+hi FloatBorder guifg=#555555 guibg=NONE
 hi Function guifg=#FAD07A
 hi Identifier guifg=#DDDDC5
 hi Include guifg=#8FBFDC
@@ -90,6 +90,7 @@ hi link @markup.heading.3.markdown markdownH3
 hi link @markup.heading.4.markdown markdownH4
 hi link @markup.heading.5.markdown markdownH5
 hi link @markup.quote.markdown Normal 
+hi link @markup.raw.block.markdown Keyword
 
 hi link @nospell.markdown_inline VimwikiHeaderChar 
 
@@ -144,8 +145,6 @@ nmap <leader>s<left> :leftabove vnew<CR>
 nmap <leader>s<right> :rightbelow vnew<CR>
 nmap <leader>s<up> :leftabove new<CR>
 nmap <leader>s<down> :rightbelow new<CR>
-nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>m :Lexplore %:p:h<CR>
 
 noremap <space> :
 noremap <tab> <c-w>w
@@ -163,39 +162,7 @@ nnoremap <silent> ff :up<CR>
 let &t_SI = "\<Esc>[5 q"
 let &t_EI = "\<Esc>[1 q"
 
-let g:netrw_altv=1
-let g:netrw_banner=0
-let g:netrw_browse_split = 4
-let g:netrw_fastbrowse=0
-let g:netrw_hide=1
-let g:netrw_keepdir=0
-let g:netrw_liststyle=3
-let g:netrw_usetab=1
-let g:netrw_winsize=-25
-let g:netrw_special_syntax=1
-
-hi netrwCompress  guifg=#5F5FAF
-hi netrwData      guifg=#FF875F
-hi netrwDoc	      guifg=#C5B5EC
-hi netrwHdr	      guifg=#AFD787
-hi netrwLex	      guifg=#787878
-hi netrwLib	      guifg=#787878
-hi netrwObj	      guifg=#787878
-hi netrwPix	      guifg=#FFAF5F
-hi netrwSymLink   guifg=#787878
-hi netrwMakefile  guifg=#F9CF75
-hi netrwTags	    guifg=#787878
-hi netrwTilde	    guifg=#787878
-hi netrwTmp	      guifg=#787878
-hi netrwYacc	    guifg=#787878
-
 set autochdir
-
-" NERDTree
-let NERDTreeDirArrowExpandable = '→'
-let NERDTreeDirArrowCollapsible = '↓'
-let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', 'reports', '_workspace', '.zig-cache', 'zig-out', 'deps', 'vendor']
 
 " GitGutter
 let g:gitgutter_enabled = 1
@@ -230,9 +197,9 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2" }
 let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 let g:Lf_WorkingDirectoryMode = 'a'
-let g:Lf_UseMemoryCache = 0
+let g:Lf_UseMemoryCache = 1
 let g:Lf_StlColorscheme = 'powerline'
-let g:Lf_PopupColorscheme = 'gruvbox_default'
+let g:Lf_PopupColorscheme = 'default'
 let g:Lf_WildIgnore = {
         \ 'dir': ['.git', 'zig-cache'],
         \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so', '*.wasm']
@@ -262,25 +229,3 @@ let g:vimwiki_list = [{
   \ }}]
 nmap <Leader>vn <Plug>VimwikiNextLink
 nmap <Leader>vp <Plug>VimwikiPrevLink
-
-" Ack
-if executable('pt')
-  let g:ackprg = 'pt --nocolor --nogroup --column'
-endif
-
-" Lightline
-let g:lightline = {
-      \ 'mode_map': {
-        \ 'n' : 'N',
-        \ 'i' : 'I',
-        \ 'R' : 'R',
-        \ 'v' : 'V',
-        \ 'V' : 'VL',
-        \ "\<C-v>": 'VB',
-        \ 'c' : 'C',
-        \ 's' : 'S',
-        \ 'S' : 'SL',
-        \ "\<C-s>": 'SB',
-        \ 't': 'T',
-        \ },
-      \ }
