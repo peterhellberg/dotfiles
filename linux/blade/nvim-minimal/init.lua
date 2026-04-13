@@ -17,15 +17,14 @@ vim.g.mapleader = ","
 local opt = vim.opt
 local o = vim.o
 
-
 o.background = "dark"
 o.cmdheight = 0
 o.laststatus = 3
-o.pumblend = 10
+o.pumblend = 0
 o.signcolumn = "yes"
 o.smoothscroll = true
 o.updatetime = 100
-o.winblend = 10
+o.winblend = 0
 o.winborder = "rounded"
 
 require('vim._core.ui2').enable({
@@ -89,8 +88,7 @@ opt.tabstop = 2
 opt.undofile = false
 opt.wrap = false
 opt.writebackup = false
-opt.shortmess:append("C")
-opt.shortmess:append("F")
+opt.shortmess:append("filnxtToOFcC")
 opt.complete:append("k")
 
 local hi = vim.api.nvim_set_hl
@@ -114,7 +112,7 @@ hi(0, "Function", { fg = "#FAD07A" })
 hi(0, "GitGutterAdd",    { fg = "#97a950", bg = "#2D3218" })
 hi(0, "GitGutterChange", { fg = "#FFB964", bg = "#4c371e" })
 hi(0, "GitGutterDelete", { fg = "#d35738", bg = "#3f1a10" })
-hi(0, "Identifier", { fg = "#C6B6EE" })
+hi(0, "Identifier", { fg = "#DDDDC5" })
 hi(0, "Include", { fg = "#8FBFDC" })
 hi(0, "Keyword", { fg = "#8197BE" })
 hi(0, "Label", { fg = "#8197BF" })
@@ -259,65 +257,6 @@ vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR
 vim.api.nvim_set_keymap("n", "§", "<cmd>lua vim.lsp.buf.hover({border = 'rounded', max_width = 80})<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "^", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "¨", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
-
--- Zig
-
--- Manually configure ZLS for Zig files
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
-  callback = function()
-    if vim.bo.filetype ~= "zig" then
-      vim.bo.omnifunc = "" -- disable default omnifunc
-    end
-  end,
-})
-
-local zls_cmd = { "zls" }
-local zls_settings = {}
-
-local function on_attach(_, bufnr)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "§", ":lua vim.lsp.buf.hover({border = 'rounded', max_width = 80})<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "^", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "¨", ":lua vim.lsp.diagnostic.open_float()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", ":lua vim.lsp.buf.format()<CR>", opts)
-end
-
-local function start_zls()
-  vim.lsp.start({
-    name = "zls",
-    cmd = zls_cmd,
-    root_dir = vim.loop.cwd(),
-    settings = zls_settings,
-    on_attach = on_attach,
-    filetypes = { "zig" },
-  })
-  vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-  --vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  -- Format-on-save for this buffer only
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = bufnr,           -- buffer-local
-    callback = function()
-      local clients = vim.lsp.get_clients({ bufnr = bufnr })
-      for _, client in pairs(clients) do
-        if client.name == "zls" and client.server_capabilities.documentFormattingProvider then
-          vim.lsp.buf.format({ bufnr = bufnr })
-          break
-        end
-      end
-    end,
-  })
-end
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "zig",
-  callback = start_zls,
-})
 
 -- LSP
 
