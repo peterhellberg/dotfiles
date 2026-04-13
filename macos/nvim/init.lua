@@ -149,7 +149,7 @@ require('lualine').setup {
     section_separators = '',
     component_separators = '',
     disabled_filetypes = {
-      statusline = {'markdown'},
+      statusline = {},
     },
   },
   sections = sections,
