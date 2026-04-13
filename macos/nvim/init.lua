@@ -24,14 +24,13 @@ require("lsp")
 local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
 
-require('vim._core.ui2').enable({})
-
 vim.o.smoothscroll = true
+vim.o.laststatus = 3
 vim.o.pumblend = 10
 vim.o.winblend = 10
-vim.o.laststatus = 3
-vim.o.shortmess = vim.o.shortmess .. "C"
 vim.o.winborder = "rounded"
+
+vim.opt.shortmess:append("ICcWA")
 
 local oil = require("oil")
 
