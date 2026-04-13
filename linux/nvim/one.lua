@@ -76,8 +76,6 @@ oil.setup({
   },
 })
 
-require('vim._core.ui2').enable({})
-
 vim.o.smoothscroll = true
 vim.o.pumblend = 10
 vim.o.winblend = 10
@@ -110,6 +108,14 @@ vim.opt.complete:append("k")
 
 -- Use comma as the mapleader
 vim.g.mapleader = ","
+
+vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "§", "<cmd>lua vim.lsp.buf.hover({border = 'rounded', max_width = 80})<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "^", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "¨", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
 
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
@@ -191,6 +197,144 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = start_zls,
 })
 
+local alternates = {
+  { pattern = "_test%.go$",     fn = function(name) return name:gsub("_test%.go$", ".go") end },
+  { pattern = "%.go$",          fn = function(name) return name:gsub("%.go$", "_test.go") end },
+  { pattern = "%.c$",           fn = function(name) return name:gsub("%.c$", ".h") end },
+  { pattern = "%.h$",           fn = function(name) return name:gsub("%.h$", ".c") end },
+  { pattern = "build.zig$",     fn = function(_) return "build.zig.zon" end },
+  { pattern = "build.zig.zon$", fn = function(_) return "build.zig" end },
+  { pattern = "fragment.glslx$",fn = function(_) return "vertex.glslx" end },
+  { pattern = "vertex.glslx$",  fn = function(_) return "fragment.glslx" end },
+}
+
+local patterns = {
+  "*.go",
+  "*.c",
+  "*.h",
+  "build.zig",
+  "build.zig.zon",
+  "fragment.glslx",
+  "vertex.glslx",
+}
+
+function alternate_file(split_cmd, bang)
+  local bufname = vim.api.nvim_buf_get_name(0)
+  local alt
+
+  for _, entry in ipairs(alternates) do
+    if bufname:match(entry.pattern) then
+      alt = entry.fn(bufname)
+      break
+    end
+  end
+
+  if not alt then
+    return vim.notify("No alternate defined for this file", vim.log.levels.WARN)
+  end
+
+  if vim.fn.filereadable(alt) == 0 and not bang then
+    return vim.notify("Alternate file not found: " .. alt, vim.log.levels.WARN)
+  end
+
+  vim.cmd(split_cmd .. " " .. vim.fn.fnameescape(alt))
+end
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = patterns,
+  callback = function()
+    local bufnr = vim.api.nvim_get_current_buf()
+
+    if vim.b[bufnr].alternate_commands then return end
+    vim.b[bufnr].alternate_commands = true
+
+    local function create_cmd(name, cmd)
+      vim.api.nvim_buf_create_user_command(bufnr, name, function(opts)
+        alternate_file(cmd, opts.bang)
+      end, { bang = true })
+    end
+
+    create_cmd("A", "edit")
+    create_cmd("AV", "vsplit")
+    create_cmd("AS", "split")
+  end
+})
+
+-- Format Go buffer with goimports and optional golangci-lint check
+local function format_go_buffer(bufnr)
+  bufnr = bufnr or 0
+  local fname = vim.api.nvim_buf_get_name(bufnr)
+  if fname == "" then
+    return vim.notify("No file name for current buffer", vim.log.levels.WARN)
+  end
+
+  local start_dir = vim.fs.dirname(fname)
+  local has_goimports = vim.fn.executable("goimports") == 1
+  local has_linter = vim.fn.executable("golangci-lint") == 1
+    and vim.fs.find({ ".golangci.yaml", ".golangci.yml" }, { upward = true, path = start_dir })[1]
+
+  local function clean(lines)
+    while #lines > 0 and lines[#lines]:match("^%s*$") do table.remove(lines) end
+    return lines
+  end
+
+  local function run_job(cmd, input)
+    local out, err = {}, {}
+    local job = vim.fn.jobstart(cmd, {
+      stdin = "pipe", stdout_buffered = true, stderr_buffered = true,
+      on_stdout = function(_, data) if data then vim.list_extend(out, data) end end,
+      on_stderr = function(_, data) if data then vim.list_extend(err, data) end end,
+    })
+    if job <= 0 then return nil, { "failed to start " .. cmd[1] } end
+    vim.fn.chansend(job, input); vim.fn.chanclose(job, "stdin")
+    vim.fn.jobwait({ job }, 3000)
+    return clean(out), clean(err)
+  end
+
+  -- Fallback to LSP organizeImports if goimports missing
+  if not has_goimports then
+    vim.notify("goimports not found, using LSP organizeImports", vim.log.levels.INFO)
+    local params = vim.lsp.util.make_range_params()
+    params.context = { only = { "source.organizeImports" } }
+    local results = vim.lsp.buf_request_sync(bufnr, "textDocument/codeAction", params, 1000)
+    if results then
+      for _, res in pairs(results) do
+        for _, r in pairs(res.result or {}) do
+          if r.edit then
+            vim.lsp.util.apply_workspace_edit(r.edit, "utf-16")
+          elseif r.command then
+            vim.lsp.buf.execute_command(r.command)
+          end
+        end
+      end
+    end
+    return
+  end
+
+  -- Run goimports
+  local text = table.concat(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false), "\n")
+  local formatted, goerr = run_job({ "goimports" }, text)
+  if not formatted or #goerr > 0 then
+    vim.notify("goimports failed", vim.log.levels.WARN)
+    return
+  end
+
+  -- Optionally run golangci-lint
+  if has_linter then
+    local lint_out = run_job({ "golangci-lint", "run", "--out-format", "tab" }, table.concat(formatted, "\n"))
+    local found = false
+    for _, line in ipairs(lint_out or {}) do
+      if line:match("%.go:%d+:%d+:") then found = true break end
+    end
+    if found then
+      vim.notify("golangci-lint found issues", vim.log.levels.WARN)
+    end
+  end
+
+  -- Apply formatted output
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, formatted)
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -251,7 +395,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
-
 
 -- TAB completion
 
@@ -448,6 +591,36 @@ vim.lsp.enable({
   'lua_ls',
   'tinymist',
   'zls',
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    vim.schedule(function()
+      vim.notify("✔️ " .. (
+        client and client.name or "unknown"
+      ), vim.log.levels.INFO)
+    end)
+  end
+})
+
+vim.diagnostic.config({
+  virtual_lines = false,
+  virtual_text = false,
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+    source = true,
+    focusable = false,
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '✘',
+      [vim.diagnostic.severity.WARN]  = '▲',
+      [vim.diagnostic.severity.HINT]  = '⚑',
+      [vim.diagnostic.severity.INFO]  = '',
+    },
+  }
 })
 
 -- CMP
