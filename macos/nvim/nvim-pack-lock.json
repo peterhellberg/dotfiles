@@ -8,6 +8,10 @@
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
+    "ack.vim": {
+      "rev": "36e40f9ec91bdbf6f1adf408522a73a6925c3042",
+      "src": "git@github.com:/mileszs/ack.vim"
+    },
     "cmp-nvim-lsp": {
       "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
       "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
@@ -23,6 +27,10 @@
     "mfd.nvim": {
       "rev": "5d6067159e1b1116a12f34827a353572dbf3bdb9",
       "src": "https://github.com/kungfusheep/mfd.nvim"
+    },
+    "nerdtree": {
+      "rev": "690d061b591525890f1471c6675bcb5bdc8cdff9",
+      "src": "git@github.com:/preservim/nerdtree"
     },
     "nvim-cmp": {
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
