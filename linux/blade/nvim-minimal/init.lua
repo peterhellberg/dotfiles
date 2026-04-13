@@ -234,6 +234,7 @@ local opts = { noremap = true, silent = true }
 keymap("n", "<Leader>n", function()
   oil.open_float(vim.fn.expand("%:p:h"))
 end, opts)
+keymap('n', '<Leader><Leader>', '<C-^>', opts)
 keymap('n', '<Leader>s<Left>', ':leftabove vnew<CR>', opts)
 keymap('n', '<Leader>s<Right>', ':rightbelow vnew<CR>', opts)
 keymap('n', '<Leader>s<Up>', ':leftabove new<CR>', opts)
