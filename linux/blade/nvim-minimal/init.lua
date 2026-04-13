@@ -1,5 +1,6 @@
 vim.pack.add {
   'https://github.com/neovim/nvim-lspconfig',
+  'https://github.com/nvim-lualine/lualine.nvim',
   'https://github.com/stevearc/oil.nvim',
   'https://github.com/L3MON4D3/LuaSnip',
   'https://github.com/hrsh7th/nvim-cmp',
@@ -15,6 +16,7 @@ vim.g.mapleader = ","
 
 local opt = vim.opt
 local o = vim.o
+
 
 o.background = "dark"
 o.cmdheight = 0
@@ -65,7 +67,7 @@ require('vim._core.ui2').enable({
     },
     msg = {
       height = 0.3,
-      timeout = 900,
+      timeout = 2000,
     },
     pager = {
       height = 0.5,
@@ -159,6 +161,45 @@ hi(0, "markdownCodeBlock", { fg = "#8fbfdc" })
 hi(0, "markdownCodeDelimiter", { fg = "#4d636f" })
 hi(0, "markdownAutomaticLink", { fg = "#cf6a4c" })
 hi(0, "markdownUrlDelimiter", { fg = "#874937" })
+
+-- Lualine
+
+local sections = {
+  lualine_a = {
+    {'mode', fmt = function(str) return str:sub(1,1) end },
+  },
+  lualine_b = {'filename'},
+  lualine_c = {},
+  lualine_x = {},
+  lualine_y = {'filetype', 'branch', 'location'},
+  lualine_z = {},
+}
+
+require('lualine').setup {
+  options = {
+    theme = 'auto',
+    section_separators = '',
+    component_separators = '',
+    disabled_filetypes = {
+      statusline = {'nerdtree'},
+    },
+  },
+  sections = sections,
+  inactive_sections = sections,
+  theme = require('lualine.themes.auto'),
+}
+
+-- function to clear lualine_c background for all modes
+local function clear_lualine_c_bg()
+  local modes = { "normal", "insert", "visual", "replace", "command", "inactive" }
+  for _, mode in ipairs(modes) do
+    vim.cmd(string.format("hi lualine_c_%s guibg=NONE", mode))
+  end
+end
+
+vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter"}, {
+  callback = clear_lualine_c_bg
+})
 
 -- Oil
 
@@ -261,7 +302,7 @@ local function start_zls()
   vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = bufnr,           -- buffer-local
     callback = function()
-      local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+      local clients = vim.lsp.get_clients({ bufnr = bufnr })
       for _, client in pairs(clients) do
         if client.name == "zls" and client.server_capabilities.documentFormattingProvider then
           vim.lsp.buf.format({ bufnr = bufnr })
@@ -287,7 +328,6 @@ vim.lsp.enable({
   'zls',
 })
 
-
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -311,7 +351,6 @@ vim.api.nvim_create_autocmd('BufWritePre',{
     vim.lsp.buf.format()
   end
 })
-
 
 -- Create an autocmd group for LSP commands
 vim.api.nvim_create_augroup("LSPCommands", { clear = true })

@@ -12,6 +12,10 @@
       "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
       "src": "https://github.com/saadparwaiz1/cmp_luasnip"
     },
+    "lualine.nvim": {
+      "rev": "a905eeebc4e63fdc48b5135d3bf8aea5618fb21c",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
     "nvim-cmp": {
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
       "src": "https://github.com/hrsh7th/nvim-cmp"
