@@ -26,11 +26,11 @@ vim.cmd.source(vimrc)
 
 vim.o.smoothscroll = true
 vim.o.laststatus = 3
-vim.o.pumblend = 10
-vim.o.winblend = 10
+vim.o.pumblend = 0
+vim.o.winblend = 0
 vim.o.winborder = "rounded"
 
-vim.opt.shortmess:append("ICcWA")
+vim.opt.shortmess:append("filnxtToOFcC")
 
 require('vim._core.ui2').enable({
   enable = true,
