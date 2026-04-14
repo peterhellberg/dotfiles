@@ -38,6 +38,7 @@ alias diary-index='nvim +":silent VimwikiDiaryIndex"'
 
 # Misc
 alias :q='logout'
+alias t='vim.tiny'
 alias n='NVIM_APPNAME=nvim-minimal nvim'
 alias v='NVIM_APPNAME=nvim-one nvim -u $HOME/.dotfiles/linux/nvim/one.lua'
 alias vi='nvim -u $HOME/.config/nvim/init.lua'
