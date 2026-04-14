@@ -140,6 +140,10 @@ export GOPATH=$HOME/Go
 export PATH=$PATH:$GOPATH/bin
 export GOGC=400
 
+# Zig
+export ZIG_BUILD_ERROR_STYLE=minimal_clear
+export ZIG_BUILD_MULTILINE_ERRORS=indent
+
 # Load aliases
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
