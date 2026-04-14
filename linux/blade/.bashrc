@@ -28,7 +28,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # Bash
-export EDITOR='nvim -u ~/.dotfiles/linux/nvim/one.lua'
+export EDITOR='NVIM_APPNAME=nvim-minimal nvim'
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -119,7 +119,7 @@ export PATH=/usr/local/go/bin:$PATH
 export PATH=/home/peter/.local/bin:$PATH
 
 # Git
-export GIT_EDITOR='nvim -u $HOME/.dotfiles/linux/nvim/one.lua'
+export GIT_EDITOR='NVIM_APPNAME=nvim-minimal nvim'
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
@@ -138,6 +138,10 @@ export CDPATH=.:$GITHUB/peterhellberg:$GITHUB/c7:$GITHUB/athega
 export GOPATH=$HOME/Go
 export PATH=$PATH:$GOPATH/bin
 export GOGC=400
+
+# Zig
+export ZIG_BUILD_ERROR_STYLE=minimal_clear
+export ZIG_BUILD_MULTILINE_ERRORS=indent
 
 # Load aliases
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
