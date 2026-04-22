@@ -131,12 +131,27 @@ vim.api.nvim_set_keymap("n", "§", "<cmd>lua vim.lsp.buf.hover({border = 'rounde
 vim.api.nvim_set_keymap("n", "^", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "¨", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
 
+local function has_words_before()
+  local c = vim.fn.col('.') - 1
+  return c > 0 and vim.fn.getline('.'):sub(c, c):match('%S')
+end
+
 vim.keymap.set("i", "<Tab>", function()
-  return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-x><C-o>"
+  if vim.fn.pumvisible() == 1 then
+    return "<C-n>"
+  elseif has_words_before() then
+    return "<C-x><C-o>"
+  else
+    return "<Tab>"
+  end
 end, { expr = true, silent = true })
 
 vim.keymap.set("i", "<S-Tab>", function()
-  return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
+  if vim.fn.pumvisible() == 1 then
+    return "<C-p>"
+  else
+    return "<S-Tab>"
+  end
 end, { expr = true, silent = true })
 
 local function fuzzy_files()
