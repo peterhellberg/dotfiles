@@ -209,6 +209,9 @@ let g:Lf_WildIgnore = {
 let g:vimwiki_use_calendar = 1
 let g:vimwiki_url_maxsave = 0
 let g:vimwiki_global_ext = 0
+let g:vimwiki_conceallevel = 2
+let g:vimwiki_auto_header = 0
+let g:vimwiki_auto_tags = 0
 let g:vimwiki_list = [{
   \ 'path':'~/Documents/Wiki/', 
   \ 'syntax':'markdown', 
@@ -229,3 +232,13 @@ let g:vimwiki_list = [{
   \ }}]
 nmap <Leader>vn <Plug>VimwikiNextLink
 nmap <Leader>vp <Plug>VimwikiPrevLink
+autocmd FileType vimwiki nmap <buffer> <silent> <CR> <Plug>VimwikiFollowLink
+autocmd FileType vimwiki nmap <buffer> <silent> <Backspace> <Plug>VimwikiGoBackLink
+
+function! VimwikiLinkHandler(link)
+  if a:link =~# '^\(https\?\|ftp\)://'
+    call jobstart(['open', a:link], {'detach': 1})
+    return 1
+  endif
+  return 0
+endfunction
