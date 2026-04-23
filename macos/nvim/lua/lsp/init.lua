@@ -5,6 +5,7 @@ vim.lsp.enable({
   'lua_ls',
   'tinymist',
   'zls',
+  'php_lsp',
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
