@@ -1,0 +1,26 @@
+require("commands.GoCoverage")
+require("commands.ListToggle")
+
+-- Path
+vim.api.nvim_create_user_command('File', function()
+  print(vim.fn.expand('%:p'))
+end, { nargs = '*' })
+
+-- Diary
+vim.api.nvim_create_user_command('DiaryIndex', function()
+  vim.cmd('silent VimwikiDiaryIndex')
+  vim.cmd('VimwikiDiaryGenerateLinks')
+end, { nargs = '*' })
+
+vim.api.nvim_create_user_command('DiaryToday', function(opts)
+  vim.cmd('VimwikiMakeDiaryNote' .. table.concat(opts.fargs, ' '))
+end, { nargs = '*' })
+
+-- Wiki
+vim.api.nvim_create_user_command('Wiki', function(opts)
+  if vim.fn.exists(':VimwikiGoto') == 2 then
+    vim.cmd('VimwikiGoto ' .. table.concat(opts.fargs, ' '))
+  else
+    vim.notify('Not in wiki!')
+  end
+end, { nargs = '*' })

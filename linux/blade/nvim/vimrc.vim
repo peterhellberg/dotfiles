@@ -1,0 +1,244 @@
+let mapleader=","
+
+syntax on
+
+set termguicolors
+set background=dark
+
+colorscheme default
+
+hi @variable guifg=#DDDDC5
+hi Comment guifg=#605958 gui=italic
+hi Conditional guifg=#8197BE
+hi Constant guifg=#CF6A4C
+hi Delimiter guifg=#DDDDC5
+hi DiagnosticError guifg=#D35738
+hi DiagnosticHint guifg=#c6b7ee
+hi DiagnosticInfo guifg=#96b0de
+hi DiagnosticUnderlineError guisp=#D35738
+hi DiagnosticUnderlineHint guisp=#c6b7ee
+hi DiagnosticUnderlineInfo guisp=#96b0de
+hi DiagnosticUnderlineWarn guisp=#FFB964
+hi DiagnosticWarn guifg=#FFB964
+hi Directory guifg=#FFB964
+hi ErrorMsg guifg=#605958
+hi FloatBorder guifg=#555555 guibg=NONE
+hi Function guifg=#FAD07A
+hi Identifier guifg=#DDDDC5
+hi Include guifg=#8FBFDC
+hi IncSearch guibg=default guifg=#fce094 gui=inverse
+hi Keyword guifg=#8197BE
+hi Label guifg=#8197BF
+hi LineNr guifg=#605958
+hi Macro guifg=#8FBFDC
+hi ModeMsg guifg=#FFFFFF guibg=#0087AF
+hi MoreMsg guifg=#DDDDC5
+hi Normal guibg=#151515 guifg=#E8E8D3
+hi NormalFloat guibg=#151515
+hi Number guifg=#CF6A4C
+hi Operator guifg=#DDDDC5
+hi Operator guifg=#FFB964
+hi PreProc guifg=#8FBFDC
+hi Question guifg=#E6E6CD
+hi QuickFixLine guifg=DEFAULT guibg=#333333 gui=bold
+hi Repeat guifg=#8197BF
+hi Search guibg=default guifg=default gui=inverse 
+hi Special guifg=#C6B6EE
+hi SpecialChar guifg=#C6B6EE
+hi Statement guifg=#8197BE
+hi StatusLine guibg=none guifg=#161616
+hi StatusLineNC guibg=none guifg=#161616
+hi StorageClass guifg=#C59F6F
+hi String guifg=#99AD6A
+hi Structure guifg=#8FBFDC
+hi Type guifg=#FFB964
+hi Visual guifg=default guibg=#303030
+hi WinSeparator guifg=#333333
+
+" Markdown
+hi markdownH1 guifg=#fad17a
+hi markdownH2 guifg=#ffb372
+hi markdownH3 guifg=#ffb372
+hi markdownH4 guifg=#ffb372
+hi markdownH5 guifg=#ffb372
+
+hi markdownH1Delimiter guifg=#fad17a
+hi markdownH2Delimiter guifg=#ffb372
+hi markdownH3Delimiter guifg=#ffb372
+hi markdownH4Delimiter guifg=#ffb372
+hi markdownH5Delimiter guifg=#ffb372
+
+hi markdownCode guifg=#8fbfdc
+hi markdownCodeBlock guifg=#8fbfdc
+hi markdownCodeDelimiter guifg=#4d636f
+
+hi markdownAutomaticLink guifg=#cf6a4c
+hi markdownUrlDelimiter guifg=#874937
+
+hi VimwikiHeaderChar guifg=#fad17a
+hi link VimwikiHeader1 markdownH1
+hi link VimwikiHeader2 markdownH2
+hi link VimwikiHeader3 markdownH3
+hi link VimwikiHeader4 markdownH4
+hi link VimwikiHeader5 markdownH5
+
+hi VimwikiListTodo guifg=#8197be
+
+hi link @markup.heading.1.markdown markdownH1
+hi link @markup.heading.2.markdown markdownH2
+hi link @markup.heading.3.markdown markdownH3
+hi link @markup.heading.4.markdown markdownH4
+hi link @markup.heading.5.markdown markdownH5
+hi link @markup.quote.markdown Normal 
+hi link @markup.raw.block.markdown Keyword
+
+hi link @nospell.markdown_inline VimwikiHeaderChar 
+
+" HTML
+hi link htmlEndTag Function
+
+" YAML
+hi yamlBlockMappingKey guifg=#8197be
+hi yamlBlockMappingDelimiter guifg=#4d636f
+hi yamlPlainScalar guifg=#8fa364
+
+filetype plugin indent on
+
+set backspace=2
+set clipboard=unnamed,unnamedplus
+set encoding=utf-8
+set expandtab
+set hlsearch
+set incsearch
+set laststatus=3
+set mouse=
+set nobackup
+set nomodeline
+set noruler
+set noshowmode
+set noswapfile
+set nowrap
+set nowritebackup
+set number
+set shiftwidth=2
+set shortmess=at
+set shortmess+=I
+set signcolumn=yes
+set smartcase
+set splitright
+set tabstop=2
+set timeoutlen=500
+set ttimeoutlen=5
+set updatetime=100
+set virtualedit=block
+
+autocmd VimEnter * set nosc
+
+if bufwinnr(1)
+	nmap ö <C-W><<C-W><
+	nmap ä <C-W>><C-W>>
+	nmap Ä <C-W>-<C-W>-
+	nmap Ö <C-W>+<C-W>+
+endif
+
+nmap <leader>s<left> :leftabove vnew<CR>
+nmap <leader>s<right> :rightbelow vnew<CR>
+nmap <leader>s<up> :leftabove new<CR>
+nmap <leader>s<down> :rightbelow new<CR>
+
+noremap <space> :
+noremap <tab> <c-w>w
+noremap <S-tab> <c-w>W
+noremap H ^
+noremap L $
+
+vnoremap u y
+nnoremap U <C-r>
+nnoremap J mzJ`z
+nnoremap Y y$
+nnoremap <leader><leader> <C-^>
+nnoremap <silent> ff :up<CR>
+
+let &t_SI = "\<Esc>[5 q"
+let &t_EI = "\<Esc>[1 q"
+
+set autochdir
+
+" GitGutter
+let g:gitgutter_enabled = 1
+let g:gitgutter_max_signs = 2500
+let g:gitgutter_map_keys = 0
+
+hi GitGutterAdd    guifg=#97a950 guibg=#2D3218 ctermfg=2
+hi GitGutterChange guifg=#FFB964 guibg=#4c371e ctermfg=3
+hi GitGutterDelete guifg=#d35738 guibg=#3f1a10 ctermfg=1
+hi! link SignColumn LineNr " Clear unchanged lines background
+
+" LeaderF
+hi Lf_hl_popup_prompt guibg=#585858 guifg=#FFFFFF
+hi Lf_hl_popup_cursor guibg=#FFB371
+hi Lf_hl_popup_inputText guibg=#303030 guifg=#FFFFFF
+hi Lf_hl_popup_inputMode guibg=#0087AF guifg=#FFFFFF
+hi Lf_hl_popup_lineInfo guibg=#585858 guifg=#FFFFFF
+hi Lf_hl_popup_total guibg=#D0D0D0 guifg=#6D6D6D
+hi Lf_hl_cursorline guifg=#FFFFFF
+hi Lf_hl_match guifg=#0087AF
+hi Lf_hl_popup_normalMode guibg=#AFDF00 guifg=#005F00
+hi Lf_hl_popup_category guibg=#005F87 guifg=#87DFFF
+hi Lf_hl_popup_fullPathMode guibg=#0087AF guifg=#87DFFF
+hi Lf_hl_popup_nameOnlyMode guibg=#303030 guifg=#9E9E9E
+hi Lf_hl_popup_cwd guibg=#005F87 guifg=#87DFFF
+
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_ShortcutF = "<silent> t"
+let g:Lf_HideHelp = 1
+let g:Lf_ShowDevIcons = 0
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2" }
+let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+let g:Lf_WorkingDirectoryMode = 'a'
+let g:Lf_UseMemoryCache = 1
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PopupColorscheme = 'default'
+let g:Lf_WildIgnore = {
+        \ 'dir': ['.git', 'zig-cache'],
+        \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so', '*.wasm']
+        \}
+
+" Vimwiki
+let g:vimwiki_use_calendar = 1
+let g:vimwiki_url_maxsave = 0
+let g:vimwiki_global_ext = 0
+let g:vimwiki_conceallevel = 2
+let g:vimwiki_auto_header = 0
+let g:vimwiki_auto_tags = 0
+let g:vimwiki_list = [{
+  \ 'path':'~/Documents/Wiki/', 
+  \ 'syntax':'markdown', 
+  \ 'ext':'.md', 
+  \ 'auto_tags':1, 
+  \ 'auto_diary_index':1, 
+  \ 'automatic_nested_syntaxes':1, 
+  \ 'nested_syntaxes':{
+  \   'csv': 'csv', 
+  \   'go': 'go', 
+  \   'json': 'json',
+  \   'make': 'make',
+  \   'sh': 'sh',
+  \   'sql': 'sql',
+  \   'yaml': 'yaml',
+  \   'xml': 'xml', 
+  \   'zig': 'zig' 
+  \ }}]
+nmap <Leader>vn <Plug>VimwikiNextLink
+nmap <Leader>vp <Plug>VimwikiPrevLink
+autocmd FileType vimwiki nmap <buffer> <silent> <CR> <Plug>VimwikiFollowLink
+autocmd FileType vimwiki nmap <buffer> <silent> <Backspace> <Plug>VimwikiGoBackLink
+
+function! VimwikiLinkHandler(link)
+  if a:link =~# '^\(https\?\|ftp\)://'
+    call jobstart(['open', a:link], {'detach': 1})
+    return 1
+  endif
+  return 0
+endfunction

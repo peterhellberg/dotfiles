@@ -1,0 +1,38 @@
+vim.lsp.enable({
+  'buf_ls',
+  'clangd',
+  'gopls',
+  'lua_ls',
+  'tinymist',
+  'zls',
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    vim.schedule(function()
+      vim.notify("✔️ " .. (
+        client and client.name or "unknown"
+      ), vim.log.levels.INFO)
+    end)
+  end
+})
+
+vim.diagnostic.config({
+  virtual_lines = false,
+  virtual_text = false,
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+    source = true,
+    focusable = false,
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '✘',
+      [vim.diagnostic.severity.WARN]  = '▲',
+      [vim.diagnostic.severity.HINT]  = '⚑',
+      [vim.diagnostic.severity.INFO]  = '',
+    },
+  }
+})
