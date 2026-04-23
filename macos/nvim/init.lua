@@ -24,11 +24,14 @@ require("lsp")
 local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
 
+vim.o.more = false
+vim.o.cmdheight = 2
 vim.o.smoothscroll = true
 vim.o.laststatus = 3
 vim.o.pumblend = 0
 vim.o.winblend = 0
 vim.o.winborder = "rounded"
+vim.o.shortmess = vim.o.shortmess .. "c"
 
 vim.opt.shortmess:append("filnxtToOFcC")
 
