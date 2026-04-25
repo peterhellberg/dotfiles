@@ -25,7 +25,7 @@ local vimrc = vim.fn.stdpath("config") .. "/vimrc.vim"
 vim.cmd.source(vimrc)
 
 vim.o.more = false
-vim.o.cmdheight = 2
+vim.o.cmdheight = 0
 vim.o.smoothscroll = true
 vim.o.laststatus = 3
 vim.o.pumblend = 0
@@ -33,6 +33,10 @@ vim.o.winblend = 0
 vim.o.winborder = "rounded"
 vim.o.shortmess = vim.o.shortmess .. "c"
 
+vim.opt.scrolloff = 4
+vim.opt.sidescroll = 1
+vim.opt.sidescrolloff = 8
+vim.opt.startofline = false
 vim.opt.shortmess:append("filnxtToOFcC")
 
 require('vim._core.ui2').enable({
