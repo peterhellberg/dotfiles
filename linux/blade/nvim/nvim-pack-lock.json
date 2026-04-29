@@ -1,7 +1,7 @@
 {
   "plugins": {
     "LeaderF": {
-      "rev": "ac6ae9ec3ff98500627ecf79706f75a267dcc322",
+      "rev": "538c8fe4a64648510334768bfb4564f0a0aa9626",
       "src": "https://github.com/Yggdroot/LeaderF"
     },
     "LuaSnip": {
@@ -21,11 +21,11 @@
       "src": "https://github.com/saadparwaiz1/cmp_luasnip"
     },
     "lualine.nvim": {
-      "rev": "a905eeebc4e63fdc48b5135d3bf8aea5618fb21c",
+      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mfd.nvim": {
-      "rev": "5d6067159e1b1116a12f34827a353572dbf3bdb9",
+      "rev": "72ae627792960a7e490cb5242a78c570d02ba775",
       "src": "https://github.com/kungfusheep/mfd.nvim"
     },
     "nerdtree": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-lspconfig": {
-      "rev": "e146efacbafed3789ac568abcc5a981c5decaa58",
+      "rev": "b66a8ce16b141cd26576267e2d1f371d658b7bb7",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
