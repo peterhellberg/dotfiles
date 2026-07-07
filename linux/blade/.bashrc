@@ -129,6 +129,12 @@ if [ -f ~/.local/share/bash-completion/completions/arduino.bash ]; then
  . ~/.local/share/bash-completion/completions/arduino.bash
 fi
 
+unset WAYLAND_DEBUG
+
+# Köp
+export KOP_ENDPOINT="http://tiny:12432/rpc/"
+alias köp='kop'
+
 # Code
 export CODE=$HOME/Code
 export GITHUB=$CODE/GitHub
@@ -202,7 +208,7 @@ fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-export OLLAMA_HOST=prime.feist-gopher.ts.net:11434
+#export OLLAMA_HOST=prime.feist-gopher.ts.net:11434
 export NATS_URL="nats://localhost:4222"
 
 # Set keyboard rate (default: 660 25)
@@ -223,3 +229,9 @@ complete -F _eza l
 
 . "$HOME/.local/bin/env"
 . "$HOME/.cargo/env"
+
+# opencode
+export PATH=/home/peter/.opencode/bin:$PATH
+
+# Pi
+export PATH="/home/peter/.local/share/pi-node/node-v22.23.1-linux-x64/bin:$PATH"
