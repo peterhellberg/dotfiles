@@ -157,3 +157,6 @@ alias köp='kop'
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 . <(asdf completion bash)
+
+# Pi
+export PATH="/opt/homebrew/Cellar/node/26.3.1/bin:$PATH"
