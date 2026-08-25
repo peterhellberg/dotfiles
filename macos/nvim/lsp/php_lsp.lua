@@ -1,6 +1,7 @@
 ---@type vim.lsp.Config
 return {
   cmd = { 'php-lsp' },
+  capabilities = require("lsp.capabilities"),
   filetypes = { 'php' },
   root_markers = { 'composer.json', '.git' },
   workspace_required = true,
