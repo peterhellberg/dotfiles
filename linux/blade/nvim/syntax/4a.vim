@@ -8,7 +8,7 @@ endif
 " Identifiers are case-insensitive.
 syn case ignore
 
-syn keyword a4Mnemonic  nop lda sta read inc cls shl shr peek flip flag jmp ifeq ifgt iflt
+syn keyword a4Mnemonic  nop lda sta read inc dec cls shl shr peek flip flag jmp ifeq ifgt iflt
 syn keyword a4Directive const org dw
 syn keyword a4Register  r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11 r12 r13 r14 r15
 
