@@ -71,14 +71,14 @@ require('vim._core.ui2').enable({
       typed_cmd = 'cmd',
     },
     cmd = {
-      height = 0.5,
+      --height = 0.5,
     },
     dialog = {
       height = 0.5,
     },
     msg = {
       height = 0.3,
-      timeout = 2000,
+      --timeout = 2000,
     },
     pager = {
       height = 0.5,
