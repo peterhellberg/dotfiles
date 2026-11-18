@@ -1,0 +1,127 @@
+# tig configuration, see man tigrc. Keys here are chosen not to clash with tig 2.6's defaults.
+
+# Views
+set main-view    = id:yes date:relative-compact author:full commit-title:graph=v2,refs=yes
+set blame-view   = id:yes date:relative-compact author:full line-number:yes,interval=1 text
+set refs-view    = date:relative-compact author:full ref commit-title
+set line-graphics     = utf-8
+set tab-size          = 4
+set ignore-case       = smart-case
+set mouse             = yes
+set refresh-mode      = auto
+set vertical-split    = auto
+set split-view-height = 70%
+set status-show-untracked-dirs = yes
+
+# Word-level highlighting in diffs, through git's diff-highlight in ~/.local/bin
+set diff-highlight = true
+
+# Signed commits from the status view (C replaces tig's unsigned commit)
+bind status C !git commit -S
+bind status E !git commit -S --amend
+
+# fixUp: stage in the status view, then U on the target commit in the main view
+bind main U ?git commit -S --fixup=%(commit)
+
+# Z: autosquash every fixup, pressed on the base commit (main's tip)
+bind main Z ?git -c sequence.editor=: rebase -i --autosquash %(commit)
+
+# B: interactive rebase from the selected base, for reword and the like
+bind main B !git rebase -i %(commit)
+
+# Y: copy the selected commit's hash
+bind generic Y @sh -c "printf '%s' %(commit) | pbcopy"
+
+# Theme, from the colours in ~/.config/nvim/vimrc.vim. tig takes no hex values, so each is the
+# nearest of the 256, except the text, which is the terminal's own foreground: no 256 colour is
+# close to #E8E8D3 (254 is a cold gray, 187 olive). comment #605958=240, blue #8197BE=103,
+# red #CF6A4C=167, yellow #FAD07A=222, orange #FFB964=215, green #99AD6A=107,
+# cyan #8FBFDC=110, purple #C6B6EE=183, tan #C59F6F=179, selection #303030=236.
+# The cursor line is a step lighter, 238 (#444444). The background stays the terminal's.
+# Diff lines and authors use the terminal's own red and green, warmer than 107.
+color default             default   default
+color cursor              default   238       bold
+color cursor-blur         default   238
+color title-focus         default   236       bold
+color title-blur          240       233
+color status              110       default
+color delimiter           240       default
+color line-number         240       default
+color date                240       default
+color author              green     default
+color id                  215       default
+color mode                183       default   bold
+color header              222       default   bold
+color section             222       default   bold
+color search-result       default   236       reverse
+
+# Every ref is cyan, as on the diff view's Refs: line, which a rule can only colour as a whole.
+# The brackets tell the kinds apart: [branch], {remote}, <tag>. HEAD and tags are bold.
+color main-commit         default   default
+color main-head           110       default   bold
+color main-local-tag      110       default
+color main-tag            110       default   bold
+color main-remote         110       default
+color main-tracked        110       default
+color main-ref            110       default
+color main-replace        167       default
+color graph-commit        215       default
+
+color diff-header         222       default   bold
+color diff-index          103       default
+color diff-chunk          110       default
+color diff-stat           default   default
+color diff-add            green     default
+color diff-del            red       default
+color diff-add-highlight  233       green
+color diff-del-highlight  233       red
+
+color stat-staged         107       default
+color stat-unstaged       215       default
+color stat-untracked      167       default
+color stat-none           240       default
+
+color directory           215       default
+color file                default   default
+
+# The commit header in the diff view, matched by line prefix, in the same colours as the lists.
+# A rule colours the whole line, so each person is grouped with their date: the author, whom the
+# list shows, in green, and the committer, whom it doesn't, in a light gray (246) that is quieter
+# without looking disabled. Trailers naming a person are green too. The SHA is orange and refs
+# cyan, as in the list.
+color "commit "                 215   default
+color "Refs: "                  110   default
+color "Author: "                green default
+color "AuthorDate: "            green default
+color "Date: "                  green default
+color "author "                 green default
+color "Commit: "                246   default
+color "CommitDate: "            246   default
+color "committer "              246   default
+color "Merge: "                 240   default
+color "parent "                 240   default
+color "tree "                   240   default
+color "    Co-authored-by:"     green default
+color "    Signed-off-by:"      green default
+color "---"                     240   default
+color "diff --"                 222   default
+color "--- "                    222   default
+color "+++ "                    222   default
+color "index "                  103   default
+color "@@"                      110   default
+color "+"                       green default
+color " +"                      green default
+color "-"                       red   default
+color " -"                      red   default
+
+# The diff stat summary has no colour area of its own, and a rule matches a fixed prefix, so
+# these cover one to nine files. A commit with ten or more keeps the summary in the text colour.
+color " 1 file changed"               240   default
+color " 2 files changed"              240   default
+color " 3 files changed"              240   default
+color " 4 files changed"              240   default
+color " 5 files changed"              240   default
+color " 6 files changed"              240   default
+color " 7 files changed"              240   default
+color " 8 files changed"              240   default
+color " 9 files changed"              240   default
