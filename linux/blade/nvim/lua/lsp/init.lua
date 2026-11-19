@@ -4,6 +4,7 @@ vim.lsp.enable({
   'gopls',
   'lua_ls',
   'tinymist',
+  'wasm_language_tools',
   'zls',
 })
 
